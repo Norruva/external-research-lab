@@ -1,0 +1,11 @@
+{
+  "archive": "/workspace/eidos/eidos-owned-training-research-v1.tar.gz",
+  "bytes": 68255,
+  "complete": true,
+  "files_verified": 35,
+  "manifest_sha256": "cce269d464f16b4551cbf391f2040fcf95493167d9437290bc5c4efe7f034c04",
+  "mission_complete": false,
+  "prefix": "eidos-owned-training-research-v1",
+  "production_certified": false,
+  "sha256": "67c4cbecf8780f9e15a0fa54baf4da1ef9411dad83adb5b5da2c8286367b7894"
+}

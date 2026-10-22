@@ -1,0 +1,14 @@
+{
+  "complete": false,
+  "python": "3.13.5",
+  "stages": [
+    {
+      "name": "smoke",
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "d83bc593915c55e83fb1f8e8bcca5b3e9dcc4f1bb00a81b45d84da26f0d17153"
+    }
+  ],
+  "offline_namespace": true,
+  "fresh_temporary_state_only": true
+}

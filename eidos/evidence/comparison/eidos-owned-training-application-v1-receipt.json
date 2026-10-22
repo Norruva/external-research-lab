@@ -1,0 +1,16 @@
+{
+  "archive": "/workspace/eidos/eidos-owned-training-application-v1.tar.gz",
+  "bytes": 35462900,
+  "complete": true,
+  "files_verified": 138,
+  "manifest_sha256": "87259828c5bb676295e622d2956f3365a6bf155b2ed20ca576aba32eecf1dbdd",
+  "mission_complete": false,
+  "model_promoted": false,
+  "new_authored_support_training_cli": true,
+  "new_training_source_sha256": "487f2d507a48e13f0d2747113c07011cb78c083b7f1adba7f8022f8761e73800",
+  "prefix": "eidos-owned-training-v1",
+  "preinstalled_models_unchanged": true,
+  "production_certified": false,
+  "sha256": "867ca3233a32133f95338d8a51efc8f677649b57ea7eb01f966ea03fa7eee4bb",
+  "unchanged_parent_members": 125
+}

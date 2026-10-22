@@ -1,0 +1,12 @@
+{
+  "authored_demo_registries_built": 2,
+  "authored_demo_rows_per_registry": 40,
+  "complete": true,
+  "legacy_wrapper_heading_scope": "Historical wrapper heading is retained; actual controller, training receipts and assertions establish the new authored demo workflow.",
+  "legacy_wrapper_model_refitted_or_promoted_field_scope": "No preinstalled/benchmark model refit/promotion; the new eight owned_training_checks explicitly train two fresh authored demo registries.",
+  "model_artifact_receipt_bytes_reproduced": true,
+  "new_training_source_sha256": "487f2d507a48e13f0d2747113c07011cb78c083b7f1adba7f8022f8761e73800",
+  "no_benchmark_inference_or_scoring_in_application_tests": true,
+  "no_compared_or_preinstalled_model_refitted": true,
+  "synthetic_demo_semantic_quality_or_calibration_claimed": false
+}

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EIDOS — Decision workspace</title><link rel="stylesheet" href="/style.css"></head>
+<body><main><header><span class="mark">E</span><div><h1>EIDOS</h1><p>Form and essence · Decision workspace</p></div></header>
+<p class="notice">Research classifiers for known English intents. Connect to load the configured profile. Every recommendation requires human review.</p>
+<section><h2>Operator session</h2><div class="row"><label>Tenant<input id="tenant" value="demo" autocomplete="off" maxlength="80"></label>
+<label>Key ID<input id="key" value="demo-operator" autocomplete="off" maxlength="80"></label></div>
+<label>Operator key<input id="secret" type="password" autocomplete="off" maxlength="64" spellcheck="false"></label>
+<p>The key stays in this tab's memory. Reload or disconnect to forget it. Use a dedicated operator key.</p>
+<button id="connect">Connect</button><button id="forget" class="secondary">Disconnect</button></section>
+<section><h2>Recognize and review</h2><label>Classifier<select id="profile"><option value="">Connect to load a classifier</option></select></label>
+<label>Text<textarea id="text" rows="5" maxlength="12000" placeholder="Enter text for a recommendation"></textarea></label>
+<button id="decide">Classify</button><button id="accepted" class="secondary">Accept for review record</button>
+<button id="rejected" class="secondary">Reject for review record</button><p>Review records do not execute actions or automatically retrain models.</p></section>
+<section><h2>Recent decisions</h2><p>Latest 50 retained results for your tenant. Original text is not retained. Select a result to review it.</p><button id="refresh" class="secondary">Refresh history</button><div id="history"></div></section>
+<section><h2>Result</h2><pre id="result" aria-live="polite">Connect to begin.</pre></section>
+<footer>EIDOS · Local inference · Recommendations with explicit abstention</footer></main><script type="module" src="/ui.js"></script></body></html>

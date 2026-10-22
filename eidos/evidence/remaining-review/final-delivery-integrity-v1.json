@@ -1,0 +1,49 @@
+{
+  "archived_current_files_verified": 5,
+  "automatic_retry_or_expansion": false,
+  "cloud_start_exact_readback_revision": 42,
+  "complete": true,
+  "current_active_work": null,
+  "fresh_snapshot_restoration_verified": false,
+  "historical_status_fields_preserved": [
+    "acceptance",
+    "package",
+    "latest_serving_application",
+    "primary_banking77",
+    "full77_tournament_recovery",
+    "full77_tournament_comparison",
+    "support_reference_development",
+    "support_memory_development",
+    "clinc150_supervised_study",
+    "clinc150_confidence_study",
+    "semantic_transfer_development",
+    "open_gates",
+    "jev_target_review"
+  ],
+  "mission_complete": false,
+  "new_application_checks_complete": true,
+  "packages": {
+    "application": {
+      "members_verified": 138,
+      "sha256": "867ca3233a32133f95338d8a51efc8f677649b57ea7eb01f966ea03fa7eee4bb"
+    },
+    "comparison": {
+      "members_verified": 32,
+      "sha256": "6eccd245f209f369c1e8a6e0cf6a7b9e27b4236dfa61b2f131334c6dac8ec0f4"
+    },
+    "training_source": {
+      "members_verified": 35,
+      "sha256": "67c4cbecf8780f9e15a0fa54baf4da1ef9411dad83adb5b5da2c8286367b7894"
+    }
+  },
+  "prepared_source_files_verified": {
+    "support-reference-v1": 22,
+    "support-remaining-reference-v1": 22
+  },
+  "production_certified": false,
+  "publication_performed": false,
+  "quality_inference_scoring_or_bootstrap_repeated": false,
+  "reference_attempt_consumed": true,
+  "scope": "static delivery identities and completed receipt bindings",
+  "unchanged_parent_members": 125
+}

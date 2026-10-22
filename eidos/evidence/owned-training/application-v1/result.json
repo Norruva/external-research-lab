@@ -1,0 +1,157 @@
+{
+  "format": "eidos-owned-demo-v1-integration-v1",
+  "complete": true,
+  "archive_sha256": "867ca3233a32133f95338d8a51efc8f677649b57ea7eb01f966ea03fa7eee4bb",
+  "manifest_sha256": "87259828c5bb676295e622d2956f3365a6bf155b2ed20ca576aba32eecf1dbdd",
+  "files_verified": 138,
+  "runtime": "3.13.5 (main, Aug 10 2026, 12:06:59) [GCC 14.2.0]",
+  "third_party_inference_packages": false,
+  "source_unchanged": true,
+  "standalone_cli_profiles_checked": [
+    "banking77",
+    "clinc150",
+    "clinc150-confidence",
+    "support-memory",
+    "support-linear"
+  ],
+  "scope_cli_checks": [
+    "actual Engine plus review-only scope CLI",
+    "candidate permutation invariance",
+    "unknown inventory fails closed",
+    "unsupported language fails closed",
+    "zero lexical support rejected",
+    "inconsistent temperature fails closed",
+    "wrong model binding refused",
+    "wrong tenant refused"
+  ],
+  "support_explanation_checks": [
+    "actual Engine and three diagnostic classes",
+    "five opaque IDs/cosines per class without support text",
+    "seven-option support subset",
+    "unsupported language fails closed",
+    "always review and no action"
+  ],
+  "owned_training_checks": [
+    "actual stdlib CLI builds40authoredsupports/two classes",
+    "input/provenance hashes and disabled acceptance recorded",
+    "private0400artifacts/0700directory",
+    "secondfreshbuild reproduces every artifact/receipt byte",
+    "existingoutput refused without change",
+    "duplicateinput refused before output creation",
+    "actual EngineCLI on newly trained registry",
+    "actual opaque-support explanationCLI without action"
+  ],
+  "authored_training_model": {
+    "classes": 2,
+    "complete": true,
+    "evaluation_or_calibration_performed": false,
+    "features": 549,
+    "files": {
+      "model.json": {
+        "bytes": 18192,
+        "sha256": "f9dabdc57dec393904d4d7752a3e53a27643e7d6ccc6dfb66bc21c1638fad2b7"
+      },
+      "registry.json": {
+        "bytes": 166,
+        "sha256": "88c7db697a329fce5daf0cbe7ad3601a0f0a75e3131128a8ae1605e628c8a08e"
+      },
+      "support.sparse": {
+        "bytes": 53308,
+        "sha256": "51150623debb8bd5cef2846b7ba6a2c71367ed3f8ffe4a6af2bde0eb857685a9"
+      }
+    },
+    "format": "eidos-owned-support-training-receipt-v1",
+    "input_sha256": "836d40e2d89ff7ae174fd0cc4e7574df91da1bdb46735ebe773391068796617c",
+    "model": {
+      "calibration_status": "unfitted",
+      "feature_version": "unicode-word-bigram-char345-tfidf-v2",
+      "id": "eidos-owned-demo-v1",
+      "sha256": "f9dabdc57dec393904d4d7752a3e53a27643e7d6ccc6dfb66bc21c1638fad2b7",
+      "version": "1"
+    },
+    "model_promoted": false,
+    "nnz": 6620,
+    "operational_acceptance_enabled": false,
+    "privacy_guarantee": false,
+    "provenance_sha256": "8bf5475c34f2e6b2a508d3f1faef2a0180f6a6ef73206eeacf42c2df1ca0b265",
+    "support_rows": 40,
+    "third_party_training_or_inference_packages": false
+  },
+  "model": {
+    "calibration_status": "unfitted",
+    "feature_version": "unicode-word-bigram-char345-tfidf-v2",
+    "id": "eidos-owned-demo-v1",
+    "sha256": "f9dabdc57dec393904d4d7752a3e53a27643e7d6ccc6dfb66bc21c1638fad2b7",
+    "version": "1"
+  },
+  "model_files": {
+    "model.json": "f9dabdc57dec393904d4d7752a3e53a27643e7d6ccc6dfb66bc21c1638fad2b7",
+    "registry.json": "88c7db697a329fce5daf0cbe7ad3601a0f0a75e3131128a8ae1605e628c8a08e",
+    "support.sparse": "51150623debb8bd5cef2846b7ba6a2c71367ed3f8ffe4a6af2bde0eb857685a9"
+  },
+  "checks": [
+    "fresh archive exact manifest",
+    "new private local provisioning",
+    "actual service/worker startup",
+    "unauthenticated inventory refused",
+    "signed management CLI inventory/decision",
+    "two-class freshly trained finite normalized distribution",
+    "exact-body persisted idempotency",
+    "changed-body idempotency conflict",
+    "unknown taxonomy abstention",
+    "unsupported language abstention",
+    "zero lexical support abstention",
+    "review cannot execute or train",
+    "same-state second instance refused",
+    "graceful stop and maintenance audit verification",
+    "restart exact cached response",
+    "restart review/history persistence",
+    "unchanged audit head",
+    "private state permissions"
+  ],
+  "cli_status": "abstained",
+  "browser": {
+    "passed": true,
+    "request_id": "cae0a7de-ca0e-4521-a43a-3440ff6e19ea",
+    "status": "abstained",
+    "distribution_classes": 2,
+    "checks": [
+      "actual module assets",
+      "WebCrypto signed real API calls",
+      "research notice",
+      "two-label newly trained dynamic inventory",
+      "key field cleared",
+      "normalized real-model distribution",
+      "human review required",
+      "review creates no action/training",
+      "durable history selection",
+      "no browser storage",
+      "disconnect"
+    ],
+    "example_correctness_asserted": false
+  },
+  "recovery": {
+    "passed": true,
+    "checks": [
+      "live source backup refused",
+      "whole-file checksum and audit head",
+      "configuration and keys excluded",
+      "existing state preserved",
+      "corrupted backup refused",
+      "new private destination and unchanged configuration",
+      "exact cached response after restored service startup",
+      "actual signed replay refused after restore",
+      "review history, active release and audit head preserved"
+    ],
+    "service_running_at_end": false
+  },
+  "review_history_items": 5,
+  "audit_events": 7,
+  "example_correctness_asserted": false,
+  "general_out_of_domain_detection_asserted": false,
+  "model_quality_re_evaluated": false,
+  "actual_laya_comparison": "PREVIOUS_BANKING77_EVIDENCE_UNCHANGED_NO_NEW_REFERENCE_EXECUTION",
+  "mission_complete": false,
+  "automatic_promotion": false,
+  "elapsed_seconds": 19.751399
+}

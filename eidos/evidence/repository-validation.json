@@ -1,0 +1,36 @@
+{
+  "base_commit": "83f5fc716c166ac9e3347957b2b6e3a97186a25b",
+  "benchmark_reference_inference_scoring_or_bootstrap_repeated": false,
+  "branch": "eidos/initial-application",
+  "complete": true,
+  "copied_source_files_verified": 84,
+  "existing_credentials_or_state_accessed": false,
+  "format": "eidos-source-checkout-validation-v1",
+  "fresh_authored_demo_only": true,
+  "github_release_or_pr_created_by_this_receipt": false,
+  "headless_browser_or_backup_restore_repeated_for_source_import": false,
+  "historical_chromium_and_recovery_receipts_preserved": true,
+  "initial_harness_failures_retained": [
+    {
+      "attempt": 1,
+      "reason": "Harness imposed30CPUhardlimit, preventing existing worker from setting its fixed120CPUlimit. Corrected harness to120, with outer limits unchanged; application source unchanged."
+    },
+    {
+      "attempt": 2,
+      "reason": "Harness expected at least3audit events, but the exercised application emits exactly2: one decision_completed and one review_recorded. Corrected exact-count expectation; application source unchanged."
+    }
+  ],
+  "mission_complete": false,
+  "offline_readonly_private_namespaces": true,
+  "production_certified": false,
+  "python": "3.13.5",
+  "services_stopped": true,
+  "smoke_checks_passed": 17,
+  "smoke_source_sha256": "d105cb9aeef7ab201018740a60e2036345fdc77604f08ddf86130c8704c6e7d7",
+  "source_runtime_browser_api_or_compared_models_modified": false,
+  "source_workflow_needs_omitted_preinstalled_model_binaries": false,
+  "temporary_state_destroyed": true,
+  "unexpected_ip_connects": 0,
+  "unit_test_failures": 0,
+  "unit_test_methods_passed": 12
+}
