@@ -2,9 +2,11 @@
 
 `eidos.evaluate_owned` measures an existing owned model without fitting, calibrating, selecting thresholds, activating a registry, or calling a reference service. It uses Python's standard library. Its three explicit stages separate case preparation, prediction, and aggregate scoring.
 
-Use a single-model registry produced by `eidos.train_support` or `eidos.train_linear_support`, including its unchanged training receipt. Other historical/preinstalled models and calibrated profiles are outside this command's current scope. All trained labels are offered together, in English, with the existing review-only policy. Unknown gold labels are refused; this is closed-set evaluation, not an out-of-scope detector test.
+Use a single-model registry produced by `eidos.train_support`, `eidos.train_linear_support` or `eidos.train_sparse`, including its unchanged training receipt. Other historical/preinstalled models and calibrated profiles are outside this command's current scope. All trained labels are offered together, in English, with the existing review-only policy. Unknown gold labels are refused; this is closed-set evaluation, not an out-of-scope detector test.
 
 Both linear optimizers, default gradient descent and explicit `--optimizer adam`, use this same evaluation contract. Choose the optimizer and fixed epoch count before examining evaluation outcomes. Newly trained Adam models do not inherit the historical frozen model's LAYA comparison score.
+
+The [sparse trainer](SCALABLE-TRAINING.md) uses a distinct receipt and arbitrary class counts. Preparation validates those counts against all supplied training rows; pass the full training/provenance files through the existing `--support` and `--support-provenance` arguments. Older trainers still require exactly 20 rows per class. A new tag cannot bypass either contract or the existing review-only and hash checks.
 
 ## Run the authored demonstration
 
@@ -67,7 +69,7 @@ Exact ID/text separation does not establish template, speaker, source, paraphras
 
 ## Bounds and privacy
 
-Input files are bounded regular files with final-component symlinks refused. Labeled files are at most 2 MiB; evaluation allows 1–10,000 cases, 12,000 text characters per case and 200,000 total. At most 200,000 case/class values and a conservative 250-million-unit prediction-work estimate are supported; some maximum-size workloads will be refused. Prediction output is capped at 16 MiB. Each phase cooperatively checks 60 process CPU seconds and 90 elapsed seconds. Use external resource limits for process-tree or hostile workloads; these checks are not aggregate cgroup guarantees or latency claims.
+Input files are bounded regular files with final-component symlinks refused. Training files retain their trainer's cap: 2 MiB for memory/GD/Adam and 32 MiB for sparse SGD. Evaluation files are at most 2 MiB and allow 1–10,000 cases, 12,000 text characters per case and 200,000 total. At most 200,000 case/class values and a conservative 250-million-unit prediction-work estimate are supported; some maximum-size workloads will be refused. Prediction output is capped at 16 MiB. Each phase cooperatively checks 60 process CPU seconds and 90 elapsed seconds, including parsing the supplied larger training file. Use external resource limits for process-tree or hostile workloads; these checks are not aggregate cgroup guarantees or latency claims.
 
 Each output root and private subdirectory is `0700`; files are `0400`. Filesystem failure may leave a new incomplete directory. Never activate or publish incomplete artifacts. Repeated successful runs with identical files/model/code on the tested runtime reproduce identical artifacts; no cross-platform bit identity is promised. Keep evaluation inputs, gold and per-case outputs private. The documented `evaluations/` directory is ignored by Git, but arbitrary output paths are your responsibility. Vocabulary/model artifacts may reveal support information; private modes are not a hostile same-UID or differential-privacy guarantee.
 

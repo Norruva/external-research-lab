@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "python": "3.13.5",
+  "stages": [
+    {
+      "name": "unit",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ef4026ba39c5d8ee0ab7984b948a5ae22180d61b412ec2c5db26a50857ffd24f"
+    },
+    {
+      "name": "smoke-sparse",
+      "exit_code": 0,
+      "stdout_sha256": "55cefb65a00778b01672a98ace80ddfd9faccdba62a3af1210f41fd4837a26aa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "scale-sparse",
+      "exit_code": 0,
+      "stdout_sha256": "b0dd09ee3a07f3ef08e75b8d40510ee40d1dfdc29606a4d37c949b08da2ef5ed",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "offline_namespace": true,
+  "fresh_temporary_state_only": true
+}

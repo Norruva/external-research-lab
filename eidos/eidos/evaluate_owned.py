@@ -121,6 +121,90 @@ def code_bindings():
     return {p.name: digest(read(p, MAX_INPUT)) for p in paths}
 
 
+def sparse_training_receipt(model, receipt):
+    """Validate the new variable-count recipe without weakening the old one.
+
+    This checks an artifact's internal declaration, not proof of data rights or
+    an authenticated assertion that the caller actually performed training.
+    """
+    from .train_sparse import (CPU_SECONDS, L2, LEARNING_RATE, MAX_CLASSES,
+                               MAX_EPOCHS, MAX_FEATURES, MAX_INPUT as TRAIN_INPUT,
+                               MAX_NNZ, MAX_OBSERVED_TERMS, MAX_ROWS,
+                               MAX_TEXT as TRAIN_TEXT, MAX_WORK_UNITS, WALL_SECONDS,
+                               _work_units)
+    from types import SimpleNamespace
+    training = model.data['training']
+    labels = model.data['labels']
+    rows, counts = training.get('training_rows'), training.get('class_counts')
+    if (not 2 <= len(labels) <= MAX_CLASSES or
+            type(rows) is not int or not 2 <= rows <= MAX_ROWS or
+            type(counts) is not dict or set(counts) != set(labels) or
+            any(type(value) is not int or not 1 <= value <= MAX_ROWS for value in counts.values()) or
+            sum(counts.values()) != rows or receipt.get('training_rows') != rows or
+            type(receipt.get('training_rows')) is not int or receipt.get('class_counts') != counts or
+            type(receipt.get('class_counts')) is not dict or
+            any(type(value) is not int for value in receipt['class_counts'].values()) or
+            'support_rows' in training or 'per_class' in training or 'support_rows' in receipt or
+            type(receipt.get('features')) is not int or
+            not 1 <= receipt['features'] <= MAX_FEATURES or receipt['features'] != len(model.data['vocabulary']) or
+            type(receipt.get('nnz')) is not int or
+            not rows <= receipt['nnz'] <= min(MAX_NNZ, rows * receipt['features'])):
+        raise EvaluationError('sparse_training_counts_or_dimensions_mismatch')
+    fixed = {
+        'training_recipe': 'sparse-tfidf-online-softmax-sgd-v1',
+        'optimizer': 'online_softmax_sgd_from_zero_float64',
+        'learning_rate': LEARNING_RATE, 'l2': L2,
+        'learning_rate_schedule': 'inverse_sqrt_one_plus_zero_based_step_over_training_rows',
+        'regularization': 'lazy_exact_l2_weights_only_bias_unpenalized',
+        'checkpoint_selection': 'fixed_final_epoch_no_development_or_test_input',
+        'objective': 'mean_cross_entropy_plus_l2_half_weight_norm_squared_bias_unpenalized',
+        'objective_scope': 'training_fit_diagnostic_not_evaluation_or_calibration',
+        'normalization': 'training_document_frequency_log1p_tf_idf_l2_normalized_float64',
+        'storage': 'csr_uint32_offsets_indices_labels_float64_values',
+        'work_limit': MAX_WORK_UNITS, 'cpu_seconds_limit': CPU_SECONDS,
+        'work_unit_scope': 'weighted_class_feature_visits_not_flops_or_cpu_guarantee',
+        'time_control': 'cooperative_checks_not_operating_system_limits',
+        'wall_seconds_limit': WALL_SECONDS, 'input_schema': 'id,text,label JSONL',
+        'declaration_status': 'caller_supplied_not_independently_verified',
+        'raw_training_text_embedded': False, 'privacy_guarantee': False,
+        'benchmark_or_calibration_evidence_created': False,
+        'same_recipe_or_artifact_as_historical_laya_comparison': False,
+    }
+    if any(type(training.get(key)) is not type(value) or training[key] != value
+           for key, value in fixed.items()):
+        raise EvaluationError('sparse_training_recipe_or_policy_mismatch')
+    limits = {'input_bytes': TRAIN_INPUT, 'text_characters': TRAIN_TEXT, 'rows': MAX_ROWS,
+              'classes': MAX_CLASSES, 'observed_terms': MAX_OBSERVED_TERMS,
+              'selected_features': MAX_FEATURES, 'nnz': MAX_NNZ}
+    if (type(training.get('limits')) is not dict or training['limits'] != limits or
+            any(type(value) is not int for value in training['limits'].values())):
+        raise EvaluationError('sparse_training_recipe_or_policy_mismatch')
+    if (type(training.get('epochs')) is not int or not 1 <= training['epochs'] <= MAX_EPOCHS or
+            type(training.get('seed')) is not int or not 0 <= training['seed'] <= 2**32 - 1 or
+            type(training.get('work_units')) is not int or not 0 < training['work_units'] <= MAX_WORK_UNITS):
+        raise EvaluationError('sparse_training_recipe_or_policy_mismatch')
+    expected_work = _work_units(SimpleNamespace(nrows=rows, nnz=receipt['nnz']),
+                                len(labels), receipt['features'], training['epochs'])
+    if training['work_units'] != expected_work:
+        raise EvaluationError('sparse_training_work_mismatch')
+    for key in ('initial_training_objective', 'final_training_objective'):
+        if type(training.get(key)) not in (int, float) or not math.isfinite(training[key]) or training[key] < 0:
+            raise EvaluationError('sparse_training_recipe_or_policy_mismatch')
+    for key in ('training_recipe', 'optimizer', 'epochs', 'seed', 'checkpoint_selection',
+                'work_units', 'initial_training_objective', 'final_training_objective', 'objective_scope'):
+        if type(receipt.get(key)) is not type(training[key]) or receipt[key] != training[key]:
+            raise EvaluationError('training_receipt_mismatch')
+    if (receipt.get('export_parameters') != 'little_endian_float32' or
+            receipt.get('privacy_guarantee') is not False or
+            receipt.get('same_recipe_or_artifact_as_historical_laya_comparison') is not False or
+            set(model.data['temperatures']) != {str(n) for n in range(2, len(labels) + 1)}):
+        raise EvaluationError('sparse_training_recipe_or_policy_mismatch')
+    for key in ('input_sha256', 'provenance_sha256'):
+        if type(training.get(key)) is not str or not SHA.fullmatch(training[key]):
+            raise EvaluationError('training_receipt_mismatch')
+    declaration(canonical(training.get('declaration')))
+
+
 def registry(directory):
     from .engine import Engine
     directory = Path(directory)
@@ -136,8 +220,12 @@ def registry(directory):
     if len(engine.models) != 1:
         raise EvaluationError('owned_single_model_registry_required')
     model = next(iter(engine.models.values()))
-    if model.data['training'].get('format') not in ('eidos-caller-support-training-v1', 'eidos-caller-linear-training-v1'):
+    training = model.data['training']
+    formats = {'eidos-support-memory-v1': {'eidos-caller-support-training-v1'},
+               'eidos-linear-general-v1': {'eidos-caller-linear-training-v1', 'eidos-caller-sparse-training-v1'}}
+    if type(training) is not dict or training.get('format') not in formats.get(model.data['format'], set()):
         raise EvaluationError('caller_trained_registry_required')
+    sparse = training['format'] == 'eidos-caller-sparse-training-v1'
     if model.data['calibration'] is not None or not model.data['consequential'] or any(
             model.data['thresholds'][key] != 1 for key in ('probability', 'margin')):
         raise EvaluationError('review_only_uncalibrated_registry_required')
@@ -146,12 +234,17 @@ def registry(directory):
     receipt = parsed(read(directory / 'TRAINING-RECEIPT.json', 16_000), 16_000)
     receipt_format = ('eidos-owned-support-training-receipt-v1' if model.data['format'] == 'eidos-support-memory-v1'
                       else 'eidos-owned-linear-training-receipt-v1')
+    if sparse:
+        receipt_format = 'eidos-owned-sparse-training-receipt-v1'
     if (type(receipt) is not dict or receipt.get('format') != receipt_format or receipt.get('complete') is not True or
             type(receipt.get('classes')) is not int or receipt['classes'] != len(model.data['labels']) or
-            type(receipt.get('support_rows')) is not int or receipt['support_rows'] != 20 * len(model.data['labels']) or
+            (not sparse and (type(receipt.get('support_rows')) is not int or
+                             receipt['support_rows'] != 20 * len(model.data['labels']))) or
             any(receipt.get(key) is not False for key in ('evaluation_or_calibration_performed', 'operational_acceptance_enabled',
                                                         'model_promoted', 'third_party_training_or_inference_packages'))):
         raise EvaluationError('completed_owned_training_receipt_required')
+    if sparse:
+        sparse_training_receipt(model, receipt)
     if receipt.get('model') != model.identity or receipt.get('files') != {
             name: pin for name, pin in files.items() if name != 'TRAINING-RECEIPT.json'}:
         raise EvaluationError('training_receipt_mismatch')
@@ -226,16 +319,30 @@ def prepare(registry_path, support_path, support_provenance_path, evaluation_pat
     from .train_support import parse_training
     start = (time.process_time(), time.monotonic())
     output = new_output(output_path)
-    support_raw = read(support_path, MAX_INPUT)
-    support_provenance_raw = read(support_provenance_path, 16_000)
-    supports, _ = parse_training(support_raw, support_provenance_raw)
     _, model, files = registry(registry_path)
+    sparse = model.data['training']['format'] == 'eidos-caller-sparse-training-v1'
+    training_limit = MAX_INPUT
+    if sparse:
+        from .train_sparse import MAX_INPUT as training_limit, parse_training
+    support_raw = read(support_path, training_limit)
+    support_provenance_raw = read(support_provenance_path, 16_000)
+    if sparse:
+        supports, _ = parse_training(support_raw, support_provenance_raw, budget=lambda: budget(start))
+    else:
+        supports, _ = parse_training(support_raw, support_provenance_raw)
+    budget(start)
     if (model.data['training']['input_sha256'] != digest(support_raw) or
             model.data['training']['provenance_sha256'] != digest(support_provenance_raw)):
         raise EvaluationError('support_files_do_not_match_model_lineage')
     labels = model.data['labels']
     if sorted({row['label'] for row in supports}) != labels:
         raise EvaluationError('support_inventory_does_not_match_model')
+    if sparse:
+        from collections import Counter
+        counts = dict(Counter(row['label'] for row in supports))
+        if (len(supports) != model.data['training']['training_rows'] or
+                counts != model.data['training']['class_counts']):
+            raise EvaluationError('sparse_training_counts_do_not_match_source')
     eval_raw = read(evaluation_path, MAX_INPUT)
     eval_provenance_raw = read(evaluation_provenance_path, 16_000)
     rights = declaration(eval_provenance_raw)

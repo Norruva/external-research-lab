@@ -113,7 +113,7 @@ def check_decision(response):
 
 def main():
     parser = argparse.ArgumentParser(description='Exercise a fresh authored-demo registry and loopback service')
-    parser.add_argument('--trainer', choices=('memory', 'linear', 'adam'), default='memory')
+    parser.add_argument('--trainer', choices=('memory', 'linear', 'adam', 'sparse'), default='memory')
     args = parser.parse_args()
     require(sys.version_info >= (3, 12) and os.name == 'posix', 'Python3.12+/POSIX required')
     require(sys.flags.no_site and sys.flags.dont_write_bytecode, 'Run python3 -S -B tools/smoke.py')
@@ -130,7 +130,8 @@ def main():
         registry.mkdir(mode=0o700)
         (registry / 'models').mkdir(mode=0o700)
         model = registry / 'models/owned-demo'
-        trainer_module = 'eidos.train_support' if args.trainer == 'memory' else 'eidos.train_linear_support'
+        trainer_module = {'memory': 'eidos.train_support', 'linear': 'eidos.train_linear_support',
+                          'adam': 'eidos.train_linear_support', 'sparse': 'eidos.train_sparse'}[args.trainer]
         optimizer_args = ('--optimizer', 'adam') if args.trainer == 'adam' else ()
         command('-m', trainer_module, '--input', 'examples/owned-support-demo.jsonl',
                 '--provenance', 'examples/owned-support-demo-provenance.json',
@@ -220,7 +221,7 @@ def main():
         require(hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == pin['sha256'], 'Imported source changed during smoke test')
     checks.append('source unchanged; temporary configuration and state removed')
     print(json.dumps({'complete': True, 'trainer': args.trainer, 'checks': checks, 'check_count': len(checks),
-                      'not_applicable': ['support-memory explanation for linear profiles'] if args.trainer == 'linear' else [],
+                      'not_applicable': ['support-memory explanation for linear profiles'] if args.trainer != 'memory' else [],
                       'elapsed_seconds': time.monotonic() - started,
                       'fresh_authored_demo_only': True, 'reference_or_quality_evaluation': False,
                       'headless_browser_or_backup_restore_repeated': False,

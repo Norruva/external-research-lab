@@ -1,5 +1,7 @@
 # Train an owned linear classifier
 
+For variable counts and larger datasets, see the separate [sparse SGD trainer](SCALABLE-TRAINING.md). The full-batch GD/Adam methods on this page retain their original exact-20 contract.
+
 The original `eidos.train_linear_support` command fits a new linear registry using Python's standard library. It shares the existing supervised input contract and inference format. It reads only the labeled input and provenance files you supply. No old/pretrained weights, remote model, benchmark output, evaluation selection, calibration, activation, or action execution is involved.
 
 From the repository's `eidos` directory, first create a private `owned-registry/models` parent as described in the main README, then run:

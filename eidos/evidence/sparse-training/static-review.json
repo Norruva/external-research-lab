@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "findings_resolved": [
+    "publish complete receipt only after private artifact modes",
+    "reject nonfinite fitter outputs at export boundary",
+    "validate sparse width/nonzeros/work and actual class counts",
+    "preserve evaluation phase budget during larger training-file parse"
+  ],
+  "format": "eidos-sparse-training-static-review-v1",
+  "numerical_method": "dense SGD equivalence checked independently in authored unit fixtures",
+  "old_exact20_trainers_changed": false,
+  "open_limits": [
+    "cooperative resource checks, not aggregate cgroup controls",
+    "caller-declared rights and labels",
+    "unfitted calibration and disabled acceptance",
+    "known trained classes, English scope",
+    "new recipe has no LAYA/JEV quality result"
+  ],
+  "real_corpus_or_reference_execution": false,
+  "scope": "source review, not security certification or evidence of generalization"
+}

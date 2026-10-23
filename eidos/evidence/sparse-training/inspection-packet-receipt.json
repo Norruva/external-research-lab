@@ -1,0 +1,11 @@
+{
+  "bytes": 132338,
+  "complete": true,
+  "file": "eidos-sparse-training-review-v1.tar.gz",
+  "files_verified": 58,
+  "format": "eidos-sparse-training-inspection-receipt-v1",
+  "manifest_sha256": "58ee38163d9113fd568cfdd83f9e2ec4be031c1fa6b2d8d25d29ab07310ba09d",
+  "no_real_corpus_or_model_execution": true,
+  "scope": "inspection_subset_not_complete_application",
+  "sha256": "66649ea6b409d78a71cdb0c4ca25e8e751618de647592873e06dd94562132a3b"
+}

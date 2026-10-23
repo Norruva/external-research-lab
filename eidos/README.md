@@ -31,6 +31,8 @@ The command above trains the support-memory method. A new [standard-library line
 
 The linear trainer now also accepts `--optimizer adam`, with bias-corrected moments and a fixed 120-epoch default; ordinary gradient descent remains the default. Both methods use only standard-library Python and the caller's supports. See [optimizer settings and scope](docs/LINEAR-TRAINING.md#adam-training-option). Its optimizer checks establish mechanics; benchmark results depend on the exact trained artifact and evaluation.
 
+For larger datasets, the new [sparse SGD trainer](docs/SCALABLE-TRAINING.md) accepts up to 20,000 labeled rows across 2–64 uneven classes. It uses compact sparse vectors, deterministic shuffled optimization and the same self-contained inference format. Its distinct receipt records actual class counts; owned evaluation verifies that lineage. This new recipe has no LAYA or JEV score.
+
 ## Start the local application
 
 After training the demo, still inside this directory:
@@ -60,7 +62,7 @@ Read [operations](docs/OPERATIONS.md) before backup/restore or deployment. Its h
 
 ## Evaluate separate labeled data
 
-The new [owned evaluation workflow](docs/OWNED-EVALUATION.md) provides explicit `prepare`, `predict`, and `score` commands for either own-data trainer. It checks exact support/evaluation ID and normalized-text overlap, binds code/model/data files by hash, and requires a complete prediction stream before writing aggregate accuracy, F1 and probability metrics. Prediction needs no gold file; scoring needs no source case text or model weights. The portable commands use logical file roles; operating-system isolation is external.
+The [owned evaluation workflow](docs/OWNED-EVALUATION.md) provides explicit `prepare`, `predict`, and `score` commands for the owned trainers. It checks exact support/evaluation ID and normalized-text overlap, binds code/model/data files by hash, and requires a complete prediction stream before writing aggregate accuracy, F1 and probability metrics. Prediction needs no gold file; scoring needs no source case text or model weights. The portable commands use logical file roles; operating-system isolation is external.
 
 Its authored four-case demo is for mechanics only. Exact overlap refusal does not verify source/paraphrase independence, unseen holdout status, calibrated confidence or semantic quality. Reports retain zero accepted coverage for these review-only models. No existing revealed benchmark was rerun for this feature.
 
@@ -75,9 +77,13 @@ python3 -S -B -m unittest discover -s tests -p 'test_*.py' -v
 python3 -S -B tools/smoke.py
 python3 -S -B tools/smoke.py --trainer linear
 python3 -S -B tools/smoke.py --trainer adam
+python3 -S -B tools/smoke.py --trainer sparse
+python3 -S -B tools/sparse_scale_smoke.py
 ```
 
 The unit suite uses authored fixtures only, including finite-difference gradient checks and deterministic artifact tests for the linear trainer. Each smoke invocation creates a new temporary demo registry and configuration for its selected method, queries the real CLI and loopback service, verifies review/idempotency behavior and served browser assets, then stops the service and removes its temporary state. Memory-specific neighbor explanations are explicitly inapplicable to the linear run. No existing configurations, external services, benchmark data, or reference model are accessed. These are functional checks, not quality evaluations or headless-browser tests. Run them in an isolated development environment.
+
+The separate sparse capacity check trains on 20,000 generated mechanical examples and loads the result through the real Engine. It checks capacity and artifact integration, not semantic quality or a rival comparison.
 
 The preceding cloud package also passed 18 API, 11 real Chromium and 9 backup/restore checks. Those historical receipts are preserved separately from checkout-specific verification in [evidence](evidence/README.md).
 
