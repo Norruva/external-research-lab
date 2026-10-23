@@ -1,0 +1,12 @@
+{
+  "actual_corpus_gold_per_case_predictions_models_native_binaries_or_credentials_included": false,
+  "archive": "/workspace/eidos/eidos-dbpedia-result-review-v1.tar.gz",
+  "bytes": 105688,
+  "complete": true,
+  "files_verified": 58,
+  "manifest_sha256": "387db6fca596dd9b641c808348fac2974078d28f48e97181a8b729582749ed85",
+  "new_or_modified_repository_files_included": 56,
+  "prefix": "eidos-dbpedia-result-review-v1",
+  "sha256": "90a4d01dc14890731ba86ce1b4fcfd26e358de7855febdb8f6bfd3518e61754b",
+  "target_execution": false
+}

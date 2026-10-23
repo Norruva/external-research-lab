@@ -1,0 +1,71 @@
+{
+  "authored_fixture_training_prediction_scoring_and_resampling_performed": true,
+  "code_and_document_changes": {
+    "eidos/README.md": {
+      "bytes": 8187,
+      "parent_sha256": "d4023fe80581b76192b5586bd8a871b3e4e91147a48b94cfc8d8158f389c92c3",
+      "sha256": "94b015497e61d35c6dc5334f367722c4365a0f62ea88b8567d89f0ac7c88be8f"
+    },
+    "eidos/docs/EVALUATION.md": {
+      "bytes": 6481,
+      "parent_sha256": "8cea24394dcd1919f4a8c3152c2e6c5b61373996427e165c106758715cbcfad5",
+      "sha256": "332e61a9b2bd1e135f8fec1182360c99eb778cfbb5465ede437f10f980c67609"
+    },
+    "eidos/docs/OWNED-COMPARISON.md": {
+      "bytes": 9568,
+      "sha256": "39b8c264f1912ca5617606cab2ecdda85d159ef0b9c5b4e6da31ebe1a085cf1d"
+    },
+    "eidos/docs/OWNED-EVALUATION.md": {
+      "bytes": 8787,
+      "parent_sha256": "997b2ef2f3cf9b9c43a6404d4fc2fd9bd85fc976979f2de72f62eb1073dfcf18",
+      "sha256": "4882b8ee028382025869e26beb2ea3715ac9f61d4fd9cd1cd28df559da1dcc90"
+    },
+    "eidos/eidos/compare_owned.py": {
+      "bytes": 12465,
+      "sha256": "90f4c2fad97d9d002422478bdeaa0af49c68548854dae36308f404fd85097402"
+    },
+    "eidos/eidos/evaluate_owned.py": {
+      "bytes": 25848,
+      "parent_sha256": "beb0688d29230d4b77804b3046869432aca836ea004b3acda58534c9cd621131",
+      "sha256": "4168f5312f1dc40929050674dc2b3a576c5f907dad46c4941f24b6c48a1b6fed"
+    },
+    "eidos/eidos/paired_metrics.py": {
+      "bytes": 4201,
+      "sha256": "743af2e466b9c11f87ac60cbb782f5841be5cc1f0a0f5bc7995e583c652f9e7d"
+    },
+    "eidos/evidence/README.md": {
+      "bytes": 7501,
+      "parent_sha256": "7ac28c6d9187f65bb21c9810bcde717bea63986ac34bff73eb8099aa26bb101e",
+      "sha256": "dd9fa22fa066e01bf918a2811b9352e93a08b6ade9ac28b2786c2183d645e47d"
+    },
+    "eidos/examples/owned-evaluation-groups-demo-provenance.json": {
+      "bytes": 302,
+      "sha256": "52168aa58aacf727c37eac6e87d543f77493e2cc440a9b1b8b1c85b8d6445693"
+    },
+    "eidos/examples/owned-evaluation-groups-demo.jsonl": {
+      "bytes": 156,
+      "sha256": "c4e8555d1bedc3009e3d911d7e4fee4ed26d76e345b9097601cb31a108d91aaa"
+    },
+    "eidos/tests/test_owned_comparison.py": {
+      "bytes": 17279,
+      "sha256": "7de523c17a7affc21dd7c403e2715acde9dd3c68d5cde0b854a8a430e50c11b8"
+    }
+  },
+  "evaluation_verifier_shared_without_changing_checks": true,
+  "exact_enumerated_two_group_draws": 4,
+  "existing_imported_source_members_unchanged": 84,
+  "existing_trainers_inference_service_browser_and_frozen_models_changed": false,
+  "format": "eidos-owned-paired-comparison-source-change-v1",
+  "historical_or_rival_quality_experiment_repeated": false,
+  "isolated_cli_stages": 5,
+  "laya_or_jev_importer_implemented": false,
+  "mission_complete": false,
+  "model_promoted_or_acceptance_enabled": false,
+  "new_unit_methods": 15,
+  "parent_change_provenance_sha256": "2464770da4d3931418af36f6f59a2a8a709540e299c9177ed19540bf0b812416",
+  "parent_commit": "e2f39bd1d4cf54a7a6a1b9d6928862debba217c5",
+  "production_certified": false,
+  "rea_source_members_matched": 71,
+  "source_kit_sha256": "d22240cc6d5e7257d39f4d55ea8f652dad31a84ff76c910104a797abd7e0f038",
+  "unit_methods": 65
+}

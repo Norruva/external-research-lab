@@ -1,0 +1,11 @@
+{
+  "actual_corpus_gold_predictions_native_binaries_or_model_weights_included": false,
+  "archive": "/workspace/eidos/eidos-dbpedia-study-review-v1.tar.gz",
+  "bytes": 1084358,
+  "complete": true,
+  "files_verified": 52,
+  "manifest_sha256": "3b48e5fb0390c90e7ec11c51e571b005ff4876e4754ea1231293a7dd6b01f647",
+  "prefix": "eidos-dbpedia-study-review-v1",
+  "sha256": "0e00ccc5f1ffed4ed8d1d7c53e19ea3c06939daf29a16ea6b6e1b03ba0cf1c7b",
+  "target_execution": false
+}

@@ -29,7 +29,7 @@ The 40 original, synthetic CC0 examples demonstrate mechanics only. To train on 
 
 The command above trains the support-memory method. A new [standard-library linear trainer](docs/LINEAR-TRAINING.md) is also available through `python3 -S -B -m eidos.train_linear_support`, with the same input/provenance/output arguments and optional fixed `--epochs`. It trains a new zero-initialized softmax model; the measured linear EIDOS model in the LAYA comparison remains a different, frozen artifact. Neither command makes new models benchmark winners. Every new model abstains, returns `value=null`, requires human review, and has no action authority. Its candidate distribution is uncalibrated.
 
-The linear trainer now also accepts `--optimizer adam`, with bias-corrected moments and a fixed 120-epoch default; ordinary gradient descent remains the default. Both methods use only standard-library Python and the caller's supports. See [optimizer settings and scope](docs/LINEAR-TRAINING.md#adam-training-option). This adds an owned training method, not a new LAYA/JEV result.
+The linear trainer now also accepts `--optimizer adam`, with bias-corrected moments and a fixed 120-epoch default; ordinary gradient descent remains the default. Both methods use only standard-library Python and the caller's supports. See [optimizer settings and scope](docs/LINEAR-TRAINING.md#adam-training-option). Its optimizer checks establish mechanics; benchmark results depend on the exact trained artifact and evaluation.
 
 ## Start the local application
 
@@ -82,6 +82,10 @@ The unit suite uses authored fixtures only, including finite-difference gradient
 The preceding cloud package also passed 18 API, 11 real Chromium and 9 backup/restore checks. Those historical receipts are preserved separately from checkout-specific verification in [evidence](evidence/README.md).
 
 ## Measured results and scope
+
+The newer 280-case, 14-class DBpedia comparison **tied accuracy at 86.79% (243/280 each)**. EIDOS macro-F1 was 86.66%, versus LAYA 84.22%, but both individual paired interval gates failed. This does **not** establish that EIDOS beats LAYA. It tested the actual stdlib Adam trainer at a fixed 12 epochs, selected only on separate development data, using 20 labeled supports/class versus zero-shot LAYA. Every article and all 14 choices fit without truncation. [Complete result and limitations](docs/DBPEDIA-RESULT.md) · [Aggregate evidence](evidence/dbpedia-study/score.json). The test cohort is now revealed and consumed; no new model was activated.
+
+The earlier SNIPS result below concerns a different frozen artifact and cohort:
 
 On the same 1,821 seven-choice cases, frozen linear EIDOS scored **94.18% accuracy / 93.00% macro-F1**, versus public zero-shot LAYA's **92.48% / 89.97%**. Both predefined cohort-scoped numeric gates passed. The support-memory secondary arm failed its paired gates. This outcome-informed, exploratory comparison uses supervised EIDOS versus zero-shot LAYA; it does not establish matched-adaptation, general, strongest-LAYA, JEV or production superiority. See [the complete comparison and limitations](docs/EVALUATION.md).
 

@@ -1,71 +1,273 @@
 {
-  "authored_fixture_training_prediction_scoring_and_resampling_performed": true,
-  "code_and_document_changes": {
+  "REA_prepared_source_packet_members": 52,
+  "REA_publication_packet_members": 58,
+  "accuracy_tied": true,
+  "authored_offline_roles": 8,
+  "authoritative_score_sha256": "ec6a5e85a1311479098ec1f9fe4df16b248f2481fcb9da0fb3d9a50a6c910ef4",
+  "both_predefined_superiority_gates_passed": false,
+  "code_document_and_aggregate_changes": {
     "eidos/README.md": {
-      "bytes": 8187,
-      "parent_sha256": "d4023fe80581b76192b5586bd8a871b3e4e91147a48b94cfc8d8158f389c92c3",
-      "sha256": "94b015497e61d35c6dc5334f367722c4365a0f62ea88b8567d89f0ac7c88be8f"
+      "bytes": 8970,
+      "parent_sha256": "94b015497e61d35c6dc5334f367722c4365a0f62ea88b8567d89f0ac7c88be8f",
+      "sha256": "ceef909fde003cd03e94903a9d9cead6511b69b92dff947b8e1bca542c07cf84"
+    },
+    "eidos/docs/DBPEDIA-RESULT.md": {
+      "bytes": 7270,
+      "sha256": "e0d2950c3b8bde286ec5c8a6ba75fa09959f5e1e7831c670486ebfae59a7018f"
     },
     "eidos/docs/EVALUATION.md": {
-      "bytes": 6481,
-      "parent_sha256": "8cea24394dcd1919f4a8c3152c2e6c5b61373996427e165c106758715cbcfad5",
-      "sha256": "332e61a9b2bd1e135f8fec1182360c99eb778cfbb5465ede437f10f980c67609"
-    },
-    "eidos/docs/OWNED-COMPARISON.md": {
-      "bytes": 9568,
-      "sha256": "39b8c264f1912ca5617606cab2ecdda85d159ef0b9c5b4e6da31ebe1a085cf1d"
-    },
-    "eidos/docs/OWNED-EVALUATION.md": {
-      "bytes": 8787,
-      "parent_sha256": "997b2ef2f3cf9b9c43a6404d4fc2fd9bd85fc976979f2de72f62eb1073dfcf18",
-      "sha256": "4882b8ee028382025869e26beb2ea3715ac9f61d4fd9cd1cd28df559da1dcc90"
-    },
-    "eidos/eidos/compare_owned.py": {
-      "bytes": 12465,
-      "sha256": "90f4c2fad97d9d002422478bdeaa0af49c68548854dae36308f404fd85097402"
-    },
-    "eidos/eidos/evaluate_owned.py": {
-      "bytes": 25848,
-      "parent_sha256": "beb0688d29230d4b77804b3046869432aca836ea004b3acda58534c9cd621131",
-      "sha256": "4168f5312f1dc40929050674dc2b3a576c5f907dad46c4941f24b6c48a1b6fed"
-    },
-    "eidos/eidos/paired_metrics.py": {
-      "bytes": 4201,
-      "sha256": "743af2e466b9c11f87ac60cbb782f5841be5cc1f0a0f5bc7995e583c652f9e7d"
+      "bytes": 7333,
+      "parent_sha256": "332e61a9b2bd1e135f8fec1182360c99eb778cfbb5465ede437f10f980c67609",
+      "sha256": "560b865ba9c099cfaf1d4eea5bf29615d5addafcb4156a20fe285c7c8d1e7ea1"
     },
     "eidos/evidence/README.md": {
-      "bytes": 7501,
-      "parent_sha256": "7ac28c6d9187f65bb21c9810bcde717bea63986ac34bff73eb8099aa26bb101e",
-      "sha256": "dd9fa22fa066e01bf918a2811b9352e93a08b6ade9ac28b2786c2183d645e47d"
+      "bytes": 9303,
+      "parent_sha256": "dd9fa22fa066e01bf918a2811b9352e93a08b6ade9ac28b2786c2183d645e47d",
+      "sha256": "56381192bfd1be6fc9fcf71c6fea8f8396b55ba7fb0d68c15a0e2fab0d138a75"
     },
-    "eidos/examples/owned-evaluation-groups-demo-provenance.json": {
-      "bytes": 302,
-      "sha256": "52168aa58aacf727c37eac6e87d543f77493e2cc440a9b1b8b1c85b8d6445693"
+    "eidos/evidence/dbpedia-study/50-dbpedia-cohort-complete.md": {
+      "bytes": 4826,
+      "sha256": "bb62bd521109787e7677efa1fea6ca4ca0345047a6aab5355b3002aadcfdab06"
     },
-    "eidos/examples/owned-evaluation-groups-demo.jsonl": {
-      "bytes": 156,
-      "sha256": "c4e8555d1bedc3009e3d911d7e4fee4ed26d76e345b9097601cb31a108d91aaa"
+    "eidos/evidence/dbpedia-study/51-dbpedia-study-prepared.md": {
+      "bytes": 9974,
+      "sha256": "343058bdb4f3fd91303fc64034a7b480fdfdb985bd34926c1505725f715d9f4f"
     },
-    "eidos/tests/test_owned_comparison.py": {
-      "bytes": 17279,
-      "sha256": "7de523c17a7affc21dd7c403e2715acde9dd3c68d5cde0b854a8a430e50c11b8"
+    "eidos/evidence/dbpedia-study/52-dbpedia-study-result.md": {
+      "bytes": 7639,
+      "sha256": "60987fc61fd00abfe533abcafb374ae27c7960220a167415c109fd16b597e539"
+    },
+    "eidos/evidence/dbpedia-study/authored-fixture-summary.json": {
+      "bytes": 3470,
+      "sha256": "0308dde6890e37b344d6b9f5edd7519c20db612909e82e07e323d197e0c71089"
+    },
+    "eidos/evidence/dbpedia-study/authored-unit-stderr.log": {
+      "bytes": 115,
+      "sha256": "1ed838ae4c40037b8e3467531d9a74025b2a092c67d4b6267b905d47f3d5722e"
+    },
+    "eidos/evidence/dbpedia-study/cohort-completion-review.json": {
+      "bytes": 5389,
+      "sha256": "96519313f5f0e6c1e0a4b7005abfb3967016d370cb047f7ae38b4cfcc8aa1176"
+    },
+    "eidos/evidence/dbpedia-study/completion-review.json": {
+      "bytes": 9871,
+      "sha256": "27f0cf7900b4d5d439bf440695c271498a80d9aed10d7b0fd5f356bb1ab2b5b3"
+    },
+    "eidos/evidence/dbpedia-study/development-selection.json": {
+      "bytes": 13139,
+      "sha256": "e9f13c2325d6d3e79cbbb94546deeffbf683ebe393bc4f0b6cf255999abc9fd0"
+    },
+    "eidos/evidence/dbpedia-study/execution-summary.json": {
+      "bytes": 2880,
+      "sha256": "e714ab4a6240ab04751838d9a3dca2512e51d4634304b6d4f81cbb9259eb85fa"
+    },
+    "eidos/evidence/dbpedia-study/parent-CHANGESET-PROVENANCE.json": {
+      "bytes": 3147,
+      "sha256": "ffab5289dc1ec563f93cd4a4aa025841744e450b7d6d1d91ecae9f72f7034414"
+    },
+    "eidos/evidence/dbpedia-study/parent-delivery-manifest.json": {
+      "bytes": 32834,
+      "sha256": "5e77ddd207758d94344fa57e49b85a3fddd7b5f1088792085c001b601769759e"
+    },
+    "eidos/evidence/dbpedia-study/prepared-source-kit-receipt.json": {
+      "bytes": 465,
+      "sha256": "35d0446e3000bf7665ec28ef3f98da1eb9f433a9b9b50604268fea27fdab5bf7"
+    },
+    "eidos/evidence/dbpedia-study/prepared-source-rea-integrity.json": {
+      "bytes": 556,
+      "sha256": "3495ee8c2175eb9deb725532fb6b8994a3b3aad18af44fbc1d6682540b7f1daa"
+    },
+    "eidos/evidence/dbpedia-study/prepared-source-rea-summary.json": {
+      "bytes": 1063,
+      "sha256": "73ad0c761a898065589667fff7e7460826a57faaf0a0c844f437b6127c93220e"
+    },
+    "eidos/evidence/dbpedia-study/publication-rea-integrity.json": {
+      "bytes": 629,
+      "sha256": "429143080ec839652b8ff73e4e4a88139fb617ca8b01a21bf8e4ebf1d98a8b36"
+    },
+    "eidos/evidence/dbpedia-study/publication-rea-summary.json": {
+      "bytes": 1062,
+      "sha256": "2816fd3eac6297005d8bd819c3b13330f99828ac61076ece57d3c280fbabeb9a"
+    },
+    "eidos/evidence/dbpedia-study/publication-source-kit-receipt.json": {
+      "bytes": 531,
+      "sha256": "41484689396a76bb0b061a4a439f1880e979387bc93df8be49dcbdf2a1679bb3"
+    },
+    "eidos/evidence/dbpedia-study/reader-completion-review.json": {
+      "bytes": 1518,
+      "sha256": "4731624f97df42177e7ea2b9d80c830121012ed6a10e2234fe3d8515192625c5"
+    },
+    "eidos/evidence/dbpedia-study/roles/eidos.json": {
+      "bytes": 321,
+      "sha256": "7d26555cdc4cff0bb614bee2e90da4208f81d520804d77075670a044d4f5a27d"
+    },
+    "eidos/evidence/dbpedia-study/roles/laya.json": {
+      "bytes": 319,
+      "sha256": "5bf29f62df195abfeb4d70e3b3749cf0cc38f47d71c7f7037ac24781b45816e4"
+    },
+    "eidos/evidence/dbpedia-study/roles/linear_adam.json": {
+      "bytes": 328,
+      "sha256": "158aa10e036139522d9b31c33ce5e545989857c0d585462541b8388e89659c47"
+    },
+    "eidos/evidence/dbpedia-study/roles/linear_gd.json": {
+      "bytes": 325,
+      "sha256": "bcaf4ff0f4812ac34d1e41c1cab6904c5440208129ec14ee355a43e0784929e2"
+    },
+    "eidos/evidence/dbpedia-study/roles/memory.json": {
+      "bytes": 323,
+      "sha256": "4d0fdc8ca54703c7317d30acca4af5bb47797d1a1706118f8fa00bc77976ec85"
+    },
+    "eidos/evidence/dbpedia-study/roles/score.json": {
+      "bytes": 322,
+      "sha256": "a13ce018a69d95816301eb8df0fd233d5d8d4c84c2cb65f213c2f6b6cf7b33f2"
+    },
+    "eidos/evidence/dbpedia-study/roles/select.json": {
+      "bytes": 323,
+      "sha256": "fa792fded9695b8d643725acc36da2bedc0de1a94b985d00d8f82ab834afc7c5"
+    },
+    "eidos/evidence/dbpedia-study/score.json": {
+      "bytes": 5412,
+      "sha256": "ec6a5e85a1311479098ec1f9fe4df16b248f2481fcb9da0fb3d9a50a6c910ef4"
+    },
+    "eidos/evidence/dbpedia-study/training-linear_adam.json": {
+      "bytes": 1529,
+      "sha256": "ee113ec3deead7bfa54ba351bc2956fb1ca28be7f9f37ba1b2227c4ed7451539"
+    },
+    "eidos/evidence/dbpedia-study/training-linear_gd.json": {
+      "bytes": 1404,
+      "sha256": "7eac404eeed08b898191654a3d675490b6912a46ecba5ae8ec6d69879cfff65f"
+    },
+    "eidos/evidence/dbpedia-study/training-memory.json": {
+      "bytes": 1027,
+      "sha256": "aff683e3672f765c958b7dd3de75058bf6248fb3ad0110fdcda24ee88bdb6764"
+    },
+    "eidos/research/dbpedia-cohort-v1/PLAN.md": {
+      "bytes": 8028,
+      "sha256": "dc285370d14091788130952f8188f0a55c67633de0fc0e0a5b797d4fc8685490"
+    },
+    "eidos/research/dbpedia-cohort-v1/README.md": {
+      "bytes": 1380,
+      "sha256": "0d19c44f04a635d3248bf8ece5334d320dbbd31d733e402f5cc20e8fabab1e25"
+    },
+    "eidos/research/dbpedia-cohort-v1/acquire.py": {
+      "bytes": 2554,
+      "sha256": "5a285c06116fb060eb5bd089e86153333cd28bc3c05af130f8c657935a67b180"
+    },
+    "eidos/research/dbpedia-cohort-v1/cohort.py": {
+      "bytes": 9122,
+      "sha256": "b60133226aabf800dbea0023faf29624747e3b4d3562edc24564e2775b198f6f"
+    },
+    "eidos/research/dbpedia-cohort-v1/future-study-intent.json": {
+      "bytes": 1547,
+      "sha256": "0da93539a16fc094f20c615afd55f579411338282d4d75999c2ba3ee89bbf7f2"
+    },
+    "eidos/research/dbpedia-cohort-v1/historical-source-manifest.json": {
+      "bytes": 11124,
+      "sha256": "57bd23799e961c7ac3383af5cd0b7e3c3897652548d06a4c36a024c95b00c8d6"
+    },
+    "eidos/research/dbpedia-cohort-v1/plan.json": {
+      "bytes": 3180,
+      "sha256": "76c2d5f7f29c462399067474e6ffa0dfd4fb9a98177d1572459749470ad0b048"
+    },
+    "eidos/research/dbpedia-cohort-v1/prepare.py": {
+      "bytes": 6796,
+      "sha256": "1a920320682a7340f6d1ed29a026d6fd8f8a98a65878aad2eb2de319de9d01f2"
+    },
+    "eidos/research/dbpedia-cohort-v1/prepared-manifest-v1.json": {
+      "bytes": 3614,
+      "sha256": "ce06f3fb1596963d5a44da7ec27bbac0d67d608697bb55b4ff1deb4b4c909109"
+    },
+    "eidos/research/dbpedia-cohort-v1/run_dbpedia_cohort_prepare_v1.py": {
+      "bytes": 12427,
+      "sha256": "516406c1a6ab240e56a1d1277f6c7e07968795bb80778168dc7647d0c9f8338f"
+    },
+    "eidos/research/dbpedia-cohort-v1/test_acquire.py": {
+      "bytes": 3495,
+      "sha256": "3ff69f0882dd6bfa9bfaa1974bd2ebfbd22ce5b4bc461cf4af3e4cd3c9318493"
+    },
+    "eidos/research/dbpedia-cohort-v1/test_cohort.py": {
+      "bytes": 7647,
+      "sha256": "3a3c8cadf404e10fe49dee227c08c8312813d0dc772433ff28dc4b8b551150ff"
+    },
+    "eidos/research/dbpedia-study-v1/PLAN.md": {
+      "bytes": 11987,
+      "sha256": "02c58b842f3ccefb0dd68c6bca93b79d97180c9f2bfe9ed098e376eacfef4d26"
+    },
+    "eidos/research/dbpedia-study-v1/README.md": {
+      "bytes": 2548,
+      "sha256": "d2b5766718cf0cdce95b40811f5dc049b99c6db8cb73fbb0996841532805a2a2"
+    },
+    "eidos/research/dbpedia-study-v1/authored_reference_fixture.py": {
+      "bytes": 1309,
+      "sha256": "3c36644a7e8702ca30a3bed9f2f8b27aba78f6a1014e7f35aecad5b942c43222"
+    },
+    "eidos/research/dbpedia-study-v1/config.json": {
+      "bytes": 3055,
+      "sha256": "d36d77cbf8ecbcfae34816d65524b8ee5cb823ae3393a06ffdbfd685d59ef7c5"
+    },
+    "eidos/research/dbpedia-study-v1/contracts.py": {
+      "bytes": 6851,
+      "sha256": "5960fe490c28805869763906c28e9772403c4a625938cc7cce986f91716aaa30"
+    },
+    "eidos/research/dbpedia-study-v1/owned-app-manifest.json": {
+      "bytes": 2989,
+      "sha256": "5b3ccdf51b86de32ecfbc3ed5fa9c7b703aa8dc473f351fc7f84362682d84698"
+    },
+    "eidos/research/dbpedia-study-v1/plan.json": {
+      "bytes": 2686,
+      "sha256": "686b1ef74b5ed6defacb61031d4ab83de93f6d470629855d61c5ac0cda8e4d3d"
+    },
+    "eidos/research/dbpedia-study-v1/prepared-manifest-v1.json": {
+      "bytes": 8370,
+      "sha256": "15e97a495e897d0be897bb75e067fca9d9187e355c7e0050754fe24912b3e39d"
+    },
+    "eidos/research/dbpedia-study-v1/review_dbpedia_study_completion_v1.py": {
+      "bytes": 7840,
+      "sha256": "2a0d4598ff12d476969f74b0254765c1db3ee5351fb930db6340190ab07bf7f7"
+    },
+    "eidos/research/dbpedia-study-v1/run_dbpedia_study_fixture_v3.py": {
+      "bytes": 5354,
+      "sha256": "77b9ceeab6db271f4e90616ced38cf2d3a0a1dfe0d8256ede97b0d9b8b675cc1"
+    },
+    "eidos/research/dbpedia-study-v1/run_dbpedia_study_v1.py": {
+      "bytes": 16018,
+      "sha256": "9abf1fcd1de3a65082a13a8e65401fff45a35f735e40fcf75584cfad692e53fa"
+    },
+    "eidos/research/dbpedia-study-v1/study.py": {
+      "bytes": 14970,
+      "sha256": "b6749504d355c32b827c24cb1dc3c79945fe570ca61b4d1f8060f1d41a1f32b2"
+    },
+    "eidos/research/dbpedia-study-v1/test_contracts.py": {
+      "bytes": 13732,
+      "sha256": "a8f83bd37f7401205b805dc54b296c87b0b6086fca6952d856fe40b946bea776"
+    },
+    "eidos/research/dbpedia-study-v1/tree_review.py": {
+      "bytes": 26442,
+      "sha256": "4e863c06c68a041c03f1ef53699a524a0535978a40d8ca27edb7571286938509"
     }
   },
-  "evaluation_verifier_shared_without_changing_checks": true,
-  "exact_enumerated_two_group_draws": 4,
+  "core_application_package_members_unchanged": 26,
+  "eidos_accuracy": 0.8678571428571429,
   "existing_imported_source_members_unchanged": 84,
-  "existing_trainers_inference_service_browser_and_frozen_models_changed": false,
-  "format": "eidos-owned-paired-comparison-source-change-v1",
-  "historical_or_rival_quality_experiment_repeated": false,
-  "isolated_cli_stages": 5,
-  "laya_or_jev_importer_implemented": false,
+  "format": "eidos-dbpedia-comparison-publication-v1",
+  "historical_benchmark_refit_prediction_rescore_or_selection_repeated": false,
+  "laya_accuracy": 0.8678571428571429,
   "mission_complete": false,
-  "model_promoted_or_acceptance_enabled": false,
-  "new_unit_methods": 15,
-  "parent_change_provenance_sha256": "2464770da4d3931418af36f6f59a2a8a709540e299c9177ed19540bf0b812416",
-  "parent_commit": "e2f39bd1d4cf54a7a6a1b9d6928862debba217c5",
+  "new_installations_downloads_GPU_paid_compute_private_service_or_credential_extraction": false,
+  "new_owned_model_fits_on_real_data": 3,
+  "new_unit_methods": 16,
+  "one_attempt_consumed_no_retry_or_extension_authorized": true,
+  "parent_change_provenance_sha256": "ffab5289dc1ec563f93cd4a4aa025841744e450b7d6d1d91ecae9f72f7034414",
+  "parent_commit": "372f76153b2cb949be8494592287113c22f5aff3",
+  "prior_core_unit_methods_passed_and_not_repeated": 65,
   "production_certified": false,
-  "rea_source_members_matched": 71,
-  "source_kit_sha256": "d22240cc6d5e7257d39f4d55ea8f652dad31a84ff76c910104a797abd7e0f038",
-  "unit_methods": 65
+  "publication_REA_integrity": "evidence/dbpedia-study/publication-rea-integrity.json",
+  "publication_source_kit_sha256": "90a4d01dc14890731ba86ce1b4fcfd26e358de7855febdb8f6bfd3518e61754b",
+  "real_completed_comparison_runs": 1,
+  "real_corpus_gold_per_case_predictions_group_maps_models_or_native_dependencies_published": false,
+  "real_test_cases": 280,
+  "selected_before_test_predictions": true,
+  "selected_method": "linear_adam",
+  "separate_cohort_authored_unit_methods": 20,
+  "serving_model_or_acceptance_policy_changed": false
 }

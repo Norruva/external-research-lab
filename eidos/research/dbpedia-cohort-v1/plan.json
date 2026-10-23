@@ -1,0 +1,69 @@
+{
+  "automatic_retry": false,
+  "corpus": {
+    "test": {
+      "bytes": 13272475,
+      "rows": 70000,
+      "sha256": "05fed41640e97f93ffd442757f6a84170348cf0c7500ecbda9e95ddcd928c631",
+      "url": "https://huggingface.co/datasets/fancyzhx/dbpedia_14/resolve/9abd46cf7fc8b4c64290f26993c540b92aa145ac/dbpedia_14/test-00000-of-00001.parquet"
+    },
+    "train": {
+      "bytes": 106151899,
+      "rows": 560000,
+      "sha256": "0640e4664a99cc94c47db1d7b2e01c14455d5bbecb8183ad1f93bde59f3f28ee",
+      "url": "https://huggingface.co/datasets/fancyzhx/dbpedia_14/resolve/9abd46cf7fc8b4c64290f26993c540b92aa145ac/dbpedia_14/train-00000-of-00001.parquet"
+    }
+  },
+  "format": "eidos-dbpedia-cohort-plan-v1",
+  "model_fit_prediction_scoring": false,
+  "network": {
+    "account_credentials_cookies_or_explicit_token_metadata_endpoints": false,
+    "acquisition_only": true,
+    "anonymous_https": true,
+    "history_and_native_processing": "separate network-isolated namespaces with one refused preflight each",
+    "on_block": "retain failure; no bypass, mirror, retry or token exception reuse",
+    "pinned_initial_paths": true,
+    "redirects": "HTTPS huggingface.co and its subdomains or subdomains of hf.co only; normal proxy and TLS"
+  },
+  "new_installation": false,
+  "output": "evaluation/production/dbpedia-cohort-v1/v1",
+  "preserved_limits": [
+    "No historical fit/prediction/rescore or resource reset",
+    "No TypeSafe/JEV service, credentials, private repository or production access",
+    "No inference/training/MCP registration/new dependency/global install",
+    "No approval or execution slot created during preparation"
+  ],
+  "resource_limits": {
+    "aggregate_cgroup_guarantee": false,
+    "corpus_child_cpu_seconds": 180,
+    "corpus_child_memory_mib": 2048,
+    "corpus_child_wall_seconds": 300,
+    "file_size_cap_mib": 256,
+    "history_child_cpu_seconds": 90,
+    "history_child_memory_mib": 768,
+    "history_child_wall_seconds": 120,
+    "no_gpu_or_paid_compute": true,
+    "parent_cpu_seconds": 180,
+    "parent_hard_memory_mib": 2048,
+    "parent_soft_memory_mib": 768,
+    "per_request_socket_timeout_seconds": 20,
+    "planned_cpu_seconds_sum_with_parent_reserve": 450,
+    "whole_wall_seconds": 900
+  },
+  "reuse_reader": "evaluation/production/dbpedia-reader-v1/v1/reader",
+  "rights": "Dataset card declares CC-BY-SA-3.0 and describes GFDL; public research use proposal only, future dataset/model redistribution unresolved. No ownership of public source text.",
+  "scope": "eidos-dbpedia-cohort-acquisition-preparation-v1",
+  "selection": {
+    "all_classes": 14,
+    "development_per_class": 20,
+    "drop_replace_truncate_or_resample": false,
+    "feature": "untruncated title + newline + content",
+    "on_any_failure": "retain failed attempt and stop without fitting or prediction",
+    "ranking": "SHA256(salt + newline + neutral split/ordinal ID); ascending; source file order pinned",
+    "salt": "eidos-dbpedia-cohort-v1:2026-10-23",
+    "supports_per_class": 20,
+    "test_per_class": 20,
+    "train_partition": "first 20 hashes support; next 20 development per class"
+  },
+  "status": "prepared_separate_scoped_approval_required"
+}

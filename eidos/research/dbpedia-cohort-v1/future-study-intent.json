@@ -1,0 +1,34 @@
+{
+  "candidate_recipes": [
+    {
+      "method": "support_memory",
+      "supports_per_class": 20
+    },
+    {
+      "epochs": 12,
+      "l2": 0.0001,
+      "learning_rate": 1.0,
+      "method": "linear_gd"
+    },
+    {
+      "epochs": 12,
+      "l2": 2e-05,
+      "learning_rate": 0.12,
+      "method": "linear_adam"
+    }
+  ],
+  "confidence_is_not_accuracy": "No binomial mechanism or near-100% guarantee; no promotion based on this study.",
+  "features": "same existing owned TF-IDF contracts; no test/development fitting",
+  "format": "eidos-dbpedia-future-study-intent-v1",
+  "not_execution_authorization": true,
+  "paired_intent": {
+    "bootstrap_repetitions": 1000,
+    "descriptive_numeric_rule": "both individual approximate 95% lower bounds for EIDOS minus LAYA accuracy and macro-F1 strictly positive",
+    "no_global_or_joint_coverage_or_independence_claim": true,
+    "seed": 113,
+    "unit": "frozen exact-title/full-text connected component"
+  },
+  "reference_intent": "Exact already-reviewed public LAYA checkpoint; all 14 choices directly; no shortlist/tournament/gold-dependent choices. Separate source-pinned adapter, feasibility and resource approval required.",
+  "selection": "Development only: greatest macro-F1, then accuracy, then smallest NLL, then listed recipe order; freeze before any test predictions. Abort on an existing trainer work limit, do not change recipe.",
+  "support_adaptation_asymmetry": "EIDOS has 20 labeled supports per class; proposed LAYA is zero-shot. Not matched adaptation or strongest LAYA."
+}

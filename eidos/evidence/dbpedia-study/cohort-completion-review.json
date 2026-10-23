@@ -1,0 +1,155 @@
+{
+  "CPU_and_peak_RSS_not_recorded_by_this_launcher": true,
+  "approved_scope": "eidos-dbpedia-cohort-acquisition-preparation-v1",
+  "authorization_sha256": "91a14c5975671b0e2bffb39ae85dc56ec445896fb56483bfc2f9983021e93fe3",
+  "automatic_retry_or_new_execution_authorized": false,
+  "cohort": {
+    "complete": true,
+    "files": {
+      "development.jsonl": {
+        "bytes": 105890,
+        "sha256": "fd4bc4dce5b80907163be63a0b36a379b9032ff5005b7e37c8c1c5a4549c9abc"
+      },
+      "labels.json": {
+        "bytes": 219,
+        "sha256": "da28f812c4c419b82cd1825f519a2e91c921aa894a80a0c85b1c821aaf697408"
+      },
+      "provenance.json": {
+        "bytes": 420,
+        "sha256": "0ba7cd3118350ff7686ae99c8a5c7ea19edcbe526910a18dd2ea52bc370b38c9"
+      },
+      "support.jsonl": {
+        "bytes": 100459,
+        "sha256": "6bd04412eda7583e037426cef37136bdb98f8e79ae8f6ec0aa55f8237688f766"
+      },
+      "test-gold.jsonl": {
+        "bytes": 14120,
+        "sha256": "4bc3cd776599665c7b70e087d8d497551da2da5a4d4cc94dec34813d6b02c8d0"
+      },
+      "test-groups.jsonl": {
+        "bytes": 33040,
+        "sha256": "003d57abf2dd9319cd4dbc10582da2cbd51d6a423f41cda986bfb4a284fd7f5f"
+      },
+      "test-inputs.jsonl": {
+        "bytes": 94595,
+        "sha256": "4d24f10e0b7f76e844b11e597e2e36ad7ffb634830c02d3940e9e9f32b8573c6"
+      }
+    },
+    "history_result_sha256": "879310deec0d3cd5b07a4fc6cba5700aa16b7207540b3a921d797246c4f83c94",
+    "lineage": {
+      "components": 840,
+      "cross_role_components": 0,
+      "historical_exact_overlaps": 0,
+      "max_component_rows": 1,
+      "selected_rows": 840
+    },
+    "mission_complete": false,
+    "model_fit_prediction_or_scoring": false,
+    "native_reader_only": true,
+    "plan_sha256": "76c2d5f7f29c462399067474e6ffa0dfd4fb9a98177d1572459749470ad0b048",
+    "production_certified": false,
+    "role_rows": {
+      "development": 280,
+      "support": 280,
+      "test": 280
+    },
+    "salt": "eidos-dbpedia-cohort-v1:2026-10-23",
+    "selected_row_removal_replacement_or_truncation": false,
+    "semantic_template_speaker_or_pretraining_independence_verified": false,
+    "source_counts": {
+      "test": {
+        "characters": 21021129,
+        "class_counts": {
+          "Album": 5000,
+          "Animal": 5000,
+          "Artist": 5000,
+          "Athlete": 5000,
+          "Building": 5000,
+          "Company": 5000,
+          "EducationalInstitution": 5000,
+          "Film": 5000,
+          "MeanOfTransportation": 5000,
+          "NaturalPlace": 5000,
+          "OfficeHolder": 5000,
+          "Plant": 5000,
+          "Village": 5000,
+          "WrittenWork": 5000
+        },
+        "rows": 70000
+      },
+      "train": {
+        "characters": 168139533,
+        "class_counts": {
+          "Album": 40000,
+          "Animal": 40000,
+          "Artist": 40000,
+          "Athlete": 40000,
+          "Building": 40000,
+          "Company": 40000,
+          "EducationalInstitution": 40000,
+          "Film": 40000,
+          "MeanOfTransportation": 40000,
+          "NaturalPlace": 40000,
+          "OfficeHolder": 40000,
+          "Plant": 40000,
+          "Village": 40000,
+          "WrittenWork": 40000
+        },
+        "rows": 560000
+      }
+    }
+  },
+  "complete": true,
+  "format": "eidos-dbpedia-cohort-completion-review-v1",
+  "history": {
+    "complete": true,
+    "comprehensive_historical_or_pretraining_independence": false,
+    "fingerprints_sha256": "850901344e6c5a57530bf53f5d5d8fafa4db343b60fa60c6f5eb8867d0400e46",
+    "manifest_sha256": "57bd23799e961c7ac3383af5cd0b7e3c3897652548d06a4c36a024c95b00c8d6",
+    "quality_evaluation_or_answer_key_read": false,
+    "rows_fingerprinted": 84246,
+    "scope": "Exact-text fingerprints of enumerated processed SLURP, BANKING77, CLINC150, rejected MASSIVE and public raw SNIPS source rows only; not exhaustive historical/semantic/pretraining independence. Text only; no answer-key/prediction/metric artifacts.",
+    "source_bytes": 16525119,
+    "source_file_count": 40,
+    "unique_fingerprints": 136536
+  },
+  "mission_complete": false,
+  "native_API_schema_source_fullscan_succeeded": true,
+  "one_attempt_consumed": true,
+  "output_file_pins_and_private_modes_verified": 7,
+  "plan_sha256": "76c2d5f7f29c462399067474e6ffa0dfd4fb9a98177d1572459749470ad0b048",
+  "prepared_manifest_sha256": "ce06f3fb1596963d5a44da7ec27bbac0d67d608697bb55b4ff1deb4b4c909109",
+  "production_certified": false,
+  "raw_corpus_data_or_labels_printed": false,
+  "reader_752_files_unchanged": true,
+  "summary": {
+    "aggregate_cgroup_guarantee": false,
+    "automatic_retry": false,
+    "complete": true,
+    "elapsed_seconds": 25.983484865000037,
+    "mission_complete": false,
+    "model_fit_prediction_scoring": false,
+    "production_certified": false,
+    "stages": [
+      {
+        "complete": true,
+        "elapsed_seconds": 1.3769925070000681,
+        "exit_code": 0,
+        "expected_refused_preflights": 1,
+        "stage": "history",
+        "unexpected_ip_connects": 0,
+        "wall_seconds_limit": 120
+      },
+      {
+        "complete": true,
+        "elapsed_seconds": 14.392102014999864,
+        "exit_code": 0,
+        "expected_refused_preflights": 1,
+        "stage": "corpus",
+        "unexpected_ip_connects": 0,
+        "wall_seconds_limit": 300
+      }
+    ]
+  },
+  "training_or_prediction_or_scoring_authorized_or_performed": false
+}

@@ -1,4 +1,12 @@
-# Recorded classifier comparison
+# Recorded classifier comparisons
+
+## Newer DBpedia14 comparison
+
+The separately approved 280-case comparison tied accuracy at **243/280 (86.79%)** for both EIDOS and public LAYA. EIDOS macro-F1 was **86.66%**, versus **84.22%**, but both predefined individual interval gates failed. This result does not meet the requirement to beat LAYA. The primary was the actual owned stdlib Adam trainer at fixed 12 epochs, selected only on development data, with 20 supports/class versus zero-shot LAYA. All 14 choices and full articles were preserved. No post-test candidate substitution or promotion.
+
+[Full DBpedia result, resource/data scope and uncertainty](DBPEDIA-RESULT.md) · [Authoritative aggregate score](../evidence/dbpedia-study/score.json). The current test outcomes are revealed and consumed; future changes require newly planned evaluation.
+
+## Earlier SNIPS-derived comparison
 
 The approved public LAYA comparison completed once on 1,821 SNIPS-derived intent cases with seven choices. The cases belonged to 1,409 template/text components absent from an earlier 140-case pilot. All 373 rows belonging to the pilot components were excluded. No raw cases, gold answers or per-case predictions are published here.
 

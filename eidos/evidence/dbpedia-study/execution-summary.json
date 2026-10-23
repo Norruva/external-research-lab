@@ -1,0 +1,102 @@
+{
+  "aggregate_cgroup_guarantee": false,
+  "all_seven_stages_complete": true,
+  "automatic_retry": false,
+  "complete": true,
+  "elapsed_seconds": 410.46652191400017,
+  "mission_complete": false,
+  "production_certified": false,
+  "stages": [
+    {
+      "aggregate_cgroup_guarantee": false,
+      "complete": true,
+      "cpu_seconds_limit": 90,
+      "elapsed_seconds": 1.1792221939999763,
+      "exit_code": 0,
+      "expected_refused_preflights": 1,
+      "memory_mib": 768,
+      "native_reference_mounted": false,
+      "stage": "memory",
+      "unexpected_ip_connects": 0,
+      "wall_seconds_limit": 120
+    },
+    {
+      "aggregate_cgroup_guarantee": false,
+      "complete": true,
+      "cpu_seconds_limit": 90,
+      "elapsed_seconds": 5.167801306999991,
+      "exit_code": 0,
+      "expected_refused_preflights": 1,
+      "memory_mib": 768,
+      "native_reference_mounted": false,
+      "stage": "linear_gd",
+      "unexpected_ip_connects": 0,
+      "wall_seconds_limit": 120
+    },
+    {
+      "aggregate_cgroup_guarantee": false,
+      "complete": true,
+      "cpu_seconds_limit": 90,
+      "elapsed_seconds": 5.6092730390000725,
+      "exit_code": 0,
+      "expected_refused_preflights": 1,
+      "memory_mib": 768,
+      "native_reference_mounted": false,
+      "stage": "linear_adam",
+      "unexpected_ip_connects": 0,
+      "wall_seconds_limit": 120
+    },
+    {
+      "aggregate_cgroup_guarantee": false,
+      "complete": true,
+      "cpu_seconds_limit": 90,
+      "elapsed_seconds": 2.3808440299999347,
+      "exit_code": 0,
+      "expected_refused_preflights": 1,
+      "memory_mib": 768,
+      "native_reference_mounted": false,
+      "stage": "select",
+      "unexpected_ip_connects": 0,
+      "wall_seconds_limit": 120
+    },
+    {
+      "aggregate_cgroup_guarantee": false,
+      "complete": true,
+      "cpu_seconds_limit": 60,
+      "elapsed_seconds": 0.7600197570000091,
+      "exit_code": 0,
+      "expected_refused_preflights": 1,
+      "memory_mib": 768,
+      "native_reference_mounted": false,
+      "stage": "eidos",
+      "unexpected_ip_connects": 0,
+      "wall_seconds_limit": 90
+    },
+    {
+      "aggregate_cgroup_guarantee": false,
+      "complete": true,
+      "cpu_seconds_limit": 2760,
+      "elapsed_seconds": 354.104589389,
+      "exit_code": 0,
+      "expected_refused_preflights": 1,
+      "memory_mib": 4096,
+      "native_reference_mounted": true,
+      "stage": "laya",
+      "unexpected_ip_connects": 0,
+      "wall_seconds_limit": 4200
+    },
+    {
+      "aggregate_cgroup_guarantee": false,
+      "complete": true,
+      "cpu_seconds_limit": 120,
+      "elapsed_seconds": 0.557232292000208,
+      "exit_code": 0,
+      "expected_refused_preflights": 1,
+      "memory_mib": 768,
+      "native_reference_mounted": false,
+      "stage": "score",
+      "unexpected_ip_connects": 0,
+      "wall_seconds_limit": 180
+    }
+  ]
+}

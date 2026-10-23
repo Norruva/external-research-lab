@@ -1,0 +1,16 @@
+{
+  "actual_corpus_gold_per_case_predictions_models_native_binaries_or_credentials_included": false,
+  "complete": true,
+  "coverage": {
+    "scope": "container-entries",
+    "status": "complete"
+  },
+  "evidence_id": "ev_67760f4de0a1c2e0f3097b5b6e16a252398b6bb11378205578120fca42e357af",
+  "evidence_sha256": "29f75b8980879f61ac8f89c767b0d80a7d284fb712829c545744d0bf96cbfed0",
+  "graph_nodes": 59,
+  "integrity_contradictions": [],
+  "member_hashes_and_sizes_matched": 58,
+  "repository_source_doc_and_aggregate_files_matched": 56,
+  "security_rights_quality_or_independence_certification": false,
+  "target_execution": false
+}
