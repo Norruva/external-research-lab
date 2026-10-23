@@ -4,6 +4,8 @@
 
 Use a single-model registry produced by `eidos.train_support` or `eidos.train_linear_support`, including its unchanged training receipt. Other historical/preinstalled models and calibrated profiles are outside this command's current scope. All trained labels are offered together, in English, with the existing review-only policy. Unknown gold labels are refused; this is closed-set evaluation, not an out-of-scope detector test.
 
+Both linear optimizers, default gradient descent and explicit `--optimizer adam`, use this same evaluation contract. Choose the optimizer and fixed epoch count before examining evaluation outcomes. Newly trained Adam models do not inherit the historical frozen model's LAYA comparison score.
+
 ## Run the authored demonstration
 
 First train `owned-registry/models/owned-linear` as described in [LINEAR-TRAINING.md](LINEAR-TRAINING.md). From the repository's `eidos` directory:

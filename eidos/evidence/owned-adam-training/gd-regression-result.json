@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "default_gradient_descent_artifacts_byte_identical_to_parent": true,
+  "parent_commit": "3e9644c22f3d1f02f45be23a910c26f053982318",
+  "files": {
+    "parent": {
+      "TRAINING-RECEIPT.json": "09e541943e85ae05daef46500fd1fc224027f6de05235a2047194f621fda205e",
+      "model.json": "f3499f0181de9c7c009fcbf4f908ea280cd39ecffc0a2f70df324d1e682eda0b",
+      "registry.json": "0d80c86578ea307d5b1540ecc818031437401f6dafc2ff9f3f5b8d1ce11b5c1c",
+      "weights.f32": "a8efbf64059a610bbe94e6600fcd929ec9b6572108bafe0a5c756cf56c2e7ff3"
+    },
+    "current": {
+      "TRAINING-RECEIPT.json": "09e541943e85ae05daef46500fd1fc224027f6de05235a2047194f621fda205e",
+      "model.json": "f3499f0181de9c7c009fcbf4f908ea280cd39ecffc0a2f70df324d1e682eda0b",
+      "registry.json": "0d80c86578ea307d5b1540ecc818031437401f6dafc2ff9f3f5b8d1ce11b5c1c",
+      "weights.f32": "a8efbf64059a610bbe94e6600fcd929ec9b6572108bafe0a5c756cf56c2e7ff3"
+    }
+  },
+  "scope": "fixed authored 40-row demo; same identity, input, default recipe and tested runtime",
+  "reference_or_existing_model_used": false
+}

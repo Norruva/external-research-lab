@@ -1,0 +1,143 @@
+{
+  "actual_cli_stages": [
+    "adam prepare",
+    "adam predict without gold",
+    "adam score without weights or case text"
+  ],
+  "actual_service_smoke_checks": {
+    "adam": 16,
+    "gradient_descent": 16,
+    "memory": 17
+  },
+  "all_new_registries_review_only": true,
+  "authored_fixture_training_prediction_metric_scoring_performed": true,
+  "checks": {
+    "regression-v1/execution-summary.json": {
+      "aggregate_cgroup_guarantee": false,
+      "authored_fixture_training_only": true,
+      "complete": true,
+      "elapsed_seconds": 0.627495510000017,
+      "existing_credentials_corpora_or_models_mounted": false,
+      "exit_code": 0,
+      "expected_refused_preflights": 1,
+      "historical_or_rival_quality_experiment_performed": false,
+      "memory_mib": 768,
+      "per_process_cpu_seconds": 120,
+      "private_loopback_connect_attempts": 0,
+      "source_files_verified": 143,
+      "source_manifest_sha256": "cc8592c473983f28090c98f998ea3c7076f44146d6b3f273c7c999f6a2d5d9cd",
+      "source_unchanged": true,
+      "unexpected_ip_connects": 0,
+      "wall_seconds_limit": 110
+    },
+    "roles-v1/execution-summary.json": {
+      "aggregate_cgroup_guarantee": false,
+      "complete": true,
+      "elapsed_seconds": 0.8577923240000018,
+      "models_trained_only_from_authored_demo": true,
+      "new_keys_or_existing_credentials_used": false,
+      "per_stage_cpu_seconds": 120,
+      "per_stage_memory_mib": 512,
+      "per_stage_wall_seconds": 35,
+      "quality_claim_from_demo": false,
+      "separate_prediction_without_gold": true,
+      "separate_scoring_without_models_or_case_text": true,
+      "stages": [
+        {
+          "code_file_count": 24,
+          "code_unchanged": true,
+          "complete": true,
+          "elapsed_seconds": 0.5192915959999027,
+          "existing_credentials_or_benchmark_data_mounted": false,
+          "exit_code": 0,
+          "expected_refused_preflights": 1,
+          "only_authored_mechanical_fixtures": true,
+          "operating_system_file_role_boundary": true,
+          "role": "prepare",
+          "stdout_sha256": "4cc2e032715be47fed521109644ca7f2262d824363aedeed2d2e76b11ee11a1d",
+          "trainer": "adam",
+          "unexpected_ip_connects": 0
+        },
+        {
+          "code_file_count": 24,
+          "code_unchanged": true,
+          "complete": true,
+          "elapsed_seconds": 0.19367963100012275,
+          "existing_credentials_or_benchmark_data_mounted": false,
+          "exit_code": 0,
+          "expected_refused_preflights": 1,
+          "only_authored_mechanical_fixtures": true,
+          "operating_system_file_role_boundary": true,
+          "role": "predict",
+          "stdout_sha256": "8ba9f65f54a199886d69ab54d82f245c79ba558fcb3762b16854d0d2720c21b4",
+          "trainer": "adam",
+          "unexpected_ip_connects": 0
+        },
+        {
+          "code_file_count": 24,
+          "code_unchanged": true,
+          "complete": true,
+          "elapsed_seconds": 0.14151318100016397,
+          "existing_credentials_or_benchmark_data_mounted": false,
+          "exit_code": 0,
+          "expected_refused_preflights": 1,
+          "only_authored_mechanical_fixtures": true,
+          "operating_system_file_role_boundary": true,
+          "role": "score",
+          "stdout_sha256": "d96fe2f138da3687b7f8fdb28a15da1a57cc0ba2a1fceccc1384bd6760ae046e",
+          "trainer": "adam",
+          "unexpected_ip_connects": 0
+        }
+      ],
+      "unit_or_stage_reference_benchmark_run": false
+    },
+    "validation-v1/execution-summary.json": {
+      "aggregate_cgroup_guarantee": false,
+      "authored_fixture_training_prediction_and_metric_scoring_performed": true,
+      "complete": true,
+      "elapsed_seconds": 7.166346369999928,
+      "existing_credentials_corpora_or_models_mounted": false,
+      "exit_code": 0,
+      "expected_refused_preflights": 1,
+      "historical_or_rival_quality_experiment_performed": false,
+      "memory_mib": 768,
+      "per_process_cpu_seconds": 120,
+      "private_loopback_connect_attempts": 94,
+      "source_files_verified": 143,
+      "source_manifest_sha256": "cc8592c473983f28090c98f998ea3c7076f44146d6b3f273c7c999f6a2d5d9cd",
+      "source_unchanged": true,
+      "unexpected_ip_connects": 0,
+      "wall_seconds_limit": 110
+    }
+  },
+  "code": {
+    "eidos/train_linear_support.py": {
+      "bytes": 13563,
+      "sha256": "a6363df14b085d0172210ebad8345a79b6ada36c0088d23a8d1585930e806e5f"
+    },
+    "tests/test_owned_adam_training.py": {
+      "bytes": 9081,
+      "sha256": "e0ed713c0ce3776bc9453fd724622fcd121408768e15478b8a2f2f09917cdd5a"
+    },
+    "tools/smoke.py": {
+      "bytes": 13221,
+      "sha256": "caa8b005e78da1cf3129e964ac6daf8856207759fc61dfbe1316c843519bc286"
+    }
+  },
+  "complete": true,
+  "default_gd_demo_artifacts_byte_identical_to_parent": true,
+  "format": "eidos-owned-adam-verification-v1",
+  "historical_data_model_predictions_reference_or_quality_experiment_repeated": false,
+  "independent_numerics": [
+    "first-step bias correction and epsilon",
+    "second-step high-precision Decimal closed form",
+    "coupled weight L2 and unpenalized biases",
+    "one-step analytic full-batch softmax gradient"
+  ],
+  "mission_complete": false,
+  "new_rival_or_general_quality_claim": false,
+  "new_unit_methods": 10,
+  "parent_commit": "3e9644c22f3d1f02f45be23a910c26f053982318",
+  "production_certified": false,
+  "unit_methods": 50
+}

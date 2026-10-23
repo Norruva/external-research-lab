@@ -1,0 +1,32 @@
+{
+  "complete": true,
+  "python": "3.13.5",
+  "stages": [
+    {
+      "name": "unit",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "6b41ed4dac2006f17f87ea7ace6f67f23f34c36198c395c4cc1337dbde4844da"
+    },
+    {
+      "name": "smoke-memory",
+      "exit_code": 0,
+      "stdout_sha256": "e83ff12ae6426c861a4f01fa43b476f9c22c2acc2c39fb04f3e5f438963319ec",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "smoke-linear",
+      "exit_code": 0,
+      "stdout_sha256": "707730bd9ecbd62f98f810939f967548beb2036bfe8b5e0335012c4d0ea8bf52",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "smoke-adam",
+      "exit_code": 0,
+      "stdout_sha256": "fd933ddac8bbcef9d4fa6fa704bd9cd0475fe934ef48dbd23eb968a5e5f803a8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "offline_namespace": true,
+  "fresh_temporary_state_only": true
+}

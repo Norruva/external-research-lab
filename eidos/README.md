@@ -29,6 +29,8 @@ The 40 original, synthetic CC0 examples demonstrate mechanics only. To train on 
 
 The command above trains the support-memory method. A new [standard-library linear trainer](docs/LINEAR-TRAINING.md) is also available through `python3 -S -B -m eidos.train_linear_support`, with the same input/provenance/output arguments and optional fixed `--epochs`. It trains a new zero-initialized softmax model; the measured linear EIDOS model in the LAYA comparison remains a different, frozen artifact. Neither command makes new models benchmark winners. Every new model abstains, returns `value=null`, requires human review, and has no action authority. Its candidate distribution is uncalibrated.
 
+The linear trainer now also accepts `--optimizer adam`, with bias-corrected moments and a fixed 120-epoch default; ordinary gradient descent remains the default. Both methods use only standard-library Python and the caller's supports. See [optimizer settings and scope](docs/LINEAR-TRAINING.md#adam-training-option). This adds an owned training method, not a new LAYA/JEV result.
+
 ## Start the local application
 
 After training the demo, still inside this directory:
@@ -70,6 +72,7 @@ From this directory:
 python3 -S -B -m unittest discover -s tests -p 'test_*.py' -v
 python3 -S -B tools/smoke.py
 python3 -S -B tools/smoke.py --trainer linear
+python3 -S -B tools/smoke.py --trainer adam
 ```
 
 The unit suite uses authored fixtures only, including finite-difference gradient checks and deterministic artifact tests for the linear trainer. Each smoke invocation creates a new temporary demo registry and configuration for its selected method, queries the real CLI and loopback service, verifies review/idempotency behavior and served browser assets, then stops the service and removes its temporary state. Memory-specific neighbor explanations are explicitly inapplicable to the linear run. No existing configurations, external services, benchmark data, or reference model are accessed. These are functional checks, not quality evaluations or headless-browser tests. Run them in an isolated development environment.

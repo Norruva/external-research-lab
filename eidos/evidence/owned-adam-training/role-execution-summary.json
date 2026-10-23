@@ -1,0 +1,61 @@
+{
+  "complete": true,
+  "stages": [
+    {
+      "complete": true,
+      "trainer": "adam",
+      "role": "prepare",
+      "exit_code": 0,
+      "elapsed_seconds": 0.5192915959999027,
+      "code_unchanged": true,
+      "code_file_count": 24,
+      "expected_refused_preflights": 1,
+      "unexpected_ip_connects": 0,
+      "stdout_sha256": "4cc2e032715be47fed521109644ca7f2262d824363aedeed2d2e76b11ee11a1d",
+      "operating_system_file_role_boundary": true,
+      "existing_credentials_or_benchmark_data_mounted": false,
+      "only_authored_mechanical_fixtures": true
+    },
+    {
+      "complete": true,
+      "trainer": "adam",
+      "role": "predict",
+      "exit_code": 0,
+      "elapsed_seconds": 0.19367963100012275,
+      "code_unchanged": true,
+      "code_file_count": 24,
+      "expected_refused_preflights": 1,
+      "unexpected_ip_connects": 0,
+      "stdout_sha256": "8ba9f65f54a199886d69ab54d82f245c79ba558fcb3762b16854d0d2720c21b4",
+      "operating_system_file_role_boundary": true,
+      "existing_credentials_or_benchmark_data_mounted": false,
+      "only_authored_mechanical_fixtures": true
+    },
+    {
+      "complete": true,
+      "trainer": "adam",
+      "role": "score",
+      "exit_code": 0,
+      "elapsed_seconds": 0.14151318100016397,
+      "code_unchanged": true,
+      "code_file_count": 24,
+      "expected_refused_preflights": 1,
+      "unexpected_ip_connects": 0,
+      "stdout_sha256": "d96fe2f138da3687b7f8fdb28a15da1a57cc0ba2a1fceccc1384bd6760ae046e",
+      "operating_system_file_role_boundary": true,
+      "existing_credentials_or_benchmark_data_mounted": false,
+      "only_authored_mechanical_fixtures": true
+    }
+  ],
+  "elapsed_seconds": 0.8577923240000018,
+  "unit_or_stage_reference_benchmark_run": false,
+  "quality_claim_from_demo": false,
+  "separate_prediction_without_gold": true,
+  "separate_scoring_without_models_or_case_text": true,
+  "new_keys_or_existing_credentials_used": false,
+  "models_trained_only_from_authored_demo": true,
+  "per_stage_cpu_seconds": 120,
+  "per_stage_memory_mib": 512,
+  "per_stage_wall_seconds": 35,
+  "aggregate_cgroup_guarantee": false
+}

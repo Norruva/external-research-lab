@@ -113,7 +113,7 @@ def check_decision(response):
 
 def main():
     parser = argparse.ArgumentParser(description='Exercise a fresh authored-demo registry and loopback service')
-    parser.add_argument('--trainer', choices=('memory', 'linear'), default='memory')
+    parser.add_argument('--trainer', choices=('memory', 'linear', 'adam'), default='memory')
     args = parser.parse_args()
     require(sys.version_info >= (3, 12) and os.name == 'posix', 'Python3.12+/POSIX required')
     require(sys.flags.no_site and sys.flags.dont_write_bytecode, 'Run python3 -S -B tools/smoke.py')
@@ -131,9 +131,10 @@ def main():
         (registry / 'models').mkdir(mode=0o700)
         model = registry / 'models/owned-demo'
         trainer_module = 'eidos.train_support' if args.trainer == 'memory' else 'eidos.train_linear_support'
+        optimizer_args = ('--optimizer', 'adam') if args.trainer == 'adam' else ()
         command('-m', trainer_module, '--input', 'examples/owned-support-demo.jsonl',
                 '--provenance', 'examples/owned-support-demo-provenance.json',
-                '--output', str(model), '--model-id', MODEL)
+                '--output', str(model), '--model-id', MODEL, *optimizer_args)
         require(model.stat().st_mode & 0o777 == 0o700, 'Model directory is not private')
         require(len(list(model.iterdir())) == 4 and all(p.stat().st_mode & 0o777 == 0o400 for p in model.iterdir()), 'Model artifacts are not private')
         checks.append('actual training CLI and private artifact publication')

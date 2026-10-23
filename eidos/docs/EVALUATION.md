@@ -26,6 +26,8 @@ Dataset provenance: SNIPS `b86ac7f1577868c42158d0dec77db50956046696`, CC0-1.0, C
 
 The new [own-data linear command](LINEAR-TRAINING.md) trains a fresh, zero-initialized full-batch softmax model using the standard library. It is a different recipe from the frozen Adam-trained primary artifact above. Its authored numerical/unit and real-service checks do not transfer this benchmark accuracy to newly trained models. No historical benchmark was rerun for that feature.
 
+The command also offers an original bias-corrected `--optimizer adam` option. Its standard-library float64 fitting and fixed final epoch differ from the historical float32, development-selected recipe. The optimizer's numerical, artifact-regression, serving and evaluation-workflow checks use authored fixtures and create no new LAYA/JEV or general-quality result.
+
 [Owned evaluation](OWNED-EVALUATION.md) now provides a separate versioned prepare/predict/score workflow for new caller-trained registries. Its arithmetic and file-role tests use authored fixtures; no historical comparison was repeated. It does not prove that caller data are untouched or independent, and its descriptive metrics do not create a new LAYA/JEV result.
 
 JEV remains unmeasured. TypeSafe/JEV service access and model extraction are not authorized. Production certification, independent matched-adaptation cohorts, operational calibration/OOS risk, identity/TLS/security, drift/load operations and recovery objectives remain unresolved.

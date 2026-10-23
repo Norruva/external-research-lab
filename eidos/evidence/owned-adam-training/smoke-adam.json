@@ -1,0 +1,31 @@
+{
+  "complete": true,
+  "trainer": "adam",
+  "checks": [
+    "imported source hashes verified",
+    "actual training CLI and private artifact publication",
+    "actual Engine CLI, two-class distribution and review policy",
+    "fresh local configuration without printing key values",
+    "real loopback service health",
+    "five exact browser assets served; no browser automation claim",
+    "unsigned API access refused",
+    "signed API inventory from newly trained registry",
+    "signed real-service decision preserves review policy",
+    "identical request returns identical cached response",
+    "idempotency conflict refused",
+    "review records approval without action or training",
+    "review history without raw input retention",
+    "restart preserves exact cached decision",
+    "stopped-service audit-chain maintenance",
+    "source unchanged; temporary configuration and state removed"
+  ],
+  "check_count": 16,
+  "not_applicable": [],
+  "elapsed_seconds": 1.5259083040000405,
+  "fresh_authored_demo_only": true,
+  "reference_or_quality_evaluation": false,
+  "headless_browser_or_backup_restore_repeated": false,
+  "preexisting_configuration_accessed": false,
+  "service_stopped": true,
+  "temporary_state_removed": true
+}

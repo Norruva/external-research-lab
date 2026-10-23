@@ -1,0 +1,17 @@
+{
+  "all_member_hashes_and_sizes_match": true,
+  "complete": true,
+  "coverage": {
+    "scope": "container-entries",
+    "status": "complete"
+  },
+  "evidence_id": "ev_05d6bda9810d6b52fbd9a0cea5e6a1ec60aae7869ade4d186bcc8ab65058824b",
+  "evidence_sha256": "81e0dbc722b855519e2ba982c16b16b936529e2ee867f919adc6742b44b615e2",
+  "format": "eidos-owned-adam-rea-integrity-review-v1",
+  "graph_nodes": 70,
+  "integrity_contradictions": [],
+  "member_count": 69,
+  "quality_security_rights_or_independence_certification": false,
+  "target_member_execution": false,
+  "tooling_source_commit": "e09a503f44fba1639b71907a018d71161360f5ae"
+}
