@@ -1,0 +1,20 @@
+{
+  "complete": true,
+  "exit_code": 0,
+  "elapsed_seconds": 3.7498629870001423,
+  "artifact_sha256": "a21eff9f113e51df60e17f8d21bfba844c48164c6db01401e3d8614d0b9edbac",
+  "export_receipt_sha256": "1fc8206038cdde0d8e30ced8225c4dde88844009814ec81c6245eda48ae72110",
+  "inspected": "lossless ZIP of the 52 exact preparation archive members",
+  "analysis_zip_sha256": "653a0595f4340e8eb19b3ae99395c4c5eaf122f4c49441c82708182d5f564cb4",
+  "target_manifest_sha256": "c1435750d1143f7516d404e8fdc3260621234a249c2ef138c44c86e6e9bbd3c3",
+  "target_files": 52,
+  "inputs_unchanged": true,
+  "tooling_inventory_sha256": "09aefc3c81b2df18773fca04824b1297a95f794978d1e3f84515a41e1cf907a6",
+  "tooling_entries": 25132,
+  "node_sha256": "bc17c508ffeed0ec622934f9b7fa72f8e78da65350e63c3eceb56fa688aa5e12",
+  "source_commit": "e09a503f44fba1639b71907a018d71161360f5ae",
+  "target_installed_imported_or_executed": false,
+  "expected_refused_preflights": 1,
+  "unexpected_ip_connections": 0,
+  "evidence_sha256": "316721cf8ed255b0262deebe5c8ad9ad0ab6009dcdfc53804832c4a317fb5db1"
+}

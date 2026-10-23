@@ -27,7 +27,7 @@ python3 -S -B -m eidos.explain_support \
 
 The 40 original, synthetic CC0 examples demonstrate mechanics only. To train on your own authorized data, use exactly 20 distinct examples per class, 2–256 classes, and an explicit provenance declaration. See [the complete format and limits](docs/TRAINING.md). Output must be a new directory; the trainer refuses an existing output and does not activate or overwrite configuration.
 
-The own-data command currently trains the support-memory method. The measured linear EIDOS model in the LAYA comparison is a different, frozen artifact. Adding this command does not make its new models benchmark winners. Every new model abstains, returns `value=null`, requires human review, and has no action authority. Its candidate distribution is uncalibrated.
+The command above trains the support-memory method. A new [standard-library linear trainer](docs/LINEAR-TRAINING.md) is also available through `python3 -S -B -m eidos.train_linear_support`, with the same input/provenance/output arguments and optional fixed `--epochs`. It trains a new zero-initialized softmax model; the measured linear EIDOS model in the LAYA comparison remains a different, frozen artifact. Neither command makes new models benchmark winners. Every new model abstains, returns `value=null`, requires human review, and has no action authority. Its candidate distribution is uncalibrated.
 
 ## Start the local application
 
@@ -63,9 +63,10 @@ From this directory:
 ```sh
 python3 -S -B -m unittest discover -s tests -p 'test_*.py' -v
 python3 -S -B tools/smoke.py
+python3 -S -B tools/smoke.py --trainer linear
 ```
 
-The unit suite uses authored fixtures only. The smoke test creates a new temporary demo registry and configuration, queries the real CLI and loopback service, verifies review/idempotency behavior and served browser assets, then stops the service and removes its temporary state. It does not access existing configurations, external services, benchmark data, or a reference model. It is a functional check, not a quality evaluation or a headless-browser test. Run it in an isolated development environment.
+The unit suite uses authored fixtures only, including finite-difference gradient checks and deterministic artifact tests for the linear trainer. Each smoke invocation creates a new temporary demo registry and configuration for its selected method, queries the real CLI and loopback service, verifies review/idempotency behavior and served browser assets, then stops the service and removes its temporary state. Memory-specific neighbor explanations are explicitly inapplicable to the linear run. No existing configurations, external services, benchmark data, or reference model are accessed. These are functional checks, not quality evaluations or headless-browser tests. Run them in an isolated development environment.
 
 The preceding cloud package also passed 18 API, 11 real Chromium and 9 backup/restore checks. Those historical receipts are preserved separately from checkout-specific verification in [evidence](evidence/README.md).
 
@@ -75,4 +76,4 @@ On the same 1,821 seven-choice cases, frozen linear EIDOS scored **94.18% accura
 
 This checkout contains original implementation and aggregate evidence. The five preinstalled benchmark model binaries and third-party implementations/weights are omitted. Their original release receipts and source hashes are retained for provenance; this source tree is not the complete historical application archive. The demo builds a fresh registry, so its documented workflow requires no binary release asset. No GitHub binary release has been created as part of this source import.
 
-No private corpus, raw benchmark cases, answer keys, per-case predictions, existing credentials, or runtime state are included. Public licensed data are not exclusive property. See [attribution and changes](docs/ATTRIBUTION-AND-CHANGES.md), the included dataset license notices, and [source provenance](SOURCE-PROVENANCE.json). TypeSafe/JEV service access and model extraction remain outside this project's authorized research scope. `mission_complete=false`; `production_certified=false`.
+No private corpus, raw benchmark cases, answer keys, per-case predictions, existing credentials, or runtime state are included. Public licensed data are not exclusive property. See [attribution and changes](docs/ATTRIBUTION-AND-CHANGES.md), the included dataset license notices, [original source provenance](SOURCE-PROVENANCE.json), and [the linear-training change record](CHANGESET-PROVENANCE.json). TypeSafe/JEV service access and model extraction remain outside this project's authorized research scope. `mission_complete=false`; `production_certified=false`.

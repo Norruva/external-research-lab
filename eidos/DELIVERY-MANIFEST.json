@@ -9,9 +9,13 @@
       "bytes": 704,
       "sha256": "a6b12865c4a84b4c6595be69fe0b74c3bacea9c6279f083c33cf6a6db5a15de1"
     },
+    "eidos/CHANGESET-PROVENANCE.json": {
+      "bytes": 2353,
+      "sha256": "e26d6b107f0f65ae7f5e1075b27cf01881777eed59abb16dc1d9849a4b5e0f37"
+    },
     "eidos/README.md": {
-      "bytes": 5793,
-      "sha256": "eac7f3d79833c130eaafd8e113a82bf38d5503855280228992acf0b0de630495"
+      "bytes": 6368,
+      "sha256": "620598bfede409f16cd00e9b735c983685772a7e6c1bb8292f4fd55ed49d4a14"
     },
     "eidos/SOURCE-PROVENANCE.json": {
       "bytes": 22137,
@@ -38,8 +42,12 @@
       "sha256": "e6bc9e9c474700b708f568bac9e5a8a9bcb2b1dad53442f5ba449fcb848b8e76"
     },
     "eidos/docs/EVALUATION.md": {
-      "bytes": 4928,
-      "sha256": "71a975672bb380546d5376660dcba8f182fd16354789f51918fbaf3c8d15a951"
+      "bytes": 5316,
+      "sha256": "1fe5c1e6346cab8583dbb845bd1bc2f681c9a99ac0668f06707795fdcff8820c"
+    },
+    "eidos/docs/LINEAR-TRAINING.md": {
+      "bytes": 5274,
+      "sha256": "47ce044e18e7b60840b046f7a91a77ef1f74e2c5b0348ca2e71cad6f0f2197d5"
     },
     "eidos/docs/OPERATIONS.md": {
       "bytes": 3839,
@@ -133,6 +141,10 @@
       "bytes": 4545,
       "sha256": "80e52d9c6eae930e1897c96e255dc56a0b7688996ea839d6f08793973c97aec2"
     },
+    "eidos/eidos/train_linear_support.py": {
+      "bytes": 10450,
+      "sha256": "8f11bea2acedaee670b43230eb45af13fa971602244bea83e0a6fef3866625b9"
+    },
     "eidos/eidos/train_support.py": {
       "bytes": 8848,
       "sha256": "487f2d507a48e13f0d2747113c07011cb78c083b7f1adba7f8022f8761e73800"
@@ -142,8 +154,8 @@
       "sha256": "33a221b2108c7711c5be38cb0af9297724d3bd6c7ca027cc9ef8a5c739309b27"
     },
     "eidos/evidence/README.md": {
-      "bytes": 2262,
-      "sha256": "1a4d722075a25c3b046998e285422982caf104e5052e7bd7f2ec12a3a34ecf13"
+      "bytes": 3330,
+      "sha256": "064f9e9cbe2b91527c49de0c54effc4ebfbc08cac7e2c266affcd5189e9efdea"
     },
     "eidos/evidence/comparison/MANIFEST.json": {
       "bytes": 5669,
@@ -313,6 +325,46 @@
       "bytes": 1653,
       "sha256": "1889f469751d539208cecea3d4868ae2dd0017c36e5b72d656863198f0e63ae9"
     },
+    "eidos/evidence/owned-linear/execution-summary.json": {
+      "bytes": 591,
+      "sha256": "0e64ffc8d645dc24f2e3b69e7c33bc94955577d918ad3c1cd8f7cf9911818ec2"
+    },
+    "eidos/evidence/owned-linear/parent-delivery-manifest.json": {
+      "bytes": 17690,
+      "sha256": "10bc9928f3ea807c7d8177c864c73c244947ea3afff0b1641ef40411811d7acf"
+    },
+    "eidos/evidence/owned-linear/rea-integrity-review.json": {
+      "bytes": 487,
+      "sha256": "956d97517bc03a638807445f7a95b2acaace9fb05a961a1b5de2321d80083ab2"
+    },
+    "eidos/evidence/owned-linear/rea-summary.json": {
+      "bytes": 1063,
+      "sha256": "cae53cc1feb32c062631e05cf0205e5deca92cbf126cdfd0c9d3b44cd33fb8eb"
+    },
+    "eidos/evidence/owned-linear/runner-result.json": {
+      "bytes": 860,
+      "sha256": "d868aef21e0403186fddc12b095281771d8f93f632be46bdc10108cb300fd89c"
+    },
+    "eidos/evidence/owned-linear/smoke-linear-stdout.json": {
+      "bytes": 1298,
+      "sha256": "fc9e69afd645ad41eceed7991a2843b2876dc4763fac8f58055350cdbffe8170"
+    },
+    "eidos/evidence/owned-linear/smoke-memory-stdout.json": {
+      "bytes": 1287,
+      "sha256": "e58e7faf795ed0150acc36186770092860987ff8f154be8a821473584e139bab"
+    },
+    "eidos/evidence/owned-linear/source-kit-receipt.json": {
+      "bytes": 449,
+      "sha256": "1fc8206038cdde0d8e30ced8225c4dde88844009814ec81c6245eda48ae72110"
+    },
+    "eidos/evidence/owned-linear/unit-stderr.log": {
+      "bytes": 3619,
+      "sha256": "7ff0f44fd07cd2381fba19efef0ba1b69d6ff0d49be7ce771837ca32aa9c9393"
+    },
+    "eidos/evidence/owned-linear/validation-result.json": {
+      "bytes": 3081,
+      "sha256": "732555ff5a5f5ddbd87d68fb89c380b415f4ad0d21a4a7da3acf2679f513a553"
+    },
     "eidos/evidence/owned-training/application-evidence-interpretation-v1.json": {
       "bytes": 812,
       "sha256": "52b2b9d461ef78f9b693f4e84c223ed865c2fd12af52e1a4d664a17fe0363563"
@@ -381,13 +433,17 @@
       "bytes": 707,
       "sha256": "53e5be1446c89d31a5e915855de7692ea1bb72c915d8058428bdf57670206994"
     },
+    "eidos/tests/test_owned_linear_training.py": {
+      "bytes": 10399,
+      "sha256": "f872e04239dd0264a65d3ac0ea05e586b214ba5d74fcc3797657ac6da4d57167"
+    },
     "eidos/tests/test_owned_training.py": {
       "bytes": 7591,
       "sha256": "3aee86c02318db70a059f7ac39af2d9736854a682d4fa619c6e74bb544f278f2"
     },
     "eidos/tools/smoke.py": {
-      "bytes": 12552,
-      "sha256": "d105cb9aeef7ab201018740a60e2036345fdc77604f08ddf86130c8704c6e7d7"
+      "bytes": 13113,
+      "sha256": "763dbab9bcb2fbb614182321592c89bfcad2ae87f68df6d6e0119c6fb55a2c16"
     },
     "eidos/web/eidos.js": {
       "bytes": 173,
@@ -410,6 +466,8 @@
       "sha256": "96475091d89f802cb0d58d088840c3b254b1155380dd7c97cef08f9aabd66a6c"
     }
   },
-  "format": "eidos-public-source-delivery-manifest-v1",
-  "original_src_blob_unchanged": true
+  "format": "eidos-public-source-delivery-manifest-v2",
+  "original_src_blob_unchanged": true,
+  "parent_commit": "8b02149c656340699741bdf210acd34adf3727e1",
+  "parent_manifest_sha256": "10bc9928f3ea807c7d8177c864c73c244947ea3afff0b1641ef40411811d7acf"
 }

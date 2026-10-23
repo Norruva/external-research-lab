@@ -24,4 +24,6 @@ REA passively inspected the 35-member owned-training source kit and the separate
 
 Dataset provenance: SNIPS `b86ac7f1577868c42158d0dec77db50956046696`, CC0-1.0, Coucke et al., Snips Voice Platform, 2018, arXiv 1805.10190. Intent labels are derived from file membership rather than the publisher's slot-filling task. CLINC support training uses `828f8093932c8fe6ca7936c3d2e52903b1c523de`, CC BY 3.0, Larson et al., EMNLP-IJCNLP 2019, D19-1131. Dataset authors do not endorse these results, and public licensed data are not exclusively owned.
 
+The new [own-data linear command](LINEAR-TRAINING.md) trains a fresh, zero-initialized full-batch softmax model using the standard library. It is a different recipe from the frozen Adam-trained primary artifact above. Its authored numerical/unit and real-service checks do not transfer this benchmark accuracy to newly trained models. No historical benchmark was rerun for that feature.
+
 JEV remains unmeasured. TypeSafe/JEV service access and model extraction are not authorized. Production certification, independent matched-adaptation cohorts, operational calibration/OOS risk, identity/TLS/security, drift/load operations and recovery objectives remain unresolved.

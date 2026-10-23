@@ -1,0 +1,69 @@
+{
+  "central_difference_coordinates": 9,
+  "complete": true,
+  "copied_files_unchanged": true,
+  "existing_imported_source_members_unchanged": 84,
+  "fixture_training_only": true,
+  "format": "eidos-owned-linear-implementation-validation-v1",
+  "frozen_compared_model_files_verified": {
+    "models/support-linear/model.json": "e6699121393bece9987ef480d4939f6669c5dc24c7ba72f233a4a574dd2252ba",
+    "models/support-linear/registry.json": "8d7c27451f81696d164fba515de12473b7b25972136a4248bc642f0ff9822e4a",
+    "models/support-linear/weights.f32": "d49ed69a13abaebc115e9c9518ea8b9059429d239c2ed029fa984d8b03b33430",
+    "models/support-memory/model.json": "3a8bd44b4637b136b919a67453b3449bbecbd9e64c7f59b2cbc81b3520912998",
+    "models/support-memory/registry.json": "266b9f1348b70d07a83a135c223e74fd8bbf1314079c00583d88adc44a4924a2",
+    "models/support-memory/support.sparse": "2e85fc0c69f133a1358bc500ad6030f44a3e437e1878b726836cd7f0cdb9a5d2"
+  },
+  "gradient_tolerance": 2e-09,
+  "historical_comparison_score_sha256_unchanged": "37c2cb58f605512159c4c9249037f640e89f9cc86e77b38afca822e22183e3e7",
+  "linear_smoke_checks": 16,
+  "memory_smoke_checks": 17,
+  "mission_complete": false,
+  "new_implementation_and_harness": {
+    "eidos/README.md": {
+      "bytes": 6295,
+      "sha256": "5cd8d64f4d8b89a2afce35576d1b65f67c5483f4dfea84ab7927a64aff8a8285"
+    },
+    "eidos/docs/LINEAR-TRAINING.md": {
+      "bytes": 5274,
+      "sha256": "47ce044e18e7b60840b046f7a91a77ef1f74e2c5b0348ca2e71cad6f0f2197d5"
+    },
+    "eidos/eidos/train_linear_support.py": {
+      "bytes": 10450,
+      "sha256": "8f11bea2acedaee670b43230eb45af13fa971602244bea83e0a6fef3866625b9"
+    },
+    "eidos/tests/test_owned_linear_training.py": {
+      "bytes": 10399,
+      "sha256": "f872e04239dd0264a65d3ac0ea05e586b214ba5d74fcc3797657ac6da4d57167"
+    },
+    "eidos/tools/smoke.py": {
+      "bytes": 13113,
+      "sha256": "763dbab9bcb2fbb614182321592c89bfcad2ae87f68df6d6e0119c6fb55a2c16"
+    }
+  },
+  "new_linear_test_methods": 12,
+  "new_training_recipe_is_frozen_benchmark_recipe": false,
+  "no_benchmark_or_reference_inference_scoring_or_bootstrap_repeated": true,
+  "offline_validation": {
+    "aggregate_cgroup_guarantee": false,
+    "benchmark_reference_inference_or_quality_scoring": false,
+    "complete": true,
+    "elapsed_seconds": 3.9340824579999207,
+    "existing_credentials_corpora_or_models_mounted": false,
+    "exit_code": 0,
+    "expected_refused_preflights": 1,
+    "memory_mib": 768,
+    "per_process_cpu_seconds": 120,
+    "private_loopback_connect_attempts": 65,
+    "source_files_verified": 104,
+    "source_manifest_sha256": "32717ebe29b26b952c9ee3a8458e08c173bc041266fa4c4dbfe802227d5c72f8",
+    "source_unchanged": true,
+    "unexpected_ip_connects": 0,
+    "wall_seconds_limit": 110
+  },
+  "operational_acceptance_enabled": false,
+  "parent_commit": "8b02149c656340699741bdf210acd34adf3727e1",
+  "production_certified": false,
+  "semantic_quality_calibration_or_rival_measurement_created": false,
+  "training_and_inference_standard_library_only": true,
+  "unit_methods": 24
+}

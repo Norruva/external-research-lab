@@ -14,4 +14,8 @@ These are completed cloud-run receipts and aggregate results, imported by hash. 
 
 Historical absolute paths and some snapshot links refer to the original cloud workspace. Do not automatically run its reference/fit/control scripts or treat old resource approvals as permission to repeat consumed evaluations. GitHub delivery checks are recorded separately in `repository-validation.json` after the source checkout is exercised.
 
+Latest implementation: [owned-linear validation](owned-linear/validation-result.json), with 24 unit methods, all nine finite-difference coordinates, 17 memory and 16 linear real-service smoke checks. [Linear training documentation](../docs/LINEAR-TRAINING.md). All 84 imported source members and six compared-model files remain unchanged. These authored-fixture checks establish implementation mechanics, not a new accuracy or rival result. The earlier `repository-validation.json` remains the historical initial source import.
+
+REA also passively inspected the [new 52-member linear-training source kit](owned-linear/source-kit-receipt.json); [independent hash/size review](owned-linear/rea-integrity-review.json) matched all members with complete coverage and no contradictions. [REA execution receipt](owned-linear/rea-summary.json). No target member was executed. The kit's report is a snapshot before this final index/update record; it is inspection material rather than a complete application checkout. The complete application source is the repository itself.
+
 REA identity inspection does not certify semantic quality, security, data rights or production operation. Existing positive, negative, failed-gate and failure evidence is retained. The current comparison summary is [EVALUATION.md](../docs/EVALUATION.md).
