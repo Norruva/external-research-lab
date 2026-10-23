@@ -1,0 +1,12 @@
+{
+  "archive": "/workspace/eidos/eidos-owned-comparison-research-v1.tar.gz",
+  "bytes": 126149,
+  "complete": true,
+  "files_verified": 71,
+  "manifest_sha256": "5881f012c823ed883c75028828e2210a10bef046d7ff00172fe61a557c02cf4f",
+  "mission_complete": false,
+  "new_model_quality_claim": false,
+  "prefix": "eidos-owned-comparison-research-v1",
+  "production_certified": false,
+  "sha256": "d22240cc6d5e7257d39f4d55ea8f652dad31a84ff76c910104a797abd7e0f038"
+}

@@ -1,0 +1,14 @@
+{
+  "complete": true,
+  "python": "3.13.5",
+  "stages": [
+    {
+      "name": "unit",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "f22cb891b4467106b72378042bce27e6c8d2cc346236d3ac93a652efa5d44fb1"
+    }
+  ],
+  "offline_namespace": true,
+  "fresh_temporary_state_only": true
+}

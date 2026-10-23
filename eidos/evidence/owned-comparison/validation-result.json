@@ -1,0 +1,145 @@
+{
+  "actual_cli_roles": [
+    "prepare",
+    "plan",
+    "left-predict",
+    "right-predict",
+    "score"
+  ],
+  "authored_fixture_training_prediction_metric_scoring_and_resampling_performed": true,
+  "automatic_model_promotion": false,
+  "code": {
+    "eidos/compare_owned.py": {
+      "bytes": 12465,
+      "sha256": "90f4c2fad97d9d002422478bdeaa0af49c68548854dae36308f404fd85097402"
+    },
+    "eidos/evaluate_owned.py": {
+      "bytes": 25848,
+      "sha256": "4168f5312f1dc40929050674dc2b3a576c5f907dad46c4941f24b6c48a1b6fed"
+    },
+    "eidos/paired_metrics.py": {
+      "bytes": 4201,
+      "sha256": "743af2e466b9c11f87ac60cbb782f5841be5cc1f0a0f5bc7995e583c652f9e7d"
+    },
+    "tests/test_owned_comparison.py": {
+      "bytes": 17279,
+      "sha256": "7de523c17a7affc21dd7c403e2715acde9dd3c68d5cde0b854a8a430e50c11b8"
+    }
+  },
+  "complete": true,
+  "format": "eidos-owned-paired-comparison-validation-v1",
+  "group_independence_or_fresh_holdout_verified": false,
+  "historical_or_rival_quality_experiment_repeated": false,
+  "independently_enumerated_cluster_draws": 4,
+  "laya_or_jev_importer_implemented": false,
+  "mission_complete": false,
+  "new_unit_methods": 15,
+  "parent_commit": "e2f39bd1d4cf54a7a6a1b9d6928862debba217c5",
+  "planning_gold_predictions_weights_and_text_absent": true,
+  "prediction_gold_absent": true,
+  "production_certified": false,
+  "roles": {
+    "aggregate_cgroup_guarantee": false,
+    "complete": true,
+    "elapsed_seconds": 3.1043261410000014,
+    "existing_credentials_used": false,
+    "historical_or_rival_quality_experiment_performed": false,
+    "models_trained_only_from_authored_demo": true,
+    "per_stage_cpu_seconds": 120,
+    "per_stage_memory_mib": 512,
+    "per_stage_wall_seconds": 35,
+    "quality_claim_from_demo": false,
+    "stages": [
+      {
+        "code_file_count": 26,
+        "code_unchanged": true,
+        "complete": true,
+        "elapsed_seconds": 1.6385036540000328,
+        "existing_credentials_or_benchmark_data_mounted": false,
+        "exit_code": 0,
+        "expected_refused_preflights": 1,
+        "only_authored_mechanical_fixtures": true,
+        "operating_system_file_role_boundary": true,
+        "role": "prepare",
+        "stdout_sha256": "9993409edfbfc6835b82aa7e88e58c11dc06d247114dbc9618f94db42dbb8491",
+        "unexpected_ip_connects": 0
+      },
+      {
+        "code_file_count": 26,
+        "code_unchanged": true,
+        "complete": true,
+        "elapsed_seconds": 0.31433630499986975,
+        "existing_credentials_or_benchmark_data_mounted": false,
+        "exit_code": 0,
+        "expected_refused_preflights": 1,
+        "only_authored_mechanical_fixtures": true,
+        "operating_system_file_role_boundary": true,
+        "role": "plan",
+        "stdout_sha256": "5db2dc55f6e103d10a298c3f3e82f60a39133d84c9af391bec530d164901617e",
+        "unexpected_ip_connects": 0
+      },
+      {
+        "code_file_count": 26,
+        "code_unchanged": true,
+        "complete": true,
+        "elapsed_seconds": 0.33724369200012916,
+        "existing_credentials_or_benchmark_data_mounted": false,
+        "exit_code": 0,
+        "expected_refused_preflights": 1,
+        "only_authored_mechanical_fixtures": true,
+        "operating_system_file_role_boundary": true,
+        "role": "left-predict",
+        "stdout_sha256": "1c833e804009840676f768ee9a8bff1becdab10753b260de1928ba819a0283a0",
+        "unexpected_ip_connects": 0
+      },
+      {
+        "code_file_count": 26,
+        "code_unchanged": true,
+        "complete": true,
+        "elapsed_seconds": 0.34471708200021567,
+        "existing_credentials_or_benchmark_data_mounted": false,
+        "exit_code": 0,
+        "expected_refused_preflights": 1,
+        "only_authored_mechanical_fixtures": true,
+        "operating_system_file_role_boundary": true,
+        "role": "right-predict",
+        "stdout_sha256": "60be084f2bc0e0ae21307420b30f4ca9600996a00023b16ccdc3735dadc20aad",
+        "unexpected_ip_connects": 0
+      },
+      {
+        "code_file_count": 26,
+        "code_unchanged": true,
+        "complete": true,
+        "elapsed_seconds": 0.460321421999879,
+        "existing_credentials_or_benchmark_data_mounted": false,
+        "exit_code": 0,
+        "expected_refused_preflights": 1,
+        "only_authored_mechanical_fixtures": true,
+        "operating_system_file_role_boundary": true,
+        "role": "score",
+        "stdout_sha256": "dfe25701c4a5c8c8c9278c2e1cb019a4c1fca024d4c01437f287789686b4962f",
+        "unexpected_ip_connects": 0
+      }
+    ]
+  },
+  "scoring_weights_and_case_text_absent": true,
+  "unit": {
+    "aggregate_cgroup_guarantee": false,
+    "authored_fixture_training_prediction_scoring_and_paired_statistics_performed": true,
+    "complete": true,
+    "elapsed_seconds": 7.354082127000083,
+    "existing_credentials_corpora_or_models_mounted": false,
+    "exit_code": 0,
+    "expected_refused_preflights": 1,
+    "historical_or_rival_quality_experiment_performed": false,
+    "memory_mib": 768,
+    "per_process_cpu_seconds": 120,
+    "private_loopback_connect_attempts": 0,
+    "source_files_verified": 170,
+    "source_manifest_sha256": "4bf6017be19f7ef1aad224c803a4c9706abd00eae22dd55da7b6b86d657d80ff",
+    "source_unchanged": true,
+    "unexpected_ip_connects": 0,
+    "wall_seconds_limit": 110
+  },
+  "unit_methods": 65
+}

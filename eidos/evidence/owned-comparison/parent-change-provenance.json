@@ -1,0 +1,64 @@
+{
+  "authored_fixture_training_prediction_scoring_performed": true,
+  "calibration_promotion_or_acceptance_enabled": false,
+  "code_and_document_changes": {
+    "eidos/README.md": {
+      "bytes": 7750,
+      "parent_sha256": "76e099604fcd1c935fb905107f805c6120cb61788c53e182ecacf468b9e01eed",
+      "sha256": "d4023fe80581b76192b5586bd8a871b3e4e91147a48b94cfc8d8158f389c92c3"
+    },
+    "eidos/docs/EVALUATION.md": {
+      "bytes": 6050,
+      "parent_sha256": "715afcac76bdc4a3a14dd9b2195516816090a54b79fafb384b6a6faf3de3c63e",
+      "sha256": "8cea24394dcd1919f4a8c3152c2e6c5b61373996427e165c106758715cbcfad5"
+    },
+    "eidos/docs/LINEAR-TRAINING.md": {
+      "bytes": 7739,
+      "parent_sha256": "47ce044e18e7b60840b046f7a91a77ef1f74e2c5b0348ca2e71cad6f0f2197d5",
+      "sha256": "c784a74dbb658679174457a4d15d00ec12b98850f9b89d593055046d49e85f70"
+    },
+    "eidos/docs/OWNED-EVALUATION.md": {
+      "bytes": 8392,
+      "parent_sha256": "ff5afc6929b01093bbe59173be907775f4dff3f1eadc38b3fd18d4298afa1cfd",
+      "sha256": "997b2ef2f3cf9b9c43a6404d4fc2fd9bd85fc976979f2de72f62eb1073dfcf18"
+    },
+    "eidos/eidos/train_linear_support.py": {
+      "bytes": 13563,
+      "parent_sha256": "8f11bea2acedaee670b43230eb45af13fa971602244bea83e0a6fef3866625b9",
+      "sha256": "a6363df14b085d0172210ebad8345a79b6ada36c0088d23a8d1585930e806e5f"
+    },
+    "eidos/evidence/README.md": {
+      "bytes": 5946,
+      "parent_sha256": "8120f211a891ca3f690f59ede639df5cd5e729297a814a75983df661edf1b0fe",
+      "sha256": "7ac28c6d9187f65bb21c9810bcde717bea63986ac34bff73eb8099aa26bb101e"
+    },
+    "eidos/tests/test_owned_adam_training.py": {
+      "bytes": 9081,
+      "sha256": "e0ed713c0ce3776bc9453fd724622fcd121408768e15478b8a2f2f09917cdd5a"
+    },
+    "eidos/tools/smoke.py": {
+      "bytes": 13221,
+      "parent_sha256": "763dbab9bcb2fbb614182321592c89bfcad2ae87f68df6d6e0119c6fb55a2c16",
+      "sha256": "caa8b005e78da1cf3129e964ac6daf8856207759fc61dfbe1316c843519bc286"
+    }
+  },
+  "default_gd_demo_four_artifacts_match_parent": true,
+  "existing_imported_source_members_unchanged": 84,
+  "final_rea_source_members_matched": 69,
+  "format": "eidos-owned-adam-source-change-v1",
+  "historical_or_rival_quality_experiment_repeated": false,
+  "inference_service_browser_api_and_frozen_models_changed": false,
+  "isolated_adam_evaluation_cli_stages": 3,
+  "mission_complete": false,
+  "new_unit_methods": 10,
+  "parent_change_provenance_sha256": "a515685e745c8e0f9e2b16a53c858eff765701e67d1436f14c0f91e6711c635e",
+  "parent_commit": "3e9644c22f3d1f02f45be23a910c26f053982318",
+  "production_certified": false,
+  "real_service_smoke_checks": {
+    "adam": 16,
+    "gradient_descent": 16,
+    "memory": 17
+  },
+  "source_kit_sha256": "d9409d99e604bed2a958aae9bb0945f966e6814dba4b616fa6b2ec440692444c",
+  "unit_methods": 50
+}

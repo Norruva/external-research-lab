@@ -334,9 +334,8 @@ def predict(registry_path, input_path, output_path):
     return receipt
 
 
-def score(plan_path, gold_path, prediction_path, output_path):
-    start = (time.process_time(), time.monotonic())
-    output = new_output(output_path)
+def completed_rows(plan_path, gold_path, prediction_path, start):
+    """Validate complete bound numeric artifacts; no inference, fitting or writes."""
     plan, plan_sha = load_plan(plan_path)
     gold_path, prediction_path = Path(gold_path), Path(prediction_path)
     binding_raw = read(gold_path / 'binding.json', MAX_INPUT)
@@ -393,11 +392,19 @@ def score(plan_path, gold_path, prediction_path, output_path):
             raise EvaluationError('inconsistent_prediction_or_policy')
         rows.append({**prediction, 'label': truth['label']})
         budget(start)
-    metrics = summarize(rows, labels)
+    identities = {'plan_sha256': plan_sha, 'model_identity': plan['model_identity'],
+                  'predictions_sha256': digest(pred_raw), 'gold_sha256': digest(gold_raw),
+                  'gold_binding_sha256': digest(binding_raw)}
+    return plan, rows, identities, binding
+
+
+def score(plan_path, gold_path, prediction_path, output_path):
+    start = (time.process_time(), time.monotonic())
+    output = new_output(output_path)
+    plan, rows, identities, _ = completed_rows(plan_path, gold_path, prediction_path, start)
+    metrics = summarize(rows, plan['labels'])
     result = {'format': 'eidos-owned-evaluation-result-v1', 'complete': True, 'metrics': metrics,
-              'plan_sha256': plan_sha, 'model_identity': plan['model_identity'],
-              'predictions_sha256': digest(pred_raw), 'gold_sha256': digest(gold_raw),
-              'gold_binding_sha256': digest(binding_raw),
+              **identities,
               'source_speaker_paraphrase_or_fresh_holdout_independence_verified': False,
               'model_weights_or_source_text_read_for_scoring': False,
               'fit_calibration_promotion_or_rival_comparison_performed': False,

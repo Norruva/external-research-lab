@@ -1,0 +1,17 @@
+{
+  "all_member_hashes_and_sizes_match": true,
+  "complete": true,
+  "coverage": {
+    "scope": "container-entries",
+    "status": "complete"
+  },
+  "evidence_id": "ev_237d6df63d6965be5e1e9083f8bbe3c2a95a45ad015d3ed235b0477c44de7600",
+  "evidence_sha256": "d807567ab417e0d5e116b82331f490065958289d8d2bbb2b8c11a58d63d93708",
+  "format": "eidos-owned-comparison-rea-integrity-review-v1",
+  "graph_nodes": 72,
+  "integrity_contradictions": [],
+  "member_count": 71,
+  "quality_security_rights_or_independence_certification": false,
+  "target_member_execution": false,
+  "tooling_source_commit": "e09a503f44fba1639b71907a018d71161360f5ae"
+}

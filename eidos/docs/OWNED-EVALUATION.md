@@ -61,6 +61,8 @@ The report distinguishes **candidate accuracy** from accepted answers. It includ
 
 All supported registries have disabled acceptance gates: accepted coverage is zero and selective accuracy is null. Candidate probabilities remain uncalibrated. These descriptive metrics do not fit a calibration policy or authorize actions. No confidence intervals, population guarantees, model promotion or threshold selection are produced.
 
+For a two-model comparison, [OWNED-COMPARISON.md](OWNED-COMPARISON.md) documents a separate plan/score workflow with explicit case groups and individual approximate paired-bootstrap intervals. It requires identical cases, offered labels and support/provenance hashes. Its numeric rule is descriptive; neither workflow establishes untouched data or group independence, and no model is promoted.
+
 Exact ID/text separation does not establish template, speaker, source, paraphrase, semantic or untouched-holdout independence. The tool cannot know every prior use of a dataset or prevent outcome-informed model selection. Evaluation outcomes become revealed when scored. Choose and freeze training/evaluation roles, recipe, candidate inventory, metrics and comparison protocol before examining outcomes; retain all failed/negative results. Existing revealed project benchmarks remain consumed and must not be called fresh or reused to select a later recipe.
 
 ## Bounds and privacy

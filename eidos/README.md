@@ -64,6 +64,8 @@ The new [owned evaluation workflow](docs/OWNED-EVALUATION.md) provides explicit 
 
 Its authored four-case demo is for mechanics only. Exact overlap refusal does not verify source/paraphrase independence, unseen holdout status, calibrated confidence or semantic quality. Reports retain zero accepted coverage for these review-only models. No existing revealed benchmark was rerun for this feature.
 
+[Paired comparison](docs/OWNED-COMPARISON.md) now freezes two owned models against the same cases, labels and labeled supports before prediction, then scores complete streams using whole caller-declared groups. It reports accuracy/macro-F1 differences and individual approximate bootstrap intervals. Group independence and untouched outcomes are not verified; the numeric rule does not promote a model or establish general superiority.
+
 ## Verify the checkout
 
 From this directory:

@@ -30,4 +30,6 @@ The command also offers an original bias-corrected `--optimizer adam` option. It
 
 [Owned evaluation](OWNED-EVALUATION.md) now provides a separate versioned prepare/predict/score workflow for new caller-trained registries. Its arithmetic and file-role tests use authored fixtures; no historical comparison was repeated. It does not prove that caller data are untouched or independent, and its descriptive metrics do not create a new LAYA/JEV result.
 
+[Owned paired comparison](OWNED-COMPARISON.md) adds reusable protocol binding and whole-group resampling for two newly evaluated owned models. It verifies complete paired scope and reports individual approximate accuracy/macro-F1 difference intervals; no LAYA/JEV importer is implemented in that command. Its authored arithmetic and isolated CLI checks do not rescore the preserved comparison above or provide new rival evidence.
+
 JEV remains unmeasured. TypeSafe/JEV service access and model extraction are not authorized. Production certification, independent matched-adaptation cohorts, operational calibration/OOS risk, identity/TLS/security, drift/load operations and recovery objectives remain unresolved.
