@@ -1,0 +1,105 @@
+{
+  "authored_fixture_only": false,
+  "cohort_files": {
+    "development.jsonl": {
+      "bytes": 105890,
+      "sha256": "fd4bc4dce5b80907163be63a0b36a379b9032ff5005b7e37c8c1c5a4549c9abc"
+    },
+    "labels.json": {
+      "bytes": 219,
+      "sha256": "da28f812c4c419b82cd1825f519a2e91c921aa894a80a0c85b1c821aaf697408"
+    },
+    "provenance.json": {
+      "bytes": 420,
+      "sha256": "0ba7cd3118350ff7686ae99c8a5c7ea19edcbe526910a18dd2ea52bc370b38c9"
+    },
+    "support.jsonl": {
+      "bytes": 100459,
+      "sha256": "6bd04412eda7583e037426cef37136bdb98f8e79ae8f6ec0aa55f8237688f766"
+    },
+    "test-gold.jsonl": {
+      "bytes": 14120,
+      "sha256": "4bc3cd776599665c7b70e087d8d497551da2da5a4d4cc94dec34813d6b02c8d0"
+    },
+    "test-groups.jsonl": {
+      "bytes": 33040,
+      "sha256": "003d57abf2dd9319cd4dbc10582da2cbd51d6a423f41cda986bfb4a284fd7f5f"
+    },
+    "test-inputs.jsonl": {
+      "bytes": 94595,
+      "sha256": "4d24f10e0b7f76e844b11e597e2e36ad7ffb634830c02d3940e9e9f32b8573c6"
+    }
+  },
+  "cohort_readiness_sha256": "cb75db069f14488c2accd5dce48522b7c232917baed7e25d132b35bde90100ba",
+  "format": "eidos-dbpedia-independent-study-config-v1",
+  "labels": [
+    "Album",
+    "Animal",
+    "Artist",
+    "Athlete",
+    "Building",
+    "Company",
+    "EducationalInstitution",
+    "Film",
+    "MeanOfTransportation",
+    "NaturalPlace",
+    "OfficeHolder",
+    "Plant",
+    "Village",
+    "WrittenWork"
+  ],
+  "max_total_windows": 1120,
+  "max_windows_per_case": 16,
+  "model_promoted_or_acceptance_enabled": false,
+  "n": 280,
+  "paired_replicates": 1000,
+  "paired_seed": 113,
+  "prompt": "Classify this encyclopedia article into one of the offered categories.",
+  "recipe_order": [
+    "memory",
+    "linear_gd",
+    "linear_adam"
+  ],
+  "recipes": {
+    "linear_adam": {
+      "epochs": 12,
+      "l2": 2e-05,
+      "learning_rate": 0.12,
+      "method": "existing_owned_linear",
+      "optimizer": "adam"
+    },
+    "linear_gd": {
+      "epochs": 12,
+      "l2": 0.0001,
+      "learning_rate": 1.0,
+      "method": "existing_owned_linear",
+      "optimizer": "gradient_descent"
+    },
+    "memory": {
+      "method": "existing_owned_support_memory",
+      "supports_per_class": 20
+    }
+  },
+  "reference": {
+    "model_revision": "1c5edc17a7acd8701df6fc341c0d179f1c62c982",
+    "source_commit": "ca5045a3f1fac06fc6daa5cf3371110f322f5255",
+    "weight_sha256": "891102d372688fc2a094dac56a384bc537b87c63f21f9f3dac0be2b7cbc8d86c"
+  },
+  "reference_aliases": {
+    "Album": "album",
+    "Animal": "animal",
+    "Artist": "artist",
+    "Athlete": "athlete",
+    "Building": "building",
+    "Company": "company",
+    "EducationalInstitution": "educational_institution",
+    "Film": "film",
+    "MeanOfTransportation": "mean_of_transportation",
+    "NaturalPlace": "natural_place",
+    "OfficeHolder": "office_holder",
+    "Plant": "plant",
+    "Village": "village",
+    "WrittenWork": "written_work"
+  },
+  "selection": "Development macro-F1, accuracy, negative NLL, then fixed recipe order; no extra fit or test-based change."
+}

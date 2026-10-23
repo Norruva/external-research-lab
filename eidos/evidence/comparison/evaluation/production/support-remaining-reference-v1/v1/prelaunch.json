@@ -1,0 +1,61 @@
+{
+  "aggregate_cgroup_guarantee": false,
+  "authorization_sha256": "fa1be2d5dcfb3d34df7c29a89ea271685d3037c03186e0882768e5afabf02b62",
+  "automatic_retry": false,
+  "complete": true,
+  "files": {
+    "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/application-manifest.json": "de9b58d66d018fbdc3743d229d2b44d236a24d98295f2afae69891cb353ad27c",
+    "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/code-manifest.json": "8eee30e3464d4577593dc0df6667659d7a8b71f22a37428e23f08a07500e351e",
+    "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/laya-model-manifest.json": "cc0fa8b30eac9b56bae2fd3f3ffadac4ecce62787b7a8db289714b8ea8b02b6e",
+    "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/laya-source-manifest.json": "0f5d15c6b9556bf8e321f4ff3846cdac41decb89f0cdc3b90099015930eacbe2",
+    "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/rights.json": "10253c0d9166e97137e70747169d15b94bec7b283b893edac3309171c93ecfe4",
+    "/workspace/eidos/evaluation/production/reference-install-v1/v2/dependency-inventory.json": "7d1281d165d595371a1b336becc2fe6f0f923e5a64fb259af176de10a5c3dcc9",
+    "/workspace/eidos/evaluation/production/support-reference-v1/v1/execution-summary.json": "5bd2fed85b42f5387b31dc2ae39d351531bf3f410ab649dbe6bef10cdf0fe14d",
+    "/workspace/eidos/evaluation/production/support-reference-v1/v1/score/data/result.json": "8693a5305f88c7fb141694761022b9223693e2893ea429312ea9e3e8af857b2e",
+    "/workspace/eidos/prepare_support_remaining_reference_v1.py": "a1920459af6bcf8290ad38b310522e1db9af57d5e00862770dbeb016b51dd9d8",
+    "/workspace/eidos/research/production/reference-snips-remaining-resource-plan-v1.json": "26a1241ffbb94c8d7a846ba15bd06283f2ff54f0cc5d255cbb91638bfbd98144",
+    "/workspace/eidos/research/support-reference-v1/prepared-manifest-v1.json": "d2717b3fbe6778a07243fb8cd084f064a649478d8db0a9c2b58165f25fc3bbb3",
+    "/workspace/eidos/research/support-remaining-reference-v1/PROTOCOL.md": "ef76a80795e5904dbcb122a2e57c8e59df634203a6585908e9dad4b502280a14",
+    "/workspace/eidos/research/support-remaining-reference-v1/authorization-v1.json": "fa1be2d5dcfb3d34df7c29a89ea271685d3037c03186e0882768e5afabf02b62",
+    "/workspace/eidos/research/support-remaining-reference-v1/cohort-selection.json": "7525bc5a6eb678455b274726282fee72e735271e709f0052af238ae18a2557ea",
+    "/workspace/eidos/research/support-remaining-reference-v1/control.py": "c6d56b4d46ae9e5d737f4fae6ec5603d76680086aa5d6aebc3d48dfd9d57e2fa",
+    "/workspace/eidos/research/support-remaining-reference-v1/eidos.jsonl": "88d97ad882cf5d456369a45253d43843c1269a3745747b181a856199334134be",
+    "/workspace/eidos/research/support-remaining-reference-v1/gold.jsonl": "9d557d912a7480f879ce5bb256307f39c42f162067f94fb730b189684430a10a",
+    "/workspace/eidos/research/support-remaining-reference-v1/inputs.jsonl": "7e13aaa495a34647a1beb74a051ca3d188d33c021788ced2291f1bb4a4289a85",
+    "/workspace/eidos/research/support-remaining-reference-v1/labels.json": "942943728a93a025b700816eed212145e75ad7eabc909aeedaf60ef604d62370",
+    "/workspace/eidos/research/support-remaining-reference-v1/prepared-manifest-v1.json": "1714632d1b5f863dcbed0c0a5c7962b05f15a332ddb874be6054b0c7c264c97a",
+    "/workspace/eidos/research/support-remaining-reference-v1/primary_predict.py": "4e863c06c68a041c03f1ef53699a524a0535978a40d8ca27edb7571286938509",
+    "/workspace/eidos/research/support-remaining-reference-v1/statistics.py": "7e1f2b9e72df9448d3550cdb4756b99fbef8ca4cf7a75dc9d93a57a63f1108db",
+    "/workspace/eidos/research/support-remaining-reference-v1/test_reference.py": "0818e74386e2bb1dcc614a16c8e9a0d2c66a9daa647f2d0e9b8f33aace2901c3",
+    "/workspace/eidos/run_support_remaining_reference_v1.py": "786549c9970fcbba43d9eaa79fab08096a9f0bfad50f484debd85a1d5f9489d5"
+  },
+  "planned_cpu_seconds": 3600,
+  "trees": {
+    "application": {
+      "manifest": "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/application-manifest.json",
+      "root": "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/application",
+      "sha256": "de9b58d66d018fbdc3743d229d2b44d236a24d98295f2afae69891cb353ad27c"
+    },
+    "code": {
+      "manifest": "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/code-manifest.json",
+      "root": "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/code",
+      "sha256": "8eee30e3464d4577593dc0df6667659d7a8b71f22a37428e23f08a07500e351e"
+    },
+    "deps": {
+      "manifest": "/workspace/eidos/evaluation/production/reference-install-v1/v2/dependency-inventory.json",
+      "root": "/workspace/eidos/evaluation/production/reference-install-v1/v2/deps",
+      "sha256": "7d1281d165d595371a1b336becc2fe6f0f923e5a64fb259af176de10a5c3dcc9"
+    },
+    "laya-source": {
+      "manifest": "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/laya-source-manifest.json",
+      "root": "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/laya-source",
+      "sha256": "0f5d15c6b9556bf8e321f4ff3846cdac41decb89f0cdc3b90099015930eacbe2"
+    },
+    "model": {
+      "manifest": "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/laya-model-manifest.json",
+      "root": "/workspace/eidos/research/production/laya-reference-1c5edc17a7acd8701df6fc341c0d179f1c62c982-v8",
+      "sha256": "cc0fa8b30eac9b56bae2fd3f3ffadac4ecce62787b7a8db289714b8ea8b02b6e"
+    }
+  },
+  "whole_wall_seconds": 5400
+}

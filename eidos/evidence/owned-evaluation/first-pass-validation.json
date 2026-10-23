@@ -1,0 +1,173 @@
+{
+  "complete": true,
+  "explicit_authored_source_files_used": true,
+  "format": "eidos-owned-evaluation-implementation-validation-v1",
+  "frozen_compared_model_files_verified": {
+    "models/support-linear/model.json": "e6699121393bece9987ef480d4939f6669c5dc24c7ba72f233a4a574dd2252ba",
+    "models/support-linear/registry.json": "8d7c27451f81696d164fba515de12473b7b25972136a4248bc642f0ff9822e4a",
+    "models/support-linear/weights.f32": "d49ed69a13abaebc115e9c9518ea8b9059429d239c2ed029fa984d8b03b33430",
+    "models/support-memory/model.json": "3a8bd44b4637b136b919a67453b3449bbecbd9e64c7f59b2cbc81b3520912998",
+    "models/support-memory/registry.json": "266b9f1348b70d07a83a135c223e74fd8bbf1314079c00583d88adc44a4924a2",
+    "models/support-memory/support.sparse": "2e85fc0c69f133a1358bc500ad6030f44a3e437e1878b726836cd7f0cdb9a5d2"
+  },
+  "independent_hand_calculated_metric_fixture": true,
+  "isolated_cli_stages": 6,
+  "legacy_unit_wrapper_no_quality_field_scope": "No historical/real/rival benchmark or reference quality experiment; authored unit/demo metrics are deliberately computed.",
+  "methods": [
+    "memory",
+    "linear"
+  ],
+  "mission_complete": false,
+  "new_evaluation_test_methods": 15,
+  "new_source": {
+    "eidos/evaluate_owned.py": {
+      "bytes": 24649,
+      "sha256": "bdae3f75a87a97ee047c5636687f932e688010ab3188652486ba2e230a9249f7"
+    },
+    "eidos/owned_metrics.py": {
+      "bytes": 3099,
+      "sha256": "20598bb08fad67be4bc2d3ad85f9dd1e3c525141f9070d5e902875c06f92a93f"
+    },
+    "tests/test_owned_evaluation.py": {
+      "bytes": 15103,
+      "sha256": "e75a1df6989f7eca4fd075fe1b451bcae9829c88f1a9dc79910c0322d0044ad5"
+    }
+  },
+  "no_unexpected_ip_connects": true,
+  "old_benchmark_inference_scoring_bootstrap_or_refit_repeated": false,
+  "only_authored_fixture_training_prediction_and_metric_scoring_performed": true,
+  "operating_system_isolation_automatic_in_portable_cli": false,
+  "original_imported_source_members_unchanged": 84,
+  "parent_commit": "2441c98d0d842d0f3d1f0f26ef8a91e8240f689e",
+  "prediction_os_namespace_without_gold": true,
+  "private_data_or_existing_credentials_used": false,
+  "production_certified": false,
+  "real_semantic_quality_calibration_or_rival_measurement_created": false,
+  "reference_score_sha256_unchanged": "37c2cb58f605512159c4c9249037f640e89f9cc86e77b38afca822e22183e3e7",
+  "role_execution": {
+    "aggregate_cgroup_guarantee": false,
+    "complete": true,
+    "elapsed_seconds": 1.5264396380000562,
+    "models_trained_only_from_authored_demo": true,
+    "new_keys_or_existing_credentials_used": false,
+    "per_stage_cpu_seconds": 120,
+    "per_stage_memory_mib": 512,
+    "per_stage_wall_seconds": 35,
+    "quality_claim_from_demo": false,
+    "separate_prediction_without_gold": true,
+    "separate_scoring_without_models_or_case_text": true,
+    "stages": [
+      {
+        "code_file_count": 24,
+        "code_unchanged": true,
+        "complete": true,
+        "elapsed_seconds": 0.2780797339999026,
+        "existing_credentials_or_benchmark_data_mounted": false,
+        "exit_code": 0,
+        "expected_refused_preflights": 1,
+        "only_authored_mechanical_fixtures": true,
+        "operating_system_file_role_boundary": true,
+        "role": "prepare",
+        "stdout_sha256": "a57b5c3c0f6b6907323f07ce40cb3acc2bd94c62f2a5e8589872863a20c72484",
+        "trainer": "memory",
+        "unexpected_ip_connects": 0
+      },
+      {
+        "code_file_count": 24,
+        "code_unchanged": true,
+        "complete": true,
+        "elapsed_seconds": 0.21016218199997638,
+        "existing_credentials_or_benchmark_data_mounted": false,
+        "exit_code": 0,
+        "expected_refused_preflights": 1,
+        "only_authored_mechanical_fixtures": true,
+        "operating_system_file_role_boundary": true,
+        "role": "predict",
+        "stdout_sha256": "3917ddf8247ae6e3840b3276b883e6776a2f2f4cbbd0519f0300822341ed9b5c",
+        "trainer": "memory",
+        "unexpected_ip_connects": 0
+      },
+      {
+        "code_file_count": 24,
+        "code_unchanged": true,
+        "complete": true,
+        "elapsed_seconds": 0.15785625100011202,
+        "existing_credentials_or_benchmark_data_mounted": false,
+        "exit_code": 0,
+        "expected_refused_preflights": 1,
+        "only_authored_mechanical_fixtures": true,
+        "operating_system_file_role_boundary": true,
+        "role": "score",
+        "stdout_sha256": "e8bb873a59d6bd54300c5ece14b1ab4ea53dfbb445b2cdd94b612d26f42b4781",
+        "trainer": "memory",
+        "unexpected_ip_connects": 0
+      },
+      {
+        "code_file_count": 24,
+        "code_unchanged": true,
+        "complete": true,
+        "elapsed_seconds": 0.4983915259999776,
+        "existing_credentials_or_benchmark_data_mounted": false,
+        "exit_code": 0,
+        "expected_refused_preflights": 1,
+        "only_authored_mechanical_fixtures": true,
+        "operating_system_file_role_boundary": true,
+        "role": "prepare",
+        "stdout_sha256": "56650bbc6e9aaff1df18f8d7f4c650a1acd2dd5f2221853fbfa9704050f34b5a",
+        "trainer": "linear",
+        "unexpected_ip_connects": 0
+      },
+      {
+        "code_file_count": 24,
+        "code_unchanged": true,
+        "complete": true,
+        "elapsed_seconds": 0.21147856900006445,
+        "existing_credentials_or_benchmark_data_mounted": false,
+        "exit_code": 0,
+        "expected_refused_preflights": 1,
+        "only_authored_mechanical_fixtures": true,
+        "operating_system_file_role_boundary": true,
+        "role": "predict",
+        "stdout_sha256": "76ac0a625e19efae5e8ebf21b98cdb29d529e3a82e297cf9fb582984a65f0742",
+        "trainer": "linear",
+        "unexpected_ip_connects": 0
+      },
+      {
+        "code_file_count": 24,
+        "code_unchanged": true,
+        "complete": true,
+        "elapsed_seconds": 0.16056068099987897,
+        "existing_credentials_or_benchmark_data_mounted": false,
+        "exit_code": 0,
+        "expected_refused_preflights": 1,
+        "only_authored_mechanical_fixtures": true,
+        "operating_system_file_role_boundary": true,
+        "role": "score",
+        "stdout_sha256": "afdafae5171c886f1094627f965cba6c21b29fa4370e6b0d37c44789316beeaf",
+        "trainer": "linear",
+        "unexpected_ip_connects": 0
+      }
+    ],
+    "unit_or_stage_reference_benchmark_run": false
+  },
+  "score_os_namespace_without_model_or_source_case_text": true,
+  "source_speaker_paraphrase_or_fresh_holdout_independence_verified": false,
+  "unit_execution": {
+    "aggregate_cgroup_guarantee": false,
+    "benchmark_reference_inference_or_quality_scoring": false,
+    "complete": true,
+    "elapsed_seconds": 2.244979222999973,
+    "existing_credentials_corpora_or_models_mounted": false,
+    "exit_code": 0,
+    "expected_refused_preflights": 1,
+    "memory_mib": 768,
+    "per_process_cpu_seconds": 120,
+    "private_loopback_connect_attempts": 0,
+    "source_files_verified": 120,
+    "source_manifest_sha256": "7a2bec2cb8322b97a848db32cd865a16c8deb113c44b137ad70e0dde30809f20",
+    "source_unchanged": true,
+    "unexpected_ip_connects": 0,
+    "wall_seconds_limit": 110
+  },
+  "unit_methods": 39
+}

@@ -1,0 +1,20 @@
+{
+  "complete": false,
+  "python": "3.13.5",
+  "stages": [
+    {
+      "name": "unit",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "1889f469751d539208cecea3d4868ae2dd0017c36e5b72d656863198f0e63ae9"
+    },
+    {
+      "name": "smoke",
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "80550bb43f4f763783dff911a3d1bf997ec2bc3499c198612284db595b35fe13"
+    }
+  ],
+  "offline_namespace": true,
+  "fresh_temporary_state_only": true
+}

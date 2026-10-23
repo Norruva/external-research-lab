@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "python": "3.13.5",
+  "stages": [
+    {
+      "name": "unit",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "7ff0f44fd07cd2381fba19efef0ba1b69d6ff0d49be7ce771837ca32aa9c9393"
+    },
+    {
+      "name": "smoke-memory",
+      "exit_code": 0,
+      "stdout_sha256": "e58e7faf795ed0150acc36186770092860987ff8f154be8a821473584e139bab",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "smoke-linear",
+      "exit_code": 0,
+      "stdout_sha256": "fc9e69afd645ad41eceed7991a2843b2876dc4763fac8f58055350cdbffe8170",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "offline_namespace": true,
+  "fresh_temporary_state_only": true
+}

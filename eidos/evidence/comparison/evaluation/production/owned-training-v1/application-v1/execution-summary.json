@@ -1,0 +1,68 @@
+{
+  "format": "eidos-owned-training-application-execution-v1",
+  "complete": true,
+  "exit_code": 0,
+  "elapsed_seconds": 20.185971912000014,
+  "input_sha256": {
+    "/workspace/eidos/eidos-owned-training-application-v1.tar.gz": "867ca3233a32133f95338d8a51efc8f677649b57ea7eb01f966ea03fa7eee4bb",
+    "/workspace/eidos/controls/owned-training-application-v1/application_control.py": "0fbb7ffc192789e570ae49c2b56170e2119beed68aa25d182c0828b456bceae4",
+    "/workspace/eidos/run_owned_training_application_v1.py": "36cc5c8d901dfcd6080ecb4167f1cf41261ce926a40a3e89863b943f574cf89b"
+  },
+  "inputs_unchanged": true,
+  "archive_sha256": "867ca3233a32133f95338d8a51efc8f677649b57ea7eb01f966ea03fa7eee4bb",
+  "manifest_sha256": "87259828c5bb676295e622d2956f3365a6bf155b2ed20ca576aba32eecf1dbdd",
+  "serving_change": "None; new stdlib training CLI and authored fixtures; existing inference/service/browser/API and five preinstalled models unchanged",
+  "integration_control_unchanged": false,
+  "integration_control_adaptation": "Exact138-file manifest, support-memory profile,five profile CLI checks,5explanation,8scope and8owned-training CLI assertions; active freshly trained two-class service;18API/11browser/9recovery assertions retained",
+  "control_overrides": {
+    "PREFIX": "eidos-owned-training-v1",
+    "CDP.call": "nonmutating sanitized failure diagnostics; all original return values/assertions preserved"
+  },
+  "verification": {
+    "fresh_result_complete": true,
+    "all_138_files_verified": true,
+    "owned_training_cli_8": true,
+    "five_profile_clis": true,
+    "explanation_cli_5": true,
+    "scope_cli_8": true,
+    "api_lifecycle_18": true,
+    "actual_chromium_11": true,
+    "actual_recovery_9": true,
+    "services_stopped": true,
+    "source_unchanged": true,
+    "exact_archive_binding": true,
+    "no_new_quality_evaluation": true,
+    "one_expected_refused_preflight": true,
+    "no_unclassified_or_unresolved_ip_connect": true
+  },
+  "fresh_api_browser_recovery_checks": {
+    "api_lifecycle": 18,
+    "chromium": 11,
+    "recovery": 9
+  },
+  "boot_id": "c38fe5b4-b75b-4e21-9ccc-d206c217bbf9",
+  "private_namespace_tmpfs_keys_and_state_destroyed_on_exit": true,
+  "existing_credentials_or_corpora_mounted": false,
+  "network": {
+    "ip_connect_attempts": 156,
+    "private_loopback_attempts": 154,
+    "expected_refused_preflight": 1,
+    "refused_chromium_ipv6_reachability_probes": 1,
+    "unclassified_ip_connect_attempts": 0,
+    "unresolved_connect_calls": 0,
+    "socket_payloads_logged": false
+  },
+  "limits": {
+    "wall_seconds": 180,
+    "per_process_cpu_seconds": 240,
+    "worker_cpu_seconds": 120,
+    "worker_address_space_mib": 512,
+    "browser_address_space_cap": null,
+    "aggregate_cpu_cap": false
+  },
+  "result_sha256": "4ae44dd2c991ecfd65c28dc3103fd64a89834df924cd5c30f6e1e6d60bb21a87",
+  "model_refitted_or_promoted": false,
+  "reference_or_benchmark_execution": false,
+  "mission_complete": false,
+  "production_certified": false
+}

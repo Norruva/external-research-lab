@@ -1,0 +1,14 @@
+{
+  "archive": "/workspace/eidos/eidos-snips-remaining-evidence-v1.tar.gz",
+  "bytes": 41524,
+  "complete": true,
+  "confirmatory_or_general_superiority": false,
+  "files_verified": 32,
+  "manifest_sha256": "30ad160ec6e504961e6e89a70de5ee4da251ca557a264e6e2610feccddf455b4",
+  "mission_complete": false,
+  "model_promoted": false,
+  "prefix": "eidos-snips-remaining-evidence-v1",
+  "primary_scoped_gates_passed": true,
+  "production_certified": false,
+  "sha256": "6eccd245f209f369c1e8a6e0cf6a7b9e27b4236dfa61b2f131334c6dac8ec0f4"
+}

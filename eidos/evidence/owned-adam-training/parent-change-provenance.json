@@ -1,0 +1,68 @@
+{
+  "authored_fixture_training_prediction_scoring_performed": true,
+  "calibration_promotion_or_acceptance_enabled": false,
+  "code_and_document_changes": {
+    ".gitignore": {
+      "bytes": 174,
+      "parent_sha256": "b468c6049ca38a05600e0d765b672b55b52347fd0ff3e38a29d51a99740a3c65",
+      "sha256": "94ff3fad41365af86e41a4a3f69805172703ce961a65ad4723a7986068e93ae7"
+    },
+    "eidos/README.md": {
+      "bytes": 7325,
+      "parent_sha256": "620598bfede409f16cd00e9b735c983685772a7e6c1bb8292f4fd55ed49d4a14",
+      "sha256": "76e099604fcd1c935fb905107f805c6120cb61788c53e182ecacf468b9e01eed"
+    },
+    "eidos/docs/EVALUATION.md": {
+      "bytes": 5684,
+      "parent_sha256": "1fe5c1e6346cab8583dbb845bd1bc2f681c9a99ac0668f06707795fdcff8820c",
+      "sha256": "715afcac76bdc4a3a14dd9b2195516816090a54b79fafb384b6a6faf3de3c63e"
+    },
+    "eidos/docs/OWNED-EVALUATION.md": {
+      "bytes": 8099,
+      "sha256": "ff5afc6929b01093bbe59173be907775f4dff3f1eadc38b3fd18d4298afa1cfd"
+    },
+    "eidos/eidos/evaluate_owned.py": {
+      "bytes": 25510,
+      "sha256": "beb0688d29230d4b77804b3046869432aca836ea004b3acda58534c9cd621131"
+    },
+    "eidos/eidos/owned_metrics.py": {
+      "bytes": 3099,
+      "sha256": "20598bb08fad67be4bc2d3ad85f9dd1e3c525141f9070d5e902875c06f92a93f"
+    },
+    "eidos/evidence/README.md": {
+      "bytes": 4813,
+      "parent_sha256": "064f9e9cbe2b91527c49de0c54effc4ebfbc08cac7e2c266affcd5189e9efdea",
+      "sha256": "8120f211a891ca3f690f59ede639df5cd5e729297a814a75983df661edf1b0fe"
+    },
+    "eidos/examples/owned-evaluation-demo-provenance.json": {
+      "bytes": 314,
+      "sha256": "b521255687eabb475e097196594f86f09e1749d0eec74025f24066ef573cb0a3"
+    },
+    "eidos/examples/owned-evaluation-demo.jsonl": {
+      "bytes": 416,
+      "sha256": "1bfc61fd8aa9b8a93d773689eb5e6d285b78feb9d82a60e91834350a858aeb7d"
+    },
+    "eidos/tests/test_owned_evaluation.py": {
+      "bytes": 16219,
+      "sha256": "315297fcff1b2f157f7502adfae04567a964c99b9403a5b94ae699bba4447752"
+    }
+  },
+  "existing_imported_source_members_unchanged": 84,
+  "existing_trainers_inference_service_browser_api_and_frozen_models_changed": false,
+  "final_rea_source_members_matched": 64,
+  "format": "eidos-owned-evaluation-source-change-v1",
+  "historical_or_rival_benchmark_or_reference_run_repeated": false,
+  "isolated_actual_cli_stages": 6,
+  "mission_complete": false,
+  "new_workflow": [
+    "prepare",
+    "predict",
+    "score"
+  ],
+  "parent_change_provenance_sha256": "e26d6b107f0f65ae7f5e1075b27cf01881777eed59abb16dc1d9849a4b5e0f37",
+  "parent_commit": "2441c98d0d842d0f3d1f0f26ef8a91e8240f689e",
+  "production_certified": false,
+  "source_kit_sha256": "414b10468e709fa155f9ccb8482a789291216ce8d07f265f052de92cca83e1ad",
+  "source_speaker_paraphrase_or_fresh_holdout_independence_verified": false,
+  "unit_methods": 40
+}

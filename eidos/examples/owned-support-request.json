@@ -1,0 +1,33 @@
+{
+  "budget_ms": 5000,
+  "input_version": "authored-owned-training-demo-v1",
+  "language": "en",
+  "questions": [
+    {
+      "choices": [
+        {
+          "class_id": "billing_help",
+          "id": "billing_help"
+        },
+        {
+          "class_id": "music_help",
+          "id": "music_help"
+        }
+      ],
+      "id": "intent",
+      "kind": "CHOICE",
+      "profile": "eidos-owned-demo-v1",
+      "prompt": "Classify this utterance",
+      "state_path": [
+        "utterance"
+      ]
+    }
+  ],
+  "request_id": "authored-operation-only",
+  "schema_version": "1.0",
+  "sources": [],
+  "state": {
+    "utterance": "please help me with an invoice"
+  },
+  "tenant_id": "owned-training-demo"
+}

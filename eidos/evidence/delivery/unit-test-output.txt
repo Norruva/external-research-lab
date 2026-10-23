@@ -1,0 +1,17 @@
+test_byte_for_byte_reproduction (test_owned_training.OwnedTraining.test_byte_for_byte_reproduction) ... ok
+test_duplicate_ids_and_normalized_text_refused (test_owned_training.OwnedTraining.test_duplicate_ids_and_normalized_text_refused) ... ok
+test_exact_balanced_support_quotas (test_owned_training.OwnedTraining.test_exact_balanced_support_quotas) ... ok
+test_existing_output_is_never_overwritten (test_owned_training.OwnedTraining.test_existing_output_is_never_overwritten) ... ok
+test_input_and_aggregate_text_bounds (test_owned_training.OwnedTraining.test_input_and_aggregate_text_bounds) ... ok
+test_input_and_output_symlink_refusals (test_owned_training.OwnedTraining.test_input_and_output_symlink_refusals) ... ok
+test_input_order_preserves_numerical_artifact_and_tracks_provenance (test_owned_training.OwnedTraining.test_input_order_preserves_numerical_artifact_and_tracks_provenance) ... ok
+test_invalid_identity_fails_before_artifact_creation (test_owned_training.OwnedTraining.test_invalid_identity_fails_before_artifact_creation) ... ok
+test_malformed_unicode_and_zero_word_text (test_owned_training.OwnedTraining.test_malformed_unicode_and_zero_word_text) ... ok
+test_provenance_is_explicit_bounded_declaration (test_owned_training.OwnedTraining.test_provenance_is_explicit_bounded_declaration) ... ok
+test_round_trip_actual_engine_review_policy (test_owned_training.OwnedTraining.test_round_trip_actual_engine_review_policy) ... ok
+test_strict_row_schema_and_json (test_owned_training.OwnedTraining.test_strict_row_schema_and_json) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.105s
+
+OK

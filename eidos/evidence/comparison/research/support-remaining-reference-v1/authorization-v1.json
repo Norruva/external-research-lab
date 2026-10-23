@@ -1,0 +1,8 @@
+{
+  "approved": true,
+  "approved_at_utc": "2026-10-22T22:17:45.639496+00:00",
+  "plan_sha256": "26a1241ffbb94c8d7a846ba15bd06283f2ff54f0cc5d255cbb91638bfbd98144",
+  "prepared_manifest_sha256": "1714632d1b5f863dcbed0c0a5c7962b05f15a332ddb874be6054b0c7c264c97a",
+  "scope": "eidos-snips-remaining-reference-v1",
+  "user_instruction_sha256": "e256ee8e7aff6957a781d8328f0f68e26996564c81fa458da59fbca2305138ad"
+}

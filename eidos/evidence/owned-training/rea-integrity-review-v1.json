@@ -1,0 +1,11 @@
+{
+  "archive_members_executed": false,
+  "complete": true,
+  "container_coverage_complete": true,
+  "graph_nodes": 36,
+  "identity_not_semantic_quality_or_security_certification": true,
+  "integrity_contradictions": 0,
+  "member_hashes_and_sizes_matched": 35,
+  "rea_evidence_id": "ev_dc62eac165006e92e714c55f91de7865ad12e8d7b81c9e72eae8fd519a0f7847",
+  "rea_stdout_sha256": "29c849b3d4a8b41498e30f1524219418527c79adf36dac352e496e220d50c18b"
+}

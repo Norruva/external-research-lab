@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "test_methods": 12,
+  "failures": 0,
+  "errors": 0,
+  "only_authored_synthetic_fixtures": true,
+  "old_benchmark_case_or_model_available": false,
+  "stdlib_training_and_inference": true,
+  "cpu_seconds": 0.23210399999999998
+}

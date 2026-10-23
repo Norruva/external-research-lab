@@ -1,0 +1,41 @@
+{
+  "approved_scope": "eidos-dbpedia-reader-install-probe-v1",
+  "automatic_retry_or_extension_authorized": false,
+  "complete": true,
+  "format": "eidos-dbpedia-reader-completion-review-v1",
+  "global_or_application_runtime_changed": false,
+  "installed_research_directory": "/workspace/eidos/evaluation/production/dbpedia-reader-v1/v1/reader",
+  "mission_complete": false,
+  "one_attempt_consumed": true,
+  "private_file_modes_verified": 752,
+  "probe": {
+    "authored_fixture_rows": 3,
+    "classifier_inference_or_scoring": false,
+    "complete": true,
+    "existing_credentials_used": false,
+    "local_parquet_roundtrip_matches": true,
+    "pyarrow_version": "26.0.0",
+    "python_version": "3.12.14",
+    "real_corpus_or_model_used": false,
+    "third_party_python_dependencies_loaded": false
+  },
+  "production_certified": false,
+  "reader_manifest_sha256": "75ab93d4d71f90c6e2b6fe1197faf0270f6279da9d634e5742a94524911d0334",
+  "real_corpus_or_reference_execution_authorized": false,
+  "summary": {
+    "aggregate_cgroup_guarantee": false,
+    "automatic_retry": false,
+    "child_memory_mib": 1024,
+    "child_wall_seconds": 45,
+    "complete": true,
+    "elapsed_seconds": 3.1585561580000103,
+    "existing_credentials_corpora_or_models_mounted": false,
+    "exit_code": 0,
+    "expected_refused_preflights": 1,
+    "installed_file_count": 752,
+    "per_process_child_cpu_seconds": 30,
+    "reader_unchanged_after_probe": true,
+    "unexpected_ip_connects": 0,
+    "whole_operation_wall_seconds": 180
+  }
+}

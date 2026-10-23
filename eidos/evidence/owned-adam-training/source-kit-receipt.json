@@ -1,0 +1,12 @@
+{
+  "archive": "/workspace/eidos/eidos-owned-adam-training-research-v1.tar.gz",
+  "bytes": 115195,
+  "complete": true,
+  "files_verified": 69,
+  "manifest_sha256": "10f9414d47f6fa753799bce0bb43ffcd1688adfa450f3883ea47953abc97b4a9",
+  "mission_complete": false,
+  "new_model_quality_claim": false,
+  "prefix": "eidos-owned-adam-training-research-v1",
+  "production_certified": false,
+  "sha256": "d9409d99e604bed2a958aae9bb0945f966e6814dba4b616fa6b2ec440692444c"
+}

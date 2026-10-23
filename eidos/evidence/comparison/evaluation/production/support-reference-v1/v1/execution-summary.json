@@ -1,0 +1,29 @@
+{
+  "aggregate_cgroup_guarantee": false,
+  "automatic_retry": false,
+  "complete": true,
+  "elapsed_seconds": 119.4264314200002,
+  "inputs_unchanged": true,
+  "mission_complete": false,
+  "production_certified": false,
+  "stages": [
+    {
+      "complete": true,
+      "elapsed_seconds": 109.068606327,
+      "exit_code": 0,
+      "expected_refused_probe": 1,
+      "result_sha256": "9192761d8d6265677344e4b1b5e567bfc6baf740d99e7fa5c384666b6a9b36e2",
+      "stage": "predict",
+      "unexpected_ip_connections": 0
+    },
+    {
+      "complete": true,
+      "elapsed_seconds": 1.1383448139999928,
+      "exit_code": 0,
+      "expected_refused_probe": 1,
+      "result_sha256": "8693a5305f88c7fb141694761022b9223693e2893ea429312ea9e3e8af857b2e",
+      "stage": "score",
+      "unexpected_ip_connections": 0
+    }
+  ]
+}

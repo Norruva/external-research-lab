@@ -1,0 +1,73 @@
+{
+  "GPU_or_paid_compute": false,
+  "JEV_or_TypeSafe_service_access": false,
+  "aggregate_cgroup_guarantee": false,
+  "all_reference_choices": 14,
+  "automatic_retry": false,
+  "existing_reader_or_corpus_approval_reused": false,
+  "format": "eidos-dbpedia-independent-study-plan-v1",
+  "maximum_native_windows": 1120,
+  "maximum_windows_per_case": 16,
+  "mission_complete": false,
+  "new_downloads_or_installations": false,
+  "new_fits": 3,
+  "offline_only": true,
+  "old_benchmarks": "All revealed/consumed; no refit, rescoring, selection, retry or approval reset on earlier tasks",
+  "one_new_slot": "evaluation/production/dbpedia-study-v1/v1",
+  "paired": "1000 ordinary whole-component paired bootstrap draws, seed113; accuracy and macro-F1 individual approximate95% lower bounds must both exceed0 for descriptive numeric rule",
+  "parent_address_space_hard_mib": 4096,
+  "parent_address_space_soft_mib": 768,
+  "parent_cpu_hard_seconds": 3600,
+  "parent_cpu_soft_seconds": 300,
+  "planned_cpu_seconds_sum_with_parent_reserve": 3600,
+  "primary_test": "One complete comparison of selected EIDOS to public zero-shot LAYA, keeping returned choices including rounding ties",
+  "production_certified": false,
+  "real_test_cases": 280,
+  "reference_api": "public predict_long; default window/stride; aggregate auto; batch_size1; English; all14choices every window",
+  "reference_one_thread_float32_CPU": true,
+  "reference_scope": "Original exact checkpoint/source and reviewed tensor-checked pread loader; no reduced precision, fine tuning, cached shortlist, tournament or source modification",
+  "rights": "Dataset attribution/share-alike/GFDL and future model redistribution unresolved; research outputs private, no corpus/weights in GitHub",
+  "scope": "eidos-dbpedia-independent-study-v1",
+  "selection": "Select only among fixed preacquisition recipes on official-train-derived development set; freeze artifacts before test predictions",
+  "source_config": "research/dbpedia-study-v1/config.json",
+  "stage_limits": {
+    "eidos": [
+      60,
+      90,
+      768
+    ],
+    "laya": [
+      2760,
+      4200,
+      4096
+    ],
+    "linear_adam": [
+      90,
+      120,
+      768
+    ],
+    "linear_gd": [
+      90,
+      120,
+      768
+    ],
+    "memory": [
+      90,
+      120,
+      768
+    ],
+    "score": [
+      120,
+      180,
+      768
+    ],
+    "select": [
+      90,
+      120,
+      768
+    ]
+  },
+  "status": "prepared_separate_approval_required",
+  "stop_on": "Any input/tree/rights/work/time/memory/choice/window/count/numeric/isolation failure; retain slot without retries, drops, resampling or partial scoring",
+  "whole_wall_seconds_including_static_check": 5400
+}

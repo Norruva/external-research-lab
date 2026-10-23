@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/work/tools/smoke.py", line 220, in <module>
+    main()
+    ~~~~^^
+  File "/work/tools/smoke.py", line 156, in main
+    process = start(port, config_path, stderr)
+  File "/work/tools/smoke.py", line 77, in start
+    require(process.poll() is None, 'Local demo service exited during startup')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tools/smoke.py", line 27, in require
+    raise RuntimeError(message)
+RuntimeError: Local demo service exited during startup

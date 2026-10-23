@@ -1,0 +1,12 @@
+{
+  "archive": "/workspace/eidos/eidos-owned-linear-research-v1.tar.gz",
+  "bytes": 90949,
+  "complete": true,
+  "files_verified": 52,
+  "manifest_sha256": "5364ed5f3a1fa95f21616e8d561a8001a14fff1a77bf1651c61be7862ad1d8cf",
+  "mission_complete": false,
+  "new_model_quality_claim": false,
+  "prefix": "eidos-owned-linear-research-v1",
+  "production_certified": false,
+  "sha256": "a21eff9f113e51df60e17f8d21bfba844c48164c6db01401e3d8614d0b9edbac"
+}

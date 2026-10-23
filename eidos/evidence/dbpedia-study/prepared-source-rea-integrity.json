@@ -1,0 +1,15 @@
+{
+  "actual_corpus_gold_predictions_native_binaries_or_model_weights_included": false,
+  "complete": true,
+  "coverage": {
+    "scope": "container-entries",
+    "status": "complete"
+  },
+  "evidence_id": "ev_81555b73043bf83a2da86dd8cfe5586f826f458e9c291e4ff3a3d0fded9c9460",
+  "evidence_sha256": "d36ba0bf8d99966e3ecef3cf4fbe103ab48207d3c1014385cec6d477328ed8c2",
+  "graph_nodes": 53,
+  "integrity_contradictions": [],
+  "member_hashes_and_sizes_matched": 52,
+  "security_rights_quality_or_independence_certification": false,
+  "target_execution": false
+}

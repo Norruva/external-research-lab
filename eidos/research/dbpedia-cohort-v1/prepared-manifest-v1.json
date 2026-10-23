@@ -1,0 +1,82 @@
+{
+  "approval_required": true,
+  "external_files": {
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12": {
+      "bytes": 30894944,
+      "sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7"
+    },
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/libpython3.12.so.1.0": {
+      "bytes": 32465344,
+      "sha256": "7e177a680eabb11fcb7d3867f7a1b9c4b93a9bd5b18129ce1af51ec07977b024"
+    },
+    "/workspace/eidos/evaluation/production/dbpedia-reader-v1/v1/completion-review-v1.json": {
+      "bytes": 1518,
+      "sha256": "4731624f97df42177e7ea2b9d80c830121012ed6a10e2234fe3d8515192625c5"
+    },
+    "/workspace/eidos/evaluation/production/dbpedia-reader-v1/v1/reader-manifest.json": {
+      "bytes": 113403,
+      "sha256": "75ab93d4d71f90c6e2b6fe1197faf0270f6279da9d634e5742a94524911d0334"
+    }
+  },
+  "files": {
+    "/workspace/eidos/evaluation/production/dbpedia-cohort-v1/unit-v2/execution-summary.json": {
+      "bytes": 657,
+      "sha256": "b4f05b17679906d1a1b32c7807d1622e1fc82b9a0203399035e59c3107aa4596"
+    },
+    "/workspace/eidos/evaluation/production/dbpedia-cohort-v1/unit-v2/unit-stderr.log": {
+      "bytes": 2735,
+      "sha256": "425f39e4a915c991726461ccc8f32171b9a9c3e9b9894e4ee6fe895af7396075"
+    },
+    "/workspace/eidos/research/dbpedia-cohort-v1/PLAN.md": {
+      "bytes": 8028,
+      "sha256": "dc285370d14091788130952f8188f0a55c67633de0fc0e0a5b797d4fc8685490"
+    },
+    "/workspace/eidos/research/dbpedia-cohort-v1/acquire.py": {
+      "bytes": 2554,
+      "sha256": "5a285c06116fb060eb5bd089e86153333cd28bc3c05af130f8c657935a67b180"
+    },
+    "/workspace/eidos/research/dbpedia-cohort-v1/cohort.py": {
+      "bytes": 9122,
+      "sha256": "b60133226aabf800dbea0023faf29624747e3b4d3562edc24564e2775b198f6f"
+    },
+    "/workspace/eidos/research/dbpedia-cohort-v1/future-study-intent.json": {
+      "bytes": 1547,
+      "sha256": "0da93539a16fc094f20c615afd55f579411338282d4d75999c2ba3ee89bbf7f2"
+    },
+    "/workspace/eidos/research/dbpedia-cohort-v1/historical-source-manifest.json": {
+      "bytes": 11124,
+      "sha256": "57bd23799e961c7ac3383af5cd0b7e3c3897652548d06a4c36a024c95b00c8d6"
+    },
+    "/workspace/eidos/research/dbpedia-cohort-v1/plan.json": {
+      "bytes": 3180,
+      "sha256": "76c2d5f7f29c462399067474e6ffa0dfd4fb9a98177d1572459749470ad0b048"
+    },
+    "/workspace/eidos/research/dbpedia-cohort-v1/prepare.py": {
+      "bytes": 6796,
+      "sha256": "1a920320682a7340f6d1ed29a026d6fd8f8a98a65878aad2eb2de319de9d01f2"
+    },
+    "/workspace/eidos/research/dbpedia-cohort-v1/test_acquire.py": {
+      "bytes": 3495,
+      "sha256": "3ff69f0882dd6bfa9bfaa1974bd2ebfbd22ce5b4bc461cf4af3e4cd3c9318493"
+    },
+    "/workspace/eidos/research/dbpedia-cohort-v1/test_cohort.py": {
+      "bytes": 7647,
+      "sha256": "3a3c8cadf404e10fe49dee227c08c8312813d0dc772433ff28dc4b8b551150ff"
+    },
+    "/workspace/eidos/run_dbpedia_cohort_prepare_v1.py": {
+      "bytes": 12427,
+      "sha256": "516406c1a6ab240e56a1d1277f6c7e07968795bb80778168dc7647d0c9f8338f"
+    },
+    "/workspace/eidos/run_dbpedia_cohort_unit_v1.py": {
+      "bytes": 5731,
+      "sha256": "0db3301cb87c22dac85a4f2b78d84986b7abfbe7fe308953a94ba44f11a5483e"
+    },
+    "/workspace/eidos/run_dbpedia_cohort_unit_v2.py": {
+      "bytes": 5731,
+      "sha256": "7149fa38396bf4b0e31ea86b729dacb222093a9435de26f05227a4f51265decf"
+    }
+  },
+  "format": "eidos-dbpedia-cohort-prepared-v1",
+  "real_dbpedia_acquisition_processing_fit_prediction_scoring_occurred": false,
+  "scope": "eidos-dbpedia-cohort-acquisition-preparation-v1"
+}

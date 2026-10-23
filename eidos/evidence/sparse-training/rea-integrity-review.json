@@ -1,0 +1,17 @@
+{
+  "all_member_hashes_and_sizes_match": true,
+  "complete": true,
+  "coverage": {
+    "scope": "container-entries",
+    "status": "complete"
+  },
+  "evidence_id": "ev_c6dc140929b5d85b15e04934725c93966cb6ef777e2dbf3dcac6643973306366",
+  "evidence_stdout_sha256": "38fa48d7f6ef4f5c15f2aa59c7f2b17dccf6d2227c7b0498bf201577a9d41683",
+  "format": "eidos-sparse-training-rea-integrity-v1",
+  "graph_nodes": 59,
+  "integrity_contradictions": [],
+  "packet_members": 58,
+  "packet_sha256": "66649ea6b409d78a71cdb0c4ca25e8e751618de647592873e06dd94562132a3b",
+  "quality_security_rights_or_production_certification": false,
+  "target_installed_imported_or_executed": false
+}

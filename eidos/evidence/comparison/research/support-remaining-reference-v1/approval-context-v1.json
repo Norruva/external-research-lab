@@ -1,0 +1,9 @@
+{
+  "interpretation": "The user instructed continue immediately after this specific approval question; proceed within the exact source-bound one-attempt plan.",
+  "old_pilot_or_banking77_approval_reused": false,
+  "one_new_attempt_only": true,
+  "recorded_at_utc": "2026-10-22T22:17:45.639496+00:00",
+  "responds_to": "Approve the prepared 1,821-case exploratory follow-up, capped at 60 CPU minutes and 90 elapsed minutes, offline with no downloads?",
+  "scope": "eidos-snips-remaining-reference-v1",
+  "user_response": "continue"
+}

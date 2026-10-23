@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/work/tools/smoke.py", line 222, in <module>
+    main()
+    ~~~~^^
+  File "/work/tools/smoke.py", line 208, in main
+    require(maintenance['audit']['events'] >= 3, 'Audit chain did not record exercised events')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tools/smoke.py", line 27, in require
+    raise RuntimeError(message)
+RuntimeError: Audit chain did not record exercised events
