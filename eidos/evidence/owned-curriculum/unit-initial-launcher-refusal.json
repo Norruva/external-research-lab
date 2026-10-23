@@ -1,0 +1,20 @@
+{
+  "aggregate_cgroup_guarantee": false,
+  "blocked_Chromium_IPv6_probe_connects": 0,
+  "complete": false,
+  "cpu_seconds_limit_per_process": 120,
+  "elapsed_seconds": 0.013076758999886806,
+  "exit_code": 1,
+  "expected_refused_preflights": 0,
+  "format": "eidos-original-decision-authored-stage-v1",
+  "loopback_connects": 0,
+  "memory_mib_limit_per_process": 768,
+  "new_installation_download_real_benchmark_or_reference": false,
+  "peak_child_RSS_kib": 11392,
+  "stage": "units",
+  "staged_files": 45,
+  "staged_sources_unchanged": true,
+  "unexpected_external_IP_connects": 0,
+  "waited_child_CPU_seconds": 0.010108,
+  "wall_seconds_limit": 180
+}

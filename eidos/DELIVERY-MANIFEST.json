@@ -10,12 +10,12 @@
       "sha256": "a6b12865c4a84b4c6595be69fe0b74c3bacea9c6279f083c33cf6a6db5a15de1"
     },
     "eidos/CHANGESET-PROVENANCE.json": {
-      "bytes": 11142,
-      "sha256": "f42365d3c1472dc23cb96848e69cffa68c0eaa09e1e9aefab9796a0735aeb0b4"
+      "bytes": 5844,
+      "sha256": "7acb4e2389a6c7f8c51792eaaca33964bc605edde8389bd7d3efbd33eaa9c140"
     },
     "eidos/README.md": {
-      "bytes": 11845,
-      "sha256": "9a811e8844378a3d956e7d3016982661db0959051adf004aaae6e5fe0ad3b7de"
+      "bytes": 13214,
+      "sha256": "efabe1267006f2ef6cb3cabd4bda5b9ffd9d27d84539c123cb3836ce184f37b4"
     },
     "eidos/SOURCE-PROVENANCE.json": {
       "bytes": 22137,
@@ -85,6 +85,14 @@
       "bytes": 9568,
       "sha256": "39b8c264f1912ca5617606cab2ecdda85d159ef0b9c5b4e6da31ebe1a085cf1d"
     },
+    "eidos/docs/OWNED-CURRICULUM-RESULT.md": {
+      "bytes": 7328,
+      "sha256": "889cb9ef40ea7df1b8891cbfb7503aaf370f30c378795aa193ba7704300fa4f3"
+    },
+    "eidos/docs/OWNED-CURRICULUM.md": {
+      "bytes": 4378,
+      "sha256": "c3e433ae17df4f469a108fe49895934830c18ba2a7636e51328c9e3a80a3a8bb"
+    },
     "eidos/docs/OWNED-EVALUATION.md": {
       "bytes": 9370,
       "sha256": "37beb0512a59ea7eef3c3481beb6a27a189be6dc6cf640374b96441df0a14a9f"
@@ -140,6 +148,10 @@
     "eidos/eidos/decision_contract.py": {
       "bytes": 9599,
       "sha256": "ca50112ff0e9b9f80833db48f9902a7f3d2b781268ef6d8ceecd2ccdb3b5d622"
+    },
+    "eidos/eidos/decision_curriculum.py": {
+      "bytes": 22724,
+      "sha256": "1d5a12f8c1ecf237a664393fe68c99780c7c439e72f984bada66b34addf9052a"
     },
     "eidos/eidos/decision_epistemic.py": {
       "bytes": 17076,
@@ -242,8 +254,8 @@
       "sha256": "33a221b2108c7711c5be38cb0af9297724d3bd6c7ca027cc9ef8a5c739309b27"
     },
     "eidos/evidence/README.md": {
-      "bytes": 13367,
-      "sha256": "aeac4d3ac40e1e61e73100dadd6d02da2076eaae6a0c1a81df3466a115ea5562"
+      "bytes": 14140,
+      "sha256": "afb479dcb1814b4b2eb3c50e583d27443b66b6c8fb76fbb5fb1477fe185990a4"
     },
     "eidos/evidence/comparison/MANIFEST.json": {
       "bytes": 5669,
@@ -884,6 +896,90 @@
     "eidos/evidence/owned-comparison/validation-result.json": {
       "bytes": 5332,
       "sha256": "603291dc21ef0ba79e36f29635e94a3bf1bfcd4f30e07817b387cb398121340f"
+    },
+    "eidos/evidence/owned-curriculum/REA-PUBLICATION.md": {
+      "bytes": 694,
+      "sha256": "019456fff6e4703d8f9d1777ef085e38cab92d54c8e2aff6a115ed766f29c6be"
+    },
+    "eidos/evidence/owned-curriculum/README.md": {
+      "bytes": 1499,
+      "sha256": "d0dafcae243134167108163d4fbdabbbd7b5042ca0c345e8abcdae0673917ef7"
+    },
+    "eidos/evidence/owned-curriculum/data-audit.json": {
+      "bytes": 10618,
+      "sha256": "4d225fc75456f8d14158b071dd8a778640e65fcbd83674c809ec80e16c635db6"
+    },
+    "eidos/evidence/owned-curriculum/execution.json": {
+      "bytes": 3425,
+      "sha256": "b724ad03fcfac03db873491b9dc1c9df211de35a16a2a8b5082dd65798107788"
+    },
+    "eidos/evidence/owned-curriculum/generation-result.json": {
+      "bytes": 649,
+      "sha256": "53fe1b7b4529396b8a429bfe55d03565841303498a0880164e4ae7a6bb1ed5a7"
+    },
+    "eidos/evidence/owned-curriculum/inspection-packet-receipt.json": {
+      "bytes": 543,
+      "sha256": "e5c51600a53b85dbe3934a615d234f971eab41e542f61fb5a6d13c1df22bfeb7"
+    },
+    "eidos/evidence/owned-curriculum/mechanistic-source-review.json": {
+      "bytes": 8180,
+      "sha256": "9a3b309ff54ef0ac1a4598382d058b8f92d9e907dac1116f0384ec4054486bb0"
+    },
+    "eidos/evidence/owned-curriculum/offline-study-source.py": {
+      "bytes": 16354,
+      "sha256": "ea5cd29dd43db45d7a6a59c7b019d7dcb1c44c85802374aabf8e749f6ebffffb"
+    },
+    "eidos/evidence/owned-curriculum/parent-CHANGESET-PROVENANCE.json": {
+      "bytes": 11142,
+      "sha256": "f42365d3c1472dc23cb96848e69cffa68c0eaa09e1e9aefab9796a0735aeb0b4"
+    },
+    "eidos/evidence/owned-curriculum/parent-DELIVERY-MANIFEST.json": {
+      "bytes": 75224,
+      "sha256": "60e401c8d4fc8ecc7fa020b6b2976ff77680de04180a1a426313f534295c0095"
+    },
+    "eidos/evidence/owned-curriculum/prediction-receipt.json": {
+      "bytes": 381,
+      "sha256": "ea119adc0ddc930ae380aa1f845a2a941dbf9fe798bd0efba39640fa365fa27b"
+    },
+    "eidos/evidence/owned-curriculum/prepared-manifest.json": {
+      "bytes": 4264,
+      "sha256": "88f3253e789c125dc109ff0806f6da628c36a5c6a4abeea8cf14aef40566a608"
+    },
+    "eidos/evidence/owned-curriculum/protocol.md": {
+      "bytes": 4754,
+      "sha256": "789ec0d7718850423aad4ba678cc42ab3e4a69b86a666d44b8fd0eee808aa744"
+    },
+    "eidos/evidence/owned-curriculum/rea-execution-summary.json": {
+      "bytes": 1064,
+      "sha256": "f07568caaa5ba6c5f5b5ee7df930a3ea466d68a544617e7e406f82e235ed6e81"
+    },
+    "eidos/evidence/owned-curriculum/rea-integrity-review.json": {
+      "bytes": 644,
+      "sha256": "87db5218f50277a47ca8ad118039e2bbab0e6e4a552df9f3e36ec3a73b0f2be7"
+    },
+    "eidos/evidence/owned-curriculum/resource-preflight.json": {
+      "bytes": 439,
+      "sha256": "1e7b1505eef97b23ca96601a650e1ae88451625a70aed15c0f6bc0e2efd519a9"
+    },
+    "eidos/evidence/owned-curriculum/score.json": {
+      "bytes": 8414,
+      "sha256": "0dfb219c721fcc6ee42bc217618726191872d07e26f2f20c073b5507845081f9"
+    },
+    "eidos/evidence/owned-curriculum/training-receipt.json": {
+      "bytes": 3349,
+      "sha256": "8f2b3f44c571a4ed5f69c89b7b7eaec90537079276c20e17b4779c4e52330ad7"
+    },
+    "eidos/evidence/owned-curriculum/unit-execution.json": {
+      "bytes": 660,
+      "sha256": "ae68b1a73baf6d232bf087d061658270e487f40968697929e7b2ed91b22579f3"
+    },
+    "eidos/evidence/owned-curriculum/unit-initial-launcher-refusal.json": {
+      "bytes": 651,
+      "sha256": "b950667b65802c0b32b816b0f2f601b84d1d0083ff7e0884693ef218fe165e68"
+    },
+    "eidos/evidence/owned-curriculum/unit-result.json": {
+      "bytes": 146,
+      "sha256": "124cf8ff35a9f5a2c11353eb721e8afb6f2b331f9989a34581a2a2bb7befcdef"
     },
     "eidos/evidence/owned-evaluation/first-pass-rea-review.json": {
       "bytes": 491,
@@ -1621,6 +1717,10 @@
       "bytes": 12283,
       "sha256": "1312ab64d52f026b52e14b2f3270cbd82fa04be66fb4ca956d9ffa4bf549b9bf"
     },
+    "eidos/tests/test_decision_curriculum.py": {
+      "bytes": 17415,
+      "sha256": "ac183d4bbef9bec3991cf575e751bc1b5c0e856cf32f2ce922e7e6caacb61e62"
+    },
     "eidos/tests/test_decision_engine.py": {
       "bytes": 3745,
       "sha256": "a288bd2994e5e7aa151575ff482d8b215a992261937bd7a9af46ed5ed4a849c0"
@@ -1718,8 +1818,8 @@
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
     }
   },
-  "format": "eidos-public-source-delivery-manifest-v10",
+  "format": "eidos-public-source-delivery-manifest-v11",
   "original_src_blob_unchanged": true,
-  "parent_commit": "6b82539672f7fead65353dba4feebcfde0432b75",
-  "parent_manifest_sha256": "55e2bdc3f47cc4425fc6cd9b71d20fbdc31f387d5335f13af254e8a2b1109a9e"
+  "parent_commit": "c661d541cf0c8c8cba41c4a682a31a4b36ac0fcb",
+  "parent_manifest_sha256": "60e401c8d4fc8ecc7fa020b6b2976ff77680de04180a1a426313f534295c0095"
 }

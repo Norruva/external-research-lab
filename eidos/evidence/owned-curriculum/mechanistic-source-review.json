@@ -1,0 +1,115 @@
+{
+  "actual_representation_theorem": {
+    "claim": "The first-moment sequence representation has parameter-independent collisions, so arbitrary within-span ordering tasks cannot all be solved byv2.",
+    "conditions": "Same validated prompt/options, one sentence span, tokenizer-normalized tokens; token composition depends only on spelling, as in the current source. Local record indices can differ but their token vectors correspond.",
+    "formula": "E(t_0,...,t_(L-1))=(1/L)sum_i[1+gamma*(2i/(L-1)-1)]*f(t_i), componentwise. Equal token counts and equal per-token position-index sums imply equal encodings for all embeddings and learned gamma.",
+    "relevance_limit": "This proves a broader order-representation defect. It does not prove that the actual curriculum pairs collide or explain all observed errors.",
+    "witness": "Single-span context token sequences a b b a . and b a a b . have the same counts and per-token position sums (a:3,b:3,period:4); the question Which symbol appears first? with the same a/b options has different truth but identical network logits for all weights."
+  },
+  "aggregate_score_sha256": "0dfb219c721fcc6ee42bc217618726191872d07e26f2f20c073b5507845081f9",
+  "complete": true,
+  "completed_observations": {
+    "counterfactual_pairs": {
+      "development": {
+        "both_correct_when_gold_changed": 0,
+        "gold_changed_pairs": 30,
+        "gold_unchanged_pairs": 6,
+        "model_top_changed_when_gold_changed": 0,
+        "model_top_unchanged_when_gold_unchanged": 6,
+        "paired_tasks": 36
+      },
+      "evaluation": {
+        "both_correct_when_gold_changed": 0,
+        "gold_changed_pairs": 30,
+        "gold_unchanged_pairs": 6,
+        "model_top_changed_when_gold_changed": 0,
+        "model_top_unchanged_when_gold_unchanged": 6,
+        "paired_tasks": 36
+      },
+      "training": {
+        "both_correct_when_gold_changed": 0,
+        "gold_changed_pairs": 160,
+        "gold_unchanged_pairs": 20,
+        "model_top_changed_when_gold_changed": 0,
+        "model_top_unchanged_when_gold_unchanged": 20,
+        "paired_tasks": 180
+      }
+    },
+    "development": {
+      "accuracy": 0.3611111111111111,
+      "brier": 0.6701911526977,
+      "correct": 26,
+      "n": 72,
+      "nll": 1.162399251753931,
+      "score_mean_absolute_error": 1.005897974025701,
+      "uniform_expected_accuracy": 0.3333333333333333
+    },
+    "evaluation": {
+      "accuracy": 0.3194444444444444,
+      "brier": 0.6734999365630773,
+      "correct": 23,
+      "n": 72,
+      "nll": 1.1685443425924609,
+      "score_mean_absolute_error": 0.99999983060128,
+      "uniform_expected_accuracy": 0.3333333333333333
+    },
+    "training": {
+      "accuracy": 0.39444444444444443,
+      "brier": 0.6551735683364304,
+      "correct": 142,
+      "n": 360,
+      "nll": 1.1317552874711476,
+      "score_mean_absolute_error": 1.0636745547501991,
+      "uniform_expected_accuracy": 0.3333333333333333
+    },
+    "uniform_NLL_for_equal_six_families": 1.1552453009332422,
+    "uniform_NLL_source": "Analytic candidate-count baseline: four4-way families and two2-way families with equal row counts; no model or row evaluation."
+  },
+  "format": "eidos-synthetic-curriculum-mechanistic-source-review-v1",
+  "further_fit_recommended_without_new_frozen_protocol": false,
+  "mission_complete": false,
+  "model_fit_inference_rescoring_network_or_reference_execution_performed": false,
+  "model_weights_per_case_rows_gold_or_existing_credentials_read": false,
+  "more_data_alone_is_evidenced_fix": false,
+  "most_likely_mechanism": {
+    "hypothesis": "Binding information is compressed into weak low-dimensional linear first-moment sentence summaries before nonlinear question/candidate interaction. Static one-read attention can remain nearuniform, making grouped same-bag counterfactual worlds nearly indistinguishable to the final scorer. Balanced swaps remove profitable bag shortcuts, and the short fixed fit can settle on marginal answer priors instead of learning association-sensitive attention.",
+    "numeric_limit": "Numerals are nominal tokens; candidate anchors are decoded only after scoring; categorical training contains no numeric comparison or ordinal-distance inductive bias.",
+    "single_read_limit": "There is no query update, contextual token encoder, explicit subject-value binding channel or iterative relation join. This is a concrete architectural omission, not an absolute finite-task expressivity theorem.",
+    "source_locations": [
+      "eidos/decision_neural.py:340",
+      "eidos/decision_neural.py:380",
+      "eidos/decision_neural.py:392",
+      "eidos/decision_neural.py:396"
+    ],
+    "status": "source-supported inductive-bias/optimization explanation, not measured causal identification"
+  },
+  "next_architecture_requirement": {
+    "controls": "New architecture identity, independent forward/gradient tests and training-only static work preflight; retain old outcomes and artifacts, no implicit production promotion.",
+    "minimal_experiment": "A separately versioned v3 may first move nonlinear question/candidate compatibility inside each fact before aggregating, then add two-read memory. Compare on fresh frozen grouped challenge slices; no tuning or rerunning the consumedv1 cohort.",
+    "numeric_semantics": "If finite comparison/ordinal reasoning is a product requirement, supply an explicitly bounded numeric representation/module with its own exact tests rather than assuming byte embeddings learn arithmetic.",
+    "primary": "Preserve and learn entity/relation/value interaction before irreversible pooling: contextual token states or per-fact nonlinear cross-attention jointly conditioned on question tokens and candidate tokens, with explicit position and a stable token-identity alignment channel for novel names.",
+    "quality_guarantee": "None; this addresses an architectural mechanism and requires fresh empirical validation. No LAYA/JEV parity or near100percent promise.",
+    "relational_extension": "Use at least an updated-query second memory read or explicit learned key-value join for two-hop tasks, followed by a shared complete-candidate scorer."
+  },
+  "production_certified": false,
+  "reviewed_at_utc": "2026-10-23T18:57:28.945864+00:00",
+  "scope": "read_only_frozen_source_and_completed_aggregate_review",
+  "source_sha256": {
+    "eidos/decision_curriculum.py": "1d5a12f8c1ecf237a664393fe68c99780c7c439e72f984bada66b34addf9052a",
+    "eidos/decision_neural.py": "878cb6c0b840d1c29d03d89cd368fb87a460cfc6e32395bdf9d519962a8e8b01",
+    "eidos/train_decision.py": "e4f5a45884a0a8def81c122d3db11f3a31a0ebfa41b2dedb904b9feb5e61a5ab"
+  },
+  "what_is_established": [
+    "The fitted compact model fails on the training-side entity-binding challenge, not only on new entity names or changed wording: none of160 changed-gold training pairs changes its top semantic answer.",
+    "The result gives no support for useful held-out synthetic transfer; evaluation23/72 is below the uniform expected24/72. Grouped public synthetic tasks are not an independent real benchmark.",
+    "Final training NLL is only slightly better than the analytic uniform1.1552453009332422nats; development/evaluation NLL are worse than that baseline.",
+    "The new generator makes complete subject-bearing facts available in each sentence, removing the earlier omitted-subject status/semicolon confound for this attempt."
+  ],
+  "what_is_not_established": [
+    "Top-answer stability does not prove that paired probability vectors or hidden states are identical.",
+    "No attention/gradient/parameter diagnostic was read; nearuniform attention, small binding gradients, optimization collapse or learned priors remain mechanistic hypotheses.",
+    "The current architecture is not provably invariant to every generated assignment swap: sentence composition, learned position and candidate-conditioned softmax attention can distinguish them.",
+    "No theorem states that this finite six-family curriculum is impossible for everyv2 parameter setting, or that six epochs was sufficient.",
+    "A further fit, more data or a proposed replacement architecture is not thereby known to improve accuracy."
+  ]
+}

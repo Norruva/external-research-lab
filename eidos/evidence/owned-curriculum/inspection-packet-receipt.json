@@ -1,0 +1,13 @@
+{
+  "bytes": 37042,
+  "complete": true,
+  "file": "/workspace/eidos/eidos-owned-curriculum-review-v2.tar.gz",
+  "files_verified": 20,
+  "format": "eidos-owned-curriculum-review-export-v2",
+  "inspection_subset_not_runnable_application": true,
+  "manifest_sha256": "70dbf005fd92ef9c20a70d72426008223c31e729a9b2ec3ee7d9395176141075",
+  "mission_complete": false,
+  "production_certified": false,
+  "raw_corpus_gold_percase_predictions_or_weights_included": false,
+  "sha256": "7730e6b1e925610f28c79787b33bb41df109bce8e9bc305b713ff8e9b981d832"
+}

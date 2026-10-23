@@ -63,3 +63,7 @@ The folder contains aggregate history/cohort/training/prediction receipts, appro
 ## Original question-conditioned model
 
 [New source/integration evidence](question-decision/README.md) records108 authored unit checks,12 actual CLI/API checks and13 real Chromium checks. The new compact model scored only 4/10 on visible choice/binary mechanics tasks; do not transfer the separate DBpedia win to it. [Full critical result](../docs/DECISION-BUILD-RESULT.md). Seven original modules, a separate trainer/artifact/CLI/API/browser path and finite evidence/conformal/VOI primitives were added. Prior benchmark bytes and all84 imported members remain unchanged. No new public-code license, vendor implementation/weights, deployment or general-quality certification accompanies this extension.
+
+## Original relational curriculum
+
+[New aggregate evidence](owned-curriculum/README.md) records 120 decision-path unit methods including 12 new generator/oracle checks, plus five separated offline roles for the single synthetic fit. It failed: evaluation 23/72 against uniform expected 33.33%, and no changed-gold pair changed the model's top answer even in training. [Full negative result and representation limit](../docs/OWNED-CURRICULUM-RESULT.md). There was no quality-selected refit or reuse of real benchmarks/reference services. All 34 previous core-package files and 84 imported source members remain unchanged; one original generator module was added. Pinned REA inspected the final 20-member source/aggregate subset; later metadata are outside that inspection.

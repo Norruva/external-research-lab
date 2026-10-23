@@ -1,0 +1,300 @@
+{
+  "LAYA_JEV_or_real_domain_quality_measured": false,
+  "accepted_coverage": 0,
+  "calibration_fitted": false,
+  "complete": true,
+  "counterfactual_pairs": {
+    "development": {
+      "both_correct_when_gold_changed": 0,
+      "gold_changed_pairs": 30,
+      "gold_unchanged_pairs": 6,
+      "model_top_changed_when_gold_changed": 0,
+      "model_top_unchanged_when_gold_unchanged": 6,
+      "paired_tasks": 36
+    },
+    "evaluation": {
+      "both_correct_when_gold_changed": 0,
+      "gold_changed_pairs": 30,
+      "gold_unchanged_pairs": 6,
+      "model_top_changed_when_gold_changed": 0,
+      "model_top_unchanged_when_gold_unchanged": 6,
+      "paired_tasks": 36
+    },
+    "training": {
+      "both_correct_when_gold_changed": 0,
+      "gold_changed_pairs": 160,
+      "gold_unchanged_pairs": 20,
+      "model_top_changed_when_gold_changed": 0,
+      "model_top_unchanged_when_gold_unchanged": 20,
+      "paired_tasks": 180
+    }
+  },
+  "format": "eidos-original-synthetic-curriculum-score-v1",
+  "mission_complete": false,
+  "production_certified": false,
+  "public_generator_synthetic_roles_not_independent_real_benchmark": true,
+  "roles": {
+    "development": {
+      "BINARY": {
+        "accuracy": 0.5,
+        "brier": 0.5000059408199137,
+        "correct": 6,
+        "n": 12,
+        "nll": 0.6931531215125952,
+        "uniform_expected_accuracy": 0.5
+      },
+      "CHOICE": {
+        "accuracy": 0.3333333333333333,
+        "brier": 0.6901390775383632,
+        "correct": 16,
+        "n": 48,
+        "nll": 1.218026730377906,
+        "uniform_expected_accuracy": 0.3125
+      },
+      "SCORE": {
+        "accuracy": 0.3333333333333333,
+        "brier": 0.7605846652128333,
+        "correct": 4,
+        "n": 12,
+        "nll": 1.4091354674993664,
+        "score_mean_absolute_error": 1.005897974025701,
+        "uniform_expected_accuracy": 0.25
+      },
+      "all": {
+        "accuracy": 0.3611111111111111,
+        "brier": 0.6701911526977,
+        "correct": 26,
+        "n": 72,
+        "nll": 1.162399251753931,
+        "score_mean_absolute_error": 1.005897974025701,
+        "uniform_expected_accuracy": 0.3333333333333333
+      },
+      "binding": {
+        "accuracy": 0.3333333333333333,
+        "brier": 0.7493090770610965,
+        "correct": 4,
+        "n": 12,
+        "nll": 1.3849626892997178,
+        "uniform_expected_accuracy": 0.25
+      },
+      "comparison": {
+        "accuracy": 0.5,
+        "brier": 0.5000714945844921,
+        "correct": 6,
+        "n": 12,
+        "nll": 0.6932186831528835,
+        "uniform_expected_accuracy": 0.5
+      },
+      "negation": {
+        "accuracy": 0.5,
+        "brier": 0.5000059408199137,
+        "correct": 6,
+        "n": 12,
+        "nll": 0.6931531215125952,
+        "uniform_expected_accuracy": 0.5
+      },
+      "property": {
+        "accuracy": 0.16666666666666666,
+        "brier": 0.7523769016392907,
+        "correct": 2,
+        "n": 12,
+        "nll": 1.3859878781218102,
+        "uniform_expected_accuracy": 0.25
+      },
+      "score": {
+        "accuracy": 0.3333333333333333,
+        "brier": 0.7605846652128333,
+        "correct": 4,
+        "n": 12,
+        "nll": 1.4091354674993664,
+        "score_mean_absolute_error": 1.005897974025701,
+        "uniform_expected_accuracy": 0.25
+      },
+      "two_step": {
+        "accuracy": 0.3333333333333333,
+        "brier": 0.758798836868574,
+        "correct": 4,
+        "n": 12,
+        "nll": 1.407937670937212,
+        "uniform_expected_accuracy": 0.25
+      }
+    },
+    "evaluation": {
+      "BINARY": {
+        "accuracy": 0.5,
+        "brier": 0.5000087763336852,
+        "correct": 6,
+        "n": 12,
+        "nll": 0.6931559569983264,
+        "uniform_expected_accuracy": 0.5
+      },
+      "CHOICE": {
+        "accuracy": 0.3125,
+        "brier": 0.6942988101407938,
+        "correct": 15,
+        "n": 48,
+        "nll": 1.2256733926990921,
+        "uniform_expected_accuracy": 0.3125
+      },
+      "SCORE": {
+        "accuracy": 0.16666666666666666,
+        "brier": 0.7637956024816036,
+        "correct": 2,
+        "n": 12,
+        "nll": 1.41541652776007,
+        "score_mean_absolute_error": 0.99999983060128,
+        "uniform_expected_accuracy": 0.25
+      },
+      "all": {
+        "accuracy": 0.3194444444444444,
+        "brier": 0.6734999365630773,
+        "correct": 23,
+        "n": 72,
+        "nll": 1.1685443425924609,
+        "score_mean_absolute_error": 0.99999983060128,
+        "uniform_expected_accuracy": 0.3333333333333333
+      },
+      "binding": {
+        "accuracy": 0.25,
+        "brier": 0.751417769578639,
+        "correct": 3,
+        "n": 12,
+        "nll": 1.3891558778953892,
+        "uniform_expected_accuracy": 0.25
+      },
+      "comparison": {
+        "accuracy": 0.5,
+        "brier": 0.500064781814671,
+        "correct": 6,
+        "n": 12,
+        "nll": 0.693211968559606,
+        "uniform_expected_accuracy": 0.5
+      },
+      "negation": {
+        "accuracy": 0.5,
+        "brier": 0.5000087763336852,
+        "correct": 6,
+        "n": 12,
+        "nll": 0.6931559569983264,
+        "uniform_expected_accuracy": 0.5
+      },
+      "property": {
+        "accuracy": 0.0,
+        "brier": 0.7863350409799184,
+        "correct": 0,
+        "n": 12,
+        "nll": 1.4537752060684932,
+        "uniform_expected_accuracy": 0.25
+      },
+      "score": {
+        "accuracy": 0.16666666666666666,
+        "brier": 0.7637956024816036,
+        "correct": 2,
+        "n": 12,
+        "nll": 1.41541652776007,
+        "score_mean_absolute_error": 0.99999983060128,
+        "uniform_expected_accuracy": 0.25
+      },
+      "two_step": {
+        "accuracy": 0.5,
+        "brier": 0.7393776481899469,
+        "correct": 6,
+        "n": 12,
+        "nll": 1.3665505182728805,
+        "uniform_expected_accuracy": 0.25
+      }
+    },
+    "training": {
+      "BINARY": {
+        "accuracy": 0.5,
+        "brier": 0.5000011299016259,
+        "correct": 30,
+        "n": 60,
+        "nll": 0.6931483104632786,
+        "uniform_expected_accuracy": 0.5
+      },
+      "CHOICE": {
+        "accuracy": 0.3958333333333333,
+        "brier": 0.6737312462845053,
+        "correct": 95,
+        "n": 240,
+        "nll": 1.1852599131290555,
+        "uniform_expected_accuracy": 0.3125
+      },
+      "SCORE": {
+        "accuracy": 0.2833333333333333,
+        "brier": 0.7361152949789352,
+        "correct": 17,
+        "n": 60,
+        "nll": 1.3563437618473848,
+        "score_mean_absolute_error": 1.0636745547501991,
+        "uniform_expected_accuracy": 0.25
+      },
+      "all": {
+        "accuracy": 0.39444444444444443,
+        "brier": 0.6551735683364304,
+        "correct": 142,
+        "n": 360,
+        "nll": 1.1317552874711476,
+        "score_mean_absolute_error": 1.0636745547501991,
+        "uniform_expected_accuracy": 0.3333333333333333
+      },
+      "binding": {
+        "accuracy": 0.36666666666666664,
+        "brier": 0.7258493628502685,
+        "correct": 22,
+        "n": 60,
+        "nll": 1.3374296038617395,
+        "uniform_expected_accuracy": 0.25
+      },
+      "comparison": {
+        "accuracy": 0.5,
+        "brier": 0.5006716244767725,
+        "correct": 30,
+        "n": 60,
+        "nll": 0.6938197468939368,
+        "uniform_expected_accuracy": 0.5
+      },
+      "negation": {
+        "accuracy": 0.5,
+        "brier": 0.5000011299016259,
+        "correct": 30,
+        "n": 60,
+        "nll": 0.6931483104632786,
+        "uniform_expected_accuracy": 0.5
+      },
+      "property": {
+        "accuracy": 0.3333333333333333,
+        "brier": 0.737126149704556,
+        "correct": 20,
+        "n": 60,
+        "nll": 1.3611202020524542,
+        "uniform_expected_accuracy": 0.25
+      },
+      "score": {
+        "accuracy": 0.2833333333333333,
+        "brier": 0.7361152949789352,
+        "correct": 17,
+        "n": 60,
+        "nll": 1.3563437618473848,
+        "score_mean_absolute_error": 1.0636745547501991,
+        "uniform_expected_accuracy": 0.25
+      },
+      "two_step": {
+        "accuracy": 0.38333333333333336,
+        "brier": 0.7312778481064243,
+        "correct": 23,
+        "n": 60,
+        "nll": 1.3486700997080914,
+        "uniform_expected_accuracy": 0.25
+      }
+    }
+  },
+  "row_IID_or_statistical_interval_claimed": false,
+  "single_fixed_recipe_no_quality_selected_refit": true,
+  "source_groups": {
+    "development": 3,
+    "evaluation": 3,
+    "training": 15
+  }
+}

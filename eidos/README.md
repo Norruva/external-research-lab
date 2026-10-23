@@ -10,6 +10,22 @@ The new [original decision-model path](docs/DECISION-MODEL.md) trains and runs a
 
 This compact from-scratch model passed 108 authored methods,12 CLI/API checks and13 real Chromium checks, but answered only 4/10 visible choice/binary smoke tasks. [Critical result and retained failures](docs/DECISION-BUILD-RESULT.md). It does not inherit the separate fixed-class DBpedia result below or establish LAYA/JEV parity. Research probabilities remain uncalibrated and every result requires review. The following older demo trains a fixed-taxonomy classifier; use the decision-model guide for new question/option semantics.
 
+The new [owned relational curriculum](docs/OWNED-CURRICULUM.md) adds six exact-label synthetic task families and grouped counterfactual worlds. Its 12 new checks bring the decision-path unit total to 120. The single frozen fit **failed**: 23/72 evaluation answers (31.94%) against uniform expected 33.33%, with zero top-answer changes in 160 changed-gold training pairs. [Complete negative result and representation limit](docs/OWNED-CURRICULUM-RESULT.md). This exposes a binding/learning gap; the model is not a useful LAYA/JEV replacement. All prior real comparison results concern different artifacts.
+
+To reproduce this bounded synthetic fitting recipe in new directories:
+
+```sh
+python3 -S -B -m eidos.decision_curriculum --output /tmp/eidos-relational-data
+python3 -S -B -m eidos.train_decision \
+  --input /tmp/eidos-relational-data/training.jsonl \
+  --provenance /tmp/eidos-relational-data/provenance.json \
+  --output /tmp/eidos-relational-model \
+  --model-id owned-relational-curriculum-v1 \
+  --epochs 6 --seed 113 --learning-rate 0.005
+```
+
+These commands reproduce a weak research model. Keep `ORACLE.json` and development/evaluation labels out of fitting and prediction; do not promote it or infer calibrated confidence from the generated data. Run from this `eidos` directory in an isolated development environment. Existing output paths are refused.
+
 ## Train and query the demo
 
 From the repository root:
