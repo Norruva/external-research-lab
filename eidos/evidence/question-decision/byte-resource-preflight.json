@@ -1,0 +1,11 @@
+{
+  "format": "eidos-v2-authored-resource-preflight-v1",
+  "training_rows": 144,
+  "parameter_count": 5672,
+  "vocabulary_size": 115,
+  "forward_backward_pass_estimate": 33132288,
+  "work20": 1382324736,
+  "work10": 724294656,
+  "limit": 1000000000,
+  "fit_inference_quality_scoring_or_hyperparameter_selection_from_quality": false
+}

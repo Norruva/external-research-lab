@@ -1,0 +1,17 @@
+{
+  "aggregate_Cgroup_or_complete_process_tree_CPU_accounting_claimed": false,
+  "all_unfinished_connects_paired": true,
+  "complete": true,
+  "expected_refused_preflight": 1,
+  "format": "eidos-decision-browser-network-review-v1",
+  "fresh_browser_key_or_raw_CDP_payload_recorded": false,
+  "inference_fit_or_browser_repeated_for_review": false,
+  "loopback_connects": 112,
+  "original_wrapper_complete": false,
+  "pending_connects": 0,
+  "real_Chromium_checks_passed": 13,
+  "refused_Chromium_IPv6_reachability_probes": 1,
+  "trace_sha256": "373a1a5a35aa00f4a378ac9cb1b8d27058a3109751968cd291b9d8d202aca834",
+  "unexpected_external_IP_connects": 0,
+  "wrapper_diagnostic": "The original one-line parser saw unfinished IPv6 connect before ENETUNREACH resumed. Complete paired trace proves the predeclared browser probe was refused. Original false receipt preserved."
+}

@@ -4,6 +4,12 @@ EIDOS is an original, locally controlled classifier and decision research applic
 
 This source checkout runs without pip, npm, a hosted model, or a CDN. It requires Python 3.12 or later on POSIX, including the standard SQLite/OpenSSL modules. Browser use requires WebCrypto. No installation command or model download is needed for the authored demo below.
 
+## Question-conditioned decision model
+
+The new [original decision-model path](docs/DECISION-MODEL.md) trains and runs a shared scorer over **context, the question and caller-defined option descriptions**, with CHOICE, BINARY and numeric SCORE outputs. It includes a separate local CLI, signed loopback API and browser. [Owned task format](docs/DECISION-DATA.md) · [Evidence, conformal sets and information value](docs/DECISION-EPISTEMIC.md). No pretrained checkpoint or third-party training/inference package is included.
+
+This compact from-scratch model passed 108 authored methods,12 CLI/API checks and13 real Chromium checks, but answered only 4/10 visible choice/binary smoke tasks. [Critical result and retained failures](docs/DECISION-BUILD-RESULT.md). It does not inherit the separate fixed-class DBpedia result below or establish LAYA/JEV parity. Research probabilities remain uncalibrated and every result requires review. The following older demo trains a fixed-taxonomy classifier; use the decision-model guide for new question/option semantics.
+
 ## Train and query the demo
 
 From the repository root:

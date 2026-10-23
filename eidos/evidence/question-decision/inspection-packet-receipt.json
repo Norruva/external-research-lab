@@ -1,0 +1,12 @@
+{
+  "bytes": 165787,
+  "complete": true,
+  "file": "/workspace/eidos/eidos-question-decision-review-v1.tar.gz",
+  "files_verified": 81,
+  "format": "eidos-original-question-decision-review-export-v1",
+  "manifest_sha256": "1fc4989d8c67c9673ce45370cca4976952a0d19355694d232d49f532e62af020",
+  "raw_real_benchmark_model_weights_existing_keys_or_state_included": false,
+  "sha256": "8eb07be51a4d3b29eea10a0a5efc07d0c97c8447cf7cc17fa57cf3e5026e5631",
+  "source_and_aggregate_subset": true,
+  "target_execution": false
+}

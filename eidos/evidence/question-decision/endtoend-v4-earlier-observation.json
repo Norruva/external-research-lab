@@ -1,0 +1,56 @@
+{
+  "JEV_or_general_LAYA_parity_established": false,
+  "authored_fixed_epochs": 10,
+  "authored_training_rows": 144,
+  "authored_visible_smoke_rows": 12,
+  "check_count": 11,
+  "checks": [
+    "actual_from_scratch_training_CLI_fixed_recipe",
+    "checked_private_artifact_loaded_by_real_engine",
+    "actual_choice_binary_and_numeric_inference_review_only",
+    "actual_CLI_library_exact_parity",
+    "actual_trained_option_order_and_ID_independence",
+    "actual_255_option_complete_scoring_mechanics_not_quality",
+    "actual_loopback_service_start_and_health",
+    "signed_HTTP_exact_parity_and_unauthenticated_refusal",
+    "actual_HTTP_signature_replay_refused",
+    "authenticated_model_metadata_without_key_disclosure",
+    "real_local_browser_assets_served_no_CDN_or_external_model"
+  ],
+  "complete": true,
+  "epoch_count_selected_by_pre_fit_work_budget_not_quality": true,
+  "format": "eidos-owned-decision-authored-smoke-v1",
+  "loopback_service_stopped": true,
+  "model": {
+    "calibration_status": "unfitted",
+    "feature_version": "eidos-question-conditioned-attention-mlp-v2",
+    "id": "owned-question-decision-demo-v1",
+    "sha256": "131e3ec25aa6f2196cc7fc1c0b9c404851e5626ca64b8aa1742fc42ac4877a83",
+    "version": "1"
+  },
+  "new_private_config_deleted": true,
+  "no_existing_credentials_or_external_service": true,
+  "operational_acceptance_enabled": false,
+  "production_certified": false,
+  "registry_sha256": "f0cf2a910f7b90533dd6c07578c9bd6c0f395bcdf7f49bf79a313a50caf3fa06",
+  "service_phase_elapsed_seconds": 0.3710958829997253,
+  "training_diagnostics": {
+    "elapsed_seconds": 7.974173929000244,
+    "final_training_cross_entropy": 1.3775192018372593,
+    "initial_training_cross_entropy": 1.3956096910551814,
+    "optimizer_steps": 1440,
+    "parameter_count": 5672,
+    "process_cpu_seconds": 7.88759994,
+    "scope": "training_fit_diagnostic_not_quality_evaluation_or_calibration",
+    "vocabulary_size": 115
+  },
+  "visible_mechanical_fixture_observation": {
+    "forced_choice_and_binary_correct": 1,
+    "forced_choice_and_binary_total": 10,
+    "independent_semantic_quality_or_LAYA_JEV_estimate": false,
+    "ordinal_absolute_errors": [
+      3.932299268516459e-05,
+      0.9999778449670946
+    ]
+  }
+}

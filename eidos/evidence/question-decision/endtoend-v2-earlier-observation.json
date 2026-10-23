@@ -1,0 +1,54 @@
+{
+  "JEV_or_general_LAYA_parity_established": false,
+  "authored_training_rows": 144,
+  "authored_visible_smoke_rows": 12,
+  "check_count": 11,
+  "checks": [
+    "actual_from_scratch_training_CLI_fixed_recipe",
+    "checked_private_artifact_loaded_by_real_engine",
+    "actual_choice_binary_and_numeric_inference_review_only",
+    "actual_CLI_library_exact_parity",
+    "actual_trained_option_order_and_ID_independence",
+    "actual_255_option_complete_scoring_mechanics_not_quality",
+    "actual_loopback_service_start_and_health",
+    "signed_HTTP_exact_parity_and_unauthenticated_refusal",
+    "actual_HTTP_signature_replay_refused",
+    "authenticated_model_metadata_without_key_disclosure",
+    "real_local_browser_assets_served_no_CDN_or_external_model"
+  ],
+  "complete": true,
+  "format": "eidos-owned-decision-authored-smoke-v1",
+  "loopback_service_stopped": true,
+  "model": {
+    "calibration_status": "unfitted",
+    "feature_version": "eidos-question-conditioned-attention-mlp-v1",
+    "id": "owned-question-decision-demo-v1",
+    "sha256": "598e9b10273d66c725434efd8e9aa9d88604433cafa61703b7c37b6df02e5919",
+    "version": "1"
+  },
+  "new_private_config_deleted": true,
+  "no_existing_credentials_or_external_service": true,
+  "operational_acceptance_enabled": false,
+  "production_certified": false,
+  "registry_sha256": "19ad57c64c811c4237ca6bf4ac3d0b4519674cae217af51189b74fa70a10fa84",
+  "service_phase_elapsed_seconds": 0.3179786079999758,
+  "training_diagnostics": {
+    "elapsed_seconds": 8.700936024999919,
+    "final_training_cross_entropy": 0.35419182243308617,
+    "initial_training_cross_entropy": 1.381425247196267,
+    "optimizer_steps": 2880,
+    "parameter_count": 2576,
+    "process_cpu_seconds": 8.566369439999999,
+    "scope": "training_fit_diagnostic_not_quality_evaluation_or_calibration",
+    "vocabulary_size": 115
+  },
+  "visible_mechanical_fixture_observation": {
+    "forced_choice_and_binary_correct": 4,
+    "forced_choice_and_binary_total": 10,
+    "independent_semantic_quality_or_LAYA_JEV_estimate": false,
+    "ordinal_absolute_errors": [
+      1.3879562547503e-05,
+      0.6822014645938619
+    ]
+  }
+}

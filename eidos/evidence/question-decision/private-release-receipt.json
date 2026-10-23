@@ -1,0 +1,22 @@
+{
+  "authored_demo_model_included": true,
+  "bytes": 163155,
+  "complete": true,
+  "file": "/workspace/eidos/eidos-owned-question-decision-v1.tar.gz",
+  "files_verified": 55,
+  "format": "eidos-owned-question-decision-packaging-v1",
+  "manifest_sha256": "ce2078595c7f9f52d7e8a8d5e34600cdaf10e530ac9e368fa3903101499cf613",
+  "mission_complete": false,
+  "model": {
+    "calibration_status": "unfitted",
+    "feature_version": "eidos-question-conditioned-attention-mlp-v2",
+    "id": "owned-question-decision-demo-v1",
+    "sha256": "ca5c53725d902fc087d9ee2939c5e7afa8656ee0779ebb4953e379cd6b393eec",
+    "version": "1"
+  },
+  "packaging_performed_training_inference_activation_or_network": false,
+  "private_release_not_public_weights_distribution": true,
+  "production_certified": false,
+  "raw_benchmark_vendor_model_existing_credentials_or_state_included": false,
+  "sha256": "c760e6df47aead244c72036e907463609f9deb619db60dbcaf28fe64e5d99d19"
+}

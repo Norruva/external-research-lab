@@ -1,0 +1,33 @@
+{
+  "context": "Item: lantern; color: red; owner: Mira; location: workshop; status: approved.\nItem: parcel; color: blue; owner: Noel; location: office; status: pending.",
+  "format": "eidos-decision-request-v2",
+  "kind": "CHOICE",
+  "options": [
+    {
+      "description": "blue",
+      "id": "c119"
+    },
+    {
+      "description": "red",
+      "id": "c268"
+    },
+    {
+      "description": "green",
+      "id": "c634"
+    },
+    {
+      "description": "yellow",
+      "id": "c343"
+    },
+    {
+      "description": "black",
+      "id": "c495"
+    },
+    {
+      "description": "white",
+      "id": "c515"
+    }
+  ],
+  "prompt": "What color is the lantern?",
+  "request_id": "authored-train-01-1"
+}

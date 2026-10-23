@@ -1,0 +1,17 @@
+{
+  "context": "Item: lantern; color: red; owner: Mira; location: workshop; status: approved.\nItem: parcel; color: blue; owner: Noel; location: office; status: pending.",
+  "format": "eidos-decision-request-v2",
+  "kind": "BINARY",
+  "options": [
+    {
+      "description": "Yes. The proposition is supported by the stated facts.",
+      "id": "true"
+    },
+    {
+      "description": "No. The proposition is contradicted by the stated facts.",
+      "id": "false"
+    }
+  ],
+  "prompt": "Is the lantern blue?",
+  "request_id": "authored-train-01-5"
+}

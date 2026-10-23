@@ -1,0 +1,6 @@
+{
+  "citation": "EIDOS decision-model implementation mechanics fixtures, 2026",
+  "license": "Original authored fixture; no third-party material; no new public license grant",
+  "rights_basis": "Authored for this implementation without public benchmark, private source, vendor output or pretrained model input; no exclusive legal ownership or production-data rights certification is asserted",
+  "source": "Original authored two-entity facts and decision-task templates in author_fixtures.py"
+}

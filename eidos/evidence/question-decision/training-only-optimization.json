@@ -1,0 +1,76 @@
+{
+  "complete": true,
+  "epochs": 10,
+  "format": "eidos-original-training-only-optimization-diagnostic-v1",
+  "generalization_or_LAYA_JEV_superiority_established": false,
+  "predeclared_rates": [
+    0.02,
+    0.005,
+    0.001
+  ],
+  "rows": [
+    {
+      "diagnostics": {
+        "elapsed_seconds": 8.00398449000022,
+        "final_training_cross_entropy": 1.3775192018372593,
+        "initial_training_cross_entropy": 1.3956096910551814,
+        "optimizer_steps": 1440,
+        "parameter_count": 5672,
+        "process_cpu_seconds": 7.924201721,
+        "scope": "training_fit_diagnostic_not_quality_evaluation_or_calibration",
+        "vocabulary_size": 115
+      },
+      "learning_rate": 0.02,
+      "model": {
+        "calibration_status": "unfitted",
+        "feature_version": "eidos-question-conditioned-attention-mlp-v2",
+        "id": "authored-optimization-0-02",
+        "sha256": "53b0bdf932366a7e2fc8594bffe41458e93e740a3ebf435de07d5e2a3f7553e8",
+        "version": "1"
+      }
+    },
+    {
+      "diagnostics": {
+        "elapsed_seconds": 7.874148232000152,
+        "final_training_cross_entropy": 0.32118001915157424,
+        "initial_training_cross_entropy": 1.3956096910551814,
+        "optimizer_steps": 1440,
+        "parameter_count": 5672,
+        "process_cpu_seconds": 7.848549463000001,
+        "scope": "training_fit_diagnostic_not_quality_evaluation_or_calibration",
+        "vocabulary_size": 115
+      },
+      "learning_rate": 0.005,
+      "model": {
+        "calibration_status": "unfitted",
+        "feature_version": "eidos-question-conditioned-attention-mlp-v2",
+        "id": "authored-optimization-0-005",
+        "sha256": "3f96682f19f9cf2a3685a217865f4c3c8d3e7b35856f16d8746e4afcbffc8b54",
+        "version": "1"
+      }
+    },
+    {
+      "diagnostics": {
+        "elapsed_seconds": 7.852923886001008,
+        "final_training_cross_entropy": 1.2608386394948905,
+        "initial_training_cross_entropy": 1.3956096910551814,
+        "optimizer_steps": 1440,
+        "parameter_count": 5672,
+        "process_cpu_seconds": 7.833981374,
+        "scope": "training_fit_diagnostic_not_quality_evaluation_or_calibration",
+        "vocabulary_size": 115
+      },
+      "learning_rate": 0.001,
+      "model": {
+        "calibration_status": "unfitted",
+        "feature_version": "eidos-question-conditioned-attention-mlp-v2",
+        "id": "authored-optimization-0-001",
+        "sha256": "2fa5b1d6da84df66b928c92965372f19f3f71a11e58163e4eff3e218186db27f",
+        "version": "1"
+      }
+    }
+  ],
+  "seed": 113,
+  "selection_criterion": "lowest_final_training_cross_entropy_only_not_evaluation_quality",
+  "smoke_or_other_test_data_available": false
+}
