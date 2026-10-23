@@ -56,6 +56,12 @@ python3 -S -B -m eidos.manage call \
 
 Read [operations](docs/OPERATIONS.md) before backup/restore or deployment. Its historical preinstalled-profile examples require the separately packaged model artifacts; the new owned-data workflow above needs only this checkout. Backups are authenticated plaintext and exclude configuration/keys. Production identity, encryption/offsite recovery, load/drift and independent security review remain work to complete.
 
+## Evaluate separate labeled data
+
+The new [owned evaluation workflow](docs/OWNED-EVALUATION.md) provides explicit `prepare`, `predict`, and `score` commands for either own-data trainer. It checks exact support/evaluation ID and normalized-text overlap, binds code/model/data files by hash, and requires a complete prediction stream before writing aggregate accuracy, F1 and probability metrics. Prediction needs no gold file; scoring needs no source case text or model weights. The portable commands use logical file roles; operating-system isolation is external.
+
+Its authored four-case demo is for mechanics only. Exact overlap refusal does not verify source/paraphrase independence, unseen holdout status, calibrated confidence or semantic quality. Reports retain zero accepted coverage for these review-only models. No existing revealed benchmark was rerun for this feature.
+
 ## Verify the checkout
 
 From this directory:
@@ -76,4 +82,4 @@ On the same 1,821 seven-choice cases, frozen linear EIDOS scored **94.18% accura
 
 This checkout contains original implementation and aggregate evidence. The five preinstalled benchmark model binaries and third-party implementations/weights are omitted. Their original release receipts and source hashes are retained for provenance; this source tree is not the complete historical application archive. The demo builds a fresh registry, so its documented workflow requires no binary release asset. No GitHub binary release has been created as part of this source import.
 
-No private corpus, raw benchmark cases, answer keys, per-case predictions, existing credentials, or runtime state are included. Public licensed data are not exclusive property. See [attribution and changes](docs/ATTRIBUTION-AND-CHANGES.md), the included dataset license notices, [original source provenance](SOURCE-PROVENANCE.json), and [the linear-training change record](CHANGESET-PROVENANCE.json). TypeSafe/JEV service access and model extraction remain outside this project's authorized research scope. `mission_complete=false`; `production_certified=false`.
+No private corpus, raw benchmark cases, benchmark answer keys/per-case predictions, existing credentials, or runtime state are included. The labeled demonstration files are explicitly original authored fixtures. Public licensed data are not exclusive property. See [attribution and changes](docs/ATTRIBUTION-AND-CHANGES.md), the included dataset license notices, [original source provenance](SOURCE-PROVENANCE.json), and [the current change record](CHANGESET-PROVENANCE.json). TypeSafe/JEV service access and model extraction remain outside this project's authorized research scope. `mission_complete=false`; `production_certified=false`.

@@ -1,0 +1,10 @@
+{
+  "complete": false,
+  "stage": "packet generation and REA preflight only",
+  "packet_error": "Generated report reference used43-owned-evaluation-training.md rather than44-owned-evaluation-workflow.md",
+  "rea_preflight_error": "Required archive absent; failed before tool inventory, namespace creation or REA execution",
+  "target_archive_or_release_directory_created": false,
+  "rea_invoked": false,
+  "evaluation_unit_or_role_stages_repeated": false,
+  "correction": "Fix report path and normalize research/evidence study directory names; retain identical REA limits/controls."
+}

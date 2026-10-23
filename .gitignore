@@ -11,3 +11,4 @@ __pycache__/
 /eidos/local-*/
 /eidos/owned-registry/
 /eidos/artifacts/
+/eidos/evaluations/

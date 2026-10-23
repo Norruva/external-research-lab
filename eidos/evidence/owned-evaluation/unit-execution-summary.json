@@ -1,0 +1,17 @@
+{
+  "complete": true,
+  "exit_code": 0,
+  "elapsed_seconds": 2.0711812279996593,
+  "source_files_verified": 137,
+  "source_unchanged": true,
+  "source_manifest_sha256": "31a5909006c26bddded2a0dd976fd91b459ab750a11723ba96de42c8c4dd57ea",
+  "expected_refused_preflights": 1,
+  "private_loopback_connect_attempts": 0,
+  "unexpected_ip_connects": 0,
+  "existing_credentials_corpora_or_models_mounted": false,
+  "benchmark_reference_inference_or_quality_scoring": false,
+  "memory_mib": 768,
+  "wall_seconds_limit": 110,
+  "per_process_cpu_seconds": 120,
+  "aggregate_cgroup_guarantee": false
+}

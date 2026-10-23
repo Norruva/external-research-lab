@@ -1,0 +1,12 @@
+{
+  "archive": "/workspace/eidos/eidos-owned-evaluation-research-v2.tar.gz",
+  "bytes": 109437,
+  "complete": true,
+  "files_verified": 64,
+  "manifest_sha256": "11c168a2131a5fcfb7c1af900360ea9a81816d08b5fc5d3aa40fca52f8cd56c1",
+  "mission_complete": false,
+  "new_model_quality_claim": false,
+  "prefix": "eidos-owned-evaluation-research-v2",
+  "production_certified": false,
+  "sha256": "414b10468e709fa155f9ccb8482a789291216ce8d07f265f052de92cca83e1ad"
+}

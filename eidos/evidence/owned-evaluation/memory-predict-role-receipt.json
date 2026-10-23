@@ -1,0 +1,1 @@
+{"complete": true, "role": "predict", "trainer": "memory", "n": 4, "gold_absent_from_prediction_namespace": true, "models_and_source_case_text_absent_from_score_namespace": false, "authored_mechanical_fixture_only": true, "semantic_or_rival_quality_claim": false}
