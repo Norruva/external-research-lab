@@ -1,0 +1,12 @@
+{
+  "bytes": 153076,
+  "complete": true,
+  "file": "/workspace/eidos/eidos-dbpedia-scaled-result-review-v1.tar.gz",
+  "files_verified": 68,
+  "fit_prediction_scoring_installation_activation_or_network_performed": false,
+  "format": "eidos-dbpedia-scaled-result-review-export-v1",
+  "inspection_subset_not_complete_application": true,
+  "manifest_sha256": "97a3aaddf7a65bacb40d2cff922a24f91442fad8038ce4b707e2efa857c22141",
+  "raw_case_gold_predictions_or_model_weights_included": false,
+  "sha256": "5dd190fc57d46cf452584c0d914c74169c25f1af7ddfb9952d8fc5892580e833"
+}

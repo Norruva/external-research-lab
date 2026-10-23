@@ -1,6 +1,6 @@
 # Train from larger owned datasets
 
-`eidos.train_sparse` builds a new linear classifier from arbitrary, potentially uneven class counts. It uses only Python's standard library and exports the existing checked inference format. The earlier memory/GD/Adam trainers retain their exact 20-example-per-class contract. This is a new recipe with no inherited LAYA or JEV result.
+`eidos.train_sparse` builds a new linear classifier from arbitrary, potentially uneven class counts. It uses only Python's standard library and exports the existing checked inference format. The earlier memory/GD/Adam trainers retain their exact 20-example-per-class contract. Its fixed three-epoch DBpedia artifact now has a separately measured, cohort-scoped advantage over public zero-shot LAYA. That result does not transfer to arbitrary caller-trained models; JEV remains unmeasured.
 
 From the repository's `eidos` directory, create an existing private parent and run:
 
@@ -56,7 +56,7 @@ The [owned evaluation workflow](OWNED-EVALUATION.md) explicitly validates this n
 
 Every new profile is uncalibrated, consequential and review-only, with unit temperatures and disabled acceptance. It abstains, returns `value=null` and authorizes no actions. The implementation handles known trained classes in English. It does not supply multilingual, unseen-label, universal-recognition or out-of-scope guarantees. Vocabulary and weights can reveal training information; private file modes do not provide differential privacy or protection from a hostile same-UID process.
 
-## Verification and next quality experiment
+## Verification and recorded quality experiment
 
 ```sh
 python3 -S -B -m unittest discover -s tests -p 'test_*.py' -v
@@ -68,4 +68,4 @@ The capacity script creates 20,000 original generated rows across 14 uneven clas
 
 In the recorded Codex Cloud check, all 95 unit methods and 16 real CLI/service checks passed. The capacity run completed in 96.33 seconds elapsed / 86.72 CPU seconds, with 112,936 KiB peak self RSS on Linux, 10,000 selected features and 5,352,806 nonzeros. Four separately isolated evaluation CLI roles also passed; prediction had no gold and scoring had no weights or source case text. No unexpected IP connection occurred. These measurements apply to this generated fixture and VM. [Receipts and validation source](../evidence/sparse-training/) retain the exact tested-source bindings; later documentation and publication metadata are separate additions.
 
-The next real quality experiment needs a newly sealed cohort, explicit exclusion of previously revealed cases before selection, independently planned development-only selection, a frozen reference adapter and a separately approved resource plan. No new real-corpus training, historical reference rerun or benchmark rescoring is authorized by the source/fixture milestone. The latest DBpedia result remains an accuracy tie with both superiority gates failed. Dataset/model redistribution obligations and production validation remain unresolved. `mission_complete=false`; `production_certified=false`.
+The separately approved [1,400-case DBpedia study](DBPEDIA-SCALED-RESULT.md) completed once using this actual trainer: 14,000 eligible labeled training rows, three fixed epochs, seed 113 and a final artifact frozen before diagnostic development. EIDOS scored 95.50% accuracy / 95.50% macro-F1, against public zero-shot LAYA 82.21% / 79.84%; both predefined individual paired interval gates passed. This is adaptive exploratory same-source research, with 1,000 training examples per class versus zero-shot reference and unique-article eligibility restrictions. No caller model inherits these scores. The earlier 280-case accuracy tie and failed gates remain unchanged. This attempt and cohort are consumed; new inference/fits/comparisons need a new concrete protocol and applicable authorization. Dataset/model redistribution obligations, calibration/OOS and production validation remain unresolved. `mission_complete=false`; `production_certified=false`.

@@ -10,12 +10,12 @@
       "sha256": "a6b12865c4a84b4c6595be69fe0b74c3bacea9c6279f083c33cf6a6db5a15de1"
     },
     "eidos/CHANGESET-PROVENANCE.json": {
-      "bytes": 14058,
-      "sha256": "fffdf0aa2bafc8b0d99391132a13d8841402dc5eac4965e63e2635874433b77d"
+      "bytes": 7968,
+      "sha256": "fc3893f06965d141fc0566fae1b966eac5cd4a8dd8eeda7b27fb2e9cbc13fde1"
     },
     "eidos/README.md": {
-      "bytes": 10301,
-      "sha256": "7b136d5df46f2d3e12fa761c06d92658a038a07987f0759bb24931c4b1c62b27"
+      "bytes": 10785,
+      "sha256": "1b6361be052c9e6e53d559bdff0785bdad9eb598c445c85f9096a424db41f929"
     },
     "eidos/SOURCE-PROVENANCE.json": {
       "bytes": 22137,
@@ -45,9 +45,17 @@
       "bytes": 7270,
       "sha256": "e0d2950c3b8bde286ec5c8a6ba75fa09959f5e1e7831c670486ebfae59a7018f"
     },
+    "eidos/docs/DBPEDIA-SCALED-ATTRIBUTION.md": {
+      "bytes": 1077,
+      "sha256": "4894cb2a311bb0b28c83d76585fc3e589ae53b7af72c755a65af2f6a12d9370b"
+    },
+    "eidos/docs/DBPEDIA-SCALED-RESULT.md": {
+      "bytes": 9878,
+      "sha256": "dddbb1cbd7724c6a72c222272ce438280f1f9a928748b305e41b90159500b5bb"
+    },
     "eidos/docs/EVALUATION.md": {
-      "bytes": 7333,
-      "sha256": "560b865ba9c099cfaf1d4eea5bf29615d5addafcb4156a20fe285c7c8d1e7ea1"
+      "bytes": 8390,
+      "sha256": "97feffb788670d4ec29dabe87b179653a0d550f10b7f2c3644e7e5a84fd9d62b"
     },
     "eidos/docs/LINEAR-TRAINING.md": {
       "bytes": 7927,
@@ -66,8 +74,8 @@
       "sha256": "37beb0512a59ea7eef3c3481beb6a27a189be6dc6cf640374b96441df0a14a9f"
     },
     "eidos/docs/SCALABLE-TRAINING.md": {
-      "bytes": 8526,
-      "sha256": "efdf32a5df26930df04e4ef68fdc8d67219d956a86412385ef433dad4a92672e"
+      "bytes": 9038,
+      "sha256": "c36e0e58fa0cf7fc121b9df5460e9dccfe736fd8d06ee4668d81bb04b061e656"
     },
     "eidos/docs/SOURCE-CCBY-LICENSE.txt": {
       "bytes": 18650,
@@ -190,8 +198,8 @@
       "sha256": "33a221b2108c7711c5be38cb0af9297724d3bd6c7ca027cc9ef8a5c739309b27"
     },
     "eidos/evidence/README.md": {
-      "bytes": 11149,
-      "sha256": "1c6ec5d08314c12b40081b80abbc8b13634d20b6129220cc25276b046bd41fce"
+      "bytes": 12663,
+      "sha256": "f2655cb42ff612b6ae0aa965990e9acac3193e9771803ec7807d62152ebffac1"
     },
     "eidos/evidence/comparison/MANIFEST.json": {
       "bytes": 5669,
@@ -400,6 +408,130 @@
     "eidos/evidence/dbpedia-scaled-proposal/unit_study-role.json": {
       "bytes": 365,
       "sha256": "315a52a9f8c1d4f26706668cb74094618d7fa56b908a419d87c785094cf834e2"
+    },
+    "eidos/evidence/dbpedia-scaled-study/README.md": {
+      "bytes": 1861,
+      "sha256": "b2366bce400c132db73dde07e68c20f6e1aa95b15020228b74ac5d6933cc6b8c"
+    },
+    "eidos/evidence/dbpedia-scaled-study/approval-provenance.json": {
+      "bytes": 1576,
+      "sha256": "740091fca67a117a8608b2eeec926c69a3683c1616789d75a2c3db4fa98be1e7"
+    },
+    "eidos/evidence/dbpedia-scaled-study/authorization.json": {
+      "bytes": 392,
+      "sha256": "4fa5dc02b9423f754cfba06fc0d107eb5880f61a79505cca7ac423cfdb8478f5"
+    },
+    "eidos/evidence/dbpedia-scaled-study/cohort-readiness.json": {
+      "bytes": 5295,
+      "sha256": "8d339cc2b25c5ed49c2b1650d85917f6f41f0e5ff04bf02b07d427d02a80c9a9"
+    },
+    "eidos/evidence/dbpedia-scaled-study/completion-review-source.py": {
+      "bytes": 31732,
+      "sha256": "8bab423a6ef87a10b8458c121715862355d196541434ba3ae20226bdd01df28c"
+    },
+    "eidos/evidence/dbpedia-scaled-study/completion-review.json": {
+      "bytes": 7899,
+      "sha256": "c91dc77e8f7b63b161985ee98a1e57288909ba7a40ea680ca106a23209e1a34e"
+    },
+    "eidos/evidence/dbpedia-scaled-study/corpus-execution.json": {
+      "bytes": 363,
+      "sha256": "b30a27f1a5ab14514145f69b0dc539af771b1f8a7962f2938a3544ffb3e884ff"
+    },
+    "eidos/evidence/dbpedia-scaled-study/development-execution.json": {
+      "bytes": 368,
+      "sha256": "98b3ebfcfa9abb0e73572ddb43a02124cfb66551958c7055bf0b56e39cb69f05"
+    },
+    "eidos/evidence/dbpedia-scaled-study/eidos-execution.json": {
+      "bytes": 361,
+      "sha256": "afaa041f8c6e2705bc84c0a70c7a249bf3005d5e3d2afb801bd76463a9424280"
+    },
+    "eidos/evidence/dbpedia-scaled-study/eidos-prediction-receipt.json": {
+      "bytes": 1178,
+      "sha256": "e3ba487a882f973e4bd23315626e5b007737835628b6ed29331d220ed8718297"
+    },
+    "eidos/evidence/dbpedia-scaled-study/execution-summary.json": {
+      "bytes": 3276,
+      "sha256": "4300f3234b43b15e3cb25724fefcf2b58f12e0d1726489ef4f2f00b1e37eeb01"
+    },
+    "eidos/evidence/dbpedia-scaled-study/history-execution.json": {
+      "bytes": 363,
+      "sha256": "c574d529dd0354971b70c1c502a3c1bac4ba6832390ffdd407cfbe2c8a20e168"
+    },
+    "eidos/evidence/dbpedia-scaled-study/history-readiness.json": {
+      "bytes": 1005,
+      "sha256": "4ce654760cd2014583b54662499d49943080a6b2e137d0ecbd6d2c0779f7b822"
+    },
+    "eidos/evidence/dbpedia-scaled-study/inspection-export-source.py": {
+      "bytes": 4080,
+      "sha256": "c5c07c24970c5f2622c7d0f91bd7b6528d4662edf2f1b830e09b3b6ee106900d"
+    },
+    "eidos/evidence/dbpedia-scaled-study/inspection-packet-receipt.json": {
+      "bytes": 568,
+      "sha256": "3793dcaaec22a2d0823f1fac9545d9ed8488d4aff041315b0854c5d141dd4243"
+    },
+    "eidos/evidence/dbpedia-scaled-study/laya-execution.json": {
+      "bytes": 359,
+      "sha256": "fe4217e34f46dca1505570c11c6b802b73adbf9d617d633cbad7784c377a822d"
+    },
+    "eidos/evidence/dbpedia-scaled-study/laya-prediction-receipt.json": {
+      "bytes": 1535,
+      "sha256": "b9e9d7ab917908380c1017a46220e57f447595e9c9f68f9b7911f31e63d3f386"
+    },
+    "eidos/evidence/dbpedia-scaled-study/owned-packaging-source.py": {
+      "bytes": 6914,
+      "sha256": "c22a9f28932cb7abdf7531b82d2ccba5fb2d0a3554c675cfa38e5077cd2e10f6"
+    },
+    "eidos/evidence/dbpedia-scaled-study/parent-CHANGESET-PROVENANCE.json": {
+      "bytes": 14058,
+      "sha256": "fffdf0aa2bafc8b0d99391132a13d8841402dc5eac4965e63e2635874433b77d"
+    },
+    "eidos/evidence/dbpedia-scaled-study/parent-DELIVERY-MANIFEST.json": {
+      "bytes": 59707,
+      "sha256": "ef023949fff2a733824787dbc4bd68dc4bf2a71fd855559ccfb5551aaeddb0b4"
+    },
+    "eidos/evidence/dbpedia-scaled-study/passive-rea-source.py": {
+      "bytes": 9933,
+      "sha256": "527816078dd529d9a2ffdb25959b198e4cf55845850607adccc6fa213c7dd593"
+    },
+    "eidos/evidence/dbpedia-scaled-study/primary-freeze.json": {
+      "bytes": 647,
+      "sha256": "d94f1b959f71b36a58267264b9aaa09ac039de2fc8077403ae35fa55c3084918"
+    },
+    "eidos/evidence/dbpedia-scaled-study/private-owned-package-receipt.json": {
+      "bytes": 769,
+      "sha256": "ec91725c73253c2772e5daacfcbf0d5d31b5374fd2decc6aff9b8add8a5b39e1"
+    },
+    "eidos/evidence/dbpedia-scaled-study/publication-content-review.json": {
+      "bytes": 1653,
+      "sha256": "c17c9b10a04a7d4472ffd2b5a5579ad83761a616d924edcf75ab33f9a102819c"
+    },
+    "eidos/evidence/dbpedia-scaled-study/rea-execution-summary.json": {
+      "bytes": 1064,
+      "sha256": "303ed746a0e0522e76105fd05f28189a6256e38f90087a64e715c68f8ec3fc60"
+    },
+    "eidos/evidence/dbpedia-scaled-study/rea-integrity-review.json": {
+      "bytes": 697,
+      "sha256": "0eea3421399c709af01429cb906f585dd34b6478bc2ea44a6542b92d9c2960f3"
+    },
+    "eidos/evidence/dbpedia-scaled-study/reference-feasibility.json": {
+      "bytes": 194,
+      "sha256": "d9544d72d81574ecf95fd7330083eeaa14f913b9685283344ff947465c7eed09"
+    },
+    "eidos/evidence/dbpedia-scaled-study/score-execution.json": {
+      "bytes": 362,
+      "sha256": "5a80614c76aa7e0a33d975a2c5a0a7f19209a6f01798f2bbaf16b2f575d38b4d"
+    },
+    "eidos/evidence/dbpedia-scaled-study/score.json": {
+      "bytes": 5959,
+      "sha256": "871ff7afa7ac1a70635948250ebb60a07e96c11b5380576cf77478f57b1f34b6"
+    },
+    "eidos/evidence/dbpedia-scaled-study/train-execution.json": {
+      "bytes": 362,
+      "sha256": "ded9b58ac1621da37eab88b3b2e554675c0e68d143d7f0d83a839aafb5644f8b"
+    },
+    "eidos/evidence/dbpedia-scaled-study/training.json": {
+      "bytes": 2668,
+      "sha256": "fa2290e49591c67b78faae173a37c04b09c3e886fd1ecc812efca910134e4f14"
     },
     "eidos/evidence/dbpedia-study/50-dbpedia-cohort-complete.md": {
       "bytes": 4826,
@@ -1066,8 +1198,8 @@
       "sha256": "4d1d2c52920980c7e17794b315c4364c5ac7295908934ac5b6ea81094f61df1a"
     },
     "eidos/research/dbpedia-scaled-study-v1/README.md": {
-      "bytes": 1346,
-      "sha256": "06cfc47bd787cb2d1cea7a26d04f48a48c344de3e27de998f9da7d8803bb47cd"
+      "bytes": 1212,
+      "sha256": "0688fcda4b0c882f2b4026cd9f159c5984433e5769ab8d22293f63eec5fb0ae5"
     },
     "eidos/research/dbpedia-scaled-study-v1/authored_cohort_fixture.py": {
       "bytes": 4436,
@@ -1358,8 +1490,8 @@
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
     }
   },
-  "format": "eidos-public-source-delivery-manifest-v8",
+  "format": "eidos-public-source-delivery-manifest-v9",
   "original_src_blob_unchanged": true,
-  "parent_commit": "e084549cbac649d16cdc7a0a437657b64521b932",
-  "parent_manifest_sha256": "90bbae80b4723a16838d6cc8c2688b3a287c8ce434996cf41721b1a2fa70de25"
+  "parent_commit": "f9d4ab1ed3ef44a27950b5ecf8a4e90e45da494e",
+  "parent_manifest_sha256": "ef023949fff2a733824787dbc4bd68dc4bf2a71fd855559ccfb5551aaeddb0b4"
 }

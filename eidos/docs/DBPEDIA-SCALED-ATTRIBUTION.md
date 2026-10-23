@@ -1,0 +1,5 @@
+## Larger DBpedia14 result publication
+
+Added aggregate evidence and original terminal-review/packaging controls for the approved 14,000-training / 1,400-development / 1,400-test study. All 27 core package files and 84 original imported members remain unchanged. No teacher outputs, LAYA source/tensors or third-party native code enter EIDOS. Fancyzhx DBpedia14 source revision 9abd46cf7fc8b4c64290f26993c540b92aa145ac retains DBpedia/Wikipedia attribution and declared CC-BY-SA 3.0/GFDL obligations; data and derived model redistribution terms remain unresolved. Original independently fitted features/weights remain private, without exclusive-data ownership or privacy guarantees. The separately reported advantage is supervised versus zero-shot and restricted to this adaptive exploratory eligible cohort. No calibration, policy, serving activation or production certification accompanies this publication.
+
+See [the result and full limitations](DBPEDIA-SCALED-RESULT.md). The historical [original attribution notice](ATTRIBUTION-AND-CHANGES.md) is preserved byte-for-byte.

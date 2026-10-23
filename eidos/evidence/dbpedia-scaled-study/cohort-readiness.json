@@ -1,0 +1,172 @@
+{
+  "complete": true,
+  "eligibility": {
+    "test": {
+      "eligible_per_class": {
+        "Album": 4972,
+        "Animal": 4980,
+        "Artist": 4980,
+        "Athlete": 4980,
+        "Building": 4980,
+        "Company": 4974,
+        "EducationalInstitution": 4976,
+        "Film": 4977,
+        "MeanOfTransportation": 4979,
+        "NaturalPlace": 4964,
+        "OfficeHolder": 4979,
+        "Plant": 4977,
+        "Village": 4979,
+        "WrittenWork": 4973
+      },
+      "excluded_rows": 330,
+      "overlapping_exclusion_reason_counts": {
+        "historical_full_or_content_fingerprint": 280,
+        "non_singleton_content": 20,
+        "non_singleton_full_feature": 1,
+        "non_singleton_title": 31,
+        "previously_selected_id_or_component": 280
+      },
+      "source_changed_between_passes": false,
+      "source_rows": 70000
+    },
+    "train": {
+      "eligible_per_class": {
+        "Album": 39881,
+        "Animal": 39948,
+        "Artist": 39958,
+        "Athlete": 39959,
+        "Building": 39948,
+        "Company": 39922,
+        "EducationalInstitution": 39918,
+        "Film": 39924,
+        "MeanOfTransportation": 39950,
+        "NaturalPlace": 39800,
+        "OfficeHolder": 39952,
+        "Plant": 39934,
+        "Village": 39955,
+        "WrittenWork": 39896
+      },
+      "excluded_rows": 1055,
+      "overlapping_exclusion_reason_counts": {
+        "historical_full_or_content_fingerprint": 560,
+        "non_singleton_content": 245,
+        "non_singleton_full_feature": 7,
+        "non_singleton_title": 257,
+        "previously_selected_id_or_component": 560
+      },
+      "source_changed_between_passes": false,
+      "source_rows": 560000
+    }
+  },
+  "files": {
+    "development.jsonl": {
+      "bytes": 507293,
+      "sha256": "fc9153cd0d4fe6b4c9c12e41ab10afe9b765bb475fa69bd94523dc3a2f297fdf"
+    },
+    "labels.json": {
+      "bytes": 219,
+      "sha256": "da28f812c4c419b82cd1825f519a2e91c921aa894a80a0c85b1c821aaf697408"
+    },
+    "provenance.json": {
+      "bytes": 420,
+      "sha256": "0ba7cd3118350ff7686ae99c8a5c7ea19edcbe526910a18dd2ea52bc370b38c9"
+    },
+    "test-gold.jsonl": {
+      "bytes": 66400,
+      "sha256": "c1f75bb5b65b4c839434db946cdfa50713ead648355f7138bfd5271b2c59061f"
+    },
+    "test-groups.jsonl": {
+      "bytes": 170800,
+      "sha256": "dfa91d3a79d8efba2086da00d3deb4ba23771c3e89a8ef09dc41c9597ffe3e5d"
+    },
+    "test-inputs.jsonl": {
+      "bytes": 479737,
+      "sha256": "a8e0c1446f4c531ab7deee7e6a291d2828a233ec9e6a70e008039301e4396d50"
+    },
+    "training.jsonl": {
+      "bytes": 5080363,
+      "sha256": "37571b0c659902c8f740997b06d01d66f6286b9720e46b3ec5de2d29cca1adc8"
+    }
+  },
+  "global_census_unique_key_counts": {
+    "content": 629854,
+    "full_feature": 629996,
+    "title": 629856
+  },
+  "history_result_sha256": "4ce654760cd2014583b54662499d49943080a6b2e137d0ecbd6d2c0779f7b822",
+  "larger_trainer_feature_and_fit_work_readiness_verified": false,
+  "lineage": {
+    "components": 16800,
+    "cross_role_components": 0,
+    "historical_exact_overlaps": 0,
+    "max_component_rows": 1,
+    "resolved_previous_exposure_cases": 840,
+    "selected_rows": 16800,
+    "selection_population": "globally_singleton_title_full_feature_content_and_unexposed",
+    "semantic_template_speaker_or_pretraining_independence_verified": false
+  },
+  "mission_complete": false,
+  "model_fit_prediction_or_scoring": false,
+  "native_reader_only": true,
+  "plan_sha256": "880284f8fc3aaadd3b07933a724abaa86b3c71392c738202d447d7365548302c",
+  "production_certified": false,
+  "quotas": {
+    "development": 100,
+    "test": 100,
+    "training": 1000
+  },
+  "role_rows": {
+    "development": 1400,
+    "test": 1400,
+    "training": 14000
+  },
+  "salt": "eidos-dbpedia-scaled-cohort-v1:2026-10-23",
+  "selected_row_removal_replacement_truncation_or_resampling": false,
+  "semantic_template_speaker_or_pretraining_independence_verified": false,
+  "source_counts": {
+    "test": {
+      "characters": 21021129,
+      "class_counts": {
+        "Album": 5000,
+        "Animal": 5000,
+        "Artist": 5000,
+        "Athlete": 5000,
+        "Building": 5000,
+        "Company": 5000,
+        "EducationalInstitution": 5000,
+        "Film": 5000,
+        "MeanOfTransportation": 5000,
+        "NaturalPlace": 5000,
+        "OfficeHolder": 5000,
+        "Plant": 5000,
+        "Village": 5000,
+        "WrittenWork": 5000
+      },
+      "ordered_validated_rows_sha256": "ce352a9421eae2d04cd87e873e0572bc11b2a1a8259acae00323958efd0e196c",
+      "rows": 70000
+    },
+    "train": {
+      "characters": 168139533,
+      "class_counts": {
+        "Album": 40000,
+        "Animal": 40000,
+        "Artist": 40000,
+        "Athlete": 40000,
+        "Building": 40000,
+        "Company": 40000,
+        "EducationalInstitution": 40000,
+        "Film": 40000,
+        "MeanOfTransportation": 40000,
+        "NaturalPlace": 40000,
+        "OfficeHolder": 40000,
+        "Plant": 40000,
+        "Village": 40000,
+        "WrittenWork": 40000
+      },
+      "ordered_validated_rows_sha256": "d0b57ecd92962e5ee555479987637ac174fa3512edccb612a946335db5da84b6",
+      "rows": 560000
+    }
+  },
+  "source_wide_eligibility_exclusions_precede_hash_ranking": true,
+  "target_population_restricted_to_unique_unexposed_articles": true
+}

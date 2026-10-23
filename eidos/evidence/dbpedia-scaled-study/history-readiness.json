@@ -1,0 +1,22 @@
+{
+  "complete": true,
+  "comprehensive_historical_or_pretraining_independence": false,
+  "exposure_sha256": "5be06c2725bc0ea37f6ef9f24ed23f33a03d096061dff5776bff2b08566fdec6",
+  "fingerprints_sha256": "850901344e6c5a57530bf53f5d5d8fafa4db343b60fa60c6f5eb8867d0400e46",
+  "manifest_sha256": "57bd23799e961c7ac3383af5cd0b7e3c3897652548d06a4c36a024c95b00c8d6",
+  "prior_exposure_file_counts": {
+    "development.jsonl": 280,
+    "support.jsonl": 280,
+    "test-inputs.jsonl": 280
+  },
+  "prior_exposure_rows": 840,
+  "prior_exposure_source_bytes": 300944,
+  "prior_exposure_source_manifest_sha256": "b2e2ca502b4f18366d00fc280f7a55c6d10945787d38acd98e58a77e876bf575",
+  "prior_training_or_development_label_values_accessed": false,
+  "quality_evaluation_answer_key_or_prediction_read": false,
+  "rows_fingerprinted": 84246,
+  "scope": "enumerated public historical text and previously selected DBpedia input text only",
+  "source_bytes": 16525119,
+  "source_file_count": 40,
+  "unique_fingerprints": 136536
+}

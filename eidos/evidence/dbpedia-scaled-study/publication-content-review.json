@@ -1,0 +1,31 @@
+{
+  "authoritative_score_sha256": "871ff7afa7ac1a70635948250ebb60a07e96c11b5380576cf77478f57b1f34b6",
+  "complete": true,
+  "completed_aggregate_results_match": true,
+  "copied_execution_metadata_and_aggregate_receipts_matched": 23,
+  "core_package_files_verified_unchanged": 27,
+  "format": "eidos-dbpedia-scaled-publication-content-review-v1",
+  "frozen_study_sources_and_manifests_unchanged": true,
+  "local_links_checked": 47,
+  "material_issue_found_and_corrected": "Restored original imported attribution file; added separate original result-attribution notice to preserve all84 identities. Removed duplicate report with wrong relative links.",
+  "mission_complete": false,
+  "no_application_execution_fitting_inference_scoring_bootstrap_or_network_performed": true,
+  "no_private_case_gold_prediction_or_model_files_opened": true,
+  "numeric_gates": {
+    "both_pass": true,
+    "candidate_accuracy": true,
+    "macro_f1_fixed_offered_labels": true
+  },
+  "original_imported_members_verified_unchanged": 84,
+  "pending_expected_steps": [
+    "Passive REA publication inspection and independent hash/size verification",
+    "Update changeset provenance and whole-tree delivery manifest",
+    "Push and verify public GitHub payloads and draft PR identity"
+  ],
+  "production_certified": false,
+  "public_source_or_aggregate_receipts_only": true,
+  "real_case_gold_group_mapping_prediction_rows_weights_vocabulary_native_credentials_state_excluded": true,
+  "result_tables_scope_and_limitations_consistent": true,
+  "reviewed_at_utc": "2026-10-23T14:34:30.411346+00:00",
+  "scope": "pre-REA-pre-provenance-public-documents-and-aggregate-evidence"
+}
