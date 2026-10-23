@@ -1,0 +1,73 @@
+{
+ "label": "batterypass",
+ "start_url": "https://thebatterypass.io/did:web:acme.battery.pass:0226151e-949c-d067-8ef3-162431e28976",
+ "final_url": "https://thebatterypass.io/did:web:acme.battery.pass:0226151e-949c-d067-8ef3-162431e28976",
+ "scenario_evidence_id": "ev_95ce2d441d93f7aa1b50d5957377e2cbce4e4acfb447ca5282b04a64ac98bf70",
+ "scenario_error": null,
+ "bundle_evidence_id": null,
+ "bundle_error": null,
+ "bundle_capture": {
+  "scripts_observed": null,
+  "scripts_analyzed": null
+ },
+ "bundle_inferences": 0,
+ "event_counts": {
+  "request": 28,
+  "response": 28,
+  "request-finished": 28
+ },
+ "origins": [
+  "https://thebatterypass.io"
+ ],
+ "data_requests": [
+  {
+   "method": "GET",
+   "type": "document",
+   "url": "https://thebatterypass.io/did:web:acme.battery.pass:0226151e-949c-d067-8ef3-162431e28976",
+   "origin": "https://thebatterypass.io",
+   "query_parameter_names": [],
+   "status": 200
+  }
+ ],
+ "request_types": {
+  "document": 1,
+  "stylesheet": 1,
+  "script": 19,
+  "manifest": 1,
+  "image": 4,
+  "other": 2
+ },
+ "accessibility_sha256": "d3d44a677489adec3bc89da49e22650a2672616f30c00e0bd33d646f7e29733b",
+ "screenshot_sha256": "e5b82ee49e527b82749f7c50ae502f6cdf3c24eb0aa19fb5122f291775d770b7",
+ "visible_text": [
+  "- document:",
+  "  - navigation:",
+  "    - img \"Battery Pass EU Logo\"",
+  "    - button \"Language selector\"",
+  "    - button \"Theme toggle\"",
+  "    - button \"Language selector\": 🇬🇧 EN",
+  "  - text: Passport ID did:web:acme.battery.pass:0226151e-949c-d067-8ef3-162431e28976 Verified Model Number M-41698615 Serial Number 992356610548948 Category EV Weight 499.00kg Status Original Manufactured date 2023-09-05 Manufactured by Exide Batteries Auditor Economic operator",
+  "  - link \"Economic operator logo\":",
+  "    - /url: https://acme-batteries.com",
+  "    - img \"Economic operator logo\"",
+  "  - img",
+  "  - button \"View more about this passport\"",
+  "  - text: Summary report Original power Carbon footprint",
+  "  - img: \"raw material extraction: 89gCO₂e/kWh main production: 30gCO₂e/kWh distribution: 10gCO₂e/kWh recycling: 8gCO₂e/kWh 65.0% 21.9% 7.3% 5.8%\"",
+  "  - text: Recycled content share Unverified NICKEL",
+  "  - img: \"Pre consumer share: 17% Post consumer share: 7% Primary material: 76% 17.0% 7.0% 76.0%\"",
+  "  - text: COBALT",
+  "  - img: \"Pre consumer share: 10% Post consumer share: 9% Primary material: 81% 10.0% 9.0% 81.0%\"",
+  "  - text: LITHIUM",
+  "  - img: \"Pre consumer share: 14% Post consumer share: 10% Primary material: 76% 14.0% 10.0% 76.0%\"",
+  "  - text: LEAD",
+  "  - img: \"Pre consumer share: 11% Post consumer share: 6% Primary material: 83% 11.0% 6.0% 83.0%\"",
+  "  - contentinfo:",
+  "    - text: \"Disclaimer: In this battery pass demonstrator, the industrial partners of the battery pass project have provided sample data. The sample values shown are for demonstration purposes only. Therefore, none of the project partners can be held liable for any errors or omissions in the data provided, and no representation or warranty, express or implied, is made as to the accuracy, adequacy, completeness, legality, reliability or usefulness of the data. Data is subject to change without notice. © 2026\"",
+  "    - link \"Battery Pass™\":",
+  "      - /url: https://thebatterypass.eu",
+  "    - text: . :0.0.22042 (2025.01.16)",
+  "    - img \"BMWK\"",
+  "  - alert"
+ ]
+}
