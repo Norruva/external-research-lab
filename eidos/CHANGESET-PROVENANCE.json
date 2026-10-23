@@ -1,163 +1,307 @@
 {
+  "REA_members_identity_verified": 61,
   "REA_packet_is_inspection_subset": true,
-  "REA_packet_members_hash_size_verified": 58,
-  "actual_sparse_service_checks": 16,
-  "authored_unit_methods_passed": 95,
-  "code_docs_and_aggregate_evidence_changes": {
+  "all27_core_package_files_unchanged": true,
+  "authored_offline_roles": 8,
+  "authored_unit_methods": 39,
+  "explicit_corpus_and_reference_substitutes": true,
+  "format": "eidos-scaled-comparison-preparation-changeset-v1",
+  "mission_complete": false,
+  "model_promoted": false,
+  "native_reader_or_reference_executed": false,
+  "new_LAYA_or_JEV_quality_result": false,
+  "new_installation_or_configuration_change": false,
+  "new_real_study_approved_or_started": false,
+  "original_imported_files_unchanged": 84,
+  "parent_commit": "e084549cbac649d16cdc7a0a437657b64521b932",
+  "plan_sha256": "880284f8fc3aaadd3b07933a724abaa86b3c71392c738202d447d7365548302c",
+  "prepared_manifest_sha256": "6405fa4f0e7ae7d43df931d079e8da365bbf54a6fddd7e0cf039d244a2a496e6",
+  "previous_provenance": "evidence/dbpedia-scaled-proposal/parent-CHANGESET-PROVENANCE.json",
+  "prior_real_score_unchanged_accuracy_tie_gates_failed": true,
+  "production_certified": false,
+  "reader_files_hashed_not_imported": 752,
+  "real_output_and_authorization_absent": true,
+  "source_docs_and_metadata_changes": {
     "eidos/README.md": {
-      "bytes": 9655,
-      "sha256": "7f90ffbb22671ae779015cb564312e193bf04b69b2ac58dafe0b8c061f5d981b"
+      "bytes": 10301,
+      "sha256": "7b136d5df46f2d3e12fa761c06d92658a038a07987f0759bb24931c4b1c62b27"
     },
-    "eidos/docs/LINEAR-TRAINING.md": {
-      "bytes": 7927,
-      "sha256": "fa3711432a7d0077721c59cb089c32320cb06a6db6875266cfa2d36aa1018d09"
+    "eidos/evidence/README.md": {
+      "bytes": 11149,
+      "sha256": "1c6ec5d08314c12b40081b80abbc8b13634d20b6129220cc25276b046bd41fce"
     },
-    "eidos/docs/OWNED-EVALUATION.md": {
-      "bytes": 9370,
-      "sha256": "37beb0512a59ea7eef3c3481beb6a27a189be6dc6cf640374b96441df0a14a9f"
+    "eidos/evidence/dbpedia-scaled-proposal/55-dbpedia-scaled-study-prepared.md": {
+      "bytes": 7208,
+      "sha256": "a8dbfc67c2b141face716db853377426f0568bdcf81b8ffc50c96553f5d1e20c"
     },
-    "eidos/docs/SCALABLE-TRAINING.md": {
-      "bytes": 8526,
-      "sha256": "efdf32a5df26930df04e4ef68fdc8d67219d956a86412385ef433dad4a92672e"
+    "eidos/evidence/dbpedia-scaled-proposal/authored-fixture-summary.json": {
+      "bytes": 4255,
+      "sha256": "6a6a7ba1fd0141cc766bae90c2f71d19fa1ab927afd6eb7d42a0007471b5c7fe"
     },
-    "eidos/eidos/evaluate_owned.py": {
+    "eidos/evidence/dbpedia-scaled-proposal/cohort_fixture-role.json": {
+      "bytes": 370,
+      "sha256": "fb8a312fdd82ba9097d38d1944d1c0b1ee04d3eed76e365f4dd49e7faf3bc6b2"
+    },
+    "eidos/evidence/dbpedia-scaled-proposal/development-role.json": {
+      "bytes": 367,
+      "sha256": "6b24175cd04ebcca6d26f3fd7cfcdb7c421e09222bcee740c2f8524b38512325"
+    },
+    "eidos/evidence/dbpedia-scaled-proposal/eidos-role.json": {
+      "bytes": 360,
+      "sha256": "d34056e96fe08c620d6716d227587b61b3249d932dfaa6ee753d372c0e952804"
+    },
+    "eidos/evidence/dbpedia-scaled-proposal/inspection-packet-receipt.json": {
+      "bytes": 447,
+      "sha256": "1aa018f054f0ae4add7b89d3329b507e6cc31b98879d63f5e20eb1c9aaf27698"
+    },
+    "eidos/evidence/dbpedia-scaled-proposal/laya-role.json": {
+      "bytes": 360,
+      "sha256": "52011936c4cfc8e3a8714195a5896804bc2e9ae424dbfa6f9e329f884be010ef"
+    },
+    "eidos/evidence/dbpedia-scaled-proposal/parent-CHANGESET-PROVENANCE.json": {
+      "bytes": 6755,
+      "sha256": "0863417d2f6b40f848154d5658c36b89e50a822406d14327dc0501c97f367192"
+    },
+    "eidos/evidence/dbpedia-scaled-proposal/parent-DELIVERY-MANIFEST.json": {
+      "bytes": 47140,
+      "sha256": "90bbae80b4723a16838d6cc8c2688b3a287c8ce434996cf41721b1a2fa70de25"
+    },
+    "eidos/evidence/dbpedia-scaled-proposal/rea-execution-summary.json": {
+      "bytes": 1063,
+      "sha256": "9f5946001b0478b5f70d9219e0039c76f808e97c32dc27c0b2f62dfb79c3df4a"
+    },
+    "eidos/evidence/dbpedia-scaled-proposal/rea-integrity-review.json": {
+      "bytes": 600,
+      "sha256": "22e131ea6202e3102c7c4d46f8b636b6ba8e06639b1cd6fe27f78049af6d46c2"
+    },
+    "eidos/evidence/dbpedia-scaled-proposal/score-role.json": {
+      "bytes": 361,
+      "sha256": "a7f29d3ccc22fe41d5029c0ed9ba02594a6683efae77ac3de99feaed276e5a7b"
+    },
+    "eidos/evidence/dbpedia-scaled-proposal/source-review.json": {
+      "bytes": 1208,
+      "sha256": "f791df98478c33d69800e63814b275e831e20a815ed115aee094f486b3fcf71d"
+    },
+    "eidos/evidence/dbpedia-scaled-proposal/static-closure-review.json": {
+      "bytes": 839,
+      "sha256": "c53277f6fff9ca2e9d077fe0f978b70602ec0fb2be91b3893f513ac72b2a841a"
+    },
+    "eidos/evidence/dbpedia-scaled-proposal/static-prehardening-diagnostic.json": {
+      "bytes": 452,
+      "sha256": "791314fe80f4f532ceb0b8dc14c8f942a1c5cee70b42d8c58338b3cbb285ac00"
+    },
+    "eidos/evidence/dbpedia-scaled-proposal/train-role.json": {
+      "bytes": 360,
+      "sha256": "a1106449ea780ba5472b2c8ee1e48616c0e846a23d6cf0db94cf8ab1ad02526b"
+    },
+    "eidos/evidence/dbpedia-scaled-proposal/unit-cohort-stderr.log": {
+      "bytes": 115,
+      "sha256": "b6518f574bb58a93ffd34e105a728181415aded27c52ad61b484d52875b20189"
+    },
+    "eidos/evidence/dbpedia-scaled-proposal/unit-study-stderr.log": {
+      "bytes": 122,
+      "sha256": "5e8eda633076724da0ac904d732de5dfab6db871b1f5333e10fc7893a1c6d63d"
+    },
+    "eidos/evidence/dbpedia-scaled-proposal/unit_cohort-role.json": {
+      "bytes": 366,
+      "sha256": "8eeb0a73f5768b055d6174dc5ca0751f568176a6b052efd15f36fc9945950a4e"
+    },
+    "eidos/evidence/dbpedia-scaled-proposal/unit_study-role.json": {
+      "bytes": 365,
+      "sha256": "315a52a9f8c1d4f26706668cb74094618d7fa56b908a419d87c785094cf834e2"
+    },
+    "eidos/research/dbpedia-scaled-cohort-v1/cohort.py": {
+      "bytes": 15013,
+      "sha256": "7f368ca3c48d3b248d4ab38834e9f3fae2273fc1d330a2c5efd787731b3e0ef1"
+    },
+    "eidos/research/dbpedia-scaled-cohort-v1/prepare.py": {
+      "bytes": 10493,
+      "sha256": "6f8a13c2e186eb6e5296a1507b787e68814518e120adc9b52dc4e84ff54a5580"
+    },
+    "eidos/research/dbpedia-scaled-cohort-v1/test_cohort.py": {
+      "bytes": 12366,
+      "sha256": "f107dc6e56e2a15facfcf2f50413fe4666afd984adc5f7aa117d7718b091a9b3"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/PLAN.md": {
+      "bytes": 10061,
+      "sha256": "4d1d2c52920980c7e17794b315c4364c5ac7295908934ac5b6ea81094f61df1a"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/README.md": {
+      "bytes": 1346,
+      "sha256": "06cfc47bd787cb2d1cea7a26d04f48a48c344de3e27de998f9da7d8803bb47cd"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/authored_cohort_fixture.py": {
+      "bytes": 4436,
+      "sha256": "a6208ea1f06bc8e9bcde934aa7cc1b4246364457ca9e3c5013035d1a4c5361ad"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/authored_reference_fixture.py": {
+      "bytes": 1299,
+      "sha256": "b0fa8fcee9fa6106fc24ea7a8d8b65914fe4019ff949eef3cac02963149e2ffa"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/config-template.json": {
+      "bytes": 1590,
+      "sha256": "bf5c469addbc6ad16e7aee87d3332c49927ab6948a283b4dcfad7637ff41f2f8"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/contracts.py": {
+      "bytes": 6023,
+      "sha256": "d2364ed45527c5dd4c23adb14b4448f0c1a88ec70f10c8750bcf6d3425afc478"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/exposure-source-manifest.json": {
+      "bytes": 1220,
+      "sha256": "b2e2ca502b4f18366d00fc280f7a55c6d10945787d38acd98e58a77e876bf575"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/historical-source-manifest.json": {
+      "bytes": 11124,
+      "sha256": "57bd23799e961c7ac3383af5cd0b7e3c3897652548d06a4c36a024c95b00c8d6"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app-manifest.json": {
+      "bytes": 3105,
+      "sha256": "6594ee3c358f1bec853999c76ecadbcd60bcca7cd5f24f5024dc486de54d77ea"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/__init__.py": {
+      "bytes": 108,
+      "sha256": "4e00aefcd7cb23d8fec1b81aa73b49c2b3b00c418f20f650b5d355af6cf116db"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/__main__.py": {
+      "bytes": 1183,
+      "sha256": "7744fbc6393723eccc32b39d479ec3cc55c3751eec10e9ecf8111bb75058722a"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/compare_owned.py": {
+      "bytes": 12465,
+      "sha256": "90f4c2fad97d9d002422478bdeaa0af49c68548854dae36308f404fd85097402"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/contracts.py": {
+      "bytes": 6833,
+      "sha256": "ec4a99021325b7921d3952203c22c338abf1c015c8ecdcb9d1194cc4f9eed539"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/data.py": {
+      "bytes": 7496,
+      "sha256": "7fe126c528ec00a56acc6401773801f0a626fe42d424b4ac86a4f4c67c078cb2"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/decision-api.schema.json": {
+      "bytes": 8115,
+      "sha256": "d253be5c4628c8248f5cfc954849bb315491a970820f2de8598dcdd6d01e23bd"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/engine.py": {
+      "bytes": 10139,
+      "sha256": "01587abc8b652db8f9c1666f30ed089086dc6b0f34efb63b3ab4b1286fb8dde4"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/evaluate.py": {
+      "bytes": 9930,
+      "sha256": "d5b75cd9f62cf52b8006b155cd05af4a26a84e982b42a751bc4282663a41b1d4"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/evaluate_owned.py": {
       "bytes": 32955,
       "sha256": "13483fef034545eeb75f00c91770dba343d7814c6f29e64a65a2f462545d4878"
     },
-    "eidos/eidos/train_sparse.py": {
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/explain_support.py": {
+      "bytes": 1759,
+      "sha256": "0b460cff4ff6a33d6fe80b42a25505a82aada2058018dcfde104189cb069705e"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/general_linear.py": {
+      "bytes": 8084,
+      "sha256": "67079f8402e6f72c8b6949c4b0abd758342869245668fcf7479b67aae4843326"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/linear.py": {
+      "bytes": 7911,
+      "sha256": "81c65cf5105cf8b986de39a6eb59f4147e1acb62c0ec6918ce924b854aef7e36"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/manage.py": {
+      "bytes": 6090,
+      "sha256": "8fc245f60aa0d6906089e5f2d6d784c7df159d5b5a2c1d2b70d791e8fb4337d1"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/metrics.py": {
+      "bytes": 3658,
+      "sha256": "d4c7d1fa64a5ad4dd0af02614a895a4eb30ea695d31bbae67ce3e5191ca36b1b"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/model.py": {
+      "bytes": 10118,
+      "sha256": "96e2b3b61511864296a2869e2d93b0e5d45c9579ac971d8146e2dccc915e1a17"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/owned_metrics.py": {
+      "bytes": 3099,
+      "sha256": "20598bb08fad67be4bc2d3ad85f9dd1e3c525141f9070d5e902875c06f92a93f"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/paired_metrics.py": {
+      "bytes": 4201,
+      "sha256": "743af2e466b9c11f87ac60cbb782f5841be5cc1f0a0f5bc7995e583c652f9e7d"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/pool.py": {
+      "bytes": 9276,
+      "sha256": "67fc0a8eb50fba85702af7145f23d1b89457547e581a7bbe3274951c7346a277"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/recovery.py": {
+      "bytes": 13107,
+      "sha256": "bf600c2b6c56ea4fa22e6d2c56493667d00a8047e33ce534b24eea031bcea238"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/service.py": {
+      "bytes": 17439,
+      "sha256": "45db64fb962277606e242ecdbbe820412fd06c4216558a15013bdf97a5882472"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/store.py": {
+      "bytes": 9317,
+      "sha256": "028130d870cd35c1965175e272365121dfe4e666854b91269df1edc069bb062a"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/support_memory.py": {
+      "bytes": 10855,
+      "sha256": "d3cf23d624f89c39c286c207123061b51296dfaa81bea4e17a84a90ad0a016c2"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/train.py": {
+      "bytes": 4545,
+      "sha256": "80e52d9c6eae930e1897c96e255dc56a0b7688996ea839d6f08793973c97aec2"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/train_linear_support.py": {
+      "bytes": 13563,
+      "sha256": "a6363df14b085d0172210ebad8345a79b6ada36c0088d23a8d1585930e806e5f"
+    },
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/train_sparse.py": {
       "bytes": 19217,
       "sha256": "de6446d3d1ef1190aabc4e0532a4944a80c715b4c01154002bb1a299c25d7ac8"
     },
-    "eidos/evidence/README.md": {
-      "bytes": 10389,
-      "sha256": "2acba97bac5317a88a11f9aa25486007eaec2cc1dfef560c3b4f9857555ec8a3"
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/train_support.py": {
+      "bytes": 8848,
+      "sha256": "487f2d507a48e13f0d2747113c07011cb78c083b7f1adba7f8022f8761e73800"
     },
-    "eidos/evidence/sparse-training/54-scalable-owned-training.md": {
-      "bytes": 6678,
-      "sha256": "26354e02d7ca3eb38523f9b0948e8ab6265ec57aa496b4ec3ec44f89713ef34c"
+    "eidos/research/dbpedia-scaled-study-v1/owned-app/eidos/worker.py": {
+      "bytes": 1841,
+      "sha256": "33a221b2108c7711c5be38cb0af9297724d3bd6c7ca027cc9ef8a5c739309b27"
     },
-    "eidos/evidence/sparse-training/evaluation-fixture-summary.json": {
-      "bytes": 4721,
-      "sha256": "25d6b0e3c89eb2482c0818e57e40e3b55fd19c24a6c6d33a2f412c6d451793e6"
+    "eidos/research/dbpedia-scaled-study-v1/plan.json": {
+      "bytes": 5500,
+      "sha256": "880284f8fc3aaadd3b07933a724abaa86b3c71392c738202d447d7365548302c"
     },
-    "eidos/evidence/sparse-training/inspection-packet-receipt.json": {
-      "bytes": 448,
-      "sha256": "3ad9068ddad5bc3c9e13f188f0d39951c2b84fa90cc7edb2dac830e635f3b54b"
+    "eidos/research/dbpedia-scaled-study-v1/prepare_dbpedia_scaled_manifest_v1.py": {
+      "bytes": 3587,
+      "sha256": "8cc5ea35560d8139c60f3581fa29c816927f1f5667f2042ac196f054695b3f05"
     },
-    "eidos/evidence/sparse-training/parent-CHANGESET-PROVENANCE.json": {
-      "bytes": 12070,
-      "sha256": "4ca144242cdb53763ec50f25ad4dd34fd70c2b46c93d5183953e255586885f03"
+    "eidos/research/dbpedia-scaled-study-v1/prepared-manifest-v1.json": {
+      "bytes": 16995,
+      "sha256": "6405fa4f0e7ae7d43df931d079e8da365bbf54a6fddd7e0cf039d244a2a496e6"
     },
-    "eidos/evidence/sparse-training/parent-DELIVERY-MANIFEST.json": {
-      "bytes": 42609,
-      "sha256": "e4dbea29ae47fb674521332a4710b5e9845ecd97e5c0f360e75c5b24e806766e"
+    "eidos/research/dbpedia-scaled-study-v1/run_dbpedia_scaled_fixture_v1.py": {
+      "bytes": 7682,
+      "sha256": "def35dab9d3e16518d674daf36dad786e02a0a34c2fad0e5d93031ed28b5f801"
     },
-    "eidos/evidence/sparse-training/predict-role.json": {
-      "bytes": 963,
-      "sha256": "38ecb4c3d93f65ab20627b631b02ee6eaaee0f5fc3f734c36b3ad7d1f1e92054"
+    "eidos/research/dbpedia-scaled-study-v1/run_dbpedia_scaled_static_rea_v1.py": {
+      "bytes": 9909,
+      "sha256": "6afe0212a8b6b4e261ef8b760c84b89ae790596ba6eb9bd7cdfb41d151f8bc38"
     },
-    "eidos/evidence/sparse-training/prepare-role.json": {
-      "bytes": 965,
-      "sha256": "f65f9011dbd6c4b6d991dc6b3addf82e68a6475bcc00812857fc96d3dc8358fd"
+    "eidos/research/dbpedia-scaled-study-v1/run_dbpedia_scaled_study_v1.py": {
+      "bytes": 34169,
+      "sha256": "4d062053bbcd2b6cdadacf1c309dfa2d1a47e28cd5b1eac31ddee9a0017377be"
     },
-    "eidos/evidence/sparse-training/rea-execution-summary.json": {
-      "bytes": 1062,
-      "sha256": "2b95e1fc708bef6eaabb24bf876461265c8351368ffedb1534491a9392d5dd71"
+    "eidos/research/dbpedia-scaled-study-v1/study.py": {
+      "bytes": 24776,
+      "sha256": "c66d7a96dbe5de6ea0b92fed3ed7b3ad0e86e080dfd1a3c91859144aa7d07d21"
     },
-    "eidos/evidence/sparse-training/rea-integrity-review.json": {
-      "bytes": 666,
-      "sha256": "c130b91d1c1a556c62cdba627fd91e22e75c43b15fa0732624ab70c969a2405f"
+    "eidos/research/dbpedia-scaled-study-v1/test_contracts.py": {
+      "bytes": 25239,
+      "sha256": "4f0caf12c63712feda73836404adb3f768e566acf0127b277eb91c066773e7e2"
     },
-    "eidos/evidence/sparse-training/run_sparse_evaluation_fixture_v1.py": {
-      "bytes": 16042,
-      "sha256": "1c3bbd74e577ff91132ec4f8a1c9cdef8fcaf7634b4565d818d2a61923b7e11a"
-    },
-    "eidos/evidence/sparse-training/run_sparse_training_static_rea_v1.py": {
-      "bytes": 9890,
-      "sha256": "8cbb792e9c98b7430223e28b62c4d03045f44e5a47b30deacb438c9c66c39f2e"
-    },
-    "eidos/evidence/sparse-training/run_sparse_training_validation_v1.py": {
-      "bytes": 5813,
-      "sha256": "72d51bfc2c956b71fe767232bb76d0d36200f74643eaab2a0a00df47ea67ab7f"
-    },
-    "eidos/evidence/sparse-training/score-role.json": {
-      "bytes": 962,
-      "sha256": "2181b608d72484d796a014bca9a08c6ccce712ae6eec1d3ec8905f875fba1182"
-    },
-    "eidos/evidence/sparse-training/static-review.json": {
-      "bytes": 915,
-      "sha256": "32e2f2cb294cc85a1c41f01b892ef7e5b3effa7743b1a574e6529b7c39784f61"
-    },
-    "eidos/evidence/sparse-training/tested-source-tree.json": {
-      "bytes": 28720,
-      "sha256": "85c3defdc0f614d3ffc6bd210d6393a66beace174616252ef5eca4be5b6069bc"
-    },
-    "eidos/evidence/sparse-training/train-role.json": {
-      "bytes": 962,
-      "sha256": "0ffa886834de88df958b560f9b226c4a1e871e759e2d990262d1afff8a472ae9"
-    },
-    "eidos/evidence/sparse-training/validation-execution-summary.json": {
-      "bytes": 669,
-      "sha256": "e2157d338bdbfa16ae303ed7046b8a8cda1096eee9d8fa73db41c3608b404b20"
-    },
-    "eidos/evidence/sparse-training/validation-runner-result.json": {
-      "bytes": 860,
-      "sha256": "70df2bba017a11420afeed1b2aa4d7d86003d95ad08b393156bbfd69e7712a72"
-    },
-    "eidos/evidence/sparse-training/validation-scale-sparse-stdout.json": {
-      "bytes": 1023,
-      "sha256": "b0dd09ee3a07f3ef08e75b8d40510ee40d1dfdc29606a4d37c949b08da2ef5ed"
-    },
-    "eidos/evidence/sparse-training/validation-smoke-sparse-stdout.json": {
-      "bytes": 1298,
-      "sha256": "55cefb65a00778b01672a98ace80ddfd9faccdba62a3af1210f41fd4837a26aa"
-    },
-    "eidos/evidence/sparse-training/validation-unit-stderr.log": {
-      "bytes": 15529,
-      "sha256": "ef4026ba39c5d8ee0ab7984b948a5ae22180d61b412ec2c5db26a50857ffd24f"
-    },
-    "eidos/tests/test_sparse_evaluation.py": {
-      "bytes": 14360,
-      "sha256": "be7da7343ea3dcde6b8605ad0e1fd725007bb3282ef8e7fc2668ed78e847d9d1"
-    },
-    "eidos/tests/test_sparse_training.py": {
-      "bytes": 21433,
-      "sha256": "448e9f57c496a8ff95fb9addd443a5258a7cd21587ced8af7a7a4285220cde0c"
-    },
-    "eidos/tools/smoke.py": {
-      "bytes": 13331,
-      "sha256": "1aa7112ff12da7fc4d6a30b4bbc96f1728623c071f896663c01b10923900bfd7"
-    },
-    "eidos/tools/sparse_scale_smoke.py": {
-      "bytes": 4303,
-      "sha256": "e1bf155511aa46380d844e3f8e96f5da0d90bdb7d56c32280aa2a886e9882258"
+    "eidos/research/dbpedia-scaled-study-v1/tree_review.py": {
+      "bytes": 26442,
+      "sha256": "4e863c06c68a041c03f1ef53699a524a0535978a40d8ca27edb7571286938509"
     }
   },
-  "evaluation_extension_preserves_old_exact20_contracts": true,
-  "format": "eidos-sparse-training-changeset-v1",
-  "latest_real_DBPedia_result_unchanged_accuracy_tie_gates_failed": true,
-  "mission_complete": false,
-  "model_promoted": false,
-  "new_installation_or_global_configuration_change": false,
-  "new_recipe_LAYA_or_JEV_performance_measured": false,
-  "new_training_module": "eidos/train_sparse.py",
-  "new_unit_methods": 30,
-  "old_memory_GD_Adam_and_runtime_sources_unchanged": true,
-  "old_provenance": "evidence/sparse-training/parent-CHANGESET-PROVENANCE.json",
-  "original_imported_files_unchanged": 84,
-  "parent_commit": "928dd301872d378ccbe33a7b9d609a5b6ad1dfeb",
-  "production_certified": false,
-  "real_corpus_or_reference_execution_performed": false,
-  "separate_offline_evaluation_roles": 4,
-  "source_import_provenance_unchanged": true,
-  "synthetic_capacity": {
-    "classes": 14,
-    "elapsed_seconds": 96.33091292199992,
-    "features": 10000,
-    "nnz": 5352806,
-    "not_a_quality_benchmark": true,
-    "peak_self_rss_kib_linux": 112936,
-    "rows": 20000,
-    "self_cpu_seconds": 86.72336565
-  }
+  "static_complete_trees_checked": 5
 }

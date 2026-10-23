@@ -1,0 +1,127 @@
+{
+  "acquisition": false,
+  "automatic_retry": false,
+  "cached_corpus_paths": {
+    "test": "/workspace/eidos/evaluation/production/dbpedia-cohort-v1/v1/acquired/test.parquet",
+    "train": "/workspace/eidos/evaluation/production/dbpedia-cohort-v1/v1/acquired/train.parquet"
+  },
+  "comparison": {
+    "adaptation": "EIDOS1000labeledexamples/class vs zero-shot public LAYA; asymmetric, not matched adaptation or strongest possible reference.",
+    "all_choices": 14,
+    "intervals": "individual approximate percentile95 whole-group paired bootstrap; not joint/global coverage",
+    "max_total_windows": 2100,
+    "max_windows_per_case": 16,
+    "n": 1400,
+    "numeric_gate": "Both accuracy and fixed14label macro-F1 left-minus-right lower endpoints strictly>0. Point estimate alone never establishes a win.",
+    "reference": {
+      "model_revision": "1c5edc17a7acd8701df6fc341c0d179f1c62c982",
+      "source_commit": "ca5045a3f1fac06fc6daa5cf3371110f322f5255",
+      "weight_sha256": "891102d372688fc2a094dac56a384bc537b87c63f21f9f3dac0be2b7cbc8d86c"
+    },
+    "reference_api": "public_predict_long_default_window_stride_aggregate_auto_batch_one",
+    "replicates": 2000,
+    "same_case_inputs_and_fixed_candidate_scope": true,
+    "seed": 113
+  },
+  "corpus": {
+    "test": {
+      "bytes": 13272475,
+      "rows": 70000,
+      "sha256": "05fed41640e97f93ffd442757f6a84170348cf0c7500ecbda9e95ddcd928c631",
+      "url": "https://huggingface.co/datasets/fancyzhx/dbpedia_14/resolve/9abd46cf7fc8b4c64290f26993c540b92aa145ac/dbpedia_14/test-00000-of-00001.parquet"
+    },
+    "train": {
+      "bytes": 106151899,
+      "rows": 560000,
+      "sha256": "0640e4664a99cc94c47db1d7b2e01c14455d5bbecb8183ad1f93bde59f3f28ee",
+      "url": "https://huggingface.co/datasets/fancyzhx/dbpedia_14/resolve/9abd46cf7fc8b4c64290f26993c540b92aa145ac/dbpedia_14/train-00000-of-00001.parquet"
+    }
+  },
+  "development_policy": "diagnostic_only_no_selection_or_quality_based_stop",
+  "format": "eidos-dbpedia-scaled-study-plan-v1",
+  "new_installation": false,
+  "output": "evaluation/production/dbpedia-scaled-study-v1/v1",
+  "privacy_rights_and_scope": [
+    "All processing offline in separate namespaces. Existing public cached data/source/model/dependency reader reused only under this NEW exact approval.",
+    "No TypeSafe/JEV service, model extraction, credentials/private repositories/VPN/production, GPU, paid compute, installs, downloads, MCP registration, proxy/TLS bypass.",
+    "Prior selected840row inputs accessed only for text/ID exclusion; no old gold/predictions/metrics/rescore/refit/selection. Historical approved attempt/resource boundaries remain consumed.",
+    "Global source-wide uniqueness uses both officialsplit covariates/labels for predeclared curation; training TFIDF/weights use training rows only. Prior reader already validated full public corpus; selectedtestcases newlyunscored, not an entirely unseen source.",
+    "No semantic/template/speaker/pretraining independence, universal/JEV/production superiority, calibration or promotion. All negative/failure evidence retained.",
+    "Public CC-BY-SA3/GFDL declarations retained. No exclusive ownership or model/data redistribution certification; keep cases/models private."
+  ],
+  "recipe": {
+    "epochs": 3,
+    "seed": 113
+  },
+  "resources": {
+    "aggregate_cgroup_guarantee": false,
+    "gpu_paid_compute_or_installation": false,
+    "one_native_inference_and_interop_thread": true,
+    "parent_cpu_hard_seconds_inherited_ceiling": 7200,
+    "parent_cpu_soft_seconds": 300,
+    "parent_hard_memory_mib": 4096,
+    "parent_soft_memory_mib": 768,
+    "planned_sum_stage_caps_plus_parent_reserve": 6810,
+    "planned_sum_stage_cpu_seconds": 6510,
+    "proposed_planned_cpu_seconds": 7200,
+    "reference_dtype": "float32",
+    "unallocated_within_proposed_cpu_envelope_seconds": 390,
+    "whole_wall_seconds": 10800
+  },
+  "scope": "eidos-dbpedia-scaled-study-v1",
+  "selection": {
+    "development_per_class": 100,
+    "feature": "untruncated title + newline + content",
+    "labels": 14,
+    "no_selected_row_drop_replacement_truncation_or_resampling": true,
+    "on_integrity_count_eligibility_selected_text_fit_work_window_or_resource_failure": "Retain failed one-attempt slot and stop; no replacement, fallback, partial scoring or automatic retry.",
+    "quotas": {
+      "development": 100,
+      "test": 100,
+      "training": 1000
+    },
+    "ranking": "Ascending SHA256(salt + newline + neutral official split/ordinal ID), after predeclared eligibility; first1000train then100development/class; first100test/class.",
+    "salt": "eidos-dbpedia-scaled-cohort-v1:2026-10-23",
+    "source_wide_eligibility": "Token-normalized title, full feature and content must each occur exactly once across official train+test. Every source row is validated. Reconstruct old840IDs and verify text hashes; exclude old components/IDs and historical full/content exact fingerprints before ranking.",
+    "test_per_class": 100,
+    "training_per_class": 1000
+  },
+  "stage_limits": {
+    "corpus": [
+      600,
+      900,
+      2048
+    ],
+    "development": [
+      120,
+      180,
+      768
+    ],
+    "eidos": [
+      120,
+      180,
+      768
+    ],
+    "history": [
+      90,
+      120,
+      768
+    ],
+    "laya": [
+      4800,
+      7200,
+      4096
+    ],
+    "score": [
+      180,
+      300,
+      768
+    ],
+    "train": [
+      600,
+      900,
+      2048
+    ]
+  },
+  "status": "prepared_separate_scoped_approval_required"
+}

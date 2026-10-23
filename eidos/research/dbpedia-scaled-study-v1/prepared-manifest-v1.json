@@ -1,0 +1,331 @@
+{
+  "approval_required": true,
+  "automatic_retry_or_prior_budget_reuse": false,
+  "external_files": {
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12": {
+      "bytes": 30894944,
+      "sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7"
+    },
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/libpython3.12.so.1.0": {
+      "bytes": 32465344,
+      "sha256": "7e177a680eabb11fcb7d3867f7a1b9c4b93a9bd5b18129ce1af51ec07977b024"
+    },
+    "/workspace/eidos/evaluation/production/banking77/prepare-v2/data/dataset/dev-calibration.jsonl": {
+      "bytes": 131637,
+      "sha256": "0bc46b3a073d84d215982bd0062c3284b855040e4bae3614fef6bee515602134"
+    },
+    "/workspace/eidos/evaluation/production/banking77/prepare-v2/data/dataset/dev-gates.jsonl": {
+      "bytes": 133573,
+      "sha256": "b3533376ac2d046b367f3038381131315c7f4369190c0835253b7f80f972691d"
+    },
+    "/workspace/eidos/evaluation/production/banking77/prepare-v2/data/dataset/dev-tune.jsonl": {
+      "bytes": 135524,
+      "sha256": "746ca3975bb57eda4438d3c7ae4573f1051f7128984a920ddd715f28e04f8f6b"
+    },
+    "/workspace/eidos/evaluation/production/banking77/prepare-v2/data/dataset/train.jsonl": {
+      "bytes": 924974,
+      "sha256": "07961a47400e64279f497d98d305eb6f71462e231daa74f2eeedbef6ae328a3f"
+    },
+    "/workspace/eidos/evaluation/production/banking77/prepare-v2/data/sealed-test/inputs.jsonl": {
+      "bytes": 2254753,
+      "sha256": "eb954e4928ccce4940d6d88dfdad7a00af8dc6c0c132d36e01f0199c6fde117a"
+    },
+    "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/calibration.jsonl": {
+      "bytes": 181926,
+      "sha256": "edaab4a4421d29e61e012616d3ebd5b74dbcd2e42a932124e1400e6f178b09c8"
+    },
+    "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/gate.jsonl": {
+      "bytes": 177908,
+      "sha256": "6d6cc0822e467cf1c68af5e54471d9fafd00bfd8cd5fe7a0c0e616aa635275ff"
+    },
+    "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/oos-calibration.jsonl": {
+      "bytes": 6552,
+      "sha256": "7931c1ab935f5c4667a9e89232c62e1a56c661379afa746479fd8ddd9d2800e5"
+    },
+    "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/oos-gate.jsonl": {
+      "bytes": 5292,
+      "sha256": "2e3c85d9a51721d18d90eb796c98060d469d7ae67a01d22dc6f234e478a38ce7"
+    },
+    "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/oos-test-inputs.jsonl": {
+      "bytes": 167082,
+      "sha256": "1c2fa0245cac19d43098e09969b1c5b833f7c8351247673910edd45afedb87c0"
+    },
+    "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/oos-train.jsonl": {
+      "bytes": 17567,
+      "sha256": "bb0203596cdc66a533479ab38caac5c7e076ea7b68463388f463c1fd0bfd913d"
+    },
+    "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/oos-tune.jsonl": {
+      "bytes": 5373,
+      "sha256": "834b272cc2f091120e6493e416145b4a622f77533616b065b4887734ca7fdc34"
+    },
+    "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/test-inputs.jsonl": {
+      "bytes": 712437,
+      "sha256": "b676d985b8081857dd7901ed9b365c09a208726c33ea89c06e93df5eae8eaf5e"
+    },
+    "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/train.jsonl": {
+      "bytes": 2739820,
+      "sha256": "3fe714b3d6bbb032f5d6e8c690ae5cc6aa2b1e678cd1e6da57bf192dcd7590f1"
+    },
+    "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/tune.jsonl": {
+      "bytes": 181537,
+      "sha256": "7f6ea35b8eea6cf1d1274ff7b1ad2d055c9062991e88c3cd16c28d965c33d336"
+    },
+    "/workspace/eidos/evaluation/production/dbpedia-cohort-v1/v1/acquired/test.parquet": {
+      "bytes": 13272475,
+      "sha256": "05fed41640e97f93ffd442757f6a84170348cf0c7500ecbda9e95ddcd928c631"
+    },
+    "/workspace/eidos/evaluation/production/dbpedia-cohort-v1/v1/acquired/train.parquet": {
+      "bytes": 106151899,
+      "sha256": "0640e4664a99cc94c47db1d7b2e01c14455d5bbecb8183ad1f93bde59f3f28ee"
+    },
+    "/workspace/eidos/evaluation/production/dbpedia-cohort-v1/v1/corpus/data/development.jsonl": {
+      "bytes": 105890,
+      "sha256": "fd4bc4dce5b80907163be63a0b36a379b9032ff5005b7e37c8c1c5a4549c9abc"
+    },
+    "/workspace/eidos/evaluation/production/dbpedia-cohort-v1/v1/corpus/data/support.jsonl": {
+      "bytes": 100459,
+      "sha256": "6bd04412eda7583e037426cef37136bdb98f8e79ae8f6ec0aa55f8237688f766"
+    },
+    "/workspace/eidos/evaluation/production/dbpedia-cohort-v1/v1/corpus/data/test-inputs.jsonl": {
+      "bytes": 94595,
+      "sha256": "4d24f10e0b7f76e844b11e597e2e36ad7ffb634830c02d3940e9e9f32b8573c6"
+    },
+    "/workspace/eidos/evaluation/production/dbpedia-reader-v1/v1/completion-review-v1.json": {
+      "bytes": 1518,
+      "sha256": "4731624f97df42177e7ea2b9d80c830121012ed6a10e2234fe3d8515192625c5"
+    },
+    "/workspace/eidos/evaluation/production/dbpedia-reader-v1/v1/reader-manifest.json": {
+      "bytes": 113403,
+      "sha256": "75ab93d4d71f90c6e2b6fe1197faf0270f6279da9d634e5742a94524911d0334"
+    },
+    "/workspace/eidos/evaluation/production/primary-massive-prepare/v1/prepare/data/dataset/dev-calibration.jsonl": {
+      "bytes": 56611,
+      "sha256": "f086b4d97928101ada20747d0f0332d625ef1218b35b91cf9a70750405f84555"
+    },
+    "/workspace/eidos/evaluation/production/primary-massive-prepare/v1/prepare/data/dataset/dev-gates.jsonl": {
+      "bytes": 58144,
+      "sha256": "c6ba1a4a601ac6d25f2a937a03268e80f99479e085bde13dfd468f54b49933de"
+    },
+    "/workspace/eidos/evaluation/production/primary-massive-prepare/v1/prepare/data/dataset/dev-tune.jsonl": {
+      "bytes": 53815,
+      "sha256": "2a4ccc318ccc1d34944d77eaaca4ec4990f92c02c101cf48326f0fa6daabbad3"
+    },
+    "/workspace/eidos/evaluation/production/primary-massive-prepare/v1/prepare/data/dataset/test.jsonl": {
+      "bytes": 246432,
+      "sha256": "63d5dc2449b9de8f01f36eb0b34bb65e63803867d31643f4118f15f60679a048"
+    },
+    "/workspace/eidos/evaluation/production/primary-massive-prepare/v1/prepare/data/dataset/train.jsonl": {
+      "bytes": 958167,
+      "sha256": "6eba00efc0b0f3ecf3d46514b1423d49738a8c5d876334026618f5ea91b11d5e"
+    },
+    "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/application-manifest.json": {
+      "bytes": 1294,
+      "sha256": "de9b58d66d018fbdc3743d229d2b44d236a24d98295f2afae69891cb353ad27c"
+    },
+    "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/laya-model-manifest.json": {
+      "bytes": 638,
+      "sha256": "cc0fa8b30eac9b56bae2fd3f3ffadac4ecce62787b7a8db289714b8ea8b02b6e"
+    },
+    "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/laya-source-manifest.json": {
+      "bytes": 5263,
+      "sha256": "0f5d15c6b9556bf8e321f4ff3846cdac41decb89f0cdc3b90099015930eacbe2"
+    },
+    "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/rights.json": {
+      "bytes": 4716,
+      "sha256": "10253c0d9166e97137e70747169d15b94bec7b283b893edac3309171c93ecfe4"
+    },
+    "/workspace/eidos/evaluation/production/reference-install-v1/v2/dependency-inventory.json": {
+      "bytes": 2793453,
+      "sha256": "7d1281d165d595371a1b336becc2fe6f0f923e5a64fb259af176de10a5c3dcc9"
+    },
+    "/workspace/eidos/research/dbpedia-scaled-study-v1/owned-app-manifest.json": {
+      "bytes": 3105,
+      "sha256": "6594ee3c358f1bec853999c76ecadbcd60bcca7cd5f24f5024dc486de54d77ea"
+    },
+    "/workspace/eidos/research/slurp-development/dataset/dev-audit.jsonl": {
+      "bytes": 83366,
+      "sha256": "3a5580c02016dc3211731c601fed46dbc8b1d169fb7e5a3d4899964522a54857"
+    },
+    "/workspace/eidos/research/slurp-development/dataset/dev-calibration.jsonl": {
+      "bytes": 86538,
+      "sha256": "08e85b50c552f79ad1c69142ad9321796c84efdeb5aa9d83aacb8ce8e5eb1001"
+    },
+    "/workspace/eidos/research/slurp-development/dataset/dev-gates.jsonl": {
+      "bytes": 86086,
+      "sha256": "e7b5eeaa0919b0cca6319dc667da637501dd015f76c2a5513e57e07f82b9d255"
+    },
+    "/workspace/eidos/research/slurp-development/dataset/dev-tune.jsonl": {
+      "bytes": 75264,
+      "sha256": "b78aa7f4e6648e31585628bd3b77921c48d22f1ca9251dbe8f69060b65f7f69b"
+    },
+    "/workspace/eidos/research/slurp-development/dataset/official-test-quarantined.jsonl": {
+      "bytes": 483913,
+      "sha256": "d889ca1a6a57a3e40608b672dceeae4fd901b439f69986ee6afda9d9147f5341"
+    },
+    "/workspace/eidos/research/slurp-development/dataset/train.jsonl": {
+      "bytes": 1878045,
+      "sha256": "e8718aba9ab8e9b4b52c8499814c6970e1343ebe3fc46bc087d19365b7c37c9d"
+    },
+    "/workspace/eidos/research/snips-source-review-v1/corpus-opaque/validate_AddToPlaylist.json": {
+      "bytes": 44160,
+      "sha256": "14cc9ee49ae477b1452632a6e835498cf4c32da397b16967c82abb3e50403e83"
+    },
+    "/workspace/eidos/research/snips-source-review-v1/corpus-opaque/validate_BookRestaurant.json": {
+      "bytes": 49353,
+      "sha256": "4f7258ccc768b777b2eb8916532db9aa50dbd058ddf1ffb0dc59218963e7442a"
+    },
+    "/workspace/eidos/research/snips-source-review-v1/corpus-opaque/validate_GetWeather.json": {
+      "bytes": 39612,
+      "sha256": "60c095e193655d6ca92be220fed3926ca25e18cd70c85664145efe25d80993af"
+    },
+    "/workspace/eidos/research/snips-source-review-v1/corpus-opaque/validate_PlayMusic.json": {
+      "bytes": 33122,
+      "sha256": "922212775e26259d5bffeaf79b6048d070ca017d229df00b2cc9800f71c75d20"
+    },
+    "/workspace/eidos/research/snips-source-review-v1/corpus-opaque/validate_RateBook.json": {
+      "bytes": 52854,
+      "sha256": "c1f8b4114da0bb5e8afd78a8062766e18b2eabb0e717539598db01b09d04619b"
+    },
+    "/workspace/eidos/research/snips-source-review-v1/corpus-opaque/validate_SearchCreativeWork.json": {
+      "bytes": 31404,
+      "sha256": "8a5e830eddb185d3e4a9d27ded140a145d04766bdce0e58834676ede32d13e77"
+    },
+    "/workspace/eidos/research/snips-source-review-v1/corpus-opaque/validate_SearchScreeningEvent.json": {
+      "bytes": 35716,
+      "sha256": "81e1445713e03c7c3e615353c5f3fee05f369fe9834100b9b9735900a96b9498"
+    },
+    "/workspace/eidos/research/snips-support-source-v1/corpus-opaque/train_AddToPlaylist_full.json": {
+      "bytes": 833810,
+      "sha256": "fee1b4645352e70ed8a40f1f87c3b53fc3bf75f8ebc82252a22b82c107e75b01"
+    },
+    "/workspace/eidos/research/snips-support-source-v1/corpus-opaque/train_BookRestaurant_full.json": {
+      "bytes": 980018,
+      "sha256": "7677e82cd6e9a8191f0a4502568c786278c984900b4796d3628e46f1abf73ef4"
+    },
+    "/workspace/eidos/research/snips-support-source-v1/corpus-opaque/train_GetWeather_full.json": {
+      "bytes": 743646,
+      "sha256": "86f414b2ad8a993134d85d16e25e5d337beae47cef993c0af2a5f440405c60f6"
+    },
+    "/workspace/eidos/research/snips-support-source-v1/corpus-opaque/train_PlayMusic_full.json": {
+      "bytes": 675343,
+      "sha256": "901ddbe9781d1fdb8196e789c543f80df3d29ca6e237da64947905adcc0312e4"
+    },
+    "/workspace/eidos/research/snips-support-source-v1/corpus-opaque/train_RateBook_full.json": {
+      "bytes": 506364,
+      "sha256": "bb43e4b74134300d5766f6b420d0357a63402987a225f6dc92c806c9c040ce04"
+    },
+    "/workspace/eidos/research/snips-support-source-v1/corpus-opaque/train_SearchCreativeWork_full.json": {
+      "bytes": 292392,
+      "sha256": "87b3432de48c71c205aa5238b41d9e3f2d70bdfcd0bea2427544fb9e4bd5e5bb"
+    },
+    "/workspace/eidos/research/snips-support-source-v1/corpus-opaque/train_SearchScreeningEvent_full.json": {
+      "bytes": 364989,
+      "sha256": "5447e9440c02e2fb08c3ae16b9f58a4d1332b4bc77fd34691402b02aa4399765"
+    }
+  },
+  "files": {
+    "/workspace/eidos/prepare_dbpedia_scaled_manifest_v1.py": {
+      "bytes": 3587,
+      "sha256": "8cc5ea35560d8139c60f3581fa29c816927f1f5667f2042ac196f054695b3f05"
+    },
+    "/workspace/eidos/research/dbpedia-scaled-cohort-v1/cohort.py": {
+      "bytes": 15013,
+      "sha256": "7f368ca3c48d3b248d4ab38834e9f3fae2273fc1d330a2c5efd787731b3e0ef1"
+    },
+    "/workspace/eidos/research/dbpedia-scaled-cohort-v1/prepare.py": {
+      "bytes": 10493,
+      "sha256": "6f8a13c2e186eb6e5296a1507b787e68814518e120adc9b52dc4e84ff54a5580"
+    },
+    "/workspace/eidos/research/dbpedia-scaled-cohort-v1/test_cohort.py": {
+      "bytes": 12366,
+      "sha256": "f107dc6e56e2a15facfcf2f50413fe4666afd984adc5f7aa117d7718b091a9b3"
+    },
+    "/workspace/eidos/research/dbpedia-scaled-study-v1/PLAN.md": {
+      "bytes": 10061,
+      "sha256": "4d1d2c52920980c7e17794b315c4364c5ac7295908934ac5b6ea81094f61df1a"
+    },
+    "/workspace/eidos/research/dbpedia-scaled-study-v1/authored_cohort_fixture.py": {
+      "bytes": 4436,
+      "sha256": "a6208ea1f06bc8e9bcde934aa7cc1b4246364457ca9e3c5013035d1a4c5361ad"
+    },
+    "/workspace/eidos/research/dbpedia-scaled-study-v1/authored_reference_fixture.py": {
+      "bytes": 1299,
+      "sha256": "b0fa8fcee9fa6106fc24ea7a8d8b65914fe4019ff949eef3cac02963149e2ffa"
+    },
+    "/workspace/eidos/research/dbpedia-scaled-study-v1/config-template.json": {
+      "bytes": 1590,
+      "sha256": "bf5c469addbc6ad16e7aee87d3332c49927ab6948a283b4dcfad7637ff41f2f8"
+    },
+    "/workspace/eidos/research/dbpedia-scaled-study-v1/contracts.py": {
+      "bytes": 6023,
+      "sha256": "d2364ed45527c5dd4c23adb14b4448f0c1a88ec70f10c8750bcf6d3425afc478"
+    },
+    "/workspace/eidos/research/dbpedia-scaled-study-v1/exposure-source-manifest.json": {
+      "bytes": 1220,
+      "sha256": "b2e2ca502b4f18366d00fc280f7a55c6d10945787d38acd98e58a77e876bf575"
+    },
+    "/workspace/eidos/research/dbpedia-scaled-study-v1/historical-source-manifest.json": {
+      "bytes": 11124,
+      "sha256": "57bd23799e961c7ac3383af5cd0b7e3c3897652548d06a4c36a024c95b00c8d6"
+    },
+    "/workspace/eidos/research/dbpedia-scaled-study-v1/owned-app-manifest.json": {
+      "bytes": 3105,
+      "sha256": "6594ee3c358f1bec853999c76ecadbcd60bcca7cd5f24f5024dc486de54d77ea"
+    },
+    "/workspace/eidos/research/dbpedia-scaled-study-v1/plan.json": {
+      "bytes": 5500,
+      "sha256": "880284f8fc3aaadd3b07933a724abaa86b3c71392c738202d447d7365548302c"
+    },
+    "/workspace/eidos/research/dbpedia-scaled-study-v1/study.py": {
+      "bytes": 24776,
+      "sha256": "c66d7a96dbe5de6ea0b92fed3ed7b3ad0e86e080dfd1a3c91859144aa7d07d21"
+    },
+    "/workspace/eidos/research/dbpedia-scaled-study-v1/test_contracts.py": {
+      "bytes": 25239,
+      "sha256": "4f0caf12c63712feda73836404adb3f768e566acf0127b277eb91c066773e7e2"
+    },
+    "/workspace/eidos/research/dbpedia-scaled-study-v1/tree_review.py": {
+      "bytes": 26442,
+      "sha256": "4e863c06c68a041c03f1ef53699a524a0535978a40d8ca27edb7571286938509"
+    },
+    "/workspace/eidos/run_dbpedia_scaled_fixture_v1.py": {
+      "bytes": 7682,
+      "sha256": "def35dab9d3e16518d674daf36dad786e02a0a34c2fad0e5d93031ed28b5f801"
+    },
+    "/workspace/eidos/run_dbpedia_scaled_study_v1.py": {
+      "bytes": 34169,
+      "sha256": "4d062053bbcd2b6cdadacf1c309dfa2d1a47e28cd5b1eac31ddee9a0017377be"
+    }
+  },
+  "format": "eidos-dbpedia-scaled-study-prepared-v1",
+  "real_data_processed_or_models_executed": false,
+  "rights_file": "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/rights.json",
+  "scope": "eidos-dbpedia-scaled-study-v1",
+  "trees": {
+    "/deps": {
+      "manifest": "/workspace/eidos/evaluation/production/reference-install-v1/v2/dependency-inventory.json",
+      "root": "/workspace/eidos/evaluation/production/reference-install-v1/v2/deps",
+      "sha256": "7d1281d165d595371a1b336becc2fe6f0f923e5a64fb259af176de10a5c3dcc9"
+    },
+    "/laya-source": {
+      "manifest": "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/laya-source-manifest.json",
+      "root": "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/laya-source",
+      "sha256": "0f5d15c6b9556bf8e321f4ff3846cdac41decb89f0cdc3b90099015930eacbe2"
+    },
+    "/legacy-app": {
+      "manifest": "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/application-manifest.json",
+      "root": "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/application",
+      "sha256": "de9b58d66d018fbdc3743d229d2b44d236a24d98295f2afae69891cb353ad27c"
+    },
+    "/owned-app": {
+      "manifest": "/workspace/eidos/research/dbpedia-scaled-study-v1/owned-app-manifest.json",
+      "root": "/workspace/eidos/research/dbpedia-scaled-study-v1/owned-app",
+      "sha256": "6594ee3c358f1bec853999c76ecadbcd60bcca7cd5f24f5024dc486de54d77ea"
+    },
+    "/reference-model": {
+      "manifest": "/workspace/eidos/evaluation/production/primary-orchestration/laya-test-v1/staged/laya-model-manifest.json",
+      "root": "/workspace/eidos/research/production/laya-reference-1c5edc17a7acd8701df6fc341c0d179f1c62c982-v8",
+      "sha256": "cc0fa8b30eac9b56bae2fd3f3ffadac4ecce62787b7a8db289714b8ea8b02b6e"
+    }
+  }
+}

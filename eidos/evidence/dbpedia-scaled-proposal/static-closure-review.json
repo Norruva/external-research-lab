@@ -1,0 +1,20 @@
+{
+  "all_prepared_file_and_complete_tree_hashes_checked": true,
+  "authorization_file_exists": false,
+  "complete": true,
+  "complete_trees": 5,
+  "fixture_control_source_hashes_still_match": true,
+  "format": "eidos-dbpedia-scaled-static-closure-review-v1",
+  "mode": "static-check-only",
+  "new_scoped_approval_required": true,
+  "opaque_external_files": 55,
+  "owned_package_files": 27,
+  "plan_sha256": "880284f8fc3aaadd3b07933a724abaa86b3c71392c738202d447d7365548302c",
+  "prepared_manifest_sha256": "6405fa4f0e7ae7d43df931d079e8da365bbf54a6fddd7e0cf039d244a2a496e6",
+  "reader_files": 752,
+  "reader_imported_or_corpus_data_parsed": false,
+  "real_output_slot_exists": false,
+  "real_training_reference_prediction_or_scoring": false,
+  "source_files": 18,
+  "static_generic_zero_byte_file_fix_preserved_role_and_guard_bytes": true
+}
