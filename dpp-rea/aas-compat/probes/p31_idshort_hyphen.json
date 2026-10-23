@@ -1,0 +1,54 @@
+{
+ "assetAdministrationShells": [
+  {
+   "modelType": "AssetAdministrationShell",
+   "id": "urn:example:norruva:aas:probe",
+   "idShort": "ProbeAAS",
+   "assetInformation": {
+    "assetKind": "Instance",
+    "globalAssetId": "urn:example:norruva:asset:probe"
+   },
+   "submodels": [
+    {
+     "type": "ModelReference",
+     "keys": [
+      {
+       "type": "Submodel",
+       "value": "urn:example:norruva:sm:probe"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "submodels": [
+  {
+   "modelType": "Submodel",
+   "id": "urn:example:norruva:sm:probe",
+   "idShort": "BatteryPassportProbe",
+   "semanticId": {
+    "type": "ExternalReference",
+    "keys": [
+     {
+      "type": "GlobalReference",
+      "value": "urn:example:norruva:semantic:probe"
+     }
+    ]
+   },
+   "submodelElements": [
+    {
+     "modelType": "Property",
+     "idShort": "Battery-Category",
+     "valueType": "xs:string",
+     "value": "EV"
+    },
+    {
+     "modelType": "File",
+     "idShort": "DeclarationOfConformity",
+     "contentType": "application/pdf",
+     "value": "/aasx/files/DeclarationOfConformity.pdf"
+    }
+   ]
+  }
+ ]
+}

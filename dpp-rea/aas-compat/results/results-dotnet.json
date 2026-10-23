@@ -1,0 +1,577 @@
+[
+  {
+    "file": "catenax/BatteryPass-aas.xml",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 194,
+    "verification_errors": 422,
+    "detail": "422 verification errors; first: assetAdministrationShells[0].assetInformation: Invariant violated:\nConstraint AASd-131: Either the global asset ID shall be defined or at least one specific asset ID."
+  },
+  {
+    "file": "catenax/BatteryPass.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 194,
+    "verification_errors": 422,
+    "detail": "422 verification errors; first: assetAdministrationShells[0].assetInformation: Invariant violated:\nConstraint AASd-131: Either the global asset ID shall be defined or at least one specific asset ID."
+  },
+  {
+    "file": "idta/Carbon_Footprint/1/0/2/IDTA_02023-1-0-2__Template_CarbonFootprint.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "fail",
+    "detail": "Exception: While reading the AASX \u003Ccorpus\u003E/idta/Carbon_Footprint/1/0/2/IDTA_02023-1-0-2__Template_CarbonFootprint.aasx at /AdminShellPackageEnv.cs:line 535 gave: While reading spec from the AASX \u003Ccorpus\u003E/idta/Carbon_Footprint/1/0/2/IDTA_02023-1-0-2__Template_CarbonFootprint.aasx at /AdminShellPackageEnv.cs:line 198 gave: Expected an XML start element representing a property of an instance of class Qualifier, but got the node of type Text with the value value\u003E\n                     at: submodels/*[0]/submodelElements/*[1]/value/*[0]/value/*[0]/qualifiers/*[0]"
+  },
+  {
+    "file": "idta/Carbon_Footprint/1/0/2/IDTA_02023-1-0-2__Template_CarbonFootprint.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 31,
+    "verification_errors": 26,
+    "detail": "26 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Carbon_Footprint/1/0/2/IDTA_02023-1-0-2__Template_CarbonFootprint_forAASMetamodelV3.1.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "fail",
+    "detail": "Exception: While reading the AASX \u003Ccorpus\u003E/idta/Carbon_Footprint/1/0/2/IDTA_02023-1-0-2__Template_CarbonFootprint_forAASMetamodelV3.1.aasx at /AdminShellPackageEnv.cs:line 535 gave: While reading spec from the AASX \u003Ccorpus\u003E/idta/Carbon_Footprint/1/0/2/IDTA_02023-1-0-2__Template_CarbonFootprint_forAASMetamodelV3.1.aasx at /xmlization.cs:line 20578 gave: Expected an XML end element concluding an instance of class Qualifier, but got a node of type Text with value value\u003E\n                     at: submodels/*[0]/submodelElements/*[1]/value/*[0]/value/*[0]/qualifiers/*[0]"
+  },
+  {
+    "file": "idta/Carbon_Footprint/1/0/2/IDTA_02023-1-0-2__Template_CarbonFootprint_forAASMetamodelV3.1.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 31,
+    "verification_errors": 26,
+    "detail": "26 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Contact_Information/1/0/2/IDTA_02002-1-0-2_Template_ContactInformation.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 37,
+    "verification_errors": 35,
+    "detail": "35 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Contact_Information/1/0/2/IDTA_02002-1-0-2_Template_ContactInformation.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 37,
+    "verification_errors": 35,
+    "detail": "35 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Contact_Information/1/0/2/IDTA_02002-1-0-2_Template_ContactInformation_forAASMetamodelV3.1.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 37,
+    "verification_errors": 35,
+    "detail": "35 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Contact_Information/1/0/2/IDTA_02002-1-0-2_Template_ContactInformation_forAASMetamodelV3.1.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 37,
+    "verification_errors": 35,
+    "detail": "35 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/1_Digital_Nameplate/1/1/IDTA_02035-1_DBP-Part-1_Digital_Nameplate.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 21,
+    "verification_errors": 19,
+    "detail": "19 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/1_Digital_Nameplate/1/1/IDTA_02035-1_DBP-Part-1_Digital_Nameplate.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 21,
+    "verification_errors": 18,
+    "detail": "18 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/1_Digital_Nameplate/1/1/IDTA_02035-1_DBP-Part-1_Digital_Nameplate_without_examplevalues.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 21,
+    "verification_errors": 18,
+    "detail": "18 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/2_Handover_Documentation/1/1/IDTA_02035-2_DBP-Part-2_HandoverDocumentation.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 23,
+    "verification_errors": 20,
+    "detail": "20 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/2_Handover_Documentation/1/1/IDTA_02035-2_DBP-Part-2_HandoverDocumentation.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 23,
+    "verification_errors": 19,
+    "detail": "19 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/2_Handover_Documentation/1/1/IDTA_02035-2_DBP-Part-2_HandoverDocumentation_without_examplevalues.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 23,
+    "verification_errors": 19,
+    "detail": "19 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/3_Product_Carbon_Footprint/1/1/IDTA_02035-3_DBP-Part-3_ProductCarbonFootprint.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 10,
+    "verification_errors": 6,
+    "detail": "6 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/3_Product_Carbon_Footprint/1/1/IDTA_02035-3_DBP-Part-3_ProductCarbonFootprint.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 10,
+    "verification_errors": 5,
+    "detail": "5 verification errors; first: conceptDescriptions[1].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/3_Product_Carbon_Footprint/1/1/IDTA_02035-3_DBP-Part-3_ProductCarbonFootprint_without_examplevalues.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 10,
+    "verification_errors": 5,
+    "detail": "5 verification errors; first: conceptDescriptions[1].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/4_Technical_Data/1/0/2/IDTA_02035-4_DBP-Part-4_TechnicalData.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 39,
+    "verification_errors": 37,
+    "detail": "37 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/4_Technical_Data/1/0/2/IDTA_02035-4_DBP-Part-4_TechnicalData.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 39,
+    "verification_errors": 37,
+    "detail": "37 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/4_Technical_Data/1/0/2/IDTA_02035-4_DBP-Part-4_TechnicalData_without_examplevalues.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 39,
+    "verification_errors": 37,
+    "detail": "37 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/5_Product_Condition/1/0/2/IDTA_02035-5_DBP-Part-5_ProductCondition.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 40,
+    "verification_errors": 40,
+    "detail": "40 verification errors; first: assetAdministrationShells[0].assetInformation: Invariant violated:\nConstraint AASd-131: Either the global asset ID shall be defined or at least one specific asset ID."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/5_Product_Condition/1/0/2/IDTA_02035-5_DBP-Part-5_ProductCondition_V1.0.2.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 40,
+    "verification_errors": 40,
+    "detail": "40 verification errors; first: assetAdministrationShells[0].assetInformation: Invariant violated:\nConstraint AASd-131: Either the global asset ID shall be defined or at least one specific asset ID."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/6_Material_Composition/1/0/2/IDTA_02035-6_DBP-Part-6_MaterialComposition.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 27,
+    "verification_errors": 22,
+    "detail": "22 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/7_Circularity/1/0/2/IDTA_02035-7_DBP-Part-7_Circularity.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 35,
+    "verification_errors": 32,
+    "detail": "32 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/7_Circularity/1/0/2/IDTA_02035-7_DBP-Part-7_Circularity.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 35,
+    "verification_errors": 32,
+    "detail": "32 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Digital_Battery_Passport/7_Circularity/1/0/2/IDTA_02035-7_DBP-Part-7_Circularity_without_examplevalues.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 35,
+    "verification_errors": 32,
+    "detail": "32 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Digital_Product_Passport/Digital_Product_Passport_Part-1/1/0/2/IDTA_02099-1_Template_Digital_Product_Passport_-_Part_1.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 16,
+    "verification_errors": 11,
+    "detail": "11 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Digital_Product_Passport/Digital_Product_Passport_Part-1/1/0/2/IDTA_02099-1_Template_Digital_Product_Passport_-_Part_1.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 16,
+    "verification_errors": 11,
+    "detail": "11 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Digital_nameplate/3/0/2/IDTA_02006-3-0-2_Template_Digital_Nameplate.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 32,
+    "verification_errors": 30,
+    "detail": "30 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Digital_nameplate/3/0/2/IDTA_02006-3-0-2_Template_Digital_Nameplate.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 32,
+    "verification_errors": 30,
+    "detail": "30 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Handover_Documentation/2/0/2/IDTA_02004-2-0-2_Template_HandoverDocumentation.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 36,
+    "verification_errors": 33,
+    "detail": "33 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Handover_Documentation/2/0/2/IDTA_02004-2-0-2_Template_HandoverDocumentation.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 36,
+    "verification_errors": 33,
+    "detail": "33 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Handover_Documentation/2/0/2/IDTA_02004-2-0-2_Template_HandoverDocumentation__forAASMetamodelV3.1.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 36,
+    "verification_errors": 33,
+    "detail": "33 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Handover_Documentation/2/0/2/IDTA_02004-2-0-2_Template_HandoverDocumentation__forAASMetamodelV3.1.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 36,
+    "verification_errors": 33,
+    "detail": "33 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Handover_Documentation/2/0/2/IDTA_02004-2-0-2_Template_sample_HandoverDocumentation_forAASMetamodelV3.1.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 39,
+    "verification_errors": 48,
+    "detail": "48 verification errors; first: submodels[0].submodelElements[0].value[0].value[2].value[0].value[13].value[0].value: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Handover_Documentation/2/0/2/IDTA_02004-2-0_Template_sample_HandoverDocumentation.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 39,
+    "verification_errors": 48,
+    "detail": "48 verification errors; first: submodels[0].submodelElements[0].value[0].value[2].value[0].value[13].value[0].value: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/1/1/2/IDTA_02011-1-1-2_Template_HSEBoM.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 10,
+    "verification_errors": 8,
+    "detail": "8 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/1/1/2/IDTA_02011-1-1-2_Template_HSEBoM.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 10,
+    "verification_errors": 8,
+    "detail": "8 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/1/1/2/IDTA_02011-1-1-2_Template_HSEBoM_forAASMetamodelV3.1.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 10,
+    "verification_errors": 8,
+    "detail": "8 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/1/1/2/IDTA_02011-1-1-2_Template_HSEBoM_forAASMetamodelV3.1.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 10,
+    "verification_errors": 8,
+    "detail": "8 verification errors; first: conceptDescriptions[0].embeddedDataSpecifications[0].dataSpecificationContent: Invariant violated:\nConstraint AASc-3a-010: If value is not empty then value list shall be empty and vice versa."
+  },
+  {
+    "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/Extension_based_on_IEC_81346/1/0/2/IDTA_02011-1-1-2__Template_BoM_ExtensionbasedonIEC81346.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 21,
+    "verification_errors": 20,
+    "detail": "20 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/Extension_based_on_IEC_81346/1/0/2/IDTA_02011-1-1-2__Template_BoM_ExtensionbasedonIEC81346.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 21,
+    "verification_errors": 20,
+    "detail": "20 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/Extension_based_on_IEC_81346/1/0/2/IDTA_02011-1-1-2__Template_BoM_ExtensionbasedonIEC81346_forAASMetamodelV3.1.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 21,
+    "verification_errors": 20,
+    "detail": "20 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/Extension_based_on_IEC_81346/1/0/2/IDTA_02011-1-1-2__Template_BoM_ExtensionbasedonIEC81346_forAASMetamodelV3.1.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 21,
+    "verification_errors": 20,
+    "detail": "20 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Material_Data_for_Plastic_Waste/1/1/IDTA_02080_Template_Material_Data_for_Plastic_Waste.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 54,
+    "verification_errors": 53,
+    "detail": "53 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Material_Data_for_Plastic_Waste/1/1/IDTA_02080_Template_Material_Data_for_Plastic_Waste.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 54,
+    "verification_errors": 53,
+    "detail": "53 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Technical_Data/2/0/2/IDTA_02003_2-0-2_Template_TechnicalData.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 30,
+    "verification_errors": 33,
+    "detail": "33 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Technical_Data/2/0/2/IDTA_02003_2-0-2_Template_TechnicalData.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 30,
+    "verification_errors": 33,
+    "detail": "33 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Technical_Data/2/0/2/IDTA_02003_2-0-2_Template_TechnicalData_forAASMetamodelV3.1.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 30,
+    "verification_errors": 33,
+    "detail": "33 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Technical_Data/2/0/2/IDTA_02003_2-0-2_Template_TechnicalData_forAASMetamodelV3.1.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 30,
+    "verification_errors": 33,
+    "detail": "33 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Technical_Data/2/0/2/IDTA_02003_Sample_TechnicalData.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 50,
+    "verification_errors": 41,
+    "detail": "41 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "idta/Technical_Data/2/0/2/IDTA_02003_Sample_TechnicalData_forAASMetamodelV3.1.aasx",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 50,
+    "verification_errors": 41,
+    "detail": "41 verification errors; first: assetAdministrationShells[0].assetInformation.defaultThumbnail.path: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "probes/p00_baseline.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 2,
+    "verification_errors": 1,
+    "detail": "1 verification errors; first: submodels[0].submodelElements[1].value: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "probes/p00_baseline_ns30.xml",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 2,
+    "verification_errors": 1,
+    "detail": "1 verification errors; first: submodels[0].submodelElements[1].value: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "probes/p00_baseline_ns31.xml",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 2,
+    "verification_errors": 1,
+    "detail": "1 verification errors; first: submodels[0].submodelElements[1].value: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "probes/p00_baseline_ns32.xml",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "fail",
+    "detail": "Exception: While reading AAS \u003Ccorpus\u003E/probes/p00_baseline_ns32.xml at /AdminShellPackageEnv.cs:line 357 gave: Type error for XML file"
+  },
+  {
+    "file": "probes/p31_assetkind_role.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 2,
+    "verification_errors": 1,
+    "detail": "1 verification errors; first: submodels[0].submodelElements[1].value: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "probes/p31_contenttype_120_chars.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 2,
+    "verification_errors": 1,
+    "detail": "1 verification errors; first: submodels[0].submodelElements[1].value: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "probes/p31_file_value_with_space.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 2,
+    "verification_errors": 1,
+    "detail": "1 verification errors; first: submodels[0].submodelElements[1].value: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "probes/p31_file_without_contenttype.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 2,
+    "verification_errors": 1,
+    "detail": "1 verification errors; first: submodels[0].submodelElements[1].value: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "probes/p31_idshort_hyphen.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "pass",
+    "objects": 2,
+    "verification_errors": 1,
+    "detail": "1 verification errors; first: submodels[0].submodelElements[1].value: Invariant violated:\nThe value must represent a valid file URI scheme according to RFC 8089."
+  },
+  {
+    "file": "probes/p32_admin_created_at.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "fail",
+    "detail": "Exception: While reading AAS \u003Ccorpus\u003E/probes/p32_admin_created_at.json at /jsonization.cs:line 15715 gave: Unexpected property: createdAt at: submodels[0].administration"
+  },
+  {
+    "file": "probes/p32_assetkind_batch.json",
+    "payload": "(file)",
+    "tool": "aasx-server-lib-b092dbe",
+    "status": "fail",
+    "detail": "Exception: While reading AAS \u003Ccorpus\u003E/probes/p32_assetkind_batch.json at /jsonization.cs:line 15715 gave: Not a valid JSON representation of AssetKind at: assetAdministrationShells[0].assetInformation.assetKind"
+  }
+]

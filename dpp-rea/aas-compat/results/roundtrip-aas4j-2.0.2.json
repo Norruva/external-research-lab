@@ -1,0 +1,457 @@
+[
+ {
+  "file": "idta/Carbon_Footprint/1/0/2/IDTA_02023-1-0-2__Template_CarbonFootprint.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 1211,
+  "lost": 0,
+  "added": 5,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].submodelElements[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].orderRelevant"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Carbon_Footprint/1/0/2/IDTA_02023-1-0-2__Template_CarbonFootprint_forAASMetamodelV3.1.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 1211,
+  "lost": 0,
+  "added": 5,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].submodelElements[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].orderRelevant"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Contact_Information/1/0/2/IDTA_02002-1-0-2_Template_ContactInformation.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 818,
+  "lost": 0,
+  "added": 0,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Contact_Information/1/0/2/IDTA_02002-1-0-2_Template_ContactInformation_forAASMetamodelV3.1.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 818,
+  "lost": 0,
+  "added": 0,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/1_Digital_Nameplate/1/1/IDTA_02035-1_DBP-Part-1_Digital_Nameplate.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 825,
+  "lost": 0,
+  "added": 3,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].submodelElements[].orderRelevant"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/1_Digital_Nameplate/1/1/IDTA_02035-1_DBP-Part-1_Digital_Nameplate_without_examplevalues.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 812,
+  "lost": 0,
+  "added": 3,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].submodelElements[].orderRelevant"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/2_Handover_Documentation/1/1/IDTA_02035-2_DBP-Part-2_HandoverDocumentation.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 1129,
+  "lost": 0,
+  "added": 19,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].submodelElements[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].qualifiers[].kind",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].value[].qualifiers[].kind",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].value[].qualifiers[]].kind"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/2_Handover_Documentation/1/1/IDTA_02035-2_DBP-Part-2_HandoverDocumentation_without_examplevalues.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 1128,
+  "lost": 0,
+  "added": 19,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].submodelElements[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].qualifiers[].kind",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].value[].qualifiers[].kind",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].value[].qualifiers[]].kind"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/3_Product_Carbon_Footprint/1/1/IDTA_02035-3_DBP-Part-3_ProductCarbonFootprint.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 595,
+  "lost": 0,
+  "added": 4,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].submodelElements[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].orderRelevant"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/3_Product_Carbon_Footprint/1/1/IDTA_02035-3_DBP-Part-3_ProductCarbonFootprint_without_examplevalues.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 594,
+  "lost": 0,
+  "added": 4,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].submodelElements[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].orderRelevant"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/4_Technical_Data/1/0/2/IDTA_02035-4_DBP-Part-4_TechnicalData.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 1551,
+  "lost": 0,
+  "added": 3,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].submodelElements[].value[].orderRelevant",
+   ".submodels[].submodelElements[].value[].qualifiers[].kind",
+   ".submodels[].submodelElements[].value[].value[].orderRelevant"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/4_Technical_Data/1/0/2/IDTA_02035-4_DBP-Part-4_TechnicalData_without_examplevalues.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 1522,
+  "lost": 0,
+  "added": 3,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].submodelElements[].value[].orderRelevant",
+   ".submodels[].submodelElements[].value[].qualifiers[].kind",
+   ".submodels[].submodelElements[].value[].value[].orderRelevant"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/5_Product_Condition/1/0/2/IDTA_02035-5_DBP-Part-5_ProductCondition_V1.0.2.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 1541,
+  "lost": 0,
+  "added": 0,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/7_Circularity/1/0/2/IDTA_02035-7_DBP-Part-7_Circularity.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 1203,
+  "lost": 0,
+  "added": 0,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/7_Circularity/1/0/2/IDTA_02035-7_DBP-Part-7_Circularity_without_examplevalues.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 1203,
+  "lost": 0,
+  "added": 0,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Digital_Product_Passport/Digital_Product_Passport_Part-1/1/0/2/IDTA_02099-1_Template_Digital_Product_Passport_-_Part_1.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 626,
+  "lost": 0,
+  "added": 0,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Digital_nameplate/3/0/2/IDTA_02006-3-0-2_Template_Digital_Nameplate.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 978,
+  "lost": 0,
+  "added": 2,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].submodelElements[].orderRelevant",
+   ".submodels[].submodelElements[].value[].orderRelevant"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Handover_Documentation/2/0/2/IDTA_02004-2-0-2_Template_HandoverDocumentation.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 1633,
+  "lost": 0,
+  "added": 34,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].submodelElements[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].qualifiers[].kind",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].qualifiers[]].kind",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].value[].qualifiers[].kind",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].value[].qualifiers[]].kind"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Handover_Documentation/2/0/2/IDTA_02004-2-0-2_Template_HandoverDocumentation__forAASMetamodelV3.1.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 1633,
+  "lost": 0,
+  "added": 34,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].submodelElements[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].qualifiers[].kind",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].qualifiers[]].kind",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].value[].qualifiers[].kind",
+   ".submodels[].submodelElements[].value[].value[].value[].value[].value[].qualifiers[]].kind"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/1/1/2/IDTA_02011-1-1-2_Template_HSEBoM.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 371,
+  "lost": 0,
+  "added": 0,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/1/1/2/IDTA_02011-1-1-2_Template_HSEBoM_forAASMetamodelV3.1.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 371,
+  "lost": 0,
+  "added": 0,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/Extension_based_on_IEC_81346/1/0/2/IDTA_02011-1-1-2__Template_BoM_ExtensionbasedonIEC81346.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 593,
+  "lost": 0,
+  "added": 0,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/Extension_based_on_IEC_81346/1/0/2/IDTA_02011-1-1-2__Template_BoM_ExtensionbasedonIEC81346_forAASMetamodelV3.1.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 593,
+  "lost": 0,
+  "added": 0,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Material_Data_for_Plastic_Waste/1/1/IDTA_02080_Template_Material_Data_for_Plastic_Waste.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 2324,
+  "lost": 0,
+  "added": 3,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].submodelElements[].orderRelevant",
+   ".submodels[].submodelElements[].value[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].orderRelevant"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Technical_Data/2/0/2/IDTA_02003_2-0-2_Template_TechnicalData.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 1696,
+  "lost": 0,
+  "added": 13,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].submodelElements[].orderRelevant",
+   ".submodels[].submodelElements[].value[].orderRelevant",
+   ".submodels[].submodelElements[].value[].qualifiers[].kind",
+   ".submodels[].submodelElements[].value[].value[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].qualifiers[].kind",
+   ".submodels[].submodelElements[].value[].value[].value[].orderRelevant"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "idta/Technical_Data/2/0/2/IDTA_02003_2-0-2_Template_TechnicalData_forAASMetamodelV3.1.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 1696,
+  "lost": 0,
+  "added": 13,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].submodelElements[].orderRelevant",
+   ".submodels[].submodelElements[].value[].orderRelevant",
+   ".submodels[].submodelElements[].value[].qualifiers[].kind",
+   ".submodels[].submodelElements[].value[].value[].orderRelevant",
+   ".submodels[].submodelElements[].value[].value[].qualifiers[].kind",
+   ".submodels[].submodelElements[].value[].value[].value[].orderRelevant"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "probes/p00_baseline.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 22,
+  "lost": 0,
+  "added": 1,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].kind"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "probes/p31_assetkind_role.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 22,
+  "lost": 0,
+  "added": 1,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].kind"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "probes/p31_contenttype_120_chars.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 22,
+  "lost": 0,
+  "added": 1,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].kind"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "probes/p31_file_value_with_space.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 22,
+  "lost": 0,
+  "added": 1,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].kind"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "probes/p31_file_without_contenttype.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 21,
+  "lost": 0,
+  "added": 1,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].kind"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "probes/p31_idshort_hyphen.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 22,
+  "lost": 0,
+  "added": 1,
+  "changed": 0,
+  "lost_kinds": [],
+  "added_kinds": [
+   ".submodels[].kind"
+  ],
+  "changed_examples": []
+ },
+ {
+  "file": "probes/p32_admin_created_at.json",
+  "tool": "aas4j-2.0.2",
+  "leaf_values": 26,
+  "lost": 2,
+  "added": 1,
+  "changed": 0,
+  "lost_kinds": [
+   ".submodels[].administration.createdAt",
+   ".submodels[].administration.updatedAt"
+  ],
+  "added_kinds": [
+   ".submodels[].kind"
+  ],
+  "changed_examples": []
+ }
+]

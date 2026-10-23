@@ -1,0 +1,2000 @@
+[
+ {
+  "file": "catenax/BatteryPass-aas.xml",
+  "container": "xml",
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.0"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementCollection": 122,
+   "Property": 287,
+   "SubmodelElementList": 55
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://environment.ec.europa.eu/publications/proposal-ecodesign-sustainable-products-regulation_en"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "catenax/BatteryPass.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 6,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/xml/content.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.0"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementCollection": 122,
+   "Property": 287,
+   "SubmodelElementList": 55
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://environment.ec.europa.eu/publications/proposal-ecodesign-sustainable-products-regulation_en"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Carbon_Footprint/1/0/2/IDTA_02023-1-0-2__Template_CarbonFootprint.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 7,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/AasTemplate/AasTemplate.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.0"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementList": 5,
+   "SubmodelElementCollection": 6,
+   "Property": 14,
+   "File": 2
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/CarbonFootprint/CarbonFootprint/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Carbon_Footprint/1/0/2/IDTA_02023-1-0-2__Template_CarbonFootprint.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementList": 5,
+   "SubmodelElementCollection": 6,
+   "Property": 14,
+   "File": 2,
+   "ConceptDescription": 29,
+   "DataSpecificationIec61360": 29
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/CarbonFootprint/CarbonFootprint/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Carbon_Footprint/1/0/2/IDTA_02023-1-0-2__Template_CarbonFootprint_forAASMetamodelV3.1.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 7,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/AasTemplate/AasTemplate.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementList": 5,
+   "SubmodelElementCollection": 6,
+   "Property": 14,
+   "File": 2
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/CarbonFootprint/CarbonFootprint/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Carbon_Footprint/1/0/2/IDTA_02023-1-0-2__Template_CarbonFootprint_forAASMetamodelV3.1.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementList": 5,
+   "SubmodelElementCollection": 6,
+   "Property": 14,
+   "File": 2,
+   "ConceptDescription": 29,
+   "DataSpecificationIec61360": 29
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/CarbonFootprint/CarbonFootprint/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Contact_Information/1/0/2/IDTA_02002-1-0-2_Template_ContactInformation.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 5,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/ContactInformationAAS/ContactInformationAAS.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.0"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementCollection": 5,
+   "Property": 10,
+   "MultiLanguageProperty": 21
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/zvei/nameplate/1/0/ContactInformations"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Contact_Information/1/0/2/IDTA_02002-1-0-2_Template_ContactInformation.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementCollection": 5,
+   "Property": 10,
+   "MultiLanguageProperty": 21,
+   "ConceptDescription": 35,
+   "DataSpecificationIec61360": 35
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/zvei/nameplate/1/0/ContactInformations"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Contact_Information/1/0/2/IDTA_02002-1-0-2_Template_ContactInformation_forAASMetamodelV3.1.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 5,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/ContactInformationAAS/ContactInformationAAS.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementCollection": 5,
+   "Property": 10,
+   "MultiLanguageProperty": 21
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/zvei/nameplate/1/0/ContactInformations"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Contact_Information/1/0/2/IDTA_02002-1-0-2_Template_ContactInformation_forAASMetamodelV3.1.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementCollection": 5,
+   "Property": 10,
+   "MultiLanguageProperty": 21,
+   "ConceptDescription": 35,
+   "DataSpecificationIec61360": 35
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/zvei/nameplate/1/0/ContactInformations"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/1_Digital_Nameplate/1/1/IDTA_02035-1_DBP-Part-1_Digital_Nameplate.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 7,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/DigitalNameplateAAS/DigitalNameplateAAS.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "Property": 15,
+   "MultiLanguageProperty": 1,
+   "SubmodelElementCollection": 2,
+   "SubmodelElementList": 3,
+   "File": 1
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/digitalbatterypassport/nameplate/1/0/Nameplate"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/1_Digital_Nameplate/1/1/IDTA_02035-1_DBP-Part-1_Digital_Nameplate.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "Property": 15,
+   "MultiLanguageProperty": 1,
+   "SubmodelElementCollection": 2,
+   "SubmodelElementList": 3,
+   "File": 1,
+   "ConceptDescription": 19,
+   "DataSpecificationIec61360": 19
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/digitalbatterypassport/nameplate/1/0/Nameplate"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/1_Digital_Nameplate/1/1/IDTA_02035-1_DBP-Part-1_Digital_Nameplate_without_examplevalues.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "Property": 15,
+   "MultiLanguageProperty": 1,
+   "SubmodelElementCollection": 2,
+   "SubmodelElementList": 3,
+   "File": 1,
+   "ConceptDescription": 19,
+   "DataSpecificationIec61360": 19
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/digitalbatterypassport/nameplate/1/0/Nameplate"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/2_Handover_Documentation/1/1/IDTA_02035-2_DBP-Part-2_HandoverDocumentation.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 7,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/HandoverDocumentationAAS/HandoverDocumentationAAS.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementList": 6,
+   "SubmodelElementCollection": 4,
+   "MultiLanguageProperty": 4,
+   "Property": 7,
+   "File": 1
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://api.eclass-cdp.com/0173-1-01-AHF578-003"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/2_Handover_Documentation/1/1/IDTA_02035-2_DBP-Part-2_HandoverDocumentation.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementList": 6,
+   "SubmodelElementCollection": 4,
+   "MultiLanguageProperty": 4,
+   "Property": 7,
+   "File": 1,
+   "ConceptDescription": 21,
+   "DataSpecificationIec61360": 21
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "0173-1#01-AHF578#003"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/2_Handover_Documentation/1/1/IDTA_02035-2_DBP-Part-2_HandoverDocumentation_without_examplevalues.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementList": 6,
+   "SubmodelElementCollection": 4,
+   "MultiLanguageProperty": 4,
+   "Property": 7,
+   "File": 1,
+   "ConceptDescription": 21,
+   "DataSpecificationIec61360": 21
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "0173-1#01-AHF578#003"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/3_Product_Carbon_Footprint/1/1/IDTA_02035-3_DBP-Part-3_ProductCarbonFootprint.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 7,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/CarbonFootprintForDBPAAS/CarbonFootprintForDBPAAS.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementList": 4,
+   "SubmodelElementCollection": 1,
+   "Property": 7
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/CarbonFootprint/CarbonFootprint/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/3_Product_Carbon_Footprint/1/1/IDTA_02035-3_DBP-Part-3_ProductCarbonFootprint.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementList": 4,
+   "SubmodelElementCollection": 1,
+   "Property": 7,
+   "ConceptDescription": 8,
+   "DataSpecificationIec61360": 8
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/CarbonFootprint/CarbonFootprint/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/3_Product_Carbon_Footprint/1/1/IDTA_02035-3_DBP-Part-3_ProductCarbonFootprint_without_examplevalues.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementList": 4,
+   "SubmodelElementCollection": 1,
+   "Property": 7,
+   "ConceptDescription": 8,
+   "DataSpecificationIec61360": 8
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/CarbonFootprint/CarbonFootprint/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/4_Technical_Data/1/0/2/IDTA_02035-4_DBP-Part-4_TechnicalData.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 5,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/TechnicalDataForBatteryDataAAS/TechnicalDataForBatteryDataAAS.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementCollection": 10,
+   "Property": 32,
+   "File": 2,
+   "SubmodelElementList": 2
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/digitalbatterypassport/TechnicalData/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/4_Technical_Data/1/0/2/IDTA_02035-4_DBP-Part-4_TechnicalData.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementCollection": 10,
+   "Property": 32,
+   "File": 2,
+   "SubmodelElementList": 2,
+   "ConceptDescription": 37,
+   "DataSpecificationIec61360": 37
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/digitalbatterypassport/TechnicalData/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/4_Technical_Data/1/0/2/IDTA_02035-4_DBP-Part-4_TechnicalData_without_examplevalues.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementCollection": 10,
+   "Property": 32,
+   "File": 2,
+   "SubmodelElementList": 2,
+   "ConceptDescription": 37,
+   "DataSpecificationIec61360": 37
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/digitalbatterypassport/TechnicalData/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/5_Product_Condition/1/0/2/IDTA_02035-5_DBP-Part-5_ProductCondition.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 5,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/ProductionConditionForDBPAAS/ProductionConditionForDBPAAS.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementCollection": 14,
+   "Property": 33,
+   "SubmodelElementList": 2
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Instance"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/SubmodelTemplates/Cardinality/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/5_Product_Condition/1/0/2/IDTA_02035-5_DBP-Part-5_ProductCondition_V1.0.2.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementCollection": 14,
+   "Property": 33,
+   "SubmodelElementList": 2,
+   "ConceptDescription": 38,
+   "DataSpecificationIec61360": 38
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Instance"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "urn:samm:io.admin-shell.idta.batterypass.product_condition:1.0.2#ProductCondition"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/6_Material_Composition/1/0/2/IDTA_02035-6_DBP-Part-6_MaterialComposition.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 12,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/xml/content.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementCollection": 5,
+   "Property": 15,
+   "SubmodelElementList": 3
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/SubmodelTemplates/Cardinality/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/7_Circularity/1/0/2/IDTA_02035-7_DBP-Part-7_Circularity.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 5,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/CircularityForDBPAAS/CircularityForDBPAAS.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementList": 9,
+   "Property": 15,
+   "SubmodelElementCollection": 7,
+   "MultiLanguageProperty": 6
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/SubmodelTemplates/Cardinality/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/7_Circularity/1/0/2/IDTA_02035-7_DBP-Part-7_Circularity.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementList": 9,
+   "Property": 15,
+   "SubmodelElementCollection": 7,
+   "MultiLanguageProperty": 6,
+   "ConceptDescription": 33,
+   "DataSpecificationIec61360": 33
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "urn:samm:io.admin-shell.idta.batterypass.circularity:1.0.0#Circularity"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Battery_Passport/7_Circularity/1/0/2/IDTA_02035-7_DBP-Part-7_Circularity_without_examplevalues.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementList": 9,
+   "Property": 15,
+   "SubmodelElementCollection": 7,
+   "MultiLanguageProperty": 6,
+   "ConceptDescription": 33,
+   "DataSpecificationIec61360": 33
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "urn:samm:io.admin-shell.idta.batterypass.circularity:1.0.0#Circularity"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Product_Passport/Digital_Product_Passport_Part-1/1/0/2/IDTA_02099-1_Template_Digital_Product_Passport_-_Part_1.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 13,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/xml/content.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "Property": 9,
+   "SubmodelElementList": 1
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/cds/dppMetadata/1"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_Product_Passport/Digital_Product_Passport_Part-1/1/0/2/IDTA_02099-1_Template_Digital_Product_Passport_-_Part_1.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "Property": 9,
+   "SubmodelElementList": 1,
+   "ConceptDescription": 14,
+   "DataSpecificationIec61360": 14
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/cds/dppMetadata/1"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_nameplate/3/0/2/IDTA_02006-3-0-2_Template_Digital_Nameplate.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 8,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/DigitalNameplateAAS/DigitalNameplateAAS.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.0"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "Property": 20,
+   "MultiLanguageProperty": 6,
+   "SubmodelElementCollection": 4,
+   "File": 4,
+   "SubmodelElementList": 2
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/nameplate/3/0/Nameplate"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Digital_nameplate/3/0/2/IDTA_02006-3-0-2_Template_Digital_Nameplate.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "Property": 20,
+   "MultiLanguageProperty": 6,
+   "SubmodelElementCollection": 4,
+   "File": 4,
+   "SubmodelElementList": 2,
+   "ConceptDescription": 30,
+   "DataSpecificationIec61360": 30
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/nameplate/3/0/Nameplate"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Handover_Documentation/2/0/2/IDTA_02004-2-0-2_Template_HandoverDocumentation.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 5,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/HandoverDocumentationAAS/HandoverDocumentationAAS.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.0"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementList": 11,
+   "SubmodelElementCollection": 4,
+   "Property": 11,
+   "MultiLanguageProperty": 5,
+   "ReferenceElement": 4,
+   "File": 2,
+   "Entity": 1
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://api.eclass-cdp.com/0173-1-01-AHF578-003"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Handover_Documentation/2/0/2/IDTA_02004-2-0-2_Template_HandoverDocumentation.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementList": 11,
+   "SubmodelElementCollection": 4,
+   "Property": 11,
+   "MultiLanguageProperty": 5,
+   "ReferenceElement": 4,
+   "File": 2,
+   "Entity": 1,
+   "ConceptDescription": 34,
+   "DataSpecificationIec61360": 34
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "0173-1#01-AHF578#003"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Handover_Documentation/2/0/2/IDTA_02004-2-0-2_Template_HandoverDocumentation__forAASMetamodelV3.1.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 5,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/HandoverDocumentationAAS/HandoverDocumentationAAS.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementList": 11,
+   "SubmodelElementCollection": 4,
+   "Property": 11,
+   "MultiLanguageProperty": 5,
+   "ReferenceElement": 4,
+   "File": 2,
+   "Entity": 1
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://api.eclass-cdp.com/0173-1-01-AHF578-003"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Handover_Documentation/2/0/2/IDTA_02004-2-0-2_Template_HandoverDocumentation__forAASMetamodelV3.1.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementList": 11,
+   "SubmodelElementCollection": 4,
+   "Property": 11,
+   "MultiLanguageProperty": 5,
+   "ReferenceElement": 4,
+   "File": 2,
+   "Entity": 1,
+   "ConceptDescription": 34,
+   "DataSpecificationIec61360": 34
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "0173-1#01-AHF578#003"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Handover_Documentation/2/0/2/IDTA_02004-2-0-2_Template_sample_HandoverDocumentation_forAASMetamodelV3.1.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 5,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/HandoverDocumentationAAS/HandoverDocumentationAAS.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementList": 33,
+   "SubmodelElementCollection": 11,
+   "Property": 42,
+   "MultiLanguageProperty": 22,
+   "ReferenceElement": 15,
+   "File": 10,
+   "Entity": 1
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://api.eclass-cdp.com/0173-1-01-AHF578-003"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Handover_Documentation/2/0/2/IDTA_02004-2-0_Template_sample_HandoverDocumentation.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 5,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/HandoverDocumentationAAS/HandoverDocumentationAAS.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.0"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementList": 33,
+   "SubmodelElementCollection": 11,
+   "Property": 42,
+   "MultiLanguageProperty": 22,
+   "ReferenceElement": 15,
+   "File": 10,
+   "Entity": 1
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://api.eclass-cdp.com/0173-1-01-AHF578-003"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/1/1/2/IDTA_02011-1-1-2_Template_HSEBoM.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 5,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/https___example_com_ids_aas_9194_9081_3022_4668/https___example_com_ids_aas_9194_9081_3022_4668.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.0"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "Entity": 3,
+   "RelationshipElement": 6,
+   "Property": 2
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/HierarchicalStructures/1/1/Submodel"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/1/1/2/IDTA_02011-1-1-2_Template_HSEBoM.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "Entity": 3,
+   "RelationshipElement": 6,
+   "Property": 2,
+   "ConceptDescription": 8,
+   "DataSpecificationIec61360": 8
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/HierarchicalStructures/1/1/Submodel"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/1/1/2/IDTA_02011-1-1-2_Template_HSEBoM_forAASMetamodelV3.1.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 5,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/https___example_com_ids_aas_9194_9081_3022_4668/https___example_com_ids_aas_9194_9081_3022_4668.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "Entity": 3,
+   "RelationshipElement": 6,
+   "Property": 2
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/HierarchicalStructures/1/1/Submodel"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/1/1/2/IDTA_02011-1-1-2_Template_HSEBoM_forAASMetamodelV3.1.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "Entity": 3,
+   "RelationshipElement": 6,
+   "Property": 2,
+   "ConceptDescription": 8,
+   "DataSpecificationIec61360": 8
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/HierarchicalStructures/1/1/Submodel"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/Extension_based_on_IEC_81346/1/0/2/IDTA_02011-1-1-2__Template_BoM_ExtensionbasedonIEC81346.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 7,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/https___example_com_ids_aas_9194_9081_3022_4668/https___example_com_ids_aas_9194_9081_3022_4668.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.0"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "Entity": 8,
+   "Property": 6,
+   "MultiLanguageProperty": 1,
+   "RelationshipElement": 4
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Instance"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/SubmodelTemplate/HierarchicalStructures/ExtensionIEC81346/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/Extension_based_on_IEC_81346/1/0/2/IDTA_02011-1-1-2__Template_BoM_ExtensionbasedonIEC81346.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "Entity": 8,
+   "Property": 6,
+   "MultiLanguageProperty": 1,
+   "RelationshipElement": 4,
+   "ConceptDescription": 19,
+   "DataSpecificationIec61360": 19
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Instance"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/SubmodelTemplate/HierarchicalStructures/ExtensionIEC81346/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/Extension_based_on_IEC_81346/1/0/2/IDTA_02011-1-1-2__Template_BoM_ExtensionbasedonIEC81346_forAASMetamodelV3.1.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 7,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/https___example_com_ids_aas_9194_9081_3022_4668/https___example_com_ids_aas_9194_9081_3022_4668.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "Entity": 8,
+   "Property": 6,
+   "MultiLanguageProperty": 1,
+   "RelationshipElement": 4
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Instance"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/SubmodelTemplate/HierarchicalStructures/ExtensionIEC81346/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Hierarchical_Structures_enabling_Bills_of_Material/Extension_based_on_IEC_81346/1/0/2/IDTA_02011-1-1-2__Template_BoM_ExtensionbasedonIEC81346_forAASMetamodelV3.1.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "Entity": 8,
+   "Property": 6,
+   "MultiLanguageProperty": 1,
+   "RelationshipElement": 4,
+   "ConceptDescription": 19,
+   "DataSpecificationIec61360": 19
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Instance"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/SubmodelTemplate/HierarchicalStructures/ExtensionIEC81346/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Material_Data_for_Plastic_Waste/1/1/IDTA_02080_Template_Material_Data_for_Plastic_Waste.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 9,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/AasTemplate/AasTemplate.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementCollection": 24,
+   "Property": 51,
+   "SubmodelElementList": 4,
+   "File": 3
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/SubmodelTemplate/en18065materialdata/en18065MaterialData/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Material_Data_for_Plastic_Waste/1/1/IDTA_02080_Template_Material_Data_for_Plastic_Waste.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementCollection": 24,
+   "Property": 51,
+   "SubmodelElementList": 4,
+   "File": 3,
+   "ConceptDescription": 52,
+   "DataSpecificationIec61360": 52
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://admin-shell.io/idta/SubmodelTemplate/en18065materialdata/en18065MaterialData/1/0"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Technical_Data/2/0/2/IDTA_02003_2-0-2_Template_TechnicalData.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 13,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/SubmodelTemplate/SubmodelTemplate.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.0"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementCollection": 18,
+   "Property": 15,
+   "File": 2,
+   "MultiLanguageProperty": 10,
+   "SubmodelElementList": 10,
+   "ReferenceElement": 1,
+   "Range": 6
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://api.eclass-cdp.com/0173-1-01-AHX837-002"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Technical_Data/2/0/2/IDTA_02003_2-0-2_Template_TechnicalData.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementCollection": 18,
+   "Property": 15,
+   "File": 2,
+   "MultiLanguageProperty": 10,
+   "SubmodelElementList": 10,
+   "ReferenceElement": 1,
+   "Range": 6,
+   "ConceptDescription": 28,
+   "DataSpecificationIec61360": 28
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "0173-1#01-AHX837#002"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Technical_Data/2/0/2/IDTA_02003_2-0-2_Template_TechnicalData_forAASMetamodelV3.1.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 13,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/SubmodelTemplate/SubmodelTemplate.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementCollection": 18,
+   "Property": 15,
+   "File": 2,
+   "MultiLanguageProperty": 10,
+   "SubmodelElementList": 10,
+   "ReferenceElement": 1,
+   "Range": 6
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://api.eclass-cdp.com/0173-1-01-AHX837-002"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Technical_Data/2/0/2/IDTA_02003_2-0-2_Template_TechnicalData_forAASMetamodelV3.1.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "SubmodelElementCollection": 18,
+   "Property": 15,
+   "File": 2,
+   "MultiLanguageProperty": 10,
+   "SubmodelElementList": 10,
+   "ReferenceElement": 1,
+   "Range": 6,
+   "ConceptDescription": 28,
+   "DataSpecificationIec61360": 28
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Type"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "0173-1#01-AHX837#002"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Technical_Data/2/0/2/IDTA_02003_Sample_TechnicalData.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 16,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/SubmodelTemplate/SubmodelTemplate.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.0"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementCollection": 10,
+   "Property": 30,
+   "File": 3,
+   "MultiLanguageProperty": 9,
+   "SubmodelElementList": 5,
+   "ReferenceElement": 3
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "NotApplicable"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://api.eclass-cdp.com/0173-1-01-AHX837-002"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "idta/Technical_Data/2/0/2/IDTA_02003_Sample_TechnicalData_forAASMetamodelV3.1.aasx",
+  "container": "aasx",
+  "aasx_origin_rel": [
+   "http://admin-shell.io/aasx/relationships/aasx-origin"
+  ],
+  "aasx_origin_rel_conventional": true,
+  "aasx_parts": 16,
+  "aasx_supplementary": 0,
+  "aasx_spec_parts": [
+   "aasx/SubmodelTemplate/SubmodelTemplate.aas.xml"
+  ],
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "SubmodelElementCollection": 10,
+   "Property": 30,
+   "File": 3,
+   "MultiLanguageProperty": 9,
+   "SubmodelElementList": 5,
+   "ReferenceElement": 3
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "NotApplicable"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "https://api.eclass-cdp.com/0173-1-01-AHX837-002"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "probes/p00_baseline.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "Property": 1,
+   "File": 1
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Instance"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "urn:example:norruva:semantic:probe"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "probes/p00_baseline_ns30.xml",
+  "container": "xml",
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.0"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "Property": 1,
+   "File": 1
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Instance"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "/aasx/files/DeclarationOfConformity.pdf"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "probes/p00_baseline_ns31.xml",
+  "container": "xml",
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.1"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "Property": 1,
+   "File": 1
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Instance"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "/aasx/files/DeclarationOfConformity.pdf"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "probes/p00_baseline_ns32.xml",
+  "container": "xml",
+  "payload_format": "xml",
+  "xml_namespaces": [
+   "3.2"
+  ],
+  "model_types": {
+   "Submodel": 1,
+   "Property": 1,
+   "File": 1
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Instance"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "/aasx/files/DeclarationOfConformity.pdf"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "probes/p31_assetkind_role.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "Property": 1,
+   "File": 1
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Role"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "urn:example:norruva:semantic:probe"
+  ],
+  "min_version_from_features": "3.1"
+ },
+ {
+  "file": "probes/p31_contenttype_120_chars.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "Property": 1,
+   "File": 1
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Instance"
+  ],
+  "long_content_type": 1,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "urn:example:norruva:semantic:probe"
+  ],
+  "min_version_from_features": "3.1"
+ },
+ {
+  "file": "probes/p31_file_value_with_space.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "Property": 1,
+   "File": 1
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Instance"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "urn:example:norruva:semantic:probe"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "probes/p31_file_without_contenttype.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "Property": 1,
+   "File": 1
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Instance"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 1,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "urn:example:norruva:semantic:probe"
+  ],
+  "min_version_from_features": "3.0"
+ },
+ {
+  "file": "probes/p31_idshort_hyphen.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "Property": 1,
+   "File": 1
+  },
+  "idshort_needs_3_1": [
+   "Battery-Category"
+  ],
+  "asset_kinds": [
+   "Instance"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "urn:example:norruva:semantic:probe"
+  ],
+  "min_version_from_features": "3.1"
+ },
+ {
+  "file": "probes/p32_admin_created_at.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "Property": 1,
+   "File": 1
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Instance"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 1,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "urn:example:norruva:semantic:probe"
+  ],
+  "min_version_from_features": "3.2"
+ },
+ {
+  "file": "probes/p32_assetkind_batch.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {
+   "AssetAdministrationShell": 1,
+   "Submodel": 1,
+   "Property": 1,
+   "File": 1
+  },
+  "idshort_needs_3_1": [],
+  "asset_kinds": [
+   "Batch"
+  ],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [
+   "urn:example:norruva:semantic:probe"
+  ],
+  "min_version_from_features": "3.2"
+ },
+ {
+  "file": "probes/probes-manifest.json",
+  "container": "json",
+  "payload_format": "json",
+  "model_types": {},
+  "idshort_needs_3_1": [],
+  "asset_kinds": [],
+  "long_content_type": 0,
+  "file_without_content_type": 0,
+  "admin_timestamps": 0,
+  "uom_data_spec": 0,
+  "submodel_semantic_ids": [],
+  "min_version_from_features": "3.0"
+ }
+]

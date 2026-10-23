@@ -1,0 +1,34 @@
+{
+ "p00_baseline": {
+  "introduced": "3.0",
+  "expectation": "valid in 3.0, 3.1 and 3.2"
+ },
+ "p31_idshort_hyphen": {
+  "introduced": "3.1",
+  "expectation": "idShort pattern relaxed to allow hyphens"
+ },
+ "p31_assetkind_role": {
+  "introduced": "3.1",
+  "expectation": "AssetKind gains Role"
+ },
+ "p31_file_without_contenttype": {
+  "introduced": "3.1",
+  "expectation": "File.contentType no longer required"
+ },
+ "p31_contenttype_120_chars": {
+  "introduced": "3.1",
+  "expectation": "contentType max length 100 -> 128"
+ },
+ "p31_file_value_with_space": {
+  "introduced": "3.0-only",
+  "expectation": "valid in 3.0; 3.1 adds a URI-reference pattern that rejects spaces"
+ },
+ "p32_assetkind_batch": {
+  "introduced": "3.2",
+  "expectation": "AssetKind gains Batch (batch-level passports)"
+ },
+ "p32_admin_created_at": {
+  "introduced": "3.2",
+  "expectation": "AdministrativeInformation gains createdAt/updatedAt"
+ }
+}

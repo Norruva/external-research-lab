@@ -37,6 +37,9 @@ devices. The goal is interoperability and product learning for Norruva, not copy
 Priority = impact on Norruva × ease with REA today. **P1** = start now, **P2** = next, **P3** = opportunistic.
 
 ### P1 — Public passport viewer teardown → ESPR field-coverage matrix
+
+**Status:** first pass done, see [`passport-viewers/`](passport-viewers/README.md).
+
 - **Target:** Publicly reachable passport pages that brands and DPP vendors publish behind
   on-pack QR codes (battery, textile, electronics, furniture pilots).
 - **REA:** `inspect-web-page`, `analyze-web-bundle --fetch-source-maps`,
@@ -110,6 +113,9 @@ Priority = impact on Norruva × ease with REA today. **P1** = start now, **P2** 
 - **Deliverable:** Carrier recommendation per product category (QR, NFC, both).
 
 ### P3 — AAS tooling compatibility (IDTA Asset Administration Shell)
+
+**Status:** deep dive done, see [`aas-compat/`](aas-compat/README.md).
+
 - **Target:** Open-source AASX Package Explorer (.NET) and AAS server builds we compile.
 - **REA:** `inspect-managed-artifact`, `inspect-managed-members`,
   `compare-managed-members` between releases.
