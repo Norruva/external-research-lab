@@ -39,6 +39,7 @@ class Config:
     mqtt_repository: str = 'aasforge'          # repository id in the BaSyx-style topics
     mqtt_ingest_claims: dict | None = None     # claims telemetry writes are authorised with; None: no ingest
     catenax: dict | None = None                # {"bpn": ..., "dataplane_url": ..., "dsp_url": ...}: Catena-X DTR mode
+    federation: dict | None = None             # federation.Federation options: {"upstreams": [...], ...}
 
     @classmethod
     def from_env(cls, **overrides):
@@ -65,6 +66,8 @@ class Config:
             config.mqtt_ingest_claims = json.loads(os.environ['AASFORGE_MQTT_INGEST_CLAIMS'])
         if os.environ.get('AASFORGE_CATENAX'):
             config.catenax = json.loads(os.environ['AASFORGE_CATENAX'])
+        if os.environ.get('AASFORGE_FEDERATION'):
+            config.federation = json.loads(os.environ['AASFORGE_FEDERATION'])
         if os.environ.get('AASFORGE_OPCUA_WRITABLE'):
             config.opcua_writable = os.environ['AASFORGE_OPCUA_WRITABLE'].lower() in ('1', 'true', 'yes')
         for env, attribute in (('AASFORGE_MAX_BODY', 'max_body'), ('AASFORGE_MAX_PACKAGE', 'max_package')):
@@ -105,6 +108,9 @@ class Forge:
                            self.config.trusted_certificates)
         self.api.delegation_prefixes = list(self.config.operation_delegation)
         self.api.forge = self
+        if self.config.federation:
+            from .federation import Federation
+            self.api.federation = Federation(**self.config.federation)
         self.opcua = None
         self.mqtt = None
         self.repository.max_package = self.config.max_package

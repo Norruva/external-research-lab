@@ -117,6 +117,7 @@ class Api:
         # callables (request, submodel) -> submodel | None applied after access rules on every read
         self.submodel_guards: list = []
         self.forge = None         # set by app.Forge; needed by exports that rebuild the environment
+        self.federation = None    # federation.Federation: other registries asked for unknown descriptors
         # extension points (used by catenax.py): callables run after authentication, and views of
         # descriptors / shells for a caller (return None to hide the object)
         self.subject_hooks: list = []          # (request) -> None
@@ -1310,13 +1311,18 @@ class Api:
 
     def get_descriptor(self, request, kind, identifier):
         self.allow(request, 'READ')
+        headers = {}
         try:
-            descriptor = self._descriptor_view(request, kind, self.store.get_descriptor(kind, identifier))
+            descriptor = self.store.get_descriptor(kind, identifier)
         except NotFound as error:
-            raise HttpError(404, 'descriptor not found') from error
+            descriptor, source = self.federation.descriptor(kind, identifier) if self.federation else (None, None)
+            if descriptor is None:
+                raise HttpError(404, 'descriptor not found') from error
+            headers['X-AAS-Federated-From'] = source
+        descriptor = self._descriptor_view(request, kind, descriptor)
         if descriptor is None:
             raise HttpError(404, 'descriptor not found')
-        return Response.json(descriptor)
+        return Response.json(descriptor, headers=headers)
 
     def post_descriptor(self, request, kind):
         self.allow(request, 'CREATE')
@@ -1444,6 +1450,8 @@ class Api:
         ids = sorted(i for i, links in self.store.all_asset_links().items()
                      if self.local_visible(request, 'shell', i)
                      and (not wanted or self._links_match(self._visible_links(request, i, links), wanted)))
+        if wanted and self.federation:
+            ids += [i for i in self.federation.lookup(wanted) if i not in ids]
         page, nxt = _list_page(ids, limit, cursor)
         return Response.json(_paged(page, nxt))
 
