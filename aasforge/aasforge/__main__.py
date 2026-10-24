@@ -31,11 +31,13 @@ def _forge(args, **overrides):
 
 def cmd_serve(args):
     forge = _forge(args, host=args.host, port=args.port, public_url=args.public_url, access_rules=args.access_rules,
-                   hs256_secret=args.secret, opcua_endpoint=args.opcua, opcua_writable=args.opcua_writable or None)
+                   hs256_secret=args.secret, opcua_endpoint=args.opcua, opcua_writable=args.opcua_writable or None,
+                   mqtt_url=args.mqtt)
     server = forge.serve()
     print(f'aasforge listening on http://{forge.config.host}:{forge.config.port} '
           f'(API /api/v3.1, passports /dpp, resolver /01, MCP /mcp)'
-          + (f'; OPC UA {forge.config.opcua_endpoint}' if forge.config.opcua_endpoint else ''), flush=True)
+          + (f'; OPC UA {forge.config.opcua_endpoint}' if forge.config.opcua_endpoint else '')
+          + (f'; MQTT events to {forge.config.mqtt_url.split("@")[-1]}' if forge.config.mqtt_url else ''), flush=True)
     try:
         while True:
             time.sleep(3600)
@@ -139,6 +141,7 @@ def main(argv=None):
     p.add_argument('--verification', choices=['reject', 'warn', 'off'], default=None)
     p.add_argument('--opcua', default=None, metavar='ENDPOINT', help='also serve OPC UA, e.g. opc.tcp://0.0.0.0:4840/aasforge/')
     p.add_argument('--opcua-writable', action='store_true', help='let authorised OPC UA clients write values')
+    p.add_argument('--mqtt', default=None, metavar='URL', help='publish change events, e.g. mqtt://broker:1883')
     p.set_defaults(func=cmd_serve)
     p = sub.add_parser('import')
     p.add_argument('files', nargs='+')

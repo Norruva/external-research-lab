@@ -134,6 +134,37 @@ class ElementTests(unittest.TestCase):
         self.assertEqual([e['value'] for e in lst['submodelElements'][0]['value']], ['1', '3'])
 
 
+class StoreConcurrencyTests(unittest.TestCase):
+    def test_threads_share_one_connection_safely(self):
+        import threading
+        shared = store()
+        for i in range(20):
+            shared.put('submodel', {'modelType': 'Submodel', 'id': f'urn:c:{i}', 'idShort': f'S{i}'})
+        errors = []
+
+        def reader():
+            try:
+                for _ in range(200):
+                    for i in range(20):
+                        self.assertEqual(shared.get('submodel', f'urn:c:{i}')['idShort'], f'S{i}')
+            except Exception as error:  # noqa: BLE001
+                errors.append(error)
+
+        def writer():
+            try:
+                for n in range(100):
+                    shared.put('submodel', {'modelType': 'Submodel', 'id': 'urn:c:w', 'idShort': f'W{n}'})
+            except Exception as error:  # noqa: BLE001
+                errors.append(error)
+        threads = [threading.Thread(target=reader) for _ in range(4)] + [threading.Thread(target=writer) for _ in range(2)]
+        for thread in threads:
+            thread.start()
+        for thread in threads:
+            thread.join()
+        self.assertEqual(errors, [])
+        shared.db.drop_schema()
+
+
 class SmtTests(unittest.TestCase):
     def test_instantiate_and_check(self):
         template = catalog.template('dbp-circularity')

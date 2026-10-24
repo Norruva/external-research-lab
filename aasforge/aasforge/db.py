@@ -29,6 +29,24 @@ def is_postgres(target: str) -> bool:
     return target.startswith(('postgresql://', 'postgres://'))
 
 
+class Result:
+    """Rows of one statement, fetched eagerly (see :meth:`Database.execute`)."""
+
+    __slots__ = ('rows', 'rowcount')
+
+    def __init__(self, rows, rowcount):
+        self.rows, self.rowcount = rows, rowcount
+
+    def fetchone(self):
+        return self.rows[0] if self.rows else None
+
+    def fetchall(self):
+        return self.rows
+
+    def __iter__(self):
+        return iter(self.rows)
+
+
 class Database:
     def __init__(self, target: str = ':memory:'):
         self.lock = threading.RLock()
@@ -79,9 +97,13 @@ class Database:
         return f'instr({haystack}, ?) > 0' if self.dialect == 'sqlite' else f'strpos({haystack}, ?) > 0'
 
     # -- execution ------------------------------------------------------------------------------
-    def execute(self, sql: str, params=()):
+    def execute(self, sql: str, params=()) -> 'Result':
+        """Run one statement and fetch its rows while holding the lock: the connection is shared,
+        so a cursor must not be read after another thread has used the connection."""
         with self.lock:
-            return self._conn.execute(self._sql(sql), tuple(params))
+            cursor = self._conn.execute(self._sql(sql), tuple(params))
+            rows = cursor.fetchall() if cursor.description else []
+            return Result(rows, cursor.rowcount)
 
     def executemany(self, sql: str, rows):
         rows = [tuple(r) for r in rows]

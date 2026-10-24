@@ -35,6 +35,9 @@ class Config:
     max_package: int = 512 * 1024 * 1024                       # total uncompressed AASX size limit
     opcua_endpoint: str | None = None          # e.g. opc.tcp://0.0.0.0:4840/aasforge/ to serve OPC UA (I4AAS)
     opcua_writable: bool = False               # allow authorised OPC UA clients to write values back
+    mqtt_url: str | None = None                # e.g. mqtt://user:pass@broker:1883 to publish change events
+    mqtt_repository: str = 'aasforge'          # repository id in the BaSyx-style topics
+    mqtt_ingest_claims: dict | None = None     # claims telemetry writes are authorised with; None: no ingest
 
     @classmethod
     def from_env(cls, **overrides):
@@ -53,6 +56,12 @@ class Config:
             config.operation_delegation = os.environ['AASFORGE_OPERATION_DELEGATION'].split(',')
         if os.environ.get('AASFORGE_OPCUA_ENDPOINT'):
             config.opcua_endpoint = os.environ['AASFORGE_OPCUA_ENDPOINT']
+        if os.environ.get('AASFORGE_MQTT_URL'):
+            config.mqtt_url = os.environ['AASFORGE_MQTT_URL']
+        if os.environ.get('AASFORGE_MQTT_REPOSITORY'):
+            config.mqtt_repository = os.environ['AASFORGE_MQTT_REPOSITORY']
+        if os.environ.get('AASFORGE_MQTT_INGEST_CLAIMS'):
+            config.mqtt_ingest_claims = json.loads(os.environ['AASFORGE_MQTT_INGEST_CLAIMS'])
         if os.environ.get('AASFORGE_OPCUA_WRITABLE'):
             config.opcua_writable = os.environ['AASFORGE_OPCUA_WRITABLE'].lower() in ('1', 'true', 'yes')
         for env, attribute in (('AASFORGE_MAX_BODY', 'max_body'), ('AASFORGE_MAX_PACKAGE', 'max_package')):
@@ -94,6 +103,7 @@ class Forge:
         self.api.delegation_prefixes = list(self.config.operation_delegation)
         self.api.forge = self
         self.opcua = None
+        self.mqtt = None
         self.repository.max_package = self.config.max_package
         self.app = http.App(self.api.router, cors_origins=self.config.cors_origins)
         self.app.before.append(self.api.authenticate)
@@ -108,4 +118,8 @@ class Forge:
         if self.config.opcua_endpoint:
             from . import opcua
             self.opcua = opcua.OpcUaServer(self, self.config.opcua_endpoint, self.config.opcua_writable).start()
+        if self.config.mqtt_url:
+            from . import mqtt
+            self.mqtt = mqtt.MqttBridge(self, self.config.mqtt_url, self.config.mqtt_repository,
+                                        ingest_claims=self.config.mqtt_ingest_claims).start()
         return server
