@@ -138,10 +138,9 @@ def create(repository, spec: dict, actor=None) -> dict:
                  'submodels': [_ref(i) for i in created]}
         if spec.get('name'):
             shell['displayName'] = [{'language': 'en', 'text': spec['name']}]
-        if granularity == 'Batch':
-            shell.setdefault('extensions', []).append({'name': 'https://norruva.com/aasforge/dpp/assetKind32',
-                                                       'valueType': 'xs:string', 'value': 'Batch'})
-        repository.save('shell', shell, actor=actor, must_exist=False)
+        # 3.1 has no AssetKind.Batch: store 'Type' and keep the 3.2 value in the sidecar for 3.2 export
+        sidecar = [{'path': ['assetInformation', 'assetKind'], 'value': 'Batch'}] if granularity == 'Batch' else []
+        repository.save('shell', shell, actor=actor, must_exist=False, sidecar=sidecar)
     return {'aasId': shell['id'], 'passportId': passport_id, 'digitalLink': digital_link, 'submodels': created,
             'granularity': granularity}
 

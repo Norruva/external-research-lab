@@ -231,7 +231,7 @@ class Repository:
                         report.stored['unchanged'] += 1
                         continue
                     before = self.store.meta(kind, body['id'])['revision'] if self.store.exists(kind, body['id']) else None
-                    self.store.put(kind, body, sidecar=sidecars.get((collection, index)), actor=actor)
+                    self.store.put(kind, body, sidecar=sidecars.get((collection, index), []), actor=actor)
                     after = self.store.meta(kind, body['id'])['revision']
                     key = 'created' if before is None else ('unchanged' if before == after else 'updated')
                     report.stored[key] += 1
@@ -305,15 +305,29 @@ class Repository:
     def _with_32_fields(self, env: dict) -> dict:
         env = copy.deepcopy(env)
         for collection, kind in COLLECTIONS.items():
-            for index, body in enumerate(env.get(collection) or []):
-                meta = self.store.meta(kind, body['id'])
-                restored = versioning.apply_sidecar({'x': body}, [{**e, 'path': ['x'] + e['path']} for e in meta['sidecar']])['x']
-                if kind != 'concept-description' or 'administration' in restored:
-                    admin = restored.setdefault('administration', {})
-                    admin.setdefault('createdAt', meta['created_at'])
-                    admin.setdefault('updatedAt', meta['updated_at'])
-                env[collection][index] = restored
-        return env
+            env[collection] = [self.as_32(kind, body) for body in env.get(collection) or []]
+        return {k: v for k, v in env.items() if v}
+
+    def as_32(self, kind: str, body: dict) -> dict:
+        """An identifiable as metamodel 3.2: sidecar fields restored, createdAt/updatedAt from the store."""
+        meta = self.store.meta(kind, body['id'])
+        sidecar = meta['sidecar']
+        if canonical.digest(body) != meta['digest']:
+            # a filtered or partial copy: element indices may have shifted, restore top-level fields only
+            sidecar = [e for e in sidecar if 'submodelElements' not in e['path']]
+        restored = versioning.apply_sidecar({'x': body}, [{**e, 'path': ['x'] + e['path']} for e in sidecar])['x']
+        if kind != 'concept-description' or 'administration' in restored:
+            admin = restored.setdefault('administration', {})
+            admin.setdefault('createdAt', meta['created_at'])
+            admin.setdefault('updatedAt', meta['updated_at'])
+        return restored
+
+    @staticmethod
+    def from_32(kind: str, body: dict) -> tuple[dict, list]:
+        """Split a 3.2 identifiable into its 3.1 form and the sidecar of 3.2-only fields."""
+        collection = next(c for c, k in COLLECTIONS.items() if k == kind)
+        reduced, sidecar = versioning.reduce_32({collection: [body]})
+        return reduced[collection][0], [{**e, 'path': e['path'][2:]} for e in sidecar]
 
     def _try_get(self, kind, identifier):
         try:

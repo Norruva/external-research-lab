@@ -115,6 +115,10 @@ Priority = impact on Norruva × ease with REA today. **P1** = start now, **P2** 
 ### P3 — AAS tooling compatibility (IDTA Asset Administration Shell)
 
 **Status:** deep dive done, see [`aas-compat/`](aas-compat/README.md).
+**Follow-on:** [AAS Forge](../aasforge/README.md) is an AAS server and DPP layer built from the
+teardowns and compatibility findings. It routes all 235 v3.2 API operations, imports the corpus
+without loss, and enforces Battery Regulation tiers as IDTA-01004 rules
+([architecture](../aasforge/ARCHITECTURE.md)).
 
 - **Target:** Open-source AASX Package Explorer (.NET) and AAS server builds we compile.
 - **REA:** `inspect-managed-artifact`, `inspect-managed-members`,

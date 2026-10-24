@@ -163,6 +163,22 @@ class DppScenario(unittest.TestCase):
         self.assertIn('dbp-nameplate', findings)
 
 
+class BatchPassportTests(unittest.TestCase):
+    def test_batch_granularity_exports_as_32_batch(self):
+        from aasforge.app import Config, Forge
+        from aasforge.dpp import passport
+        forge = Forge(Config(database=':memory:'))
+        spec = battery_passport.spec()
+        spec.pop('serial', None)
+        spec.update(batch='LOT-2026-17', granularity='Batch')
+        result = passport.create(forge.repository, spec)
+        self.assertEqual(result['granularity'], 'Batch')
+        env = forge.repository.environment([result['aasId']], version='3.2')
+        self.assertEqual(env['assetAdministrationShells'][0]['assetInformation']['assetKind'], 'Batch')
+        env31 = forge.repository.environment([result['aasId']])
+        self.assertEqual(env31['assetAdministrationShells'][0]['assetInformation']['assetKind'], 'Type')
+
+
 class Gs1Tests(unittest.TestCase):
     def test_check_digit_and_parse(self):
         self.assertEqual(gs1.normalise_gtin('4012345000016'), '04012345000016')

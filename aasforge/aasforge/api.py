@@ -108,6 +108,16 @@ class Api:
     def actor(self, request: Request):
         return request.subject.name if request.subject else None
 
+    # Under /api/v3.2 bodies are metamodel 3.2: 3.2-only fields are split into the sidecar on the way
+    # in and restored on the way out; the other bases speak 3.1.
+    def inbound(self, request, kind, body):
+        if request.base == '/api/v3.2':
+            return self.repo.from_32(kind, body)
+        return body, None
+
+    def outbound(self, request, kind, body):
+        return self.repo.as_32(kind, body) if request.base == '/api/v3.2' and self.store.exists(kind, body['id']) else body
+
     # -- routes ----------------------------------------------------------------------------------
     def _register(self):
         r = self.router.add
@@ -277,7 +287,8 @@ class Api:
                       and (not wanted or self._matches_asset_ids(s, wanted))]
             if not nxt:
                 break
-        return Response.json(_paged(items[:limit], nxt if len(items) >= limit else None))
+        items = [self.outbound(request, 'shell', s) for s in items[:limit]]
+        return Response.json(_paged(items, nxt if len(items) >= limit else None))
 
     def get_shells_reference(self, request):
         response = json.loads(self.get_shells(request).body)
@@ -285,13 +296,13 @@ class Api:
         return Response.json(response)
 
     def get_shell(self, request):
-        return Response.json(self._shell(request))
+        return Response.json(self.outbound(request, 'shell', self._shell(request)))
 
     def post_identifiable(self, request, kind):
-        body = request.json()
+        body, sidecar = self.inbound(request, kind, request.json())
         self.allow(request, 'CREATE', kind, body)
         try:
-            _, _, warnings = self.repo.save(kind, body, actor=self.actor(request), must_exist=False)
+            _, _, warnings = self.repo.save(kind, body, actor=self.actor(request), must_exist=False, sidecar=sidecar)
         except Conflict as error:
             raise HttpError(409, str(error)) from error
         except ValidationFailed as error:
@@ -303,12 +314,11 @@ class Api:
         return Response.json(body, 201, headers)
 
     def put_identifiable(self, request, kind, identifier):
-        body = request.json()
+        body, sidecar = self.inbound(request, kind, request.json())
         if body.get('id') != identifier:
             raise HttpError(400, 'id in body does not match the path')
         existing = self.store.exists(kind, identifier)
         self.allow(request, 'UPDATE' if existing else 'CREATE', kind, body)
-        sidecar = self.store.meta(kind, identifier)['sidecar'] if existing else None
         try:
             created, _, _ = self.repo.save(kind, body, actor=self.actor(request), sidecar=sidecar)
         except ValidationFailed as error:
@@ -435,7 +445,7 @@ class Api:
             return elements.identifiable_reference('submodel', submodel['id'])
         if modifier == '$path':
             return elements.all_paths(submodel, level)
-        return elements.apply_level_extent(submodel, level, extent)
+        return elements.apply_level_extent(self.outbound(request, 'submodel', submodel), level, extent)
 
     def get_submodels(self, request, modifier=None):
         limit, cursor = _paging(request)
@@ -739,7 +749,7 @@ class Api:
         except NotFound as error:
             raise HttpError(404, f'concept description {identifier!r} not found') from error
         self.allow(request, 'READ', 'concept-description', cd)
-        return Response.json(cd)
+        return Response.json(self.outbound(request, 'concept-description', cd))
 
     # -- history, recent changes, audit, signatures ----------------------------------------------
     def history(self, request, kind, identifier):

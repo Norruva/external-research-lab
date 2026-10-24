@@ -1,0 +1,8 @@
+# Runtime
+aas-core3.1==1.0.0        # verification and XML/JSON (de)serialisation, metamodel 3.1
+aas-core3.0==1.1.4        # reading 3.0 XML for up-conversion
+cryptography>=42          # RS256 JWS signing and verification, X.509 certificates
+jsonschema>=4.20          # Query Language / Access Rule JSON schema (IDTA-01002, IDTA-01004)
+
+# Development only
+pyyaml>=6                 # tools/api_coverage.py reads the OpenAPI collection

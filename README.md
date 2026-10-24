@@ -7,3 +7,5 @@ X
 The repository contains the Python application, local browser, signed API, own-data training command, tests, and aggregate evaluation evidence. Start with the [EIDOS quickstart](eidos/README.md), [training format](eidos/docs/TRAINING.md), and [comparison results](eidos/docs/EVALUATION.md).
 
 EIDOS is a working research application. Its new models require human review; production readiness and general superiority over LAYA or JEV are not established. The original README marker and `src` placeholder are preserved.
+
+[AAS Forge](aasforge/README.md) is an Asset Administration Shell server and Digital Product Passport layer. It was built from reverse engineering the open-source AAS tools: see its [architecture](aasforge/ARCHITECTURE.md), the [compatibility study](dpp-rea/aas-compat/README.md) and the [DPP research ideas](dpp-rea/IDEAS.md).

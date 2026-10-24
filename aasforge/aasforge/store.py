@@ -119,14 +119,18 @@ class Store:
     # -- identifiables ------------------------------------------------------------------------
     def put(self, kind: str, body: dict, sidecar: list | None = None, actor: str | None = None,
             must_exist: bool | None = None, path: str | None = None) -> tuple[bool, dict]:
-        """Create or replace an identifiable; returns (created, metadata)."""
+        """Create or replace an identifiable; returns (created, metadata).
+
+        ``sidecar`` holds fields of other metamodel versions (see ``versioning.reduce_32``). ``None``
+        keeps the stored sidecar, so internal updates and 3.1 clients do not drop 3.2 data; pass
+        ``[]`` to clear it."""
         if kind not in KINDS:
             raise ValueError(kind)
         identifier = body.get('id')
         if not isinstance(identifier, str) or not identifier:
             raise ValueError('identifiable has no id')
         with self.transaction():
-            row = self._db.execute('SELECT revision, created_at, digest FROM identifiables WHERE kind=? AND id=?',
+            row = self._db.execute('SELECT revision, created_at, digest, sidecar FROM identifiables WHERE kind=? AND id=?',
                                    (kind, identifier)).fetchone()
             if must_exist is True and row is None:
                 raise NotFound(identifier)
@@ -134,7 +138,9 @@ class Store:
                 raise Conflict(f'{kind} {identifier!r} already exists')
             ts = now()
             digest = canonical.digest(body)
-            if row is not None and row['digest'] == digest:
+            if sidecar is None:
+                sidecar = json.loads(row['sidecar']) if row else []
+            if row is not None and row['digest'] == digest and json.loads(row['sidecar']) == sidecar:
                 return False, self.meta(kind, identifier)
             revision = (row['revision'] + 1) if row else 1
             created_at = row['created_at'] if row else ts
@@ -143,7 +149,7 @@ class Store:
                 'INSERT OR REPLACE INTO identifiables (kind, id, id_short, semantic_id, global_asset_id, body, sidecar, '
                 'created_at, updated_at, revision, digest) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
                 (kind, identifier, body.get('idShort'), _semantic_id(body),
-                 (body.get('assetInformation') or {}).get('globalAssetId'), text, json.dumps(sidecar or []),
+                 (body.get('assetInformation') or {}).get('globalAssetId'), text, json.dumps(sidecar),
                  created_at, ts, revision, digest))
             self._db.execute('UPDATE history SET valid_to=? WHERE kind=? AND id=? AND valid_to IS NULL',
                              (ts, kind, identifier))

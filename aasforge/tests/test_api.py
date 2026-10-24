@@ -232,6 +232,25 @@ class ApiTests(unittest.TestCase):
         status, _, _ = self.call('POST', f'/submodels/{enc(SM_ID)}/submodel-elements/Mass/invoke', arguments)
         self.assertEqual(status, 400)
 
+    def test_api_32_base_speaks_metamodel_32(self):
+        body = {**shell(), 'id': 'urn:example:forge:aas:batch', 'submodels': []}
+        body['assetInformation'] = {'assetKind': 'Batch', 'globalAssetId': 'urn:asset:batch'}
+        status, _, created = self.server.request('POST', '/api/v3.2/shells', body)
+        self.assertEqual(status, 201, created)
+        path = f'/shells/{enc(body["id"])}'
+        _, _, as31 = self.call('GET', path)
+        self.assertNotEqual(as31['assetInformation']['assetKind'], 'Batch')       # 3.1 has no Batch
+        _, _, as32 = self.server.get('/api/v3.2' + path)
+        self.assertEqual(as32['assetInformation']['assetKind'], 'Batch')
+        self.assertIn('createdAt', as32['administration'])
+        # an internal update through a 3.1 route keeps the 3.2 field
+        ref = {'type': 'ModelReference', 'keys': [{'type': 'Submodel', 'value': SM_ID}]}
+        self.assertEqual(self.call('POST', f'{path}/submodel-refs', ref)[0], 201)
+        _, _, as32 = self.server.get('/api/v3.2' + path)
+        self.assertEqual(as32['assetInformation']['assetKind'], 'Batch')
+        _, _, env = self.server.get(f'/api/v3.1/serialization?aasIds={enc(body["id"])}&version=3.2')
+        self.assertEqual(env['assetAdministrationShells'][0]['assetInformation']['assetKind'], 'Batch')
+
     def test_events_and_description(self):
         _, _, description = self.call('GET', '/description')
         self.assertIn('$history', description['aasforge']['apiExtensions'])
