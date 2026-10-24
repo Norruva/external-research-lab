@@ -38,6 +38,7 @@ class Config:
     mqtt_url: str | None = None                # e.g. mqtt://user:pass@broker:1883 to publish change events
     mqtt_repository: str = 'aasforge'          # repository id in the BaSyx-style topics
     mqtt_ingest_claims: dict | None = None     # claims telemetry writes are authorised with; None: no ingest
+    catenax: dict | None = None                # {"bpn": ..., "dataplane_url": ..., "dsp_url": ...}: Catena-X DTR mode
 
     @classmethod
     def from_env(cls, **overrides):
@@ -62,6 +63,8 @@ class Config:
             config.mqtt_repository = os.environ['AASFORGE_MQTT_REPOSITORY']
         if os.environ.get('AASFORGE_MQTT_INGEST_CLAIMS'):
             config.mqtt_ingest_claims = json.loads(os.environ['AASFORGE_MQTT_INGEST_CLAIMS'])
+        if os.environ.get('AASFORGE_CATENAX'):
+            config.catenax = json.loads(os.environ['AASFORGE_CATENAX'])
         if os.environ.get('AASFORGE_OPCUA_WRITABLE'):
             config.opcua_writable = os.environ['AASFORGE_OPCUA_WRITABLE'].lower() in ('1', 'true', 'yes')
         for env, attribute in (('AASFORGE_MAX_BODY', 'max_body'), ('AASFORGE_MAX_PACKAGE', 'max_package')):
@@ -107,6 +110,10 @@ class Forge:
         self.repository.max_package = self.config.max_package
         self.app = http.App(self.api.router, cors_origins=self.config.cors_origins)
         self.app.before.append(self.api.authenticate)
+        self.catenax = None
+        if self.config.catenax:
+            from . import catenax
+            self.catenax = catenax.CatenaX(self, **self.config.catenax).install()
         self.dpp = None
         if self.config.dpp:
             from .dpp import service

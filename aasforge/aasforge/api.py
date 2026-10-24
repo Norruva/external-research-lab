@@ -117,12 +117,24 @@ class Api:
         # callables (request, submodel) -> submodel | None applied after access rules on every read
         self.submodel_guards: list = []
         self.forge = None         # set by app.Forge; needed by exports that rebuild the environment
+        # extension points (used by catenax.py): callables run after authentication, and views of
+        # descriptors / shells for a caller (return None to hide the object)
+        self.subject_hooks: list = []          # (request) -> None
+        self.descriptor_filters: list = []     # (request, 'aas'|'sm', descriptor) -> descriptor | None
+        self.shell_filters: list = []          # (request, shell) -> shell
         self.router = Router()
         self._register()
 
     # -- auth helpers --------------------------------------------------------------------------
     def authenticate(self, request: Request):
         request.subject = self.auth.authenticate(request.headers)
+        for hook in self.subject_hooks:
+            hook(request)
+
+    def shell_view(self, request: Request, shell: dict) -> dict:
+        for view in self.shell_filters:
+            shell = view(request, shell)
+        return shell
 
     def allow(self, request: Request, right=None, kind=None, obj=None, path=None) -> security.Decision:
         right = right or RIGHT_FOR.get(request.method, 'READ')
@@ -209,7 +221,8 @@ class Api:
         r('GET', '/shells/{aas}/$history', lambda q: self.history(q, 'shell', _id(q.params['aas'])))
         r('GET', '/shells/{aas}/$signed', lambda q: self.signed(q, 'shell', _id(q.params['aas'])))
         r('GET', '/shells/{aas}/$audit', lambda q: self.audit(q, 'shell', _id(q.params['aas'])))
-        r('GET', '/shells/{aas}/asset-information', lambda q: Response.json(self._shell(q).get('assetInformation')))
+        r('GET', '/shells/{aas}/asset-information',
+          lambda q: Response.json(self.shell_view(q, self._shell(q)).get('assetInformation')))
         r('PUT', '/shells/{aas}/asset-information', self.put_asset_information)
         r('GET', '/shells/{aas}/asset-information/thumbnail', self.get_thumbnail)
         r('PUT', '/shells/{aas}/asset-information/thumbnail', self.put_thumbnail)
@@ -362,7 +375,7 @@ class Api:
                       and (not wanted or self._matches_asset_ids(s, wanted))]
             if not nxt:
                 break
-        items = [self.outbound(request, 'shell', s) for s in items[:limit]]
+        items = [self.outbound(request, 'shell', self.shell_view(request, s)) for s in items[:limit]]
         return Response.json(_paged(items, nxt if len(items) >= limit else None))
 
     def get_shells_reference(self, request):
@@ -371,7 +384,7 @@ class Api:
         return Response.json(response)
 
     def get_shell(self, request):
-        return Response.json(self.outbound(request, 'shell', self._shell(request)))
+        return Response.json(self.outbound(request, 'shell', self.shell_view(request, self._shell(request))))
 
     def post_identifiable(self, request, kind):
         body, sidecar = self.inbound(request, kind, request.json())
@@ -1162,6 +1175,12 @@ class Api:
                 items = [d for d in items if d.get('assetType') == _id(asset_type)]
         return Response.json(_paged(items, nxt))
 
+    def _validate(self, kind, body):
+        try:
+            self.repo.validate(kind, body)
+        except ValueError as error:
+            raise HttpError(400, str(error)) from error
+
     def _descriptor_view(self, request, kind, descriptor):
         """A descriptor as this caller may see it: None if it describes a local object the caller
         cannot read; a shell descriptor loses the submodel descriptors of hidden local submodels."""
@@ -1171,7 +1190,27 @@ class Api:
             descriptor = dict(descriptor)
             descriptor['submodelDescriptors'] = [d for d in descriptor['submodelDescriptors']
                                                  if self.local_visible(request, 'submodel', d.get('id'))]
+        for view in self.descriptor_filters:
+            if descriptor is None:
+                break
+            descriptor = view(request, kind, descriptor)
         return descriptor
+
+    def _visible_links(self, request, aas_id, links):
+        """Asset links usable for discovery by this caller: with descriptor filters installed (e.g.
+        the Catena-X DTR rules) only the specificAssetIds the caller may see can be matched."""
+        if not self.descriptor_filters:
+            return links
+        try:
+            descriptor = self._descriptor_view(request, 'aas', self.store.get_descriptor('aas', aas_id))
+        except NotFound:
+            return []
+        if descriptor is None:
+            return []
+        visible = [{'name': s.get('name'), 'value': s.get('value')} for s in descriptor.get('specificAssetIds') or []]
+        if descriptor.get('globalAssetId'):
+            visible.append({'name': 'globalAssetId', 'value': descriptor['globalAssetId']})
+        return visible
 
     def get_descriptor(self, request, kind, identifier):
         self.allow(request, 'READ')
@@ -1186,6 +1225,7 @@ class Api:
     def post_descriptor(self, request, kind):
         self.allow(request, 'CREATE')
         body = request.json()
+        self._validate(f'{kind}-descriptor', body)
         try:
             self.store.put_descriptor(kind, body, must_exist=False)
         except Conflict as error:
@@ -1199,6 +1239,7 @@ class Api:
         body = request.json()
         if body.get('id') != identifier:
             raise HttpError(400, 'id in body does not match the path')
+        self._validate(f'{kind}-descriptor', body)
         created = self.store.put_descriptor(kind, body)
         return Response.json(body, 201) if created else Response.empty()
 
@@ -1288,9 +1329,10 @@ class Api:
                     if request.method == 'DELETE':
                         self.store.delete_descriptor(kind, item if isinstance(item, str) else item['id'])
                     else:
+                        self._validate(f'{kind}-descriptor', item)
                         self.store.put_descriptor(kind, item, must_exist=True if request.method == 'PUT' else False)
             self.store.finish_operation(handle, 'Completed', {'count': len(payload)})
-        except (NotFound, Conflict, ValueError) as error:
+        except (NotFound, Conflict, ValueError, HttpError) as error:
             self.store.finish_operation(handle, 'Failed', {'messages': [{'text': str(error)}]})
         return Response(202, b'', '', {'Location': f'{request.base}/bulk/status/{handle}'})
 
@@ -1304,7 +1346,8 @@ class Api:
         limit, cursor = _paging(request)
         wanted = self._asset_ids_arg(request)
         ids = sorted(i for i, links in self.store.all_asset_links().items()
-                     if (not wanted or self._links_match(links, wanted)) and self.local_visible(request, 'shell', i))
+                     if self.local_visible(request, 'shell', i)
+                     and (not wanted or self._links_match(self._visible_links(request, i, links), wanted)))
         page, nxt = _list_page(ids, limit, cursor)
         return Response.json(_paged(page, nxt))
 
@@ -1313,7 +1356,8 @@ class Api:
         limit, cursor = _paging(request)
         wanted = request.json()
         ids = sorted(i for i, links in self.store.all_asset_links().items()
-                     if self._links_match(links, wanted) and self.local_visible(request, 'shell', i))
+                     if self.local_visible(request, 'shell', i)
+                     and self._links_match(self._visible_links(request, i, links), wanted))
         page, nxt = _list_page(ids, limit, cursor)
         return Response.json(_paged(page, nxt))
 

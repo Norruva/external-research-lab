@@ -54,6 +54,27 @@ def result_messages(status: int, text: str, code: str | None = None, details: li
     return {'messages': messages}
 
 
+class Headers(dict):
+    """Request headers with case-insensitive names (RFC 9110 5.1)."""
+
+    def __init__(self, items=()):
+        super().__init__()
+        for key, value in (items.items() if isinstance(items, dict) else items):
+            self[key] = value
+
+    def __setitem__(self, key, value):
+        super().__setitem__(key.lower(), value)
+
+    def __getitem__(self, key):
+        return super().__getitem__(key.lower())
+
+    def __contains__(self, key):
+        return super().__contains__(key.lower())
+
+    def get(self, key, default=None):
+        return super().get(key.lower(), default)
+
+
 @dataclass
 class Request:
     method: str
@@ -64,6 +85,10 @@ class Request:
     params: dict = field(default_factory=dict)
     subject: object = None
     base: str = ''
+
+    def __post_init__(self):
+        if not isinstance(self.headers, Headers):
+            self.headers = Headers(self.headers or {})
 
     def arg(self, name, default=None):
         values = self.query.get(name)
@@ -213,7 +238,7 @@ def serve(app: App, host: str = '127.0.0.1', port: int = 8081, max_body: int = M
                 return
             body = self.rfile.read(length) if length else b''
             request = Request(self.command, split.path, parse_qs(split.query, keep_blank_values=True),
-                              {k: v for k, v in self.headers.items()}, body)
+                              Headers(self.headers.items()), body)
             response = app.handle(request)
             self.send_response(response.status)
             for key, value in response.headers.items():

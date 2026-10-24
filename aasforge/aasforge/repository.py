@@ -78,6 +78,8 @@ class Repository:
         self.verification = verification
         self.base_url = base_url.rstrip('/')
         self.auto_register = auto_register
+        self.validators: list = []       # (kind, body) -> None, raise ValueError to refuse
+        self.endpoint_hooks: list = []   # (kind, identifiable) -> extra descriptor endpoints
 
     # -- validation -----------------------------------------------------------------------
     def check(self, kind: str, body: dict) -> list[dict]:
@@ -101,7 +103,18 @@ class Repository:
             raise ValidationFailed(f'invalid submodel element: {error.path}: {error.cause}') from error
 
     # -- writes ---------------------------------------------------------------------------
+    def validate(self, kind: str, body: dict):
+        """Run domain validators (e.g. Catena-X DTR rules); they raise ValueError."""
+        for validator in self.validators:
+            try:
+                validator(kind, body)
+            except ValidationFailed:
+                raise
+            except ValueError as error:
+                raise ValidationFailed(str(error)) from error
+
     def save(self, kind: str, body: dict, *, actor=None, must_exist=None, sidecar=None, path=None):
+        self.validate(kind, body)
         warnings = self.check(kind, body)
         with self.store.transaction():
             created, meta = self.store.put(kind, body, sidecar=sidecar, actor=actor, must_exist=must_exist, path=path)
@@ -160,6 +173,8 @@ class Repository:
     def submodel_descriptor(self, submodel: dict) -> dict:
         descriptor = {'id': submodel['id'], 'endpoints': [self._endpoint(
             'SUBMODEL-3.1', f'{self.base_url}/submodels/{canonical.b64url_encode(submodel["id"])}')]}
+        for hook in self.endpoint_hooks:
+            descriptor['endpoints'] += hook('submodel', submodel)
         for key in ('idShort', 'semanticId', 'supplementalSemanticIds', 'description', 'displayName', 'administration',
                     'extensions'):
             if submodel.get(key):
@@ -230,6 +245,7 @@ class Repository:
                     if not overwrite and self.store.exists(kind, body['id']):
                         report.stored['unchanged'] += 1
                         continue
+                    self.validate(kind, body)
                     before = self.store.meta(kind, body['id'])['revision'] if self.store.exists(kind, body['id']) else None
                     self.store.put(kind, body, sidecar=sidecars.get((collection, index), []), actor=actor)
                     after = self.store.meta(kind, body['id'])['revision']

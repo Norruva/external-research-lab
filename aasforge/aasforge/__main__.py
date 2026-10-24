@@ -9,6 +9,7 @@
   verify-signature  verify a JWS read from a file or stdin
   dpp-create FILE   create a passport from a JSON spec (see examples/battery_passport.py)
   access-rules      print the generated IDTA-01004 tier rules for the current store
+  catenax-provision register submodels and the registry as EDC assets with contracts (Catena-X)
 """
 from __future__ import annotations
 
@@ -127,6 +128,20 @@ def cmd_access_rules(args):
     return 0
 
 
+def cmd_catenax_provision(args):
+    from . import catenax
+    forge = _forge(args)
+    client = catenax.EdcClient(args.edc, args.edc_key)
+    if args.bpn:
+        policy = catenax.bpn_policy(args.policy_id, args.bpn)
+    else:
+        policy = catenax.membership_policy(args.policy_id, args.framework, args.purpose)
+    public_url = args.public_url or forge.config.base_url
+    report = client.provision(forge, forge.catenax, public_url, args.dataplane_key, policy)
+    print(json.dumps(report, indent=1))
+    return 0
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(prog='aasforge', description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--data-dir', default=None, help='data directory (default: var)')
@@ -175,6 +190,17 @@ def main(argv=None):
     p.set_defaults(func=cmd_dpp_create)
     p = sub.add_parser('access-rules')
     p.set_defaults(func=cmd_access_rules)
+    p = sub.add_parser('catenax-provision')
+    p.add_argument('--edc', required=True, help='EDC management API base URL, e.g. https://edc/management')
+    p.add_argument('--edc-key', required=True, help='EDC management API key')
+    p.add_argument('--dataplane-key', required=True, help='API key the EDC data plane uses to call this server '
+                                                          '(configure it with claims {"edc_dataplane": true})')
+    p.add_argument('--public-url', default=None, help='URL the data plane reaches this server at')
+    p.add_argument('--bpn', action='append', help='allow these BPNs (default: any active Catena-X member)')
+    p.add_argument('--framework', default=None, help='framework agreement, e.g. DataExchangeGovernance:1.0')
+    p.add_argument('--purpose', default=None, help='usage purpose, e.g. cx.core.industrycore:1')
+    p.add_argument('--policy-id', default='aasforge-access')
+    p.set_defaults(func=cmd_catenax_provision)
     args = parser.parse_args(argv)
     if args.data_dir is None:
         args.data_dir = 'var'
