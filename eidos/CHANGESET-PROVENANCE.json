@@ -1,136 +1,271 @@
 {
-  "REA_subset_members_identity_verified": 20,
-  "evaluation_correct": 23,
-  "evaluation_independent_source_groups": 3,
-  "evaluation_total": 72,
-  "format": "eidos-original-owned-curriculum-changeset-v1",
+  "REA_prefit_subset_members_identity_verified": 58,
+  "actual_fixture_CLI_API_checks": 12,
+  "actual_frozen_artifact_CLI_API_checks": 9,
+  "authored_unit_methods": 169,
+  "corrected_synthetic_fit_attempts": 1,
+  "format": "eidos-original-contextual-model-changeset-v1",
+  "heldout_accuracy_by_role": {
+    "fresh_world": 0.5555555555555556,
+    "joint": 0.19444444444444445,
+    "new_wording": 0.3333333333333333,
+    "novel_entities": 0.6666666666666666
+  },
   "independent_real_domain_or_LAYA_JEV_quality": false,
+  "initial_v3_attempt_preserved_training_only": true,
   "mission_complete": false,
   "model_promoted_or_automatic_acceptance_enabled": false,
-  "new_authored_synthetic_fit_attempts": 1,
-  "new_authored_unit_methods": 12,
-  "new_original_core_modules": 1,
+  "new_original_core_modules": 6,
   "new_public_original_code_license_granted": false,
-  "new_reference_real_corpus_installation_download_existing_credentials_or_private_repo": false,
-  "new_synthetic_tasks": 504,
+  "new_unit_methods_relative_to_parent": 49,
   "original_imported_files_unchanged": 84,
-  "parent_commit": "c661d541cf0c8c8cba41c4a682a31a4b36ac0fcb",
-  "parent_manifest_sha256": "60e401c8d4fc8ecc7fa020b6b2976ff77680de04180a1a426313f534295c0095",
-  "previous34_core_package_files_unchanged": true,
-  "previous_provenance": "evidence/owned-curriculum/parent-CHANGESET-PROVENANCE.json",
+  "parent_commit": "93c04c28c9e57372fe1275ff7e3ee75c91ef237e",
+  "parent_manifest_sha256": "2306f3a8cc065df52e4bda18fe88f976b877c77373a7556f137b2719d08cc786",
+  "previous35_core_package_files_unchanged": true,
+  "previous_provenance": "evidence/contextual/parent-CHANGESET-PROVENANCE.json",
   "previous_real_results_and_allowances_preserved_not_recomputed_or_reused": true,
   "production_certified": false,
   "source_docs_and_evidence_changes": {
     "eidos/README.md": {
-      "bytes": 13214,
-      "sha256": "efabe1267006f2ef6cb3cabd4bda5b9ffd9d27d84539c123cb3836ce184f37b4"
+      "bytes": 14338,
+      "sha256": "367055f82035ac9d4496dc01dac95dfd97f11521326b3440231c081636b50857"
     },
-    "eidos/docs/OWNED-CURRICULUM-RESULT.md": {
-      "bytes": 7328,
-      "sha256": "889cb9ef40ea7df1b8891cbfb7503aaf370f30c378795aa193ba7704300fa4f3"
+    "eidos/docs/CONTEXTUAL-MODEL.md": {
+      "bytes": 5748,
+      "sha256": "1167fc545020b766eaf648d56ad858f22fd337e5c9e46ac0a275e1b66ae15c3a"
     },
-    "eidos/docs/OWNED-CURRICULUM.md": {
-      "bytes": 4378,
-      "sha256": "c3e433ae17df4f469a108fe49895934830c18ba2a7636e51328c9e3a80a3a8bb"
+    "eidos/docs/CONTEXTUAL-RESULT.md": {
+      "bytes": 8819,
+      "sha256": "c066751f1f06bb118e6967f63643b54ee7b6c11a65f3cbfb280ea94afb803c81"
     },
-    "eidos/eidos/decision_curriculum.py": {
-      "bytes": 22724,
-      "sha256": "1d5a12f8c1ecf237a664393fe68c99780c7c439e72f984bada66b34addf9052a"
+    "eidos/eidos/contextual.py": {
+      "bytes": 1604,
+      "sha256": "69e11fd774c94b7f66e523b6ce6bf2c8aab37330160d6878fd39956d899265be"
+    },
+    "eidos/eidos/contextual_artifact.py": {
+      "bytes": 15538,
+      "sha256": "8f4c4e41b0c14cd0f0ac6d3b9441fa60a46b11fd68c1acba481ebcbb4e980a9d"
+    },
+    "eidos/eidos/contextual_challenge.py": {
+      "bytes": 21624,
+      "sha256": "37938b8c28f3de4e74b3685eb04a49bcf6ea3247da571f4e38de317716e2444b"
+    },
+    "eidos/eidos/contextual_service.py": {
+      "bytes": 4035,
+      "sha256": "4e2a1a98db7af086941f06abab833af49325a40214a79509f13eeecd2ff76b3b"
+    },
+    "eidos/eidos/decision_contextual.py": {
+      "bytes": 23735,
+      "sha256": "090f34934ba7c6eea4d6e5951ce0db3004a93ae82fd00358ee8174d4d33997a2"
+    },
+    "eidos/eidos/train_contextual.py": {
+      "bytes": 10746,
+      "sha256": "c8b9876ba21b4082bdbfee4e6ffa50e267d3dbc5648ed047b66b377664221e58"
     },
     "eidos/evidence/README.md": {
-      "bytes": 14140,
-      "sha256": "afb479dcb1814b4b2eb3c50e583d27443b66b6c8fb76fbb5fb1477fe185990a4"
+      "bytes": 14627,
+      "sha256": "1c60ff8407c8b28ed538fdcbf0d55b0a83afc35bd89788dc97ede82330fa7971"
     },
-    "eidos/evidence/owned-curriculum/REA-PUBLICATION.md": {
-      "bytes": 694,
-      "sha256": "019456fff6e4703d8f9d1777ef085e38cab92d54c8e2aff6a115ed766f29c6be"
+    "eidos/evidence/contextual/PROTOCOL.md": {
+      "bytes": 4193,
+      "sha256": "9edf8efa7fec8c5c6fb4e5b225d3fd7f377005c277abeb21b7aef12bb7ba853b"
     },
-    "eidos/evidence/owned-curriculum/README.md": {
-      "bytes": 1499,
-      "sha256": "d0dafcae243134167108163d4fbdabbbd7b5042ca0c345e8abcdae0673917ef7"
+    "eidos/evidence/contextual/REA-PUBLICATION.md": {
+      "bytes": 478,
+      "sha256": "e073e02419aa019939ba2ad71ef8224c98070f79a2db1f8b7b09335767d68f8e"
     },
-    "eidos/evidence/owned-curriculum/data-audit.json": {
-      "bytes": 10618,
-      "sha256": "4d225fc75456f8d14158b071dd8a778640e65fcbd83674c809ec80e16c635db6"
+    "eidos/evidence/contextual/README.md": {
+      "bytes": 1766,
+      "sha256": "36f77fa5e7a4108595652b856b475541835ce4c3c9742d3531911b8a2ae85cb6"
     },
-    "eidos/evidence/owned-curriculum/execution.json": {
-      "bytes": 3425,
-      "sha256": "b724ad03fcfac03db873491b9dc1c9df211de35a16a2a8b5082dd65798107788"
+    "eidos/evidence/contextual/completion-review.json": {
+      "bytes": 817,
+      "sha256": "c69ae0ebf2a624e1f3bcad6b0bb15f8407689a0aa950606cee72fd16ef092788"
     },
-    "eidos/evidence/owned-curriculum/generation-result.json": {
-      "bytes": 649,
-      "sha256": "53fe1b7b4529396b8a429bfe55d03565841303498a0880164e4ae7a6bb1ed5a7"
+    "eidos/evidence/contextual/controls/contextual_candidate_control_v2.py": {
+      "bytes": 10839,
+      "sha256": "07fb8ba508a69f3f18042bf36c5a1ae6f2717970a327e136890b5226ac68fd34"
     },
-    "eidos/evidence/owned-curriculum/inspection-packet-receipt.json": {
-      "bytes": 543,
-      "sha256": "e5c51600a53b85dbe3934a615d234f971eab41e542f61fb5a6d13c1df22bfeb7"
+    "eidos/evidence/contextual/controls/exposure-hashes-v1.json": {
+      "bytes": 2474,
+      "sha256": "e2ad3b8f11b2d5aab11d3025d49daef42d67ef3073bfad697eab782a0487ae83"
     },
-    "eidos/evidence/owned-curriculum/mechanistic-source-review.json": {
-      "bytes": 8180,
-      "sha256": "9a3b309ff54ef0ac1a4598382d058b8f92d9e907dac1116f0384ec4054486bb0"
+    "eidos/evidence/contextual/controls/run_contextual_candidate_v2.py": {
+      "bytes": 8887,
+      "sha256": "d474e2e588f38d80b257ab155bf2695a87cb80749e6b76c04120c681ed9fae32"
     },
-    "eidos/evidence/owned-curriculum/offline-study-source.py": {
-      "bytes": 16354,
-      "sha256": "ea5cd29dd43db45d7a6a59c7b019d7dcb1c44c85802374aabf8e749f6ebffffb"
+    "eidos/evidence/contextual/data-audit.json": {
+      "bytes": 10880,
+      "sha256": "c0262ff46f50e2744f11dfa9556c161075feb041baae8fe84661d835450cf54c"
     },
-    "eidos/evidence/owned-curriculum/parent-CHANGESET-PROVENANCE.json": {
-      "bytes": 11142,
-      "sha256": "f42365d3c1472dc23cb96848e69cffa68c0eaa09e1e9aefab9796a0735aeb0b4"
+    "eidos/evidence/contextual/execution/generate.json": {
+      "bytes": 585,
+      "sha256": "455240989b0e9194332ee13d3270d85eaeec579335309e7c5a58ed24e6b53b7f"
     },
-    "eidos/evidence/owned-curriculum/parent-DELIVERY-MANIFEST.json": {
-      "bytes": 75224,
-      "sha256": "60e401c8d4fc8ecc7fa020b6b2976ff77680de04180a1a426313f534295c0095"
+    "eidos/evidence/contextual/execution/mechanics.json": {
+      "bytes": 586,
+      "sha256": "78085a5e5712d0a18fe2c87bbb296a15a955ce7f53e988d942082aa86fcfa746"
     },
-    "eidos/evidence/owned-curriculum/prediction-receipt.json": {
-      "bytes": 381,
-      "sha256": "ea119adc0ddc930ae380aa1f845a2a941dbf9fe798bd0efba39640fa365fa27b"
+    "eidos/evidence/contextual/execution/predict.json": {
+      "bytes": 595,
+      "sha256": "f5092e9a0a8b61296ddeb073e02d8f5efe1ea118a87a50eee0e12c76f7181579"
     },
-    "eidos/evidence/owned-curriculum/prepared-manifest.json": {
-      "bytes": 4264,
-      "sha256": "88f3253e789c125dc109ff0806f6da628c36a5c6a4abeea8cf14aef40566a608"
+    "eidos/evidence/contextual/execution/preflight.json": {
+      "bytes": 586,
+      "sha256": "8d9eda914875a566b01835583216d615a69618f2abd253a8fe0159e3e00faa74"
     },
-    "eidos/evidence/owned-curriculum/protocol.md": {
-      "bytes": 4754,
-      "sha256": "789ec0d7718850423aad4ba678cc42ab3e4a69b86a666d44b8fd0eee808aa744"
+    "eidos/evidence/contextual/execution/score.json": {
+      "bytes": 594,
+      "sha256": "595e93d716013484ae84380b215b737e393a75c8a764f9184c8c68519fb54d7b"
     },
-    "eidos/evidence/owned-curriculum/rea-execution-summary.json": {
+    "eidos/evidence/contextual/execution/serving.json": {
+      "bytes": 596,
+      "sha256": "e0d61a372817916148e202ad2b31acc10d9bb0e387ddfcfb7b8f44ddae1e3228"
+    },
+    "eidos/evidence/contextual/execution/train.json": {
+      "bytes": 592,
+      "sha256": "3a9a6dfc1088c4e4938b9eacaed842b614cc5a405cdadff1a6c579e5faee1f1f"
+    },
+    "eidos/evidence/contextual/execution/units.json": {
+      "bytes": 583,
+      "sha256": "4d65a980deda379f59ea328e36a44ea3956ab98658f933a6f5823afe8bd87da9"
+    },
+    "eidos/evidence/contextual/exposure-exclusion.json": {
+      "bytes": 290,
+      "sha256": "0f9c56160cf4e20869126cc34f492f6f84abb95a06648269d7b313198029964f"
+    },
+    "eidos/evidence/contextual/freeze/generate.json": {
+      "bytes": 4913,
+      "sha256": "a1dd875cf49f8cd6d5d87b89e1d7b02b0e43429dc0ec9c658d71b6f14ba75ec4"
+    },
+    "eidos/evidence/contextual/freeze/mechanics.json": {
+      "bytes": 5182,
+      "sha256": "49cea490164ff15cdfe925afc3c83786a1848669de2b4107c3c7f71ad9809595"
+    },
+    "eidos/evidence/contextual/freeze/predict.json": {
+      "bytes": 5304,
+      "sha256": "dcb6dfaa304b4f85c821e688c340c6f8498383738644e9be2080e84d9a69a65d"
+    },
+    "eidos/evidence/contextual/freeze/preflight.json": {
+      "bytes": 5010,
+      "sha256": "3785ea091b368bef5c8cde91f11d3fa6c6f4c77c02997504f7ca7ced63b23e6f"
+    },
+    "eidos/evidence/contextual/freeze/score.json": {
+      "bytes": 5028,
+      "sha256": "f511e9dca51c965c39614cdaa558eed18c40fbd38b2e4c7052a357cc78a9f62a"
+    },
+    "eidos/evidence/contextual/freeze/serving.json": {
+      "bytes": 5680,
+      "sha256": "789c2b10fd1e1073e752ca09492791c39dc7af7a809648aa9d3a0c6189c72380"
+    },
+    "eidos/evidence/contextual/freeze/train.json": {
+      "bytes": 5004,
+      "sha256": "70ab67bcc33a885e3f43febf1677caa994365ad0e1823c556b7b98d21a098012"
+    },
+    "eidos/evidence/contextual/freeze/units.json": {
+      "bytes": 6280,
+      "sha256": "e264c9ef4830dfc8540f575d9241843559d6a0242a0dc2c1c9aa6b0816fb0504"
+    },
+    "eidos/evidence/contextual/generation.json": {
+      "bytes": 736,
+      "sha256": "02e052ab78ba302479b69a55acb6293e7e9418980beeaf174d26a46eea44ac7e"
+    },
+    "eidos/evidence/contextual/initial-v3/REA-review.json": {
+      "bytes": 680,
+      "sha256": "b73a299902c3d57d0bf3ef7cf56256c6fc3246a1c23b899511e865ee955f66ec"
+    },
+    "eidos/evidence/contextual/initial-v3/decision_contextual.py": {
+      "bytes": 23412,
+      "sha256": "66c3a86e317f55bc3d3b68a4a5c1e4ac8c4b45e0a8f8877ce9a9ee89d3f61f75"
+    },
+    "eidos/evidence/contextual/initial-v3/readout-gap.json": {
+      "bytes": 1354,
+      "sha256": "c6c9784880ae9f51f905bd57cee4a6f228efb90204e841992cfcd343f7763018"
+    },
+    "eidos/evidence/contextual/initial-v3/source-packet-receipt.json": {
+      "bytes": 542,
+      "sha256": "3c37bb9dc4ad931b2655879313dbd930c2035978e1620c032946b394607738be"
+    },
+    "eidos/evidence/contextual/initial-v3/training-execution.json": {
+      "bytes": 581,
+      "sha256": "9adc6a29b6fe39f3c1d5bf33d4426f9b373396d4d2bc2457f22ec8098dea338f"
+    },
+    "eidos/evidence/contextual/mechanics.json": {
+      "bytes": 1779,
+      "sha256": "d148415bcbaf14eaa70718d119a4ae54c846bfb9e5a2d610f67eae1d06258adf"
+    },
+    "eidos/evidence/contextual/parent-CHANGESET-PROVENANCE.json": {
+      "bytes": 5844,
+      "sha256": "7acb4e2389a6c7f8c51792eaaca33964bc605edde8389bd7d3efbd33eaa9c140"
+    },
+    "eidos/evidence/contextual/parent-DELIVERY-MANIFEST.json": {
+      "bytes": 79509,
+      "sha256": "2306f3a8cc065df52e4bda18fe88f976b877c77373a7556f137b2719d08cc786"
+    },
+    "eidos/evidence/contextual/preflight.json": {
+      "bytes": 3949,
+      "sha256": "22cec4ef578a64c98fca998c937907179714351d8eabd61685e68e2ce60189ff"
+    },
+    "eidos/evidence/contextual/prepared-manifest.json": {
+      "bytes": 5577,
+      "sha256": "dce42153ffacc56cd5a6f6162bef2359ee84c16a8b7c92f6a66fb86d7de49680"
+    },
+    "eidos/evidence/contextual/rea-execution.json": {
       "bytes": 1064,
-      "sha256": "f07568caaa5ba6c5f5b5ee7df930a3ea466d68a544617e7e406f82e235ed6e81"
+      "sha256": "66b14e393b7198d830e0d24f517e02e4ddaf0e52fb530838aec1df2487721f8c"
     },
-    "eidos/evidence/owned-curriculum/rea-integrity-review.json": {
-      "bytes": 644,
-      "sha256": "87db5218f50277a47ca8ad118039e2bbab0e6e4a552df9f3e36ec3a73b0f2be7"
+    "eidos/evidence/contextual/rea-integrity-review.json": {
+      "bytes": 680,
+      "sha256": "20973e17b6c56d5135ae67a3e38c852cd743a236493bb7125712df2c8b1d7f98"
     },
-    "eidos/evidence/owned-curriculum/resource-preflight.json": {
-      "bytes": 439,
-      "sha256": "1e7b1505eef97b23ca96601a650e1ae88451625a70aed15c0f6bc0e2efd519a9"
+    "eidos/evidence/contextual/rea-source-packet-MANIFEST.json": {
+      "bytes": 8436,
+      "sha256": "34de968b05a3c3b0e7022c63f325afca977237263e5edcdc949d607284d6de0f"
     },
-    "eidos/evidence/owned-curriculum/score.json": {
-      "bytes": 8414,
-      "sha256": "0dfb219c721fcc6ee42bc217618726191872d07e26f2f20c073b5507845081f9"
+    "eidos/evidence/contextual/rea-source-packet-receipt.json": {
+      "bytes": 542,
+      "sha256": "a6b787919b037a41e6f8d7ef75dbc2aa686323b08c3596eb3523cd3a75d771c2"
     },
-    "eidos/evidence/owned-curriculum/training-receipt.json": {
-      "bytes": 3349,
-      "sha256": "8f2b3f44c571a4ed5f69c89b7b7eaec90537079276c20e17b4779c4e52330ad7"
+    "eidos/evidence/contextual/score.json": {
+      "bytes": 9926,
+      "sha256": "2b21705840fda185284c4d847249a721b6dabd7b2acfa01321585c95446a79d9"
     },
-    "eidos/evidence/owned-curriculum/unit-execution.json": {
-      "bytes": 660,
-      "sha256": "ae68b1a73baf6d232bf087d061658270e487f40968697929e7b2ed91b22579f3"
+    "eidos/evidence/contextual/serving.json": {
+      "bytes": 1132,
+      "sha256": "b594b6197177fc60efe4cd93825401e6e3f80f185dde40d0275ab9cdbac767f6"
     },
-    "eidos/evidence/owned-curriculum/unit-initial-launcher-refusal.json": {
-      "bytes": 651,
-      "sha256": "b950667b65802c0b32b816b0f2f601b84d1d0083ff7e0884693ef218fe165e68"
+    "eidos/evidence/contextual/training-receipt.json": {
+      "bytes": 3818,
+      "sha256": "5cd0c488d35a5c4dd8c7d6f0574d2b72bdb5b0abf74d1368af82b6da79b70dc5"
     },
-    "eidos/evidence/owned-curriculum/unit-result.json": {
-      "bytes": 146,
-      "sha256": "124cf8ff35a9f5a2c11353eb721e8afb6f2b331f9989a34581a2a2bb7befcdef"
+    "eidos/evidence/contextual/unit-result.json": {
+      "bytes": 167,
+      "sha256": "9ea816b0c3d5bf545796aa672bbf071f6da7de424c7893fccba8743fbc535cb0"
     },
-    "eidos/tests/test_decision_curriculum.py": {
-      "bytes": 17415,
-      "sha256": "ac183d4bbef9bec3991cf575e751bc1b5c0e856cf32f2ce922e7e6caacb61e62"
+    "eidos/tests/test_contextual_challenge.py": {
+      "bytes": 15132,
+      "sha256": "5ecb10579015c50b1d09a80b2ab76829d41ab48847c20841b621bfb024be613e"
+    },
+    "eidos/tests/test_contextual_service.py": {
+      "bytes": 6206,
+      "sha256": "55eb38c0915c440b1e1030e2b640da466d6b41c6fb42317f629633bd25e71914"
+    },
+    "eidos/tests/test_contextual_training.py": {
+      "bytes": 8692,
+      "sha256": "2cde7fd50bd265bcdf354c165b513c3de8991ed7253f1da88758a3a83f1ca962"
+    },
+    "eidos/tests/test_decision_contextual.py": {
+      "bytes": 23141,
+      "sha256": "c086ba8f7f4370c141f64a23d757b607f235a3ab2bd10f36e15dc90ff749a244"
+    },
+    "eidos/tools/contextual_serving_smoke.py": {
+      "bytes": 5690,
+      "sha256": "2996e7dab9da722a3cd7522089ac42d6b4e1d1ff46d5207ea7c91b2d002d4458"
+    },
+    "eidos/tools/contextual_smoke.py": {
+      "bytes": 10220,
+      "sha256": "922c8c85a358a566e07e1913b6c1e63f6b99162e65492d7bdb4c31cecbd91be0"
     }
   },
-  "total_decision_unit_methods": 120,
-  "training_gold_changed_pair_top_answer_changes": 0,
-  "training_gold_changed_pairs": 160
+  "synthetic_95_gate_passed": false
 }

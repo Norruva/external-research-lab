@@ -1,0 +1,353 @@
+{
+  "LAYA_JEV_or_real_domain_quality_measured": false,
+  "accepted_coverage": 0,
+  "calibration_fitted": false,
+  "complete": true,
+  "counterfactual_pairs": {
+    "fresh_world": {
+      "both_correct_when_gold_changed": 6,
+      "gold_changed_pairs": 18,
+      "gold_unchanged_pairs": 0,
+      "model_top_changed_when_gold_changed": 9,
+      "model_top_unchanged_when_gold_unchanged": 0,
+      "paired_tasks": 18
+    },
+    "joint": {
+      "both_correct_when_gold_changed": 3,
+      "gold_changed_pairs": 18,
+      "gold_unchanged_pairs": 0,
+      "model_top_changed_when_gold_changed": 6,
+      "model_top_unchanged_when_gold_unchanged": 0,
+      "paired_tasks": 18
+    },
+    "new_wording": {
+      "both_correct_when_gold_changed": 2,
+      "gold_changed_pairs": 18,
+      "gold_unchanged_pairs": 0,
+      "model_top_changed_when_gold_changed": 6,
+      "model_top_unchanged_when_gold_unchanged": 0,
+      "paired_tasks": 18
+    },
+    "novel_entities": {
+      "both_correct_when_gold_changed": 9,
+      "gold_changed_pairs": 18,
+      "gold_unchanged_pairs": 0,
+      "model_top_changed_when_gold_changed": 12,
+      "model_top_unchanged_when_gold_unchanged": 0,
+      "paired_tasks": 18
+    },
+    "training": {
+      "both_correct_when_gold_changed": 29,
+      "gold_changed_pairs": 36,
+      "gold_unchanged_pairs": 0,
+      "model_top_changed_when_gold_changed": 30,
+      "model_top_unchanged_when_gold_unchanged": 0,
+      "paired_tasks": 36
+    }
+  },
+  "format": "eidos-original-contextual-challenge-score-v1",
+  "mission_complete": false,
+  "production_certified": false,
+  "public_generator_synthetic_roles_not_independent_real_benchmark": true,
+  "roles": {
+    "fresh_world": {
+      "CHOICE": {
+        "accuracy": 0.5555555555555556,
+        "brier": 0.6909268357887554,
+        "correct": 20,
+        "n": 36,
+        "nll": 2.2428170475950218,
+        "uniform_expected_accuracy": 0.29259259259259257
+      },
+      "all": {
+        "accuracy": 0.5555555555555556,
+        "brier": 0.6909268357887554,
+        "correct": 20,
+        "n": 36,
+        "nll": 2.2428170475950218,
+        "uniform_expected_accuracy": 0.29259259259259257
+      },
+      "binding": {
+        "accuracy": 0.375,
+        "brier": 1.119808805874176,
+        "correct": 3,
+        "n": 8,
+        "nll": 4.277524731554732,
+        "uniform_expected_accuracy": 0.26666666666666666
+      },
+      "one_hop": {
+        "accuracy": 0.75,
+        "brier": 0.5061632774163507,
+        "correct": 6,
+        "n": 8,
+        "nll": 1.9889913351707607,
+        "uniform_expected_accuracy": 0.26666666666666666
+      },
+      "property": {
+        "accuracy": 0.375,
+        "brier": 0.5943950114405264,
+        "correct": 3,
+        "n": 8,
+        "nll": 1.3634751640837588,
+        "uniform_expected_accuracy": 0.26666666666666666
+      },
+      "sequence_first": {
+        "accuracy": 1.0,
+        "brier": 4.955964480562243e-17,
+        "correct": 4,
+        "n": 4,
+        "nll": 4.844687774463275e-09,
+        "uniform_expected_accuracy": 0.5
+      },
+      "two_hop": {
+        "accuracy": 0.5,
+        "brier": 0.8888036663183461,
+        "correct": 4,
+        "n": 8,
+        "nll": 2.4626854809460026,
+        "uniform_expected_accuracy": 0.26666666666666666
+      }
+    },
+    "joint": {
+      "CHOICE": {
+        "accuracy": 0.19444444444444445,
+        "brier": 1.12811980233018,
+        "correct": 7,
+        "n": 36,
+        "nll": 2.664068900596321,
+        "uniform_expected_accuracy": 0.29259259259259257
+      },
+      "all": {
+        "accuracy": 0.19444444444444445,
+        "brier": 1.12811980233018,
+        "correct": 7,
+        "n": 36,
+        "nll": 2.664068900596321,
+        "uniform_expected_accuracy": 0.29259259259259257
+      },
+      "binding": {
+        "accuracy": 0.375,
+        "brier": 0.6641584291282253,
+        "correct": 3,
+        "n": 8,
+        "nll": 1.3057341311517858,
+        "uniform_expected_accuracy": 0.26666666666666666
+      },
+      "one_hop": {
+        "accuracy": 0.0,
+        "brier": 1.4878051385139188,
+        "correct": 0,
+        "n": 8,
+        "nll": 3.6766109642652434,
+        "uniform_expected_accuracy": 0.26666666666666666
+      },
+      "property": {
+        "accuracy": 0.0,
+        "brier": 1.4684622987150258,
+        "correct": 0,
+        "n": 8,
+        "nll": 3.4692051043751326,
+        "uniform_expected_accuracy": 0.26666666666666666
+      },
+      "sequence_first": {
+        "accuracy": 1.0,
+        "brier": 2.7911257384403275e-13,
+        "correct": 4,
+        "n": 4,
+        "nll": 3.7357240140265517e-07,
+        "uniform_expected_accuracy": 0.5
+      },
+      "two_hop": {
+        "accuracy": 0.0,
+        "brier": 1.4561132441285003,
+        "correct": 0,
+        "n": 8,
+        "nll": 3.5367596661050817,
+        "uniform_expected_accuracy": 0.26666666666666666
+      }
+    },
+    "new_wording": {
+      "CHOICE": {
+        "accuracy": 0.3333333333333333,
+        "brier": 0.9370618728483847,
+        "correct": 12,
+        "n": 36,
+        "nll": 2.2880034309813326,
+        "uniform_expected_accuracy": 0.29259259259259257
+      },
+      "all": {
+        "accuracy": 0.3333333333333333,
+        "brier": 0.9370618728483847,
+        "correct": 12,
+        "n": 36,
+        "nll": 2.2880034309813326,
+        "uniform_expected_accuracy": 0.29259259259259257
+      },
+      "binding": {
+        "accuracy": 0.0,
+        "brier": 1.3076413440899697,
+        "correct": 0,
+        "n": 8,
+        "nll": 2.486730257743503,
+        "uniform_expected_accuracy": 0.26666666666666666
+      },
+      "one_hop": {
+        "accuracy": 0.375,
+        "brier": 0.9797702749471182,
+        "correct": 3,
+        "n": 8,
+        "nll": 2.7196323142233414,
+        "uniform_expected_accuracy": 0.26666666666666666
+      },
+      "property": {
+        "accuracy": 0.25,
+        "brier": 0.9586045954012249,
+        "correct": 2,
+        "n": 8,
+        "nll": 2.4025854663192723,
+        "uniform_expected_accuracy": 0.26666666666666666
+      },
+      "sequence_first": {
+        "accuracy": 1.0,
+        "brier": 1.9467914572069213e-14,
+        "correct": 4,
+        "n": 4,
+        "nll": 9.347431182836205e-08,
+        "uniform_expected_accuracy": 0.5
+      },
+      "two_hop": {
+        "accuracy": 0.375,
+        "brier": 0.9707622133794084,
+        "correct": 3,
+        "n": 8,
+        "nll": 2.6870673543927253,
+        "uniform_expected_accuracy": 0.26666666666666666
+      }
+    },
+    "novel_entities": {
+      "CHOICE": {
+        "accuracy": 0.6666666666666666,
+        "brier": 0.4193664878339589,
+        "correct": 24,
+        "n": 36,
+        "nll": 0.6798510716049574,
+        "uniform_expected_accuracy": 0.29259259259259257
+      },
+      "all": {
+        "accuracy": 0.6666666666666666,
+        "brier": 0.4193664878339589,
+        "correct": 24,
+        "n": 36,
+        "nll": 0.6798510716049574,
+        "uniform_expected_accuracy": 0.29259259259259257
+      },
+      "binding": {
+        "accuracy": 0.625,
+        "brier": 0.6771052854713968,
+        "correct": 5,
+        "n": 8,
+        "nll": 1.1884905049105903,
+        "uniform_expected_accuracy": 0.26666666666666666
+      },
+      "one_hop": {
+        "accuracy": 0.625,
+        "brier": 0.42043361072745367,
+        "correct": 5,
+        "n": 8,
+        "nll": 0.6710893916977817,
+        "uniform_expected_accuracy": 0.26666666666666666
+      },
+      "property": {
+        "accuracy": 1.0,
+        "brier": 0.0004269715227702499,
+        "correct": 8,
+        "n": 8,
+        "nll": 0.014923091699938513,
+        "uniform_expected_accuracy": 0.26666666666666666
+      },
+      "sequence_first": {
+        "accuracy": 1.0,
+        "brier": 4.841464501674294e-17,
+        "correct": 4,
+        "n": 4,
+        "nll": 4.8596861100835924e-09,
+        "uniform_expected_accuracy": 0.5
+      },
+      "two_hop": {
+        "accuracy": 0.25,
+        "brier": 0.7891833275311941,
+        "correct": 2,
+        "n": 8,
+        "nll": 1.1848268314841548,
+        "uniform_expected_accuracy": 0.26666666666666666
+      }
+    },
+    "training": {
+      "CHOICE": {
+        "accuracy": 0.8888888888888888,
+        "brier": 0.16030355708995256,
+        "correct": 64,
+        "n": 72,
+        "nll": 0.2661067441788243,
+        "uniform_expected_accuracy": 0.29259259259259257
+      },
+      "all": {
+        "accuracy": 0.8888888888888888,
+        "brier": 0.16030355708995256,
+        "correct": 64,
+        "n": 72,
+        "nll": 0.2661067441788243,
+        "uniform_expected_accuracy": 0.29259259259259257
+      },
+      "binding": {
+        "accuracy": 0.8125,
+        "brier": 0.2424239507142803,
+        "correct": 13,
+        "n": 16,
+        "nll": 0.3710159039178231,
+        "uniform_expected_accuracy": 0.26666666666666666
+      },
+      "one_hop": {
+        "accuracy": 0.9375,
+        "brier": 0.1800345088450432,
+        "correct": 15,
+        "n": 16,
+        "nll": 0.3360730480388485,
+        "uniform_expected_accuracy": 0.26666666666666666
+      },
+      "property": {
+        "accuracy": 1.0,
+        "brier": 0.00039091079863765434,
+        "correct": 16,
+        "n": 16,
+        "nll": 0.010625745327175315,
+        "uniform_expected_accuracy": 0.26666666666666666
+      },
+      "sequence_first": {
+        "accuracy": 1.0,
+        "brier": 4.6458133192444364e-17,
+        "correct": 8,
+        "n": 8,
+        "nll": 4.717631852348349e-09,
+        "uniform_expected_accuracy": 0.5
+      },
+      "two_hop": {
+        "accuracy": 0.75,
+        "brier": 0.29851663654682536,
+        "correct": 12,
+        "n": 16,
+        "nll": 0.4797656491620465,
+        "uniform_expected_accuracy": 0.26666666666666666
+      }
+    }
+  },
+  "row_IID_or_statistical_interval_claimed": false,
+  "single_fixed_recipe_no_quality_selected_refit": true,
+  "source_groups": {
+    "fresh_world": 4,
+    "joint": 4,
+    "new_wording": 4,
+    "novel_entities": 4,
+    "training": 8
+  }
+}

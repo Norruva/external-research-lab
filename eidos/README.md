@@ -26,6 +26,12 @@ python3 -S -B -m eidos.train_decision \
 
 These commands reproduce a weak research model. Keep `ORACLE.json` and development/evaluation labels out of fitting and prediction; do not promote it or infer calibrated confidence from the generated data. Run from this `eidos` directory in an isolated development environment. Existing output paths are refused.
 
+## Contextual pointer-memory candidate
+
+The separately versioned [original contextual model](docs/CONTEXTUAL-MODEL.md) adds nonlinear token order, exact name-copy pointers, three memory reads, an owned trainer and explicit CLI/API loader. **It still fails the 95% target:** fresh-world20/36 (55.56%), novel-name24/36 (66.67%), new-wording12/36 (33.33%) and joint7/36 (19.44%). Training64/72; only four paired source groups per held-out slice. [Full result, failures and scope](docs/CONTEXTUAL-RESULT.md).
+
+169 authored unit methods, 12 actual CLI/API fixture checks and 9 checks using the actual fitted artifact passed. These mechanics do not establish semantic reliability. Pinned REA inspected the 58-member prefit source packet; no target code was executed by REA. This model uses standard-library Python, original parameters/data and no pretrained/third-party ML runtime. It is not a LAYA/JEV replacement; the separate older fixed-class result does not transfer. All outputs remain uncalibrated/review-only. Follow the contextual guide to create new private data/model paths; this checkout contains no trained weights.
+
 ## Train and query the demo
 
 From the repository root:

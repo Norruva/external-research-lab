@@ -1,0 +1,15 @@
+{
+  "complete": true,
+  "correction": "Expose learned key-attention and value-copy probability mass on candidate token identities at each read as differentiable generic head features; no task-specific oracle.",
+  "format": "eidos-v3-candidate-copy-readout-static-gap-v1",
+  "mission_complete": false,
+  "next_scope": "Separately versioned architecture v3p1, fresh source/test/REA freeze, fresh seed/group exclusion, one new bounded diagnostic attempt. Preserve this training-only draft; do not relaunch it or evaluate its heldouts.",
+  "not_a_new_quality_result": true,
+  "original_v3_holdout_prediction_or_scoring_performed": false,
+  "original_v3_training_completed": true,
+  "production_certified": false,
+  "recorded_at_utc": "2026-10-23T23:27:47.956454+00:00",
+  "scope": "source_math_only_before_holdout_prediction",
+  "source_sha256": "66c3a86e317f55bc3d3b68a4a5c1e4ac8c4b45e0a8f8877ce9a9ee89d3f61f75",
+  "witness": "Single fact abba baab baab abba ., with candidate spellings abba/baab absent from vocabulary. Both option embeddings are UNK, both global fact-overlap counts equal, and every candidate-dependent memory/head input is identical. Exact copied token identities are carried but never compared directly with option identity at a learned key/value position. Thus both logits are equal for every parameter setting in exact arithmetic."
+}

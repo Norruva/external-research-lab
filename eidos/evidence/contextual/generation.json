@@ -1,0 +1,28 @@
+{
+  "complete": true,
+  "generator_receipt": {
+    "complete": true,
+    "file_count": 9,
+    "format": "eidos-original-contextual-challenge-v1",
+    "manifest_sha256": "6a7c4a3bb0f37b2944cd0e4b9188372c454c6869ba4d72546ffcf6a1ad88f805",
+    "model_fit_inference_scoring_or_activation_performed": false,
+    "pristine_real_world_or_LAYA_JEV_benchmark": false,
+    "role_groups": {
+      "fresh_world": 4,
+      "joint": 4,
+      "new_wording": 4,
+      "novel_entities": 4,
+      "training": 8
+    },
+    "role_rows": {
+      "fresh_world": 36,
+      "joint": 36,
+      "new_wording": 36,
+      "novel_entities": 36,
+      "training": 72
+    }
+  },
+  "no_fit_or_model_predictions": true,
+  "synthetic_only": true,
+  "total_tasks": 216
+}

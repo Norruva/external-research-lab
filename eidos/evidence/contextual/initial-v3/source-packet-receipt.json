@@ -1,0 +1,12 @@
+{
+  "bytes": 145689,
+  "complete": true,
+  "file": "/workspace/eidos/eidos-contextual-candidate-source-v1.tar.gz",
+  "files_verified": 57,
+  "format": "eidos-contextual-candidate-source-export-v1",
+  "manifest_sha256": "dbe8e0992d0457077fd54a695c61e446318256178932f1af5963e5eebf6cdde0",
+  "quality_fit_or_scoring_performed": false,
+  "raw_generated_rows_gold_predictions_or_weights_included": false,
+  "sha256": "589ded5c83655af76cf795d14f18cb4bb1e6db3188aefc88e86c8fbd534e3053",
+  "source_inspection_subset_not_runnable_application": true
+}

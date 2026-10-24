@@ -1,3 +1,7 @@
+## Contextual model result (v3.1)
+
+[New full result](../docs/CONTEXTUAL-RESULT.md) and [aggregate evidence](contextual/README.md): the original contextual model's fixed synthetic experiment FAILED the95% milestone in all four held-out slices (20/36,24/36,12/36,7/36). The 169-unit/12-fixture/9-frozen-service checks and58-member passive REA inspection establish scoped verification, not general or LAYA/JEV quality. Prior outcomes below are preserved and belong to different artifacts.
+
 # Evidence index
 
 These are completed cloud-run receipts and aggregate results, imported by hash. They contain no raw benchmark cases, gold rows, per-case predictions, model weights, existing credentials or application state. The authored synthetic demo lives separately in `../examples`.

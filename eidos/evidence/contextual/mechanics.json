@@ -1,0 +1,47 @@
+{
+  "JEV_LAYA_parity_established": false,
+  "authored_training_rows": 4,
+  "check_count": 12,
+  "checks": [
+    "actual_new_authored_training_CLI_one_epoch",
+    "checked_contextual_registry_loaded",
+    "all_three_typed_heads_review_only",
+    "actual_CLI_library_parity",
+    "actual_option_order_independence",
+    "all_255_options_or_explicit_budget_refusal_no_truncation",
+    "fresh_configuration_pins_contextual_registry",
+    "actual_loopback_service_health",
+    "signed_HTTP_parity_three_heads_and_unsigned_refusal",
+    "actual_HTTP_replay_refusal",
+    "authenticated_pinned_model_metadata",
+    "local_browser_assets_served"
+  ],
+  "complete": true,
+  "fixed_epochs": 1,
+  "format": "eidos-contextual-adapter-smoke-v1",
+  "many_option_status": "explicit_model_budget_refusal",
+  "model": {
+    "calibration_status": "unfitted",
+    "feature_version": "eidos-contextual-token-pointer-readout-memory-v3p1",
+    "id": "owned-contextual-adapter-mechanics-v1",
+    "sha256": "275298aaa068d11b2e4b365a45ee6c83ebe5b0d76a2a568976e51e18d65a4249",
+    "version": "1"
+  },
+  "operational_acceptance_enabled": false,
+  "private_config_deleted": true,
+  "production_certified": false,
+  "real_benchmark_or_vendor_access": false,
+  "registry_sha256": "f44dcf2ab218d95dcd9e1c6e0f698cc113796f65fedbed042ec83192b398d121",
+  "semantic_quality_scored": false,
+  "service_stopped": true,
+  "training_diagnostics": {
+    "elapsed_seconds": 0.07953135999997585,
+    "final_training_cross_entropy": 0.6548616808558135,
+    "initial_training_cross_entropy": 0.6823602631205269,
+    "optimizer_steps": 4,
+    "parameter_count": 838,
+    "process_cpu_seconds": 0.06699405000000001,
+    "scope": "training_fit_diagnostic_not_quality_evaluation_or_calibration",
+    "vocabulary_size": 12
+  }
+}
