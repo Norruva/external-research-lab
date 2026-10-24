@@ -42,6 +42,8 @@ XSD = 'http://www.w3.org/2001/XMLSchema#'
 RDF_LANG = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#langString'
 IEC61360 = 'https://admin-shell.io/DataSpecificationTemplates/DataSpecificationIec61360/3/0'
 IDSHORT_BAD = re.compile(r'[^A-Za-z0-9_-]')
+NAMESPACE = re.compile(r'^[A-Za-z0-9_]+(\.[A-Za-z0-9_-]+)*$')
+VERSION = re.compile(r'^\d+\.\d+\.\d+$')
 LIST_TYPES = {'Collection': False, 'Set': False, 'List': True, 'SortedSet': True, 'TimeSeries': True}
 NUMERIC = {'decimal', 'integer', 'double', 'float', 'int', 'long', 'short', 'byte', 'nonNegativeInteger',
            'positiveInteger', 'nonPositiveInteger', 'negativeInteger', 'unsignedInt', 'unsignedLong', 'unsignedShort',
@@ -135,9 +137,14 @@ class AspectModel:
                     if namespace not in defined:
                         missing.add(namespace)
             loaded_any = False
+            root = self.models_root.resolve()
             for namespace in sorted(missing):
                 name, _, version = namespace[len('urn:samm:'):].rpartition(':')
-                folder = self.models_root / name / version
+                if not NAMESPACE.match(name) or not VERSION.match(version):
+                    continue            # not a namespace/version pair; never becomes a file system path
+                folder = (root / name / version).resolve()
+                if not folder.is_relative_to(root):
+                    continue
                 for file in sorted(folder.glob('*.ttl')) if folder.is_dir() else []:
                     if file.resolve() not in self._loaded:
                         self.load(file)
@@ -241,6 +248,12 @@ class AspectModel:
 
     def _characteristic(self, node, name, stack):
         """The element (without idShort) a characteristic maps to."""
+        if node is not None and f'char:{node}' in stack:
+            raise SammError(f'characteristic {node} refers to itself (cycle through {name})')
+        if node is not None:
+            stack = stack + (f'char:{node}',)
+        if len(stack) > 200:
+            raise SammError('aspect model is nested too deeply')
         if node is None:
             return {'modelType': 'Property', 'valueType': 'xs:string', '_datatype': 'STRING'}
         predefined = META.match(str(node))
@@ -296,7 +309,7 @@ class AspectModel:
         else:
             item = self._scalar(datatype)
         result = {'modelType': 'SubmodelElementList', 'semanticId': _external(str(node)) if not isinstance(
-            node, self.rdflib.BNode) else _external(f'{stack[-1]}'), 'orderRelevant': LIST_TYPES[kind],
+            node, self.rdflib.BNode) else _external(_last_property(stack)), 'orderRelevant': LIST_TYPES[kind],
             'typeValueListElement': item['modelType']}
         if item['modelType'] in ('Property', 'Range'):
             result['valueTypeListElement'] = item.get('valueType', 'xs:string')
@@ -306,7 +319,7 @@ class AspectModel:
         if result['_qualifiers'] and item['modelType'] == 'Property':
             item['qualifiers'] = result.pop('_qualifiers')
         if item['modelType'] in ('Property', 'MultiLanguageProperty', 'Range') and stack:
-            item['semanticId'] = _external(stack[-1])       # scalar items: the list's property
+            item['semanticId'] = _external(_last_property(stack))       # scalar items: the list's property
         item.pop('idShort', None)
         result['value'] = [item]
         return result
@@ -362,6 +375,10 @@ class AspectModel:
         return {'modelType': 'ConceptDescription', 'id': identifier, 'idShort': _id_short(_local(identifier)),
                 'embeddedDataSpecifications': [{'dataSpecification': _external(IEC61360),
                                                 'dataSpecificationContent': content}]}
+
+
+def _last_property(stack) -> str:
+    return next((entry for entry in reversed(stack) if not entry.startswith('char:')), '')
 
 
 def _iec_type(local: str) -> str:

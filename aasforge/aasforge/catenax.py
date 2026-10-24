@@ -48,6 +48,9 @@ ODRL = 'http://www.w3.org/ns/odrl/2/'
 CX_POLICY = 'https://w3id.org/catenax/policy/'
 CX_TAXONOMY = 'https://w3id.org/catenax/taxonomy#'
 PUBLIC_FIELDS = ('id', 'specificAssetIds', 'submodelDescriptors')
+ASSET_HEADER = 'X-AASForge-Asset'              # set by the data plane from the asset's data address
+REGISTRY_ASSET = 'aasforge-digital-twin-registry'
+REGISTRY_READ = ('/shell-descriptors', '/lookup/shells')
 
 
 def _subject_values(asset_id: dict) -> list[str]:
@@ -75,20 +78,43 @@ class CatenaX:
 
     # -- identity ------------------------------------------------------------------------------------
     def subject_hook(self, request):
-        """The provider data plane forwards the consumer's BPN (and agreement) as headers."""
+        """Requests from the provider data plane act for the consumer: its BPN and agreement come from
+        the headers the data plane adds, and the request is confined to the EDC asset it was made
+        for (``X-AASForge-Asset``, set through the asset's data address). Requests without the asset
+        header may use the registry only. The data plane key's own claims (tiers, roles) are not
+        passed on."""
         subject = request.subject
         if not subject.claims.get('edc_dataplane'):
             return
-        headers = {k.lower(): v for k, v in request.headers.items()}
-        bpn = headers.get('edc-bpn')
-        claims = dict(subject.claims)
-        claims.pop('bpn', None)
+        bpn = (request.headers.get('Edc-Bpn') or '').strip()
+        asset = (request.headers.get(ASSET_HEADER) or REGISTRY_ASSET).strip()
+        self._check_scope(request, asset)
+        claims = {'sub': f'edc:{bpn}' if bpn else 'edc:unknown', 'edc_dataplane': True, 'edc_asset': asset}
         if bpn:
-            claims['bpn'] = bpn.strip()
-            claims['sub'] = f'edc:{claims["bpn"]}'
-        if headers.get('edc-contract-agreement-id'):
-            claims['edc_agreement'] = headers['edc-contract-agreement-id']
+            claims['bpn'] = bpn
+        if request.headers.get('Edc-Contract-Agreement-Id'):
+            claims['edc_agreement'] = request.headers['Edc-Contract-Agreement-Id']
         request.subject = security.Subject(claims, anonymous=False)
+
+    @staticmethod
+    def _check_scope(request, asset):
+        path = request.path
+        for base in ('/api/v3.1', '/api/v3.0', '/api/v3.2'):
+            if path == base or path.startswith(base + '/'):
+                path = path[len(base):] or '/'
+                break
+        segments = path.split('/')
+        if any(s in ('..', '.') or '%2e' in s.lower() for s in segments):
+            raise PermissionError('path not allowed through the EDC data plane')
+        method = request.method
+        if asset == REGISTRY_ASSET:
+            allowed = (method == 'GET' and (path == '/description' or path.startswith(REGISTRY_READ))) or \
+                (method == 'POST' and path in ('/lookup/shellsByAssetLink', '/query/shell-descriptors'))
+        else:
+            own = f'/submodels/{canonical.b64url_encode(asset)}'
+            allowed = method == 'GET' and (path == own or path.startswith(own + '/'))
+        if not allowed:
+            raise PermissionError(f'the EDC asset {asset!r} does not cover {method} {path}')
 
     def is_owner(self, request) -> bool:
         claims = request.subject.claims if request.subject else {}
@@ -211,7 +237,7 @@ def submodel_asset(submodel: dict, public_url: str, api_key: str, asset_id: str 
                   f'{public_url}/api/v3.1/submodels/{canonical.b64url_encode(submodel["id"])}', api_key, write=False)
 
 
-def registry_asset(public_url: str, api_key: str, asset_id: str = 'aasforge-digital-twin-registry') -> dict:
+def registry_asset(public_url: str, api_key: str, asset_id: str = REGISTRY_ASSET) -> dict:
     return _asset(asset_id, {'dct:type': {'@id': 'cx-taxo:DigitalTwinRegistry'}, 'cx-common:version': '3.0',
                              'name': 'Digital Twin Registry'}, f'{public_url}/api/v3.1', api_key, write=True)
 
@@ -223,7 +249,8 @@ def _asset(asset_id, properties, base_url, api_key, write):
             '@type': 'Asset', '@id': asset_id, 'properties': properties,
             'dataAddress': {'@type': 'DataAddress', 'type': 'HttpData', 'baseUrl': base_url, 'proxyPath': 'true',
                             'proxyQueryParams': 'true', 'proxyMethod': 'true' if write else 'false',
-                            'proxyBody': 'true' if write else 'false', 'authKey': 'X-API-Key', 'authCode': api_key}}
+                            'proxyBody': 'true' if write else 'false', 'authKey': 'X-API-Key', 'authCode': api_key,
+                            f'header:{ASSET_HEADER}': asset_id}}
 
 
 def contract_definition(definition_id: str, asset_id: str, access_policy: str, contract_policy: str) -> dict:

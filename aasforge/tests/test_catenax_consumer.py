@@ -58,7 +58,8 @@ class Dataspace:
                     return
                 body = self.rfile.read(int(self.headers.get('Content-Length') or 0)) or None
                 request = urllib.request.Request(f'{space.assets[asset]}/{rest}'.rstrip('/'), body, {
-                    'X-API-Key': 'dp-key', 'Edc-Bpn': space.consumer_bpn, 'Content-Type': 'application/json'},
+                    'X-API-Key': 'dp-key', 'Edc-Bpn': space.consumer_bpn, 'Content-Type': 'application/json',
+                    'X-AASForge-Asset': asset},     # what EDC adds from the asset's header: property
                     method=self.command)
                 try:
                     with urllib.request.urlopen(request) as response:

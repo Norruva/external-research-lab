@@ -130,7 +130,8 @@ class Forge:
         server = http.serve(self.app, self.config.host, self.config.port, self.config.max_body)
         if self.config.opcua_endpoint:
             from . import opcua
-            self.opcua = opcua.OpcUaServer(self, self.config.opcua_endpoint, self.config.opcua_writable).start()
+            cert_dir = None if self.config.database == ':memory:' else str(Path(self.config.data_dir) / 'keys' / 'opcua')
+            self.opcua = opcua.OpcUaServer(self, self.config.opcua_endpoint, self.config.opcua_writable, cert_dir).start()
         if self.config.mqtt_url:
             from . import mqtt
             self.mqtt = mqtt.MqttBridge(self, self.config.mqtt_url, self.config.mqtt_repository,

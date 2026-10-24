@@ -79,6 +79,8 @@ class MqttBridge:
         self.inbox: queue.Queue = queue.Queue(maxsize=100000)
         self.published: dict = {}       # (kind, id) -> digest of the last visible state sent
         self._worker = threading.Thread(target=self._work, name='aasforge-mqtt', daemon=True)
+        self.ingest_queue: queue.Queue = queue.Queue(maxsize=10000)
+        self._ingester = threading.Thread(target=self._ingest_worker, name='aasforge-mqtt-ingest', daemon=True)
         self._stopping = False
 
     @property
@@ -94,6 +96,7 @@ class MqttBridge:
             raise RuntimeError(f'could not connect to the MQTT broker at {self.host}:{self.port}')
         self._seed()
         self._worker.start()
+        self._ingester.start()
         self.forge.store.subscribe(self._on_event)
         return self
 
@@ -110,7 +113,9 @@ class MqttBridge:
         self.forge.store.unsubscribe(self._on_event)
         self._stopping = True
         self.inbox.put(None)
+        self.ingest_queue.put(None)
         self._worker.join(10)
+        self._ingester.join(10)
         self.client.disconnect()
         self.client.loop_stop()
 
@@ -173,12 +178,10 @@ class MqttBridge:
         request = _request('GET', route)
         if not api.visible(request, kind, obj):
             return None
-        if kind == 'submodel':
-            try:
-                return api.readable_submodel(request, obj)
-            except PermissionError:
-                return None
-        return obj
+        try:
+            return api.readable(request, kind, obj)
+        except PermissionError:
+            return None
 
     def messages(self, event):
         """(topic, payload, retain) to publish for a store event."""
@@ -228,7 +231,18 @@ class MqttBridge:
 
     # -- inbound ------------------------------------------------------------------------------------
     def _on_message(self, client, userdata, message):
-        threading.Thread(target=self.ingest, args=(message.topic, message.payload), daemon=True).start()
+        """Telemetry is applied by one worker in arrival order; a full queue drops new messages."""
+        try:
+            self.ingest_queue.put_nowait((message.topic, bytes(message.payload)))
+        except queue.Full:
+            _log.warning('MQTT ingest queue full; message on %s dropped', message.topic)
+
+    def _ingest_worker(self):
+        while True:
+            item = self.ingest_queue.get()
+            if item is None:
+                return
+            self.ingest(*item)
 
     def ingest(self, topic: str, payload: bytes):
         """Apply ``.../submodels/<b64>/submodelElements/<path>/set``; returns True when stored."""

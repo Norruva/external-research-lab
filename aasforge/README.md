@@ -33,7 +33,11 @@ the open-source AAS tools, with Digital Product Passports (DPP) built in.
   - The Digital Twin Registry access model: `externalSubjectId`, `PUBLIC_READABLE`, and the
     `Edc-Bpn` header from the EDC data plane.
   - DSP endpoints in submodel descriptors.
-  - Provisioning through the EDC Management API v3: assets, policies and contracts.
+  - Provisioning through the EDC Management API v3: assets, policies and contracts. Each asset is
+    confined to its own routes.
+  - The consumer side: catalog, EDR negotiation, and fetching a partner's twins and submodels.
+- **Registry federation.** Unknown descriptors are fetched from upstream registries or the BaSyx
+  `registry.<host>` hierarchy, with SSRF guards.
 - **Semantics.**
   - SAMM aspect models become submodel templates. They match the ESMF generator's own output path
     for path on the Catena-X BatteryPass and PCF models.
@@ -51,8 +55,8 @@ the open-source AAS tools, with Digital Product Passports (DPP) built in.
 - **Web editor** at `/ui`. It browses and edits shells and submodels, creates submodels from forms
   generated from templates, checks them against their templates, and shows history, queries and
   events.
-- **Security reviewed.** An independent review found 16 issues, all fixed; `tests/test_security.py`
-  replays each attack.
+- **Security reviewed twice.** Two internal reviews found 16 and then 10 issues, all fixed.
+  `tests/test_security.py` and `tests/test_security2.py` replay each attack.
 
 The [architecture](ARCHITECTURE.md) explains which idea came from which tool, and the evidence for
 each gap it fixes.
@@ -96,6 +100,7 @@ To add PostgreSQL, OPC UA and MQTT:
 | `import-samm TTL --models-root DIR [--payload JSON]` | SAMM aspect model → submodel template + ConceptDescriptions (and an instance) |
 | `import-dictionary FILE... [--units FILE]` | ECLASS / IEC CDD property tables (CSV) → ConceptDescriptions |
 | `catenax-provision --edc URL --edc-key K --dataplane-key K [--bpn BPN...]` | Register submodels and the registry as EDC assets with contracts |
+| `catenax-fetch --edc URL --edc-key K --dsp URL --partner BPN --asset-id name=value [--semantic-id S] [--store]` | Fetch a partner's twin (and submodel) through EDC |
 | `token --secret S --claims JSON` | Issue a development HS256 bearer token |
 | `sign FILE` / `verify-signature FILE --trust cert.pem` | Sign an AAS object as JWS, or verify one |
 | `dpp-create SPEC.json` | Create a passport from a spec (see `examples/battery_passport.py`) |
@@ -122,6 +127,7 @@ These environment variables override the defaults in `aasforge/app.py`:
 | `AASFORGE_OPCUA_ENDPOINT`, `AASFORGE_OPCUA_WRITABLE` | Serve OPC UA (I4AAS), optionally with authorised write-back |
 | `AASFORGE_MQTT_URL`, `AASFORGE_MQTT_REPOSITORY`, `AASFORGE_MQTT_INGEST_CLAIMS` | MQTT bridge; the claims that telemetry writes are authorised with |
 | `AASFORGE_CATENAX` | JSON `{"bpn": ..., "dataplane_url": ..., "dsp_url": ...}`: Catena-X DTR mode |
+| `AASFORGE_FEDERATION` | JSON `{"upstreams": [...], "hierarchy_domains": [...]}`: registry federation |
 
 Credentials are accepted only in headers, never in the query string. CORS is off unless origins are
 listed in the configuration.
@@ -133,7 +139,7 @@ cd aasforge/tests && ../../.venv/bin/python -m unittest discover -s .
 AASFORGE_TEST_DATABASE=postgresql://user:pass@localhost/db ../../.venv/bin/python -m unittest discover -s .
 ```
 
-There are 107 tests:
+There are 137 tests:
 
 - **Versioning and AASX:** version detection, the 3.2 sidecar, repairs, lossless import of real IDTA
   and Catena-X packages, and deterministic writing.
@@ -146,7 +152,9 @@ There are 107 tests:
 - **OPC UA:** the export loads next to the official I4AAS NodeSet; live subscriptions, authorised
   writes, FileType reads and operations.
 - **MQTT:** against a real mosquitto broker.
-- **Catena-X:** DTR visibility and EDC provisioning.
+- **Catena-X:** DTR visibility, data-plane scoping and EDC provisioning. A dataspace test fetches a
+  partner twin through a consumer EDC and a provider data plane (both simulated).
+- **Federation:** upstream registries and the SSRF guards.
 - **Importers:** SAMM templates against the ESMF generator's output, payload round trips, ECLASS and
   CDD tables.
 - **Web editor:** a browser test with Playwright and Chromium.
@@ -162,7 +170,7 @@ the OpenAPI file in [admin-shell-io/aas-specs-api](https://github.com/admin-shel
 aasforge/            the package (≈9.7k lines)
   versioning.py aasx.py canonical.py db.py store.py sqlfilter.py repository.py elements.py smt.py
   formula.py security.py signing.py http.py api.py app.py __main__.py
-  opcua.py mqtt.py catenax.py samm.py dictionary.py
+  opcua.py mqtt.py catenax.py federation.py samm.py dictionary.py
   dpp/               catalog, tiers, passport, gs1, credential, viewer, service (routes, resolver, MCP)
   ui/                web editor (index.html, app.js, style.css)
   data/              Query Language schema, Battery Pass attributes, IDTA templates, I4AAS NodeSet, SAMM units

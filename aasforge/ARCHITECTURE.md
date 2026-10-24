@@ -99,6 +99,7 @@ Regulation tiers) decide what each caller sees. That one decision is applied to:
 | ESMF generator: list items carry idShorts (AASd-120 in 3.0), and collections have no semanticId | Generated `BatteryPass-aas.xml` | No idShorts on list items; every element has its property semanticId |
 | 3.2 `createdAt`/`updatedAt` dropped by every tested reader | aas-compat finding 5 | Kept in the sidecar; also derived from the store when exporting 3.2 |
 | 16 issues found by an internal security review, among them query probing of hidden values, ReDoS, unchecked element grants and PUT authorisation, SSRF through delegation, FILTER bypass in packages, header injection, zip bombs and token expiry | `tests/test_security.py` replays each attack | All fixed. `$regex` uses size caps, timeouts and a query budget; delegation needs an allow-list; packages are rebuilt for filtered readers; JWTs must expire |
+| A second review (10 issues): hidden Catena-X asset ids on shell output paths, templates read without FILTERs, OPC UA writes accepted with writes disabled, ingest thread per message, an over-broad data-plane scope, plaintext OPC UA passwords, export amplification, unbounded file handles, SAMM path traversal | `tests/test_security2.py` | One shell view on every output path; templates read through FILTERs; writes refused unless enabled; one ordered ingest worker; each EDC asset confined to its routes; OPC UA Basic256Sha256 with encrypted passwords; exports cached and serialised; handles capped; namespaces confined to the models root |
 | Found while building the integrations: rows read from a shared database cursor under concurrency, and case-sensitive header names | `test_core.StoreConcurrencyTests`; Catena-X tests through urllib | Rows are fetched under the connection lock; request headers are case-insensitive |
 
 ## How the AAS layer carries Digital Product Passports
@@ -169,7 +170,15 @@ passport needs: resolver, credential and registry.
 
   Submodel descriptors carry the DSP endpoint (`subprotocolBody: id=…;dspEndpoint=…`).
   `EdcClient.provision` registers submodels and the registry as EDC assets, with BPN or membership
-  policies and contract definitions.
+  policies and contract definitions. Each data address names its asset (`header:X-AASForge-Asset`),
+  and requests from the data plane are confined to that asset's routes.
+
+  On the consumer side, `PartnerTwins` uses the consumer's EDC to query a partner's catalog,
+  negotiate an EDR, look twins up in the partner's DTR and fetch submodels through the descriptors'
+  DSP endpoints.
+- **Federation.** `federation.py` asks upstream registries, or the BaSyx `registry.<host>`
+  hierarchy, for descriptors this registry lacks. Only allow-listed hosts on public addresses are
+  contacted, over https, and results are cached but never stored.
 - **Semantics.** `samm.py` turns aspect models into templates and payloads into instances (and
   back); `dictionary.py` turns ECLASS and IEC CDD tables into IEC 61360 ConceptDescriptions. With
   both, a Catena-X BatteryPass payload becomes a verified AAS submodel whose elements resolve to
@@ -194,10 +203,9 @@ passport needs: resolver, credential and registry.
 
 - **Scale-out.** A connection pool and multiple worker processes. Events across processes would
   come from PostgreSQL `LISTEN/NOTIFY` instead of in-process subscribers.
-- **Registry federation.** Forward unknown ids to `registry.<host>` (BaSyx hierarchy), plus the DTR
-  "granular" access-rule model alongside the classic one.
-- **EDC consumer side.** Catalog requests, contract negotiation and EDR-based fetching of partners'
-  twins and submodels.
+- **DTR "granular" access rules** alongside the classic `externalSubjectId` model.
+- **Checking EDC agreements.** Verify `Edc-Contract-Agreement-Id` against the provider EDC, and
+  refresh EDR tokens on the consumer side.
 - **More integration.** A Kafka bridge, and ECLASS XML (ontoml) in addition to the CSV exports.
 - **More DPP product groups** beyond batteries (textiles, iron and steel), once their delegated acts
   and IDTA templates are published.

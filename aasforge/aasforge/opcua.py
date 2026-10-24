@@ -125,8 +125,11 @@ def visible_environment(forge, claims: dict | None = None) -> dict:
     """Shells, submodels and concept descriptions as a caller with ``claims`` (default: anonymous)
     may read them through the AAS API."""
     api = forge.api
-    shells = [s for s in forge.store.iter_all('shell')
-              if api.visible(api_request('GET', f'/shells/{canonical.b64url_encode(s["id"])}', claims), 'shell', s)]
+    shells = []
+    for shell in forge.store.iter_all('shell'):
+        request = api_request('GET', f'/shells/{canonical.b64url_encode(shell["id"])}', claims)
+        if api.visible(request, 'shell', shell):
+            shells.append(api.readable_shell(request, shell))
     submodels = []
     for submodel in forge.store.iter_all('submodel'):
         request = api_request('GET', f'/submodels/{canonical.b64url_encode(submodel["id"])}', claims)
@@ -140,10 +143,15 @@ def visible_environment(forge, claims: dict | None = None) -> dict:
     return {'assetAdministrationShells': shells, 'submodels': submodels, 'conceptDescriptions': cds}
 
 
+MAX_OPEN_FILES = 256            # FileType handles across all sessions; the oldest is closed first
+OPEN_FILE_SECONDS = 600         # handles not used for this long are closed
+
+
 @dataclass
 class _OpenFile:
     data: bytes
     position: int = 0
+    used: float = field(default_factory=lambda: __import__('time').monotonic())
 
 
 @dataclass
@@ -606,6 +614,12 @@ class AddressSpace:
             mode = mode.Value if isinstance(mode, ua.Variant) else mode
             if mode & 0x6:            # Write / EraseExisting
                 raise ua.UaStatusCodeError(ua.StatusCodes.BadNotWritable)
+            import time as clock
+            now = clock.monotonic()
+            for old in [h for h, f in handles.items() if now - f.used > OPEN_FILE_SECONDS]:
+                del handles[old]
+            while len(handles) >= MAX_OPEN_FILES:
+                del handles[min(handles, key=lambda h: handles[h].used)]
             handle = space._next_handle
             space._next_handle += 1
             handles[handle] = _OpenFile(data)
@@ -615,6 +629,7 @@ class AddressSpace:
             handle = handle.Value if isinstance(handle, ua.Variant) else handle
             if handle not in handles:
                 raise ua.UaStatusCodeError(ua.StatusCodes.BadInvalidArgument)
+            handles[handle].used = __import__('time').monotonic()
             return handle, handles[handle]
 
         async def close(parent, handle):
@@ -687,10 +702,23 @@ async def _new_server(endpoint: str | None = None, user_manager=None):
     return server, i4, ns
 
 
+_EXPORTS: dict = {}
+_EXPORT_LOCK = threading.Semaphore(1)
+
+
 def export_nodeset(forge, claims: dict | None = None) -> bytes:
     """NodeSet2 XML of the environment a caller with ``claims`` (default: anonymous) may read
-    (instances only; load it after the I4AAS NodeSet)."""
-    return asyncio.run(_export(forge, claims))
+    (instances only; load it after the I4AAS NodeSet). Exports are built one at a time and cached
+    until the store changes, since each one builds a complete OPC UA address space."""
+    import json as _json
+    latest = forge.store.db.execute('SELECT MAX(seq) AS seq FROM events').fetchone()['seq']
+    key = (id(forge), _json.dumps(claims or {}, sort_keys=True), latest)
+    with _EXPORT_LOCK:
+        if key not in _EXPORTS:
+            if len(_EXPORTS) > 16:
+                _EXPORTS.clear()
+            _EXPORTS[key] = asyncio.run(_export(forge, claims))
+        return _EXPORTS[key]
 
 
 async def _export(forge, claims):
@@ -754,8 +782,10 @@ class _Permissions:
 class OpcUaServer:
     """Live I4AAS server following the store."""
 
-    def __init__(self, forge, endpoint: str = 'opc.tcp://127.0.0.1:4840/aasforge/', writable: bool = False):
+    def __init__(self, forge, endpoint: str = 'opc.tcp://127.0.0.1:4840/aasforge/', writable: bool = False,
+                 cert_dir: str | None = None):
         self.forge, self.endpoint, self.writable = forge, endpoint, writable
+        self.cert_dir = cert_dir
         self.loop = asyncio.new_event_loop()
         self.ready = threading.Event()
         self.error = None
@@ -793,13 +823,36 @@ class OpcUaServer:
         from asyncua.common.callback import CallbackType
         logging.getLogger('asyncua').setLevel(logging.ERROR)
         self.server, self.i4, self.ns = await _new_server(self.endpoint, _UserManager(self.forge.authenticator))
-        self.server.set_security_policy([ua.SecurityPolicyType.NoSecurity],
+        await self._certificate()
+        # Anonymous reads may use NoSecurity; passwords (API keys, tokens) are always encrypted with
+        # the server certificate, and clients can choose a signed and encrypted channel.
+        self.server.set_security_policy([ua.SecurityPolicyType.NoSecurity,
+                                         ua.SecurityPolicyType.Basic256Sha256_SignAndEncrypt],
                                         permission_ruleset=_Permissions())
         self.server.set_identity_tokens([ua.AnonymousIdentityToken, ua.UserNameIdentityToken])
         await self._build()
         self.server.iserver.subscribe_server_callback(CallbackType.PreWrite, self._pre_write)
         await self.server.start()
         self._refresher = asyncio.ensure_future(self._refresh_loop())
+
+    async def _certificate(self):
+        from pathlib import Path
+        from urllib.parse import urlsplit
+        from cryptography.x509.oid import ExtendedKeyUsageOID
+        from asyncua.crypto.cert_gen import setup_self_signed_certificate
+        folder = Path(self.cert_dir) if self.cert_dir else None
+        if folder is None:
+            import tempfile
+            self._tmp = tempfile.TemporaryDirectory()
+            folder = Path(self._tmp.name)
+        folder.mkdir(parents=True, exist_ok=True)
+        key, cert = folder / 'opcua-server-key.pem', folder / 'opcua-server-cert.der'
+        uri = 'urn:aasforge:opcua:server'
+        await self.server.set_application_uri(uri)
+        await setup_self_signed_certificate(key, cert, uri, urlsplit(self.endpoint).hostname or 'localhost',
+                                            [ExtendedKeyUsageOID.SERVER_AUTH], {'commonName': 'aasforge OPC UA'})
+        await self.server.load_certificate(str(cert))
+        await self.server.load_private_key(str(key))
 
     async def _stop(self):
         self._refresher.cancel()
@@ -878,6 +931,9 @@ class OpcUaServer:
         for write in event.request_params.NodesToWrite:
             binding = self.space.bindings.get(write.NodeId)
             if binding is None or write.AttributeId != ua.AttributeIds.Value:
+                continue
+            if not self.writable:
+                write.NodeId = ua.NodeId('refused', self.ns)       # writes are switched off
                 continue
             try:
                 await self.loop.run_in_executor(None, self._apply, event.user, binding, write.Value.Value.Value)

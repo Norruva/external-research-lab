@@ -137,6 +137,16 @@ class Api:
             shell = view(request, shell)
         return shell
 
+    readable_shell = shell_view       # the one view of a shell for this caller, on every output path
+
+    def readable(self, request: Request, kind: str, obj: dict) -> dict:
+        """``obj`` as this caller may read it (caller has READ on it)."""
+        if kind == 'submodel':
+            return self.readable_submodel(request, obj)
+        if kind == 'shell':
+            return self.readable_shell(request, obj)
+        return obj
+
     def allow(self, request: Request, right=None, kind=None, obj=None, path=None) -> security.Decision:
         right = right or RIGHT_FOR.get(request.method, 'READ')
         decision = self.rules.decide(request.subject, right, security.Target(request.path, kind, obj, path))
@@ -189,6 +199,8 @@ class Api:
         decision = self.rules.decide(request.subject, 'READ', security.Target(request.path, kind, obj))
         if not decision.allowed or decision.filters is not None or decision.referables is not None:
             return False
+        if kind == 'shell':
+            return self.readable_shell(request, obj) == obj
         return kind != 'submodel' or all(guard(request, obj) == obj for guard in self.submodel_guards)
 
     def actor(self, request: Request):
@@ -380,7 +392,7 @@ class Api:
             batch, nxt = self.store.list('shell', id_short=request.arg('idShort'), limit=limit, cursor=nxt,
                                          where=self.read_condition(request, 'shell'))
             items += [s for s in batch if self.visible(request, 'shell', s)
-                      and (not wanted or self._matches_asset_ids(s, wanted))]
+                      and (not wanted or self._matches_asset_ids(self.readable_shell(request, s), wanted))]
             if not nxt:
                 break
         items = [self.outbound(request, 'shell', self.shell_view(request, s)) for s in items[:limit]]
@@ -889,9 +901,7 @@ class Api:
         except NotFound as error:
             raise HttpError(404, f'{kind} {identifier!r} did not exist at {date}') from error
         self.allow(request, 'READ', kind, obj)
-        if kind == 'submodel':
-            obj = self.readable_submodel(request, obj)
-        return Response.json(obj)
+        return Response.json(self.readable(request, kind, obj))
 
     def audit(self, request, kind, identifier):
         try:
@@ -936,9 +946,7 @@ class Api:
         except NotFound as error:
             raise HttpError(404, f'{kind} {identifier!r} not found') from error
         self.allow(request, 'READ', kind, obj)
-        if kind == 'submodel':
-            obj = self.readable_submodel(request, obj)
-        return Response.text(self.signer.sign(obj), content_type='text/plain; charset=utf-8')
+        return Response.text(self.signer.sign(self.readable(request, kind, obj)), content_type='text/plain; charset=utf-8')
 
     def verify_signature(self, request):
         jws = request.body.decode('utf-8').strip()
@@ -989,10 +997,11 @@ class Api:
             template = self.store.get('submodel', reference)
         except NotFound as error:
             raise HttpError(404, f'template {reference!r} not found') from error
-        self.allow(request, 'READ', 'submodel', template)
+        if not self.visible(request, 'submodel', template):
+            raise HttpError(404, f'template {reference!r} not found')
         if template.get('kind') != 'Template':
             raise HttpError(400, f'submodel {reference!r} is not a Template')
-        return template
+        return self.readable_submodel(request, template)
 
     def list_templates(self, request):
         self.allow(request, 'READ')
@@ -1092,15 +1101,15 @@ class Api:
             condition = query.get('$condition') if isinstance(query, dict) else None
             where = sqlfilter.combine(self.read_condition(request, kind), sqlfilter.compile_condition(
                 condition, kind, self.store.db, request.subject.claims) if isinstance(condition, dict) else None)
-            candidates = [o for o in self.store.iter_all(kind, where) if self.visible(request, kind, o)]
-            if kind == 'submodel':
-                candidates = [self.readable_submodel(request, s) for s in candidates]
+            candidates = [self.readable(request, kind, o) for o in self.store.iter_all(kind, where)
+                          if self.visible(request, kind, o)]
         try:
             results = formula.run_query(
                 query, kind, candidates, claims=request.subject.claims,
                 submodels_of=lambda shell: [self.readable_submodel(request, s) for s in self._submodels_of(shell)
                                             if self.visible(request, 'submodel', s)],
-                shells_of=lambda submodel: [s for s in self._shells_of(submodel) if self.visible(request, 'shell', s)])
+                shells_of=lambda submodel: [self.readable_shell(request, s) for s in self._shells_of(submodel)
+                                            if self.visible(request, 'shell', s)])
         except formula.FormulaError as error:
             raise HttpError(400, f'invalid query: {error}') from error
         page, nxt = _list_page(results, limit, cursor)
@@ -1133,7 +1142,7 @@ class Api:
 
     def _filter_environment(self, request, env):
         env = dict(env)
-        env['assetAdministrationShells'] = [s for s in env.get('assetAdministrationShells', [])
+        env['assetAdministrationShells'] = [self.readable_shell(request, s) for s in env.get('assetAdministrationShells', [])
                                             if self.visible(request, 'shell', s)]
         env['submodels'] = [self.readable_submodel(request, s) for s in env.get('submodels', [])
                             if self.visible(request, 'submodel', s)]
@@ -1277,6 +1286,11 @@ class Api:
             self.repo.validate(kind, body)
         except ValueError as error:
             raise HttpError(400, str(error)) from error
+
+    def unrestricted_registry(self, request) -> bool:
+        """True when descriptor views would not hide anything from this caller (e.g. the owner)."""
+        probe = {'id': '', 'specificAssetIds': [{'name': '_', 'value': '_'}]}
+        return all(view(request, 'aas', probe) == probe for view in self.descriptor_filters)
 
     def _descriptor_view(self, request, kind, descriptor):
         """A descriptor as this caller may see it: None if it describes a local object the caller
@@ -1439,6 +1453,12 @@ class Api:
         return Response(202, b'', '', {'Location': f'{request.base}/bulk/status/{handle}'})
 
     # -- discovery ---------------------------------------------------------------------------------
+    def _discoverable(self, request, aas_id, links, wanted):
+        visible = self._visible_links(request, aas_id, links)
+        if wanted:
+            return self._links_match(visible, wanted)
+        return bool(visible) or not self.descriptor_filters
+
     def _links_match(self, links, wanted):
         have = {(link.get('name'), link.get('value')) for link in links}
         return all((w.get('name'), w.get('value')) in have for w in wanted)
@@ -1448,8 +1468,7 @@ class Api:
         limit, cursor = _paging(request)
         wanted = self._asset_ids_arg(request)
         ids = sorted(i for i, links in self.store.all_asset_links().items()
-                     if self.local_visible(request, 'shell', i)
-                     and (not wanted or self._links_match(self._visible_links(request, i, links), wanted)))
+                     if self.local_visible(request, 'shell', i) and self._discoverable(request, i, links, wanted))
         if wanted and self.federation:
             ids += [i for i in self.federation.lookup(wanted) if i not in ids]
         page, nxt = _list_page(ids, limit, cursor)
@@ -1467,12 +1486,16 @@ class Api:
 
     def get_asset_links(self, request):
         self.allow(request, 'READ')
-        if not self.local_visible(request, 'shell', _id(request.params['aas'])):
+        identifier = _id(request.params['aas'])
+        if not self.local_visible(request, 'shell', identifier):
             raise HttpError(404, 'no asset links for this shell')
         try:
-            return Response.json(self.store.get_asset_links(_id(request.params['aas'])))
+            links = self._visible_links(request, identifier, self.store.get_asset_links(identifier))
         except NotFound as error:
             raise HttpError(404, 'no asset links for this shell') from error
+        if self.descriptor_filters and not links:
+            raise HttpError(404, 'no asset links for this shell')
+        return Response.json(links)
 
     def post_asset_links(self, request):
         self.allow(request, 'CREATE')
@@ -1539,6 +1562,24 @@ class Api:
         if kind in ('shell', 'submodel', 'concept-description'):
             if not self.local_visible(request, kind, event['id']):
                 return None
+            if self.descriptor_filters and not self.unrestricted_registry(request):
+                # registry rules (e.g. Catena-X DTR): twins are known only through visible descriptors
+                if kind == 'submodel':
+                    return None
+                if kind == 'shell':
+                    try:
+                        if self._descriptor_view(request, 'aas', self.store.get_descriptor('aas', event['id'])) is None:
+                            return None
+                    except NotFound:
+                        return None
+            if self.descriptor_filters and event['kind'] in ('aas-descriptor', 'sm-descriptor'):
+                short = 'aas' if event['kind'] == 'aas-descriptor' else 'sm'
+                try:
+                    if self._descriptor_view(request, short, self.store.get_descriptor(short, event['id'])) is None:
+                        return None
+                except NotFound:
+                    if not self.unrestricted_registry(request):
+                        return None
             if event.get('path') and kind == 'submodel' and self.store.exists('submodel', event['id']) and \
                     not self.unrestricted(request, 'submodel', self.store.get('submodel', event['id'])):
                 event['path'] = None

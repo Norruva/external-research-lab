@@ -39,7 +39,10 @@ class DigitalTwinRegistry(unittest.TestCase):
         cls.server = Server(catenax={'bpn': OWNER, 'dataplane_url': 'https://dp.example.com/api/public',
                                      'dsp_url': 'https://cp.example.com/api/v1/dsp'},
                             api_keys={'dp-key': {'sub': 'edc-dataplane', 'edc_dataplane': True},
-                                      'owner-key': {'sub': 'owner', 'bpn': OWNER}})
+                                      'owner-key': {'sub': 'owner', 'bpn': OWNER},
+                                      'partner2-key': {'sub': 'partner2', 'bpn': BPN2},
+                                      'tier-dp-key': {'sub': 'edc-dataplane', 'edc_dataplane': True,
+                                                      'dpp_tier': 'economic-operator'}})
         owner = {'X-API-Key': 'owner-key'}
         assert cls.server.request('POST', '/api/v3.1/submodels', {'modelType': 'Submodel', 'id': SM, 'idShort': 'PCF',
             'semanticId': {'type': 'ExternalReference', 'keys': [{'type': 'GlobalReference',
@@ -115,9 +118,32 @@ class DigitalTwinRegistry(unittest.TestCase):
         self.assertEqual(dsp['protocolInformation']['href'], 'https://dp.example.com/api/public')
 
     def test_repository_shell_filters_asset_ids_too(self):
-        _, _, body = self.server.get(f'/api/v3.1/shells/{enc(AAS)}', headers={'X-API-Key': 'dp-key', 'Edc-Bpn': BPN2})
+        _, _, body = self.server.get(f'/api/v3.1/shells/{enc(AAS)}', headers={'X-API-Key': 'partner2-key'})
         self.assertEqual([a['name'] for a in body['assetInformation']['specificAssetIds']],
                          ['manufacturerId', 'manufacturerPartId'])
+
+
+class DataPlaneScope(DigitalTwinRegistry):
+    """The data plane identity reaches only what the EDC asset of the request covers."""
+
+    def test_registry_scope_is_read_only_registry(self):
+        dp = {'X-API-Key': 'dp-key', 'Edc-Bpn': BPN1}
+        self.assertEqual(self.server.get(f'/api/v3.1/submodels/{enc(SM)}', headers=dp)[0], 403)
+        self.assertEqual(self.server.request('DELETE', f'/api/v3.1/shell-descriptors/{enc(AAS)}', headers=dp)[0], 403)
+        self.assertEqual(self.server.get(f'/api/v3.1/shell-descriptors/{enc(AAS)}', headers=dp)[0], 200)
+
+    def test_submodel_scope_covers_only_its_submodel(self):
+        dp = {'X-API-Key': 'dp-key', 'Edc-Bpn': BPN1, 'X-AASForge-Asset': SM}
+        self.assertEqual(self.server.get(f'/api/v3.1/submodels/{enc(SM)}', headers=dp)[0], 200)
+        self.assertEqual(self.server.get(f'/api/v3.1/submodels/{enc(SM)}/$value', headers=dp)[0], 200)
+        self.assertEqual(self.server.get(f'/api/v3.1/shell-descriptors/{enc(AAS)}', headers=dp)[0], 403)
+        self.assertEqual(self.server.request('PUT', f'/api/v3.1/submodels/{enc(SM)}', {}, headers=dp)[0], 403)
+        self.assertEqual(self.server.get(f'/api/v3.1/submodels/{enc(SM)}/../{enc("urn:other")}', headers=dp)[0], 403)
+
+    def test_dataplane_key_claims_are_not_inherited(self):
+        status, _, body = self.server.get(f'/api/v3.1/shell-descriptors/{enc(AAS)}',
+                                          headers={'X-API-Key': 'tier-dp-key', 'Edc-Bpn': BPN3})
+        self.assertEqual(set(body), {'id', 'specificAssetIds', 'submodelDescriptors'})   # not the owner view
 
 
 class FakeEdc:
