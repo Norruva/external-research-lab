@@ -83,6 +83,17 @@ class Database:
         with self.lock:
             return self._conn.execute(self._sql(sql), tuple(params))
 
+    def executemany(self, sql: str, rows):
+        rows = [tuple(r) for r in rows]
+        if not rows:
+            return
+        with self.lock:
+            if self.dialect == 'sqlite':
+                self._conn.executemany(sql, rows)
+            else:
+                with self._conn.cursor() as cursor:
+                    cursor.executemany(self._sql(sql), rows)
+
     def script(self, script: str):
         with self.lock:
             for statement in self.ddl(script).split(';'):

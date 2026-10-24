@@ -141,8 +141,7 @@ class Store:
         identifier = body['id']
         if kind == 'submodel':
             self._db.execute('DELETE FROM element_index WHERE owner_id=?', (identifier,))
-            for row in _index_rows(body):
-                self._db.execute('INSERT INTO element_index VALUES (?,?,?,?,?,?,?,?,?)', row)
+            self._db.executemany('INSERT INTO element_index VALUES (?,?,?,?,?,?,?,?,?)', _index_rows(body))
         elif kind == 'shell':
             self._db.execute('DELETE FROM shell_submodels WHERE aas_id=?', (identifier,))
             self._db.execute('DELETE FROM shell_asset_ids WHERE aas_id=?', (identifier,))
