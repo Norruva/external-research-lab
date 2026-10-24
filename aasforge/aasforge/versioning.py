@@ -162,6 +162,15 @@ def parse_json(data: bytes | str) -> Normalised:
 
 
 def parse_xml(data: bytes | str) -> Normalised:
+    """Parse an AAS XML environment (3.0, 3.1 or 3.2); malformed XML raises VersionError."""
+    from xml.etree.ElementTree import ParseError
+    try:
+        return _parse_xml(data)
+    except (ParseError, UnicodeDecodeError) as error:
+        raise VersionError(f'not well-formed XML: {error}') from error
+
+
+def _parse_xml(data: bytes | str) -> Normalised:
     text = data.decode('utf-8-sig') if isinstance(data, bytes) else data
     version = detect_xml_version(text)
     # aas-core rejects attributes on the root element (e.g. xsi:schemaLocation, seen in the

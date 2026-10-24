@@ -105,6 +105,13 @@ def _index_rows(submodel: dict):
             yield base + (text, num)
 
 
+def _package_record(text: str) -> dict:
+    record = json.loads(text)
+    if isinstance(record, list):      # stores written before package contents were recorded
+        return {'aasIds': record, 'contents': {'shell': record}}
+    return record
+
+
 class Store:
     def __init__(self, path: str = ':memory:'):
         """``path``: a SQLite file, ``:memory:``, or a ``postgresql://`` DSN."""
@@ -187,6 +194,12 @@ class Store:
 
     def subscribe(self, callback):
         self._listeners.append(callback)
+
+    def unsubscribe(self, callback):
+        try:
+            self._listeners.remove(callback)
+        except ValueError:
+            pass
 
     def _event(self, kind, identifier, op, revision=None, path=None, actor=None):
         ts = now()
@@ -433,18 +446,21 @@ class Store:
     def all_asset_links(self):
         return {r['aas_id']: json.loads(r['links']) for r in self._db.execute('SELECT * FROM asset_links').fetchall()}
 
-    def put_package(self, package_id, filename, aas_ids, data):
+    def put_package(self, package_id, filename, aas_ids, data, contents=None):
+        """``contents``: ids of every object in the package by kind (``aas_ids`` are its shells)."""
+        record = {'aasIds': list(aas_ids), 'contents': contents or {'shell': list(aas_ids)}}
         with self.transaction():
             self._db.execute('INSERT INTO packages VALUES (?,?,?,?,?) ON CONFLICT (package_id) DO UPDATE SET '
                              'filename=excluded.filename, aas_ids=excluded.aas_ids, data=excluded.data',
-                             (package_id, filename, json.dumps(aas_ids), data, now()))
+                             (package_id, filename, json.dumps(record), data, now()))
 
     def get_package(self, package_id):
         row = self._db.execute('SELECT * FROM packages WHERE package_id=?', (package_id,)).fetchone()
         if row is None:
             raise NotFound(package_id)
         result = dict(row)
-        result['aas_ids'] = json.loads(result['aas_ids'])
+        record = _package_record(result['aas_ids'])
+        result['aas_ids'], result['contents'] = record['aasIds'], record['contents']
         return result
 
     def delete_package(self, package_id):
@@ -454,8 +470,8 @@ class Store:
 
     def list_packages(self, aas_id=None):
         rows = self._db.execute('SELECT package_id, filename, aas_ids FROM packages ORDER BY package_id').fetchall()
-        result = [{'packageId': r['package_id'], 'aasIds': json.loads(r['aas_ids']), 'filename': r['filename']}
-                  for r in rows]
+        result = [{'packageId': r['package_id'], 'aasIds': _package_record(r['aas_ids'])['aasIds'],
+                   'filename': r['filename']} for r in rows]
         return [p for p in result if aas_id is None or aas_id in p['aasIds']]
 
     def new_operation(self, kind):

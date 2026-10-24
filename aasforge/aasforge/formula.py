@@ -13,9 +13,11 @@ Semantics follow the specification text:
 """
 from __future__ import annotations
 
+import contextvars
 import copy
 import json
 import re
+import time as _time
 from dataclasses import dataclass, field
 from datetime import datetime, time, timezone
 from functools import lru_cache
@@ -323,17 +325,57 @@ def _coerce(value: Value, kind: str):
     return raw if isinstance(raw, str) else str(raw)
 
 
+# $regex patterns come from callers. They are bounded in size, matched with a per-search timeout
+# (the ``regex`` package, which releases the GIL), and every query has a total time budget.
+REGEX_MAX_PATTERN = 512
+REGEX_MAX_SUBJECT = 64 * 1024
+REGEX_TIMEOUT = 0.05
+QUERY_BUDGET = 5.0
+_deadline = contextvars.ContextVar('formula_deadline', default=None)
+
+
+@lru_cache(maxsize=256)
+def _compile_regex(pattern: str):
+    try:
+        import regex
+        return regex.compile(pattern), True
+    except ImportError:  # pragma: no cover - fallback keeps the size caps only
+        return re.compile(pattern), False
+
+
+def _regex_search(subject: str, pattern: str) -> bool:
+    if len(pattern) > REGEX_MAX_PATTERN or len(subject) > REGEX_MAX_SUBJECT:
+        raise TypeError('regex operand too long')      # treated as an invalid comparison
+    try:
+        compiled, bounded = _compile_regex(pattern)
+    except Exception as error:  # noqa: BLE001 - re.error and regex.error
+        raise TypeError(f'invalid pattern: {error}') from error
+    if not bounded:
+        return compiled.search(subject) is not None
+    try:
+        return compiled.search(subject, timeout=REGEX_TIMEOUT, concurrent=True) is not None
+    except TimeoutError as error:
+        raise TypeError('regex timed out') from error
+
+
+def _check_budget():
+    deadline = _deadline.get()
+    if deadline is not None and _time.monotonic() > deadline:
+        raise FormulaError(f'query exceeded its {QUERY_BUDGET:g} s evaluation budget')
+
+
 OPS = {
     '$eq': lambda a, b: a == b, '$ne': lambda a, b: a != b, '$gt': lambda a, b: a > b, '$lt': lambda a, b: a < b,
     '$ge': lambda a, b: a >= b, '$le': lambda a, b: a <= b,
     '$contains': lambda a, b: b in a, '$starts-with': lambda a, b: a.startswith(b),
-    '$ends-with': lambda a, b: a.endswith(b), '$regex': lambda a, b: re.search(b, a) is not None,
+    '$ends-with': lambda a, b: a.endswith(b), '$regex': _regex_search,
 }
 STRING_OPS = {'$contains', '$starts-with', '$ends-with', '$regex'}
 
 
 def _compare(op: str, left: list[Value], right: list[Value]):
     """Return (result, bindings-that-satisfy) with result True/False/None (error)."""
+    _check_budget()
     kind = 'str' if op in STRING_OPS else _kind_of(left, right)
     if kind == 'mismatch':
         return op == '$ne', set()
@@ -466,6 +508,14 @@ def run_query(query: dict, kind: str, candidates, *, submodels_of=None, shells_o
     if errors:
         raise FormulaError('; '.join(errors[:5]))
     condition = query['$condition']
+    token = _deadline.set(_time.monotonic() + QUERY_BUDGET)
+    try:
+        return _run(query, kind, candidates, condition, submodels_of, shells_of, claims)
+    finally:
+        _deadline.reset(token)
+
+
+def _run(query, kind, candidates, condition, submodels_of, shells_of, claims):
     results = []
     for obj in candidates:
         ctx = Context(kind, obj, submodels_of, shells_of, claims or {})

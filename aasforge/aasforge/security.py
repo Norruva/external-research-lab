@@ -64,7 +64,7 @@ class Decision:
 class Authenticator:
     def __init__(self, hs256_secret: str | None = None, rs256_public_keys: list | None = None,
                  api_keys: dict | None = None, issuer: str | None = None, audience: str | None = None,
-                 clock_skew: int = 60):
+                 clock_skew: int = 60, require_exp: bool = True):
         self.secret = hs256_secret.encode() if hs256_secret else None
         self.public_keys = []
         for pem in rs256_public_keys or []:
@@ -72,11 +72,15 @@ class Authenticator:
             self.public_keys.append(load_pem_public_key(pem.encode() if isinstance(pem, str) else pem))
         self.api_keys = {k: v for k, v in (api_keys or {}).items()}
         self.issuer, self.audience, self.skew = issuer, audience, clock_skew
+        self.require_exp = require_exp
 
     def authenticate(self, headers) -> Subject:
         authorization = headers.get('Authorization') or headers.get('authorization')
-        if authorization and authorization.lower().startswith('bearer '):
-            return Subject(self.verify_jwt(authorization.split(None, 1)[1].strip()), anonymous=False)
+        if authorization:
+            scheme, _, token = authorization.strip().partition(' ')
+            if scheme.lower() != 'bearer' or not token.strip():
+                raise AuthError('Authorization header must be "Bearer <token>"')
+            return Subject(self.verify_jwt(token.strip()), anonymous=False)
         api_key = headers.get('X-API-Key') or headers.get('x-api-key')
         if api_key:
             for known, claims in self.api_keys.items():
@@ -93,6 +97,8 @@ class Authenticator:
             signature = canonical.b64url_to_bytes(signature_b64)
         except (ValueError, json.JSONDecodeError) as error:
             raise AuthError('malformed token') from error
+        if not isinstance(header, dict) or not isinstance(payload, dict):
+            raise AuthError('malformed token')
         signed = f'{header_b64}.{payload_b64}'.encode()
         alg = header.get('alg')
         if alg == 'HS256' and self.secret:
@@ -113,6 +119,11 @@ class Authenticator:
         else:
             raise AuthError(f'token algorithm {alg!r} not accepted')
         now = time.time()
+        for claim in ('exp', 'nbf', 'iat'):
+            if claim in payload and (isinstance(payload[claim], bool) or not isinstance(payload[claim], (int, float))):
+                raise AuthError(f'token claim {claim!r} must be a number')
+        if 'exp' not in payload and self.require_exp:
+            raise AuthError('token has no expiry (exp)')
         if 'exp' in payload and now > payload['exp'] + self.skew:
             raise AuthError('token expired')
         if 'nbf' in payload and now < payload['nbf'] - self.skew:

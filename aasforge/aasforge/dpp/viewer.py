@@ -84,10 +84,9 @@ def render(view: dict) -> str:
                        f'{_fields(s["fields"]) if s["fields"] else "<p class=k>No data published.</p>"}</section>'
                        for i, s in enumerate(view.get('sections', [])))
     notice = ''
-    if view.get('hiddenElements'):
-        notice = (f'<p class="notice">{view["hiddenElements"]} data element(s) are restricted to persons with a legitimate '
-                  'interest or to authorities (Regulation (EU) 2023/1542, Art. 77(2)). Sign in with an authorised role '
-                  'to see them.</p>')
+    if view.get('restrictedTiersHidden') and view.get('viewerTier') == 'public':
+        notice = ('<p class="notice">Some passport data is available only to persons with a legitimate interest or to '
+                  'authorities (Regulation (EU) 2023/1542, Art. 77(2)). Sign in with an authorised role to see it.</p>')
     bar = ''
     if score is not None:
         bar = (f'<section class="card"><h2>Completeness</h2><div class="bar" role="img" aria-label="{score} percent">'

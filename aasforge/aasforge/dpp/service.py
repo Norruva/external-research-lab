@@ -31,12 +31,51 @@ class DynamicRules:
     def document(self):
         return tiers.access_rules(self.store.iter_all('submodel'))
 
-    def decide(self, subject, right, target, now=None):
+    def _rules(self):
         with self._lock:
             if self._compiled is None:
                 self._compiled = security.AccessRules(self.document())
-            rules = self._compiled
-        return rules.decide(subject, right, target, now)
+            return self._compiled
+
+    def decide(self, subject, right, target, now=None):
+        return self._rules().decide(subject, right, target, now)
+
+    def candidate_formulas(self, subject, right):
+        return self._rules().candidate_formulas(subject, right)
+
+
+class TieredStore:
+    """Read-only view of the store as one caller may see it: shells and submodels the access rules
+    hide do not exist, and submodels come back with FILTERs and the caller's tier applied. Every
+    passport computation (view, completeness, template check, carbon roll-up, MCP) runs on it, so
+    none of them can reveal data the raw API would withhold."""
+
+    def __init__(self, service, request, tier=None):
+        self.service, self.request = service, request
+        self.tier = tier or service.tier(request)
+        self.store = service.store
+
+    def get(self, kind, identifier, at=None):
+        obj = self.store.get(kind, identifier, at)
+        if not self.service.api.visible(self.request, kind, obj):
+            raise NotFound(identifier)
+        if kind == 'submodel':
+            obj = tiers.filter_for_tier(self.service.api.readable_submodel(self.request, obj), self.tier)
+            if obj is None:
+                raise NotFound(identifier)
+        return obj
+
+    def iter_all(self, kind, where=None):
+        for obj in self.store.iter_all(kind, where):
+            try:
+                yield self.get(kind, obj['id'])
+            except NotFound:
+                continue
+
+    def __getattr__(self, name):
+        if name in ('put', 'delete', 'transaction'):
+            raise AttributeError(f'{name} is not available on a read-only tiered view')
+        return getattr(self.store, name)
 
 
 class DppService:
@@ -48,6 +87,11 @@ class DppService:
         self.base = forge.config.base_url
         if forge.config.access_rules == 'dpp':
             forge.api.rules = DynamicRules(self.store)
+            # exact tier filter on every raw-API submodel read, including Extension-marked elements
+            forge.api.submodel_guards.append(lambda request, submodel: tiers.filter_for_tier(submodel, self.tier(request)))
+
+    def view_of(self, request, tier=None):
+        return TieredStore(self, request, tier)
 
     # -- helpers -------------------------------------------------------------------------------
     def tier(self, request):
@@ -60,7 +104,7 @@ class DppService:
         except (NotFound, ValueError) as error:
             raise HttpError(404, 'passport not found') from error
         self.api.allow(request, 'READ', 'shell', shell)
-        if not passport.is_passport(self.store, shell):
+        if not passport.is_passport(self.view_of(request), shell):
             raise HttpError(404, 'this shell has no passport submodels')
         return shell
 
@@ -108,12 +152,16 @@ class DppService:
         return Response.json(catalog.template(key))
 
     def access_rules(self, request):
+        """The generated rules name the submodels hidden from each tier, so only privileged tiers
+        receive them."""
+        if self.forge.config.access_rules and self.tier(request) not in ('authority', 'economic-operator'):
+            raise PermissionError(f'{request.subject.name} may not READ the generated access rules')
         return Response.json(tiers.access_rules(self.store.iter_all('submodel')))
 
     def list_passports(self, request):
         result = []
         for shell in self.store.iter_all('shell'):
-            if not self.api.visible(request, 'shell', shell) or not passport.is_passport(self.store, shell):
+            if not self.api.visible(request, 'shell', shell) or not passport.is_passport(self.view_of(request), shell):
                 continue
             info = shell.get('assetInformation') or {}
             result.append({'aasId': shell['id'], 'name': shell.get('idShort'), 'globalAssetId': info.get('globalAssetId'),
@@ -138,7 +186,7 @@ class DppService:
 
     def get_passport(self, request):
         shell = self._shell(request)
-        data = passport.view(self.store, shell, self.tier(request), self.base)
+        data = passport.view(self.view_of(request), shell, self.tier(request), self.base)
         wants_html = request.arg('format') == 'html' or (
             'text/html' in (request.headers.get('Accept') or '') and request.arg('format') != 'json')
         if wants_html:
@@ -160,13 +208,13 @@ class DppService:
 
     def completeness(self, request):
         shell = self._shell(request)
-        found, _ = passport.submodels_of(self.store, shell)
+        found, _ = passport.submodels_of(self.view_of(request), shell)
         category = request.arg('category') or passport.detect_category(found)
         return Response.json(passport.completeness(found, category))
 
     def template_check(self, request):
         shell = self._shell(request)
-        found, _ = passport.submodels_of(self.store, shell)
+        found, _ = passport.submodels_of(self.view_of(request), shell)
         return Response.json({key: {s['id']: smt.check(s, catalog.template(key)) for s in submodels}
                               for key, submodels in found.items()})
 
@@ -174,7 +222,7 @@ class DppService:
         if not self.forge.signer:
             raise HttpError(501, 'signing is not configured')
         shell = self._shell(request)
-        data = passport.view(self.store, shell, self.tier(request), self.base)
+        data = passport.view(self.view_of(request), shell, self.tier(request), self.base)
         vc = credential.build(data, self.base, 'aasforge DPP issuer')
         if request.arg('format') == 'json':
             return Response.json(vc)
@@ -182,15 +230,18 @@ class DppService:
 
     def registry_payload(self, request):
         shell = self._shell(request)
-        return Response.json(credential.registry_payload(passport.view(self.store, shell, 'public', self.base)))
+        return Response.json(credential.registry_payload(passport.view(self.view_of(request, 'public'), shell, 'public',
+                                                                       self.base)))
 
     def carbon_rollup(self, request):
-        return Response.json(passport.carbon_rollup(self.store, self._shell(request)))
+        return Response.json(passport.carbon_rollup(self.view_of(request), self._shell(request)))
 
     # -- GS1 Digital Link resolver ------------------------------------------------------------------
-    def _find_by_link(self, parts):
+    def _find_by_link(self, parts, request):
         best, level = None, None
         for shell in self.store.iter_all('shell'):
+            if not self.api.visible(request, 'shell', shell):
+                continue
             info = shell.get('assetInformation') or {}
             ids = {s.get('name'): s.get('value') for s in info.get('specificAssetIds') or []}
             gtin = ids.get('gtin') or ids.get('GTIN') or ids.get('01')
@@ -222,7 +273,7 @@ class DppService:
             parts = gs1.parse_path(path)
         except gs1.DigitalLinkError as error:
             raise HttpError(400, str(error)) from error
-        shell, level = self._find_by_link(parts)
+        shell, level = self._find_by_link(parts, request)
         if shell is None:
             raise HttpError(404, f'no passport is registered for {path}')
         b64 = canonical.b64url_encode(shell['id'])
@@ -278,8 +329,8 @@ class DppService:
                 parts['serialNumber'] = args['serial']
             if args.get('batch'):
                 parts['batchId'] = args['batch']
-            shell, level = self._find_by_link(parts)
-            if shell is None or not self.api.visible(request, 'shell', shell):
+            shell, level = self._find_by_link(parts, request)
+            if shell is None:
                 return {'found': False}
             return {'found': True, 'aasId': shell['id'], 'granularity': level,
                     'passport': f'{self.base}/dpp/passports/{canonical.b64url_encode(shell["id"])}'}
@@ -287,16 +338,14 @@ class DppService:
             shell = self.store.get('shell', args['aasId'])
             self.api.allow(request, 'READ', 'shell', shell)
             if name == 'get_passport':
-                return passport.view(self.store, shell, self.tier(request), self.base)
-            found, _ = passport.submodels_of(self.store, shell)
+                return passport.view(self.view_of(request), shell, self.tier(request), self.base)
+            found, _ = passport.submodels_of(self.view_of(request), shell)
             report = passport.completeness(found, args.get('category') or passport.detect_category(found))
             report['missing'] = [a['name'] for a in report.pop('attributes') if a['mandatory'] and a['status'] != 'present']
             return report
         if name == 'query_submodels':
-            candidates = [self.api.readable_submodel(request, s) for s in self.store.iter_all('submodel')
-                          if self.api.visible(request, 'submodel', s)]
-            candidates = [tiers.filter_for_tier(s, self.tier(request)) or {} for s in candidates]
-            results = formula.run_query(args['query'], 'submodel', [c for c in candidates if c])
+            candidates = list(self.view_of(request).iter_all('submodel'))
+            results = formula.run_query(args['query'], 'submodel', candidates)
             return {'count': len(results), 'result': results[:50]}
         if name == 'list_attributes':
             category = args.get('category')

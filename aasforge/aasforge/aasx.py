@@ -15,6 +15,7 @@ import io
 import json
 import posixpath
 import zipfile
+import zlib
 from dataclasses import dataclass, field
 from xml.etree import ElementTree
 
@@ -79,15 +80,36 @@ def _relationships(archive: zipfile.ZipFile, rels_part: str, source_part: str, r
     return result
 
 
-def read(data: bytes) -> Package:
+MAX_PACKAGE_BYTES = 512 * 1024 * 1024
+MAX_PARTS = 10000
+
+
+def read(data: bytes, max_total: int = MAX_PACKAGE_BYTES) -> Package:
+    """Parse an AASX package. Declared uncompressed sizes are bounded per part and in total;
+    ``zipfile`` never inflates a member beyond its declared size (CRC check), so the limits hold
+    for crafted archives too."""
     try:
         archive = zipfile.ZipFile(io.BytesIO(data))
     except zipfile.BadZipFile as error:
         raise AasxError('not a ZIP/OPC package') from error
+    infos = archive.infolist()
+    if len(infos) > MAX_PARTS:
+        raise AasxError(f'package has more than {MAX_PARTS} parts')
     names = set(archive.namelist())
-    for info in archive.infolist():
+    total = 0
+    for info in infos:
         if info.file_size > MAX_PART_BYTES or '..' in info.filename.split('/'):
             raise AasxError(f'refusing part {info.filename!r}')
+        total += info.file_size
+    if total > max_total:
+        raise AasxError(f'package expands to {total} bytes, more than the {max_total} byte limit')
+    try:
+        return _read(archive, names)
+    except (zipfile.BadZipFile, zlib.error, EOFError, ElementTree.ParseError) as error:
+        raise AasxError(f'corrupt package: {error}') from error
+
+
+def _read(archive, names) -> Package:
     repairs: list = []
     content_types = {}
     if '[Content_Types].xml' in names:

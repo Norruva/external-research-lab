@@ -1,7 +1,9 @@
 """Battery Regulation access tiers for passport data.
 
 Tier of an element (most specific wins):
-1. an ``Extension`` named ``TIER_EXTENSION`` on the element, an ancestor or the submodel;
+1. a marker on the element, an ancestor or the submodel: an ``Extension`` named ``TIER_EXTENSION``
+   whose value is the tier, or a supplemental semanticId ``TIER_EXTENSION + '/' + tier``. The
+   second form can be tested in the standard Access Rule grammar, so generated rules use it;
 2. the attribute map (Battery Regulation Art. 77 / Annex XIII tier of the attributes mapped to the
    element's generic idShortPath), inherited by descendants;
 3. ``public``.
@@ -23,19 +25,24 @@ ROLE_CLAIM = 'dpp_tier'
 def subject_tier(claims: dict, anonymous: bool) -> str:
     if anonymous:
         return 'public'
+    # Only the claim the generated access rules test: the passport view and the raw API must agree.
     tier = claims.get(ROLE_CLAIM)
-    roles = claims.get('roles') or []
-    if isinstance(roles, str):
-        roles = [roles]
-    candidates = [tier] + [r for r in roles if r in TIER_ORDER]
-    best = max((c for c in candidates if c in TIER_ORDER), key=TIER_ORDER.get, default=None)
-    return best or 'public'
+    return tier if isinstance(tier, str) and tier in TIER_ORDER else 'public'
+
+
+def tier_marker(tier: str) -> str:
+    """Supplemental semanticId that marks an element or submodel as belonging to ``tier``."""
+    return f'{TIER_EXTENSION}/{tier}'
 
 
 def _extension_tier(node: dict):
     for extension in node.get('extensions') or []:
         if extension.get('name') == TIER_EXTENSION and extension.get('value') in TIER_ORDER:
             return extension['value']
+    for reference in node.get('supplementalSemanticIds') or []:
+        value = ((reference.get('keys') or [{}])[0]).get('value') or ''
+        if value.startswith(TIER_EXTENSION + '/') and value[len(TIER_EXTENSION) + 1:] in TIER_ORDER:
+            return value[len(TIER_EXTENSION) + 1:]
     return None
 
 
@@ -75,10 +82,15 @@ def filter_for_tier(submodel: dict, tier: str) -> dict:
 def access_rules(submodels=()) -> dict:
     """Generate an IDTA-01004 AllAccessPermissionRules document enforcing the tiers.
 
-    Element-level tiers are expressed with semanticId conditions in FILTER fragments; submodels
-    marked with the tier extension get IDENTIFIABLE rules. Economic operators get full access.
+    Element-level tiers from the attribute map are expressed with semanticId conditions in FILTER
+    fragments, and marked elements with conditions on ``$sme#supplementalSemanticIds[]``; marked
+    submodels are excluded in FORMULAs. Every tier reads nothing above itself; economic operators
+    get full access. Elements marked only by an Extension are hidden on this server by the exact
+    tier filter (see ``service.DppService``) but need the supplemental-semanticId marker to be
+    hidden by other servers that load these rules.
     """
-    restricted = {'legitimate-interest': set(), 'authority': set()}
+    above = {t: [u for u in TIER_ORDER if TIER_ORDER[u] > TIER_ORDER[t]] for t in TIER_ORDER}
+    restricted = {t: set() for t in TIER_ORDER if t != 'public'}
     for (template_key, path), tier in element_tiers().items():
         if tier in restricted:
             from .catalog import template
@@ -90,7 +102,7 @@ def access_rules(submodels=()) -> dict:
             semantic = ((element.get('semanticId') or {}).get('keys') or [{}])[0].get('value')
             if semantic:
                 restricted[tier].add(semantic)
-    hidden_submodels = {'legitimate-interest': [], 'authority': []}
+    hidden_submodels = {t: [] for t in restricted}
     for submodel in submodels:
         tier = _extension_tier(submodel)
         if tier in hidden_submodels:
@@ -102,33 +114,32 @@ def access_rules(submodels=()) -> dict:
             return {'$boolean': operator == '$and'}
         return items[0] if len(items) == 1 else {operator: items}
 
-    def not_in(semantics):
-        return combine('$and', [{'$ne': [{'$field': '$sme#semanticId'}, {'$strVal': s}]} for s in sorted(semantics)])
+    def not_marked(tier):
+        return {'$not': {'$eq': [{'$field': '$sme#supplementalSemanticIds[]'}, {'$strVal': tier_marker(tier)}]}}
 
     def tier_is(*tiers):
         return combine('$or', [{'$eq': [{'$attribute': {'CLAIM': ROLE_CLAIM}}, {'$strVal': t}]} for t in tiers])
 
-    def not_submodels(ids):
-        return [{'$ne': [{'$field': '$sm#id'}, {'$strVal': i}]} for i in sorted(ids)]
-
-    def formula(base, ids):
-        return combine('$and', [base] + not_submodels(ids))
+    def reading_rule(tier, attributes, objects, subject_formula):
+        """READ for ``tier``: hides submodels and elements of every higher tier."""
+        hidden_ids = sorted(i for t in above[tier] for i in hidden_submodels[t])
+        semantics = sorted(set().union(*(restricted[t] for t in above[tier])))
+        condition = combine('$and', [{'$ne': [{'$field': '$sme#semanticId'}, {'$strVal': x}]} for x in semantics]
+                            + [not_marked(t) for t in above[tier]])
+        return {'ACL': {'ATTRIBUTES': attributes, 'RIGHTS': ['READ'], 'ACCESS': 'ALLOW'}, 'OBJECTS': objects,
+                'FORMULA': combine('$and', [subject_formula] + [{'$ne': [{'$field': '$sm#id'}, {'$strVal': i}]}
+                                                               for i in hidden_ids]),
+                'FILTER': {'FRAGMENT': '$sme', 'CONDITION': condition}}
 
     public_objects = [{'ROUTE': r} for r in ('/shells', '/submodels', '/concept-descriptions', '/lookup', '/shell-descriptors',
                                              '/submodel-descriptors', '/description', '/dpp', '/01', '/id', '/query', '/mcp',
                                              '/.well-known')]
+    claim = [{'CLAIM': ROLE_CLAIM}]
     rules = [
-        {'ACL': {'ATTRIBUTES': [{'CLAIM': ROLE_CLAIM}], 'RIGHTS': ['ALL'], 'ACCESS': 'ALLOW'},
+        {'ACL': {'ATTRIBUTES': claim, 'RIGHTS': ['ALL'], 'ACCESS': 'ALLOW'},
          'OBJECTS': [{'ROUTE': '*'}], 'FORMULA': tier_is('economic-operator')},
-        {'ACL': {'ATTRIBUTES': [{'CLAIM': ROLE_CLAIM}], 'RIGHTS': ['READ'], 'ACCESS': 'ALLOW'},
-         'OBJECTS': [{'ROUTE': '*'}], 'FORMULA': tier_is('authority')},
-        {'ACL': {'ATTRIBUTES': [{'CLAIM': ROLE_CLAIM}], 'RIGHTS': ['READ'], 'ACCESS': 'ALLOW'},
-         'OBJECTS': public_objects,
-         'FORMULA': formula(tier_is('legitimate-interest'), hidden_submodels['authority']),
-         'FILTER': {'FRAGMENT': '$sme', 'CONDITION': not_in(restricted['authority'])}},
-        {'ACL': {'ATTRIBUTES': [{'GLOBAL': 'ANONYMOUS'}], 'RIGHTS': ['READ'], 'ACCESS': 'ALLOW'},
-         'OBJECTS': public_objects,
-         'FORMULA': formula({'$boolean': True}, hidden_submodels['authority'] + hidden_submodels['legitimate-interest']),
-         'FILTER': {'FRAGMENT': '$sme', 'CONDITION': not_in(restricted['authority'] | restricted['legitimate-interest'])}},
+        reading_rule('authority', claim, [{'ROUTE': '*'}], tier_is('authority')),
+        reading_rule('legitimate-interest', claim, public_objects, tier_is('legitimate-interest')),
+        reading_rule('public', [{'GLOBAL': 'ANONYMOUS'}], public_objects, {'$boolean': True}),
     ]
     return {'AllAccessPermissionRules': {'rules': rules}}

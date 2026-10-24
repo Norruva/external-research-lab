@@ -290,8 +290,9 @@ def view(store, shell: dict, tier: str = 'public', base_url: str = '') -> dict:
             fields = _fields(submodel, tiers.element_tier_index(original))
             sections.append({'template': key, 'title': catalog.TITLES[key], 'submodelId': submodel['id'],
                              'semanticId': catalog.manifest()[key]['semanticId'], 'fields': fields})
-    hidden = sum(1 for key, sms in found_all.items() for sm in sms
-                 for p, t in tiers.element_tier_index(sm).items() if catalog.TIER_ORDER[t] > catalog.TIER_ORDER[tier])
+    # Whether data is withheld is a property of the tier, not of this passport: counting the hidden
+    # elements would tell an anonymous reader how much restricted data a product carries.
+    restricted = catalog.TIER_ORDER[tier] < catalog.TIER_ORDER['economic-operator']
     aas_b64 = canonical.b64url_encode(shell['id'])
     return {
         'passportId': meta.get('digitalProductPassportId'), 'uniqueProductIdentifier': meta.get('uniqueProductIdentifier'),
@@ -301,7 +302,7 @@ def view(store, shell: dict, tier: str = 'public', base_url: str = '') -> dict:
         'name': next((n['text'] for n in shell.get('displayName') or [] if n.get('language', '').startswith('en')),
                      shell.get('idShort')),
         'globalAssetId': info.get('globalAssetId'), 'specificAssetIds': info.get('specificAssetIds') or [],
-        'category': category, 'viewerTier': tier, 'hiddenElements': hidden, 'sections': sections,
+        'category': category, 'viewerTier': tier, 'restrictedTiersHidden': restricted, 'sections': sections,
         'otherSubmodels': [{'id': s['id'], 'idShort': s.get('idShort')} for s in others],
         'completeness': {k: v for k, v in completeness(found_all, category).items() if k != 'attributes'},
         'links': {'aas': f'{base_url}/api/v3.1/shells/{aas_b64}', 'html': f'{base_url}/dpp/passports/{aas_b64}?format=html',

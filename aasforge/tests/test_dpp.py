@@ -62,7 +62,8 @@ class DppScenario(unittest.TestCase):
         self.assertNotIn('RemainingCapacity', joined)          # legitimate interest (Art. 77(2)(b))
         self.assertNotIn('tests.zip', joined)                  # authority-tier test report submodel
         self.assertIn('PcfCO2eq', joined)                      # public carbon footprint
-        self.assertGreater(public['hiddenElements'], 0)
+        self.assertTrue(public['restrictedTiersHidden'])
+        self.assertNotIn('hiddenElements', public)
 
     def test_legitimate_interest_and_authority_views(self):
         legit = json.dumps(self.view('legitimate-interest'))

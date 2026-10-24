@@ -11,9 +11,29 @@ from datetime import datetime, timezone
 from email.parser import BytesParser
 from email.policy import default as default_policy
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from urllib.parse import parse_qs, urlsplit
+from urllib.parse import parse_qs, quote, urlsplit
 
-MAX_BODY = 512 * 1024 * 1024
+MAX_BODY = 64 * 1024 * 1024          # default request body limit; Config.max_body overrides it
+MAX_MULTIPART_PARTS = 16
+_UNSAFE_FILENAME = re.compile(r'[\x00-\x1f\x7f"\\/:*?<>|]+')
+
+
+def safe_filename(name, default='file') -> str:
+    """A file name safe to store and to put in headers: basename only, no control characters,
+    quotes, slashes or reserved characters, at most 200 characters."""
+    name = str(name or '').replace('\\', '/').rsplit('/', 1)[-1]
+    name = _UNSAFE_FILENAME.sub('_', name).strip(' .')
+    return name[:200] or default
+
+
+def content_disposition(filename, disposition='attachment') -> str:
+    safe = safe_filename(filename)
+    ascii_name = safe.encode('ascii', 'replace').decode().replace('?', '_')
+    return f'{disposition}; filename="{ascii_name}"; filename*=UTF-8\'\'{quote(safe)}'
+
+
+# Headers for user-supplied files: never sniffed, never rendered as an active document.
+FILE_HEADERS = {'X-Content-Type-Options': 'nosniff', 'Content-Security-Policy': "default-src 'none'; sandbox"}
 
 
 class HttpError(Exception):
@@ -74,7 +94,9 @@ class Request:
         message = BytesParser(policy=default_policy).parsebytes(
             b'Content-Type: ' + content_type.encode() + b'\r\nMIME-Version: 1.0\r\n\r\n' + self.body)
         parts = {}
-        for part in message.iter_parts():
+        for index, part in enumerate(message.iter_parts()):
+            if index >= MAX_MULTIPART_PARTS:
+                raise HttpError(400, f'at most {MAX_MULTIPART_PARTS} multipart parts are accepted')
             name = part.get_param('name', header='content-disposition')
             parts[name] = {'filename': part.get_filename(), 'content_type': part.get_content_type(),
                            'data': part.get_payload(decode=True) or b''}
@@ -162,7 +184,8 @@ class App:
         except Exception as error:  # noqa: BLE001 - never drop the connection; report a Result instead
             import traceback
             traceback.print_exc()
-            response = Response.json(result_messages(500, f'internal error: {type(error).__name__}: {error}'), 500)
+            response = Response.json(result_messages(500, f'internal error: {type(error).__name__}'), 500)
+        response.headers.setdefault('X-Content-Type-Options', 'nosniff')
         origin = request.headers.get('Origin') or request.headers.get('origin')
         if origin and origin in self.cors_origins:
             response.headers.setdefault('Access-Control-Allow-Origin', origin)
@@ -170,15 +193,22 @@ class App:
         return response
 
 
-def serve(app: App, host: str = '127.0.0.1', port: int = 8081):
+def serve(app: App, host: str = '127.0.0.1', port: int = 8081, max_body: int = MAX_BODY):
     class Handler(BaseHTTPRequestHandler):
         protocol_version = 'HTTP/1.1'
         server_version = 'aasforge'
 
         def _dispatch(self):
             split = urlsplit(self.path)
-            length = int(self.headers.get('Content-Length') or 0)
-            if length > MAX_BODY:
+            raw_length = (self.headers.get('Content-Length') or '0').strip()
+            if self.headers.get('Transfer-Encoding'):
+                self.send_error(411, 'chunked request bodies are not supported; send Content-Length')
+                return
+            if not raw_length.isdigit():
+                self.send_error(400, 'invalid Content-Length')
+                return
+            length = int(raw_length)
+            if length > max_body:
                 self.send_error(413)
                 return
             body = self.rfile.read(length) if length else b''
@@ -199,6 +229,10 @@ def serve(app: App, host: str = '127.0.0.1', port: int = 8081):
                         self.wfile.flush()
                 except (BrokenPipeError, ConnectionResetError):
                     pass
+                finally:
+                    close = getattr(response.stream, 'close', None)
+                    if close:
+                        close()      # runs the stream's cleanup (unsubscribe) right away
                 self.close_connection = True
                 return
             if response.content_type:

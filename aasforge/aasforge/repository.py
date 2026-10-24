@@ -203,7 +203,7 @@ class Repository:
         is_aasx = filename.lower().endswith('.aasx') or 'aasx' in content_type or data[:2] == b'PK'
         files, content_types, repairs = {}, {}, []
         if is_aasx:
-            package = aasx.read(data)
+            package = aasx.read(data, getattr(self, 'max_package', aasx.MAX_PACKAGE_BYTES))
             normalised, files, content_types, repairs = (package.normalised, package.files, package.content_types,
                                                          package.repairs)
             expected = sum(len(normalised.environment.get(k) or []) for k in COLLECTIONS)
@@ -335,8 +335,10 @@ class Repository:
         except NotFound:
             return None
 
-    def package(self, aas_ids=None, submodel_ids=None, fmt='json', version='3.1') -> bytes:
-        env = self.environment(aas_ids, submodel_ids, version='3.1')
+    def package(self, aas_ids=None, submodel_ids=None, fmt='json', version='3.1', environment=None) -> bytes:
+        """AASX of the selected objects, or of ``environment`` (e.g. one already filtered for a caller);
+        attachments are included only for File elements still present in it."""
+        env = environment if environment is not None else self.environment(aas_ids, submodel_ids, version='3.1')
         files, types = {}, {}
         env = copy.deepcopy(env)
         for submodel in env.get('submodels') or []:
