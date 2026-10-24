@@ -146,6 +146,82 @@ class DataPlaneScope(DigitalTwinRegistry):
         self.assertEqual(set(body), {'id', 'specificAssetIds', 'submodelDescriptors'})   # not the owner view
 
 
+PCF_SEM, TRACE_SEM = 'urn:samm:io.catenax.pcf:7.0.0#Pcf', 'urn:samm:io.catenax.traceability:1.0.0#Trace'
+
+
+class GranularRegistry(unittest.TestCase):
+    """The DTR granular access-control model (rules managed through /access-controls/rules)."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.server = Server(catenax={'bpn': OWNER, 'granular': True},
+                            api_keys={'owner': {'sub': 'owner', 'bpn': OWNER}, 'p1': {'sub': 'p1', 'bpn': BPN1},
+                                      'p3': {'sub': 'p3', 'bpn': BPN3}})
+        owner = {'X-API-Key': 'owner'}
+        for identifier, semantic in (('urn:uuid:g-pcf', PCF_SEM), ('urn:uuid:g-trace', TRACE_SEM)):
+            cls.server.request('POST', '/api/v3.1/submodels', {'modelType': 'Submodel', 'id': identifier, 'semanticId': {
+                'type': 'ExternalReference', 'keys': [{'type': 'GlobalReference', 'value': semantic}]}}, headers=owner)
+        for aas, mpn in (('urn:uuid:g-twin', 'MPN-77'), ('urn:uuid:g-other', 'MPN-99')):
+            cls.server.request('POST', '/api/v3.1/shells', {'modelType': 'AssetAdministrationShell', 'id': aas,
+                'idShort': 'GTwin', 'assetInformation': {'assetKind': 'Instance', 'specificAssetIds': [
+                    {'name': 'manufacturerPartId', 'value': mpn}, {'name': 'partInstanceId', 'value': f'SN-{mpn}'},
+                    {'name': 'customerPartId', 'value': 'C-1'}]},
+                'submodels': [{'type': 'ModelReference', 'keys': [{'type': 'Submodel', 'value': i}]}
+                              for i in ('urn:uuid:g-pcf', 'urn:uuid:g-trace')]}, headers=owner)
+
+        def rule(bpn, names, semantics, **extra):
+            return {'policyType': 'AAS', 'policy': {'accessRules': [
+                {'attribute': 'bpn', 'operator': 'eq', 'value': bpn},
+                {'attribute': 'mandatorySpecificAssetIds', 'operator': 'includes',
+                 'values': [{'attribute': 'manufacturerPartId', 'operator': 'eq', 'value': 'MPN-77'}]},
+                {'attribute': 'visibleSpecificAssetIdNames', 'operator': 'includes',
+                 'values': [{'attribute': 'name', 'operator': 'eq', 'value': n} for n in names]},
+                {'attribute': 'visibleSemanticIds', 'operator': 'includes',
+                 'values': [{'attribute': 'modelUrn', 'operator': 'eq', 'value': v} for v in semantics]}]}, **extra}
+        for body in (rule(BPN1, ['manufacturerPartId', 'partInstanceId'], [PCF_SEM]),
+                     rule('PUBLIC_READABLE', ['manufacturerPartId'], []),
+                     rule(BPN3, ['customerPartId'], [TRACE_SEM], validTo='2001-01-01T00:00:00Z')):
+            status, _, created = cls.server.request('POST', '/api/v3.1/access-controls/rules', body, headers=owner)
+            assert status == 201, created
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.server.close()
+
+    def descriptor(self, key, aas='urn:uuid:g-twin'):
+        return self.server.get(f'/api/v3.1/shell-descriptors/{enc(aas)}', headers={'X-API-Key': key})
+
+    def test_partner_rule(self):
+        status, _, body = self.descriptor('p1')
+        self.assertEqual(status, 200)
+        self.assertEqual(sorted(a['name'] for a in body['specificAssetIds']), ['manufacturerPartId', 'partInstanceId'])
+        self.assertEqual([d['id'] for d in body['submodelDescriptors']], ['urn:uuid:g-pcf'])
+        self.assertEqual(body['idShort'], 'GTwin')
+        self.assertEqual(self.descriptor('p1', 'urn:uuid:g-other')[0], 404)      # mandatory ids do not match
+
+    def test_public_rule_and_expired_rule(self):
+        status, _, body = self.descriptor('p3')            # its own rule has expired; the public one applies
+        self.assertEqual(status, 200)
+        self.assertEqual(set(body), {'id', 'specificAssetIds', 'submodelDescriptors'})
+        self.assertEqual([a['name'] for a in body['specificAssetIds']], ['manufacturerPartId'])
+        self.assertEqual(body['submodelDescriptors'], [])
+
+    def test_lookup_and_rule_management(self):
+        link = enc(json.dumps({'name': 'partInstanceId', 'value': 'SN-MPN-77'}))
+        lookup = lambda key: self.server.get(f'/api/v3.1/lookup/shells?assetIds={link}', headers={'X-API-Key': key})[2]
+        self.assertEqual(lookup('p1')['result'], ['urn:uuid:g-twin'])
+        self.assertEqual(lookup('p3')['result'], [])
+        self.assertEqual(self.server.get('/api/v3.1/access-controls/rules', headers={'X-API-Key': 'p1'})[0], 403)
+        _, _, rules = self.server.get('/api/v3.1/access-controls/rules', headers={'X-API-Key': 'owner'})
+        self.assertEqual(len(rules['items']), 3)
+        self.assertEqual(rules['items'][0]['tid'], OWNER)
+        bad = self.server.request('POST', '/api/v3.1/access-controls/rules', {'policyType': 'ODRL', 'policy': {}},
+                                  headers={'X-API-Key': 'owner'})
+        self.assertEqual(bad[0], 400)
+        _, _, events = self.server.get('/api/v3.1/events', headers={'X-API-Key': 'p1'})
+        self.assertFalse(any(e['kind'] == 'dtr-access-rule' for e in events['events']))
+
+
 class FakeEdc:
     def __init__(self):
         self.requests, self.store = [], {}

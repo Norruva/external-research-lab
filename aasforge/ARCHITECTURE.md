@@ -166,6 +166,10 @@ passport needs: resolver, credential and registry.
   - `specificAssetIds` are visible per BPN through `externalSubjectId`.
   - `PUBLIC_READABLE` applies only to `manufacturerPartId`/`assetLifecyclePhase`, with a reduced
     view.
+  - Alternatively, the granular model applies: owner-managed rules (`/access-controls/rules`, the
+    DTR access-control API) make the twins that carry the rule's mandatory specificAssetIds
+    visible to the BPN it names. The rule sets which asset id names and submodel semanticIds that
+    BPN sees, and it can have a validity period.
   - `Edc-Bpn` is trusted only from the EDC data plane's identity.
 
   Submodel descriptors carry the DSP endpoint (`subprotocolBody: id=…;dspEndpoint=…`).
@@ -200,6 +204,7 @@ passport needs: resolver, credential and registry.
 - **Scale-out by processes.** `serve --workers N` pre-forks workers on one socket.
   - Each worker runs a watcher that delivers the other workers' events to its local subscribers:
     SSE streams, the tier-rule cache, and the MQTT and OPC UA bridges, which run in worker 0.
+  - On PostgreSQL the watcher wakes on `LISTEN/NOTIFY` (sent at commit); on SQLite it polls.
   - Sequence numbers may commit out of order, so the watcher re-reads a window of recent ones.
 - **Exact semantics in Python, speed from SQL.** SQL prefilters may return extra candidates but
   never miss one. A property test with 600 generated queries over the corpus checks this, and a
@@ -209,9 +214,6 @@ passport needs: resolver, credential and registry.
 
 ## Roadmap
 
-- **Lower-latency cross-process events.** Use PostgreSQL `LISTEN/NOTIFY` instead of polling
-  (0.5 s today).
-- **DTR "granular" access rules** alongside the classic `externalSubjectId` model.
 - **Checking EDC agreements.** Verify `Edc-Contract-Agreement-Id` against the provider EDC, and
   refresh EDR tokens on the consumer side.
 - **More integration.** A Kafka bridge, and ECLASS XML (ontoml) in addition to the CSV exports.

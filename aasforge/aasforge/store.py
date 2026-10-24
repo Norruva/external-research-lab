@@ -61,6 +61,8 @@ CREATE INDEX IF NOT EXISTS element_index_num ON element_index(pattern, value_num
 CREATE TABLE IF NOT EXISTS shell_submodels (
   aas_id TEXT NOT NULL, sm_id TEXT NOT NULL, PRIMARY KEY (aas_id, sm_id));
 CREATE INDEX IF NOT EXISTS shell_submodels_sm ON shell_submodels(sm_id);
+CREATE TABLE IF NOT EXISTS dtr_access_rules (
+  id INTEGER PRIMARY KEY AUTOINCREMENT, body TEXT NOT NULL, updated_at TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS shell_asset_ids (
   aas_id TEXT NOT NULL, name TEXT, value TEXT);
 CREATE INDEX IF NOT EXISTS shell_asset_ids_owner ON shell_asset_ids(aas_id);
@@ -185,6 +187,7 @@ class Store:
         event = {'seq': seq, 'ts': ts, 'kind': kind, 'id': identifier, 'op': op, 'path': path,
                  'revision': revision}
         self._own_events.add(seq)
+        self._db.notify(str(seq))
         self._db.after_commit(lambda: self._dispatch(event))
         return event
 
@@ -205,9 +208,27 @@ class Store:
         start = self._db.execute('SELECT MAX(seq) AS seq FROM events').fetchone()['seq'] or 0
         self._watch_stop = threading.Event()
 
+        listener = None
+        if self._db.dialect == 'postgres':
+            try:
+                listener = self._db.listener()
+            except Exception:  # noqa: BLE001 - fall back to polling
+                listener = None
+
+        def wait():
+            """Until a notification arrives (PostgreSQL) or ``interval`` passes; False when stopping."""
+            if listener is not None:
+                try:
+                    for _ in listener.notifies(timeout=interval, stop_after=1):
+                        pass
+                except Exception:  # noqa: BLE001
+                    self._watch_stop.wait(interval)
+                return not self._watch_stop.is_set()
+            return not self._watch_stop.wait(interval)
+
         def loop():
             last, seen = start, set()
-            while not self._watch_stop.wait(interval):
+            while wait():
                 try:
                     rows = self._db.execute('SELECT * FROM events WHERE seq > ? ORDER BY seq LIMIT 1000',
                                             (max(0, last - 256),)).fetchall()
@@ -488,6 +509,35 @@ class Store:
         result = [{'packageId': r['package_id'], 'aasIds': _package_record(r['aas_ids'])['aasIds'],
                    'filename': r['filename']} for r in rows]
         return [p for p in result if aas_id is None or aas_id in p['aasIds']]
+
+    # -- Catena-X DTR granular access rules -----------------------------------------------------
+    def list_dtr_rules(self):
+        return [{**json.loads(r['body']), 'id': r['id']} for r in
+                self._db.execute('SELECT id, body FROM dtr_access_rules ORDER BY id').fetchall()]
+
+    def get_dtr_rule(self, rule_id: int):
+        row = self._db.execute('SELECT id, body FROM dtr_access_rules WHERE id=?', (rule_id,)).fetchone()
+        if row is None:
+            raise NotFound(str(rule_id))
+        return {**json.loads(row['body']), 'id': row['id']}
+
+    def put_dtr_rule(self, body: dict, rule_id: int | None = None) -> int:
+        data = json.dumps({k: v for k, v in body.items() if k not in ('id', 'tid')})
+        with self.transaction():
+            if rule_id is None:
+                rule_id = self._db.execute('INSERT INTO dtr_access_rules (body, updated_at) VALUES (?,?) RETURNING id',
+                                           (data, now())).fetchone()['id']
+            elif not self._db.execute('UPDATE dtr_access_rules SET body=?, updated_at=? WHERE id=?',
+                                      (data, now(), rule_id)).rowcount:
+                raise NotFound(str(rule_id))
+            self._event('dtr-access-rule', str(rule_id), 'updated')
+        return rule_id
+
+    def delete_dtr_rule(self, rule_id: int):
+        with self.transaction():
+            if not self._db.execute('DELETE FROM dtr_access_rules WHERE id=?', (rule_id,)).rowcount:
+                raise NotFound(str(rule_id))
+            self._event('dtr-access-rule', str(rule_id), 'deleted')
 
     def new_operation(self, kind):
         handle = str(uuid.uuid4())

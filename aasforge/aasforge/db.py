@@ -263,6 +263,22 @@ class Database:
                 if statement.strip():
                     self.execute(statement)
 
+    @property
+    def channel(self) -> str:
+        """NOTIFY channel for this database (and schema)."""
+        return 'aasforge_' + hashlib.sha256((self.schema or 'public').encode()).hexdigest()[:16]
+
+    def notify(self, payload: str):
+        """Queue a notification; PostgreSQL delivers it when the transaction commits."""
+        if self.dialect == 'postgres':
+            self.execute('SELECT pg_notify(?, ?)', (self.channel, payload))
+
+    def listener(self):
+        """A dedicated connection listening on :attr:`channel` (PostgreSQL only)."""
+        conn = self._connect()
+        conn.execute(f'LISTEN {self.channel}')
+        return conn
+
     def close(self):
         if self.dialect == 'sqlite':
             with self.lock:

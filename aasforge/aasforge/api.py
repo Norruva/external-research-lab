@@ -1559,6 +1559,9 @@ class Api:
         withheld; actors are never streamed; element paths only when nothing in the submodel is hidden."""
         event = {k: v for k, v in event.items() if k != 'actor'}
         kind = {'aas-descriptor': 'shell', 'sm-descriptor': 'submodel'}.get(event['kind'], event['kind'])
+        if kind not in ('shell', 'submodel', 'concept-description') and self.descriptor_filters \
+                and not self.unrestricted_registry(request):
+            return None             # e.g. registry access-rule changes: for the owner only
         if kind in ('shell', 'submodel', 'concept-description'):
             if not self.local_visible(request, kind, event['id']):
                 return None

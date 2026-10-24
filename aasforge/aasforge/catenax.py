@@ -38,8 +38,12 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
+from datetime import datetime, timezone
+
 from . import canonical, security
 from .dpp import tiers
+from .http import HttpError, Response
+from .store import NotFound
 
 PUBLIC_READABLE = 'PUBLIC_READABLE'
 PUBLIC_READABLE_TYPES = ('manufacturerPartId', 'assetLifecyclePhase')
@@ -53,6 +57,11 @@ REGISTRY_ASSET = 'aasforge-digital-twin-registry'
 REGISTRY_READ = ('/shell-descriptors', '/lookup/shells')
 
 
+def _instant(text: str) -> datetime:
+    value = datetime.fromisoformat(str(text).replace('Z', '+00:00'))
+    return value if value.tzinfo else value.replace(tzinfo=timezone.utc)
+
+
 def _subject_values(asset_id: dict) -> list[str]:
     reference = asset_id.get('externalSubjectId') or {}
     return [k.get('value') for k in reference.get('keys') or [] if k.get('value')]
@@ -60,12 +69,13 @@ def _subject_values(asset_id: dict) -> list[str]:
 
 class CatenaX:
     def __init__(self, forge, bpn: str, dataplane_url: str | None = None, dsp_url: str | None = None,
-                 public_readable_types=PUBLIC_READABLE_TYPES):
+                 public_readable_types=PUBLIC_READABLE_TYPES, granular: bool = False):
         if not bpn:
             raise ValueError('Catena-X mode needs the BPN of this registry (e.g. BPNL000000000001)')
         self.forge, self.bpn = forge, bpn
         self.dataplane_url, self.dsp_url = dataplane_url, dsp_url
         self.public_readable_types = tuple(public_readable_types)
+        self.granular = granular
 
     def install(self):
         api, repository = self.forge.api, self.forge.repository
@@ -74,7 +84,112 @@ class CatenaX:
         api.shell_filters.append(self.shell_view)
         repository.validators.append(self.validate)
         repository.endpoint_hooks.append(self.endpoints)
+        router = api.router.add
+        router('GET', '/access-controls/rules', self.list_rules)
+        router('POST', '/access-controls/rules', self.create_rule)
+        router('GET', '/access-controls/rules/{rule}', self.get_rule)
+        router('PUT', '/access-controls/rules/{rule}', self.update_rule)
+        router('DELETE', '/access-controls/rules/{rule}', self.delete_rule)
         return self
+
+    # -- granular access rules (DTR access-control API) -------------------------------------------------
+    def _owner_only(self, request):
+        if not self.is_owner(request):
+            raise PermissionError(f'{request.subject.name} may not manage access rules')
+
+    def _rule_id(self, request) -> int:
+        try:
+            return int(request.params['rule'])
+        except ValueError as error:
+            raise HttpError(400, 'rule id must be a number') from error
+
+    def _valid_rule(self, body):
+        if not isinstance(body, dict) or body.get('policyType') != 'AAS':
+            raise HttpError(400, 'policyType must be "AAS"')
+        rules = (body.get('policy') or {}).get('accessRules')
+        if not isinstance(rules, list) or not any(r.get('attribute') == 'bpn' for r in rules if isinstance(r, dict)):
+            raise HttpError(400, 'policy.accessRules must contain a "bpn" rule')
+        for key in ('validFrom', 'validTo'):
+            if body.get(key):
+                try:
+                    _instant(body[key])
+                except ValueError as error:
+                    raise HttpError(400, f'{key} must be an ISO 8601 date-time') from error
+        return body
+
+    def list_rules(self, request):
+        self._owner_only(request)
+        return Response.json({'items': [self._shape(r) for r in self.forge.store.list_dtr_rules()]})
+
+    def create_rule(self, request):
+        self._owner_only(request)
+        rule_id = self.forge.store.put_dtr_rule(self._valid_rule(request.json()))
+        return Response.json(self._shape(self.forge.store.get_dtr_rule(rule_id)), 201)
+
+    def get_rule(self, request):
+        self._owner_only(request)
+        try:
+            return Response.json(self._shape(self.forge.store.get_dtr_rule(self._rule_id(request))))
+        except NotFound as error:
+            raise HttpError(404, 'access rule not found') from error
+
+    def update_rule(self, request):
+        self._owner_only(request)
+        try:
+            self.forge.store.put_dtr_rule(self._valid_rule(request.json()), self._rule_id(request))
+            return Response.json(self._shape(self.forge.store.get_dtr_rule(self._rule_id(request))))
+        except NotFound as error:
+            raise HttpError(404, 'access rule not found') from error
+
+    def delete_rule(self, request):
+        self._owner_only(request)
+        try:
+            self.forge.store.delete_dtr_rule(self._rule_id(request))
+        except NotFound as error:
+            raise HttpError(404, 'access rule not found') from error
+        return Response.empty()
+
+    def _shape(self, rule):
+        return {**rule, 'tid': self.bpn}
+
+    def _applicable(self, bpn):
+        """(rule, public) for valid rules addressed to ``bpn`` or PUBLIC_READABLE."""
+        now = datetime.now(timezone.utc)
+        out = []
+        for rule in self.forge.store.list_dtr_rules():
+            if rule.get('validFrom') and _instant(rule['validFrom']) > now:
+                continue
+            if rule.get('validTo') and _instant(rule['validTo']) < now:
+                continue
+            parts = {r.get('attribute'): r for r in (rule.get('policy') or {}).get('accessRules') or []}
+            target = (parts.get('bpn') or {}).get('value')
+            if target == PUBLIC_READABLE or (bpn and target == bpn):
+                out.append((parts, target == PUBLIC_READABLE))
+        return out
+
+    def granular_view(self, bpn, asset_ids, submodel_descriptors):
+        """(visible specificAssetIds, visible submodel descriptors, full) or None if not visible."""
+        have = [(a.get('name'), a.get('value')) for a in asset_ids or []]
+        visible_ids, visible_semantics, matched, full = set(), set(), False, False
+        for parts, public in self._applicable(bpn):
+            mandatory = [(v.get('attribute'), v.get('value')) for v in
+                         (parts.get('mandatorySpecificAssetIds') or {}).get('values') or []]
+            if not all(pair in have for pair in mandatory):
+                continue
+            matched, full = True, full or not public
+            names = [v.get('value') for v in (parts.get('visibleSpecificAssetIdNames') or {}).get('values') or []]
+            pinned = {n for n, _ in mandatory}
+            for index, (name, value) in enumerate(have):
+                if name in names and (name not in pinned or (name, value) in mandatory):
+                    visible_ids.add(index)
+            visible_semantics |= {v.get('value') for v in (parts.get('visibleSemanticIds') or {}).get('values') or []}
+        if not matched:
+            return None
+        ids = [{k: v for k, v in a.items() if k != 'externalSubjectId'} for i, a in enumerate(asset_ids or [])
+               if i in visible_ids]
+        descriptors = [d for d in submodel_descriptors or []
+                       if any(k.get('value') in visible_semantics for k in (d.get('semanticId') or {}).get('keys') or [])]
+        return ids, descriptors, full
 
     # -- identity ------------------------------------------------------------------------------------
     def subject_hook(self, request):
@@ -147,6 +262,16 @@ class CatenaX:
             return descriptor
         if kind == 'sm':
             return None
+        if self.granular:
+            view = self.granular_view(self.caller_bpn(request), descriptor.get('specificAssetIds'),
+                                      descriptor.get('submodelDescriptors'))
+            if view is None:
+                return None
+            ids, descriptors, full = view
+            result = copy.deepcopy(descriptor) if full else {'id': descriptor['id']}
+            result['specificAssetIds'] = ids
+            result['submodelDescriptors'] = descriptors
+            return result
         visible, by_bpn = self.visible_asset_ids(descriptor.get('specificAssetIds'), self.caller_bpn(request))
         if not visible:
             return None
@@ -163,8 +288,12 @@ class CatenaX:
         if not info.get('specificAssetIds'):
             return shell
         result = copy.deepcopy(shell)
-        result['assetInformation']['specificAssetIds'] = self.visible_asset_ids(
-            info['specificAssetIds'], self.caller_bpn(request))[0]
+        if self.granular:
+            view = self.granular_view(self.caller_bpn(request), info['specificAssetIds'], [])
+            visible = view[0] if view else []
+        else:
+            visible = self.visible_asset_ids(info['specificAssetIds'], self.caller_bpn(request))[0]
+        result['assetInformation']['specificAssetIds'] = visible
         if not result['assetInformation']['specificAssetIds']:
             del result['assetInformation']['specificAssetIds']
         return result

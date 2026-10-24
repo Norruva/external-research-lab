@@ -32,8 +32,9 @@ the open-source AAS tools, with Digital Product Passports (DPP) built in.
   - **MQTT:** a bridge that publishes change events on BaSyx-compatible topics and accepts telemetry
     ingest.
 - **Dataspaces (Catena-X).**
-  - The Digital Twin Registry access model: `externalSubjectId`, `PUBLIC_READABLE`, and the
-    `Edc-Bpn` header from the EDC data plane.
+  - The Digital Twin Registry access model: the classic one (`externalSubjectId`,
+    `PUBLIC_READABLE`) or the granular one (owner-managed rules under `/access-controls/rules`).
+    The caller's BPN comes from the `Edc-Bpn` header the EDC data plane sends.
   - DSP endpoints in submodel descriptors.
   - Provisioning through the EDC Management API v3: assets, policies and contracts. Each asset is
     confined to its own routes.
@@ -128,7 +129,7 @@ These environment variables override the defaults in `aasforge/app.py`:
 | `AASFORGE_MAX_BODY`, `AASFORGE_MAX_PACKAGE` | Request body limit (64 MB) and total uncompressed AASX limit (512 MB) |
 | `AASFORGE_OPCUA_ENDPOINT`, `AASFORGE_OPCUA_WRITABLE` | Serve OPC UA (I4AAS), optionally with authorised write-back |
 | `AASFORGE_MQTT_URL`, `AASFORGE_MQTT_REPOSITORY`, `AASFORGE_MQTT_INGEST_CLAIMS` | MQTT bridge; the claims that telemetry writes are authorised with |
-| `AASFORGE_CATENAX` | JSON `{"bpn": ..., "dataplane_url": ..., "dsp_url": ...}`: Catena-X DTR mode |
+| `AASFORGE_CATENAX` | JSON `{"bpn": ..., "dataplane_url": ..., "dsp_url": ..., "granular": false}`: Catena-X DTR mode |
 | `AASFORGE_FEDERATION` | JSON `{"upstreams": [...], "hierarchy_domains": [...]}`: registry federation |
 
 Credentials are accepted only in headers, never in the query string. CORS is off unless origins are
@@ -141,7 +142,7 @@ cd aasforge/tests && ../../.venv/bin/python -m unittest discover -s .
 AASFORGE_TEST_DATABASE=postgresql://user:pass@localhost/db ../../.venv/bin/python -m unittest discover -s .
 ```
 
-There are 140 tests:
+There are 144 tests:
 
 - **Versioning and AASX:** version detection, the 3.2 sidecar, repairs, lossless import of real IDTA
   and Catena-X packages, and deterministic writing.
