@@ -12,3 +12,5 @@ __pycache__/
 /eidos/owned-registry/
 /eidos/artifacts/
 /eidos/evaluations/
+.venv-forge/
+/aasforge/var/

@@ -1,0 +1,1774 @@
+{
+ "source": "Battery Pass consortium, Battery Passport Data Attribute Longlist v1.2 (January 2025)",
+ "license": "CC-BY-4.0",
+ "changes": "columns selected and renamed; access tiers normalised",
+ "attributes": [
+  {
+   "id": 1,
+   "attribute": "Battery passport identifier",
+   "category": "Identifiers and product data",
+   "subcategory": "Identifier",
+   "din_chapter": "6.1.2.1",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Art. 77(3); Art. 3(66); Art. 38(6)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Individual battery",
+   "unit": "n.a.",
+   "data_format": "ID"
+  },
+  {
+   "id": 2,
+   "attribute": "Battery identifier",
+   "category": "Identifiers and product data",
+   "subcategory": "Identifier",
+   "din_chapter": "6.1.2.2",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1a) Annex VI Part A, Art. 38(6)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Individual battery",
+   "unit": "n.a.",
+   "data_format": "ID"
+  },
+  {
+   "id": 3,
+   "attribute": "Operator identifier and information",
+   "category": "Identifiers and product data",
+   "subcategory": "Identifier",
+   "din_chapter": "6.1.2.3",
+   "applicability": {
+    "ev": "o",
+    "lmt": "o",
+    "industrial": "o",
+    "stationary": "o"
+   },
+   "regulation_reference": "The operator identifier is introduced in the ESPR (ESPR, Annex III(h)), but not mandatory for batteries.",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Individual battery",
+   "unit": "n.a.",
+   "data_format": "ID"
+  },
+  {
+   "id": 4,
+   "attribute": "Manufacturer identifier and information",
+   "category": "Identifiers and product data",
+   "subcategory": "Identifier",
+   "din_chapter": "6.1.2.4",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex VI Part A (1); Art. 3(33); Art. 38(7); ESPR Art. 2(32)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "ID"
+  },
+  {
+   "id": 5,
+   "attribute": "Manufacturing place",
+   "category": "Identifiers and product data",
+   "subcategory": "Product data",
+   "din_chapter": "6.1.3.1",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1a); Annex VI, Part A(3); Annex XIII (1)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "String"
+  },
+  {
+   "id": 6,
+   "attribute": "Manufacturing date",
+   "category": "Identifiers and product data",
+   "subcategory": "Product data",
+   "din_chapter": "6.1.3.2",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1a); Annex VI Part A (4); Annex VII Part B (1)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Individual battery",
+   "unit": "n.a.",
+   "data_format": "Date[YYYY-MM]"
+  },
+  {
+   "id": 7,
+   "attribute": "Date of putting the battery into service",
+   "category": "Identifiers and product data",
+   "subcategory": "Product data",
+   "din_chapter": "6.1.3.3",
+   "applicability": {
+    "ev": "",
+    "lmt": "x",
+    "industrial": "",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex VII Part B (1)",
+   "access": "legitimate-interest",
+   "dynamic": false,
+   "granularity": "Individual battery",
+   "unit": "n.a.",
+   "data_format": "Date[YYYY-MM]"
+  },
+  {
+   "id": 8,
+   "attribute": "Warranty period of the battery",
+   "category": "Identifiers and product data",
+   "subcategory": "Product data",
+   "din_chapter": "6.1.3.4",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1m)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "Date[YYYY-MM]"
+  },
+  {
+   "id": 9,
+   "attribute": "Battery category",
+   "category": "Identifiers and product data",
+   "subcategory": "Product data",
+   "din_chapter": "6.1.3.5",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1a); Annex VI Part A (2)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "String"
+  },
+  {
+   "id": 10,
+   "attribute": "Battery mass",
+   "category": "Identifiers and product data",
+   "subcategory": "Product data",
+   "din_chapter": "6.1.3.6",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1a); Annex VI Part A (5)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "kg",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 11,
+   "attribute": "Battery status",
+   "category": "Identifiers and product data",
+   "subcategory": "Product data",
+   "din_chapter": "6.1.3.7",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII 4(c)",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "n.a.",
+   "data_format": "String"
+  },
+  {
+   "id": 12,
+   "attribute": "Separate collection symbol",
+   "category": "Symbols, labels and documentation of conformity",
+   "subcategory": "-",
+   "din_chapter": "6.2.2",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1s); Art. 13(4); Annex VI Part B",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "Graphic"
+  },
+  {
+   "id": 13,
+   "attribute": "Symbols for cadmium and lead",
+   "category": "Symbols, labels and documentation of conformity",
+   "subcategory": "-",
+   "din_chapter": "6.2.3",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1s) Art. 13(5);",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "Graphic"
+  },
+  {
+   "id": 14,
+   "attribute": "Carbon footprint label",
+   "category": "Symbols, labels and documentation of conformity",
+   "subcategory": "-",
+   "din_chapter": "6.2.4",
+   "applicability": {
+    "ev": "o",
+    "lmt": "o",
+    "industrial": "o",
+    "stationary": "o"
+   },
+   "regulation_reference": "Article 7(2) via Annex XIII (1c)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "Graphic"
+  },
+  {
+   "id": 15,
+   "attribute": "Extinguishing agent",
+   "category": "Symbols, labels and documentation of conformity",
+   "subcategory": "-",
+   "din_chapter": "6.2.5",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex VI Part A (9)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Individual battery",
+   "unit": "n.a.",
+   "data_format": "String"
+  },
+  {
+   "id": 16,
+   "attribute": "Meaning of labels and symbols",
+   "category": "Symbols, labels and documentation of conformity",
+   "subcategory": "-",
+   "din_chapter": "6.2.6",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1s);Art. 74 1(e)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "String"
+  },
+  {
+   "id": 17,
+   "attribute": "EU declaration of conformity",
+   "category": "Symbols, labels and documentation of conformity",
+   "subcategory": "-",
+   "din_chapter": "6.2.7",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1r); Art. 18; Annex IX",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "PDF"
+  },
+  {
+   "id": 18,
+   "attribute": "Results of test reports proving compliance",
+   "category": "Symbols, labels and documentation of conformity",
+   "subcategory": "-",
+   "din_chapter": "6.2.8",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (3); Annex VIII Part A 2(h)",
+   "access": "authority",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "PDF"
+  },
+  {
+   "id": 19,
+   "attribute": "Battery carbon footprint per Functional Unit",
+   "category": "Battery carbon footprint",
+   "subcategory": "-",
+   "din_chapter": "6.3.2",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1c) → Art. 7",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "kgCO2e/kWh",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 20,
+   "attribute": "Contribution of raw material acquisition and pre-processing lifecycle stage",
+   "category": "Battery carbon footprint",
+   "subcategory": "-",
+   "din_chapter": "6.3.3",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1c) → Art. 7",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 21,
+   "attribute": "Contribution of main product production/manufacturing lifecycle stage",
+   "category": "Battery carbon footprint",
+   "subcategory": "-",
+   "din_chapter": "6.3.4",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1c) → Art. 7",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 22,
+   "attribute": "Contribution of distribution lifecycle stage",
+   "category": "Battery carbon footprint",
+   "subcategory": "-",
+   "din_chapter": "6.3.5",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII 1(c) → Art. 7",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 23,
+   "attribute": "Contribution of end of life and recycling lifecycle stage",
+   "category": "Battery carbon footprint",
+   "subcategory": "-",
+   "din_chapter": "6.3.6",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1c) → Art. 7",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 24,
+   "attribute": "Carbon footprint performance class",
+   "category": "Battery carbon footprint",
+   "subcategory": "-",
+   "din_chapter": "6.3.7",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1c); Art. 7(2)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "String"
+  },
+  {
+   "id": 25,
+   "attribute": "Web link to public carbon footprint study",
+   "category": "Battery carbon footprint",
+   "subcategory": "-",
+   "din_chapter": "6.3.8",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1c); Art. 7 1(g)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "Link to PDF"
+  },
+  {
+   "id": 26,
+   "attribute": "General battery and manufacturer information",
+   "category": "Battery carbon footprint",
+   "subcategory": "-",
+   "din_chapter": "6.3.9",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII, Article 7(1)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "See 6.1 and 6.2"
+  },
+  {
+   "id": 27,
+   "attribute": "Absolute battery carbon footprint",
+   "category": "Battery carbon footprint",
+   "subcategory": "-",
+   "din_chapter": "6.3.10",
+   "applicability": {
+    "ev": "o",
+    "lmt": "o",
+    "industrial": "o",
+    "stationary": "o"
+   },
+   "regulation_reference": "n.a.",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "[tCO2e]",
+   "data_format": "Integer"
+  },
+  {
+   "id": 28,
+   "attribute": "Information of due diligence report",
+   "category": "Supply chain due diligence",
+   "subcategory": "-",
+   "din_chapter": "6.4.2",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Art. 52(3)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "PDF"
+  },
+  {
+   "id": 29,
+   "attribute": "Third party assurances of recognised schemes",
+   "category": "Supply chain due diligence",
+   "subcategory": "-",
+   "din_chapter": "6.4.3",
+   "applicability": {
+    "ev": "o",
+    "lmt": "o",
+    "industrial": "o",
+    "stationary": "o"
+   },
+   "regulation_reference": "Art. 49(d)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "n.a."
+  },
+  {
+   "id": 30,
+   "attribute": "Supply chain indices",
+   "category": "Supply chain due diligence",
+   "subcategory": "-",
+   "din_chapter": "6.4.4",
+   "applicability": {
+    "ev": "o",
+    "lmt": "o",
+    "industrial": "o",
+    "stationary": "o"
+   },
+   "regulation_reference": "n.a.",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "n.a."
+  },
+  {
+   "id": 31,
+   "attribute": "Battery chemistry",
+   "category": "Battery materials and composition",
+   "subcategory": "-",
+   "din_chapter": "6.5.2",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1b); Annex VI Part A (7)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "String"
+  },
+  {
+   "id": 32,
+   "attribute": "Critical raw materials",
+   "category": "Battery materials and composition",
+   "subcategory": "-",
+   "din_chapter": "6.5.3",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1b); Annex VI Part A (10)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "String"
+  },
+  {
+   "id": 33,
+   "attribute": "Materials used in cathode, anode and electrolyte",
+   "category": "Battery materials and composition",
+   "subcategory": "-",
+   "din_chapter": "6.5.4",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (2a)",
+   "access": "legitimate-interest",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "String"
+  },
+  {
+   "id": 34,
+   "attribute": "Hazardous substances",
+   "category": "Battery materials and composition",
+   "subcategory": "-",
+   "din_chapter": "6.5.5",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1b); Annex VI Part A (8)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "String"
+  },
+  {
+   "id": 35,
+   "attribute": "Impact of substances on environment, human health, safety, persons",
+   "category": "Battery materials and composition",
+   "subcategory": "-",
+   "din_chapter": "6.5.6",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1s); Art. 74 1(f)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "String"
+  },
+  {
+   "id": 36,
+   "attribute": "Dismantling information: Manuals for the removal and the disassembly of the battery pack",
+   "category": "Circularity and resource efficiency",
+   "subcategory": "Circularity information",
+   "din_chapter": "6.6.1.2",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (2c)",
+   "access": "legitimate-interest",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "Link to PDF"
+  },
+  {
+   "id": 37,
+   "attribute": "Part numbers for components",
+   "category": "Circularity and resource efficiency",
+   "subcategory": "Circularity information",
+   "din_chapter": "6.6.1.3",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (2b)",
+   "access": "legitimate-interest",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "URL"
+  },
+  {
+   "id": 38,
+   "attribute": "Information on sources of spare parts",
+   "category": "Circularity and resource efficiency",
+   "subcategory": "Circularity Information",
+   "din_chapter": "6.6.1.4",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (2b)",
+   "access": "legitimate-interest",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "Text/URL"
+  },
+  {
+   "id": 39,
+   "attribute": "Safety measures",
+   "category": "Circularity and resource efficiency",
+   "subcategory": "Circularity information",
+   "din_chapter": "6.6.1.5",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (2d); Art. 74(2)",
+   "access": "legitimate-interest",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "Link to PDF"
+  },
+  {
+   "id": 40,
+   "attribute": "Pre-consumer recycled nickel share",
+   "category": "Circularity and resource efficiency",
+   "subcategory": "Recycled and renewable content",
+   "din_chapter": "6.6.2.3",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1e); Art. 8(1)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 41,
+   "attribute": "Pre-consumer recycled cobalt share",
+   "category": "Circularity and resource efficiency",
+   "subcategory": "Recycled and renewable content",
+   "din_chapter": "6.6.2.4",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1e); Art. 8(1)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 42,
+   "attribute": "Pre-consumer recycled lithium share",
+   "category": "Circularity and resource efficiency",
+   "subcategory": "Recycled and renewable content",
+   "din_chapter": "6.6.2.5",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1e); Art. 8(1)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 43,
+   "attribute": "Pre-consumer recycled lead share",
+   "category": "Circularity and resource efficiency",
+   "subcategory": "Recycled and renewable content",
+   "din_chapter": "6.6.2.6",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1e); Art. 8(1)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 44,
+   "attribute": "Post-consumer recycled nickel share",
+   "category": "Circularity and resource efficiency",
+   "subcategory": "Recycled and renewable content",
+   "din_chapter": "6.6.2.7",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1e); Art. 8(1)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 45,
+   "attribute": "Post-consumer recycled cobalt share",
+   "category": "Circularity and resource efficiency",
+   "subcategory": "Recycled and renewable content",
+   "din_chapter": "6.6.2.8",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1e); Art. 8(1)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 46,
+   "attribute": "Post-consumer recycled lithium share",
+   "category": "Circularity and resource efficiency",
+   "subcategory": "Recycled and renewable content",
+   "din_chapter": "6.6.2.9",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1e); Art. 8(1)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 47,
+   "attribute": "Post-consumer recycled lead share",
+   "category": "Circularity and resource efficiency",
+   "subcategory": "Recycled and renewable content",
+   "din_chapter": "6.6.2.10",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1e); Art. 8(1)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 48,
+   "attribute": "Renewable content share",
+   "category": "Circularity and resource efficiency",
+   "subcategory": "Recycled and renewable content",
+   "din_chapter": "6.6.2.11",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1f)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 49,
+   "attribute": "Information on the role of end-users in contributing to waste prevention",
+   "category": "Circularity and resource efficiency",
+   "subcategory": "Information on role of end-users in waste prevention and information on battery collection, preparation for second life and on treatment at end of life",
+   "din_chapter": "6.6.3.2",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Art. 74(1a)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "Link to PDF"
+  },
+  {
+   "id": 50,
+   "attribute": "Information on the role of end-users in contributing to the separate collection of waste batteries",
+   "category": "Circularity and resource efficiency",
+   "subcategory": "Information on role of end-users in waste prevention and information on battery collection, preparation for second life and on treatment at end of life",
+   "din_chapter": "6.6.3.3",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Art. 74(1b)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "Link to PDF"
+  },
+  {
+   "id": 51,
+   "attribute": "Information on battery collection, preparation for second life and on treatment at end of life",
+   "category": "Circularity and resource efficiency",
+   "subcategory": "Information on role of end-users in waste prevention and information on battery collection, preparation for second life and on treatment at end of life",
+   "din_chapter": "6.6.3.4",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Art. 74(1c)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "Link to PDF"
+  },
+  {
+   "id": 52,
+   "attribute": "Rated capacity",
+   "category": "Performance and durability",
+   "subcategory": "Capacity, energy, and voltage",
+   "din_chapter": "6.7.2.2",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1g); Annex IV Part A (1) (definition)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "Ah",
+   "data_format": "Integer"
+  },
+  {
+   "id": 53,
+   "attribute": "Remaining capacity",
+   "category": "Performance and durability",
+   "subcategory": "Capacity, energy, and voltage",
+   "din_chapter": "6.7.2.3",
+   "applicability": {
+    "ev": "o",
+    "lmt": "x",
+    "industrial": "o",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex VII Part A (1)",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "Ah",
+   "data_format": "Integer"
+  },
+  {
+   "id": 54,
+   "attribute": "Capacity fade",
+   "category": "Performance and durability",
+   "subcategory": "Capacity, energy, and voltage",
+   "din_chapter": "6.7.2.4",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex IV Part A (2)",
+   "access": "legitimate-interest",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 55,
+   "attribute": "Certified usable battery energy",
+   "category": "Performance and durability",
+   "subcategory": "Capacity, energy, and voltage",
+   "din_chapter": "6.7.2.5",
+   "applicability": {
+    "ev": "o",
+    "lmt": "",
+    "industrial": "",
+    "stationary": ""
+   },
+   "regulation_reference": "n.a.",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "kWh",
+   "data_format": "Integer"
+  },
+  {
+   "id": 56,
+   "attribute": "Remaining usable battery energy",
+   "category": "Performance and durability",
+   "subcategory": "Capacity, energy, and voltage",
+   "din_chapter": "6.7.2.6",
+   "applicability": {
+    "ev": "o",
+    "lmt": "",
+    "industrial": "",
+    "stationary": ""
+   },
+   "regulation_reference": "n.a.",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "kWh",
+   "data_format": "Integer"
+  },
+  {
+   "id": 57,
+   "attribute": "State of certified energy (SOCE)",
+   "category": "Performance and durability",
+   "subcategory": "Capacity, energy, and voltage",
+   "din_chapter": "6.7.2.7",
+   "applicability": {
+    "ev": "x",
+    "lmt": "",
+    "industrial": "",
+    "stationary": ""
+   },
+   "regulation_reference": "Annex VII Part A (EV)",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 58,
+   "attribute": "State of Charge (SoC)",
+   "category": "Performance and durability",
+   "subcategory": "Capacity, energy, and voltage",
+   "din_chapter": "6.7.2.8",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (4d); Article 3 1(27)",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 59,
+   "attribute": "Minimum voltage",
+   "category": "Performance and durability",
+   "subcategory": "Capacity, energy, and voltage",
+   "din_chapter": "6.7.2.9",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1h)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "V",
+   "data_format": "Integer"
+  },
+  {
+   "id": 60,
+   "attribute": "Maximum voltage",
+   "category": "Performance and durability",
+   "subcategory": "Capacity, energy, and voltage",
+   "din_chapter": "6.7.2.10",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1h)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "V",
+   "data_format": "Integer"
+  },
+  {
+   "id": 61,
+   "attribute": "Nominal voltage",
+   "category": "Performance and durability",
+   "subcategory": "Capacity, energy, and voltage",
+   "din_chapter": "6.7.2.11",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1h)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "V",
+   "data_format": "Integer"
+  },
+  {
+   "id": 62,
+   "attribute": "Original power capability",
+   "category": "Performance and durability",
+   "subcategory": "Power capability",
+   "din_chapter": "6.7.3.2",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1i); Art. 10, Annex IV Part B (4) → measurement at 80 % SoC and 20% SoC required",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "W",
+   "data_format": "Integer"
+  },
+  {
+   "id": 63,
+   "attribute": "Remaining power capability",
+   "category": "Performance and durability",
+   "subcategory": "Power capability",
+   "din_chapter": "6.7.3.3",
+   "applicability": {
+    "ev": "o",
+    "lmt": "x",
+    "industrial": "o",
+    "stationary": "x"
+   },
+   "regulation_reference": "Art. 10: Annex IV (3) (only definition of power); Annex VII Part A (2) \"where possible, remaining power capability\"; Annex IV Part B (4) --> measurement at 80 % SoC and 20% SoC required",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "W",
+   "data_format": "Integer"
+  },
+  {
+   "id": 64,
+   "attribute": "Power fade",
+   "category": "Performance and durability",
+   "subcategory": "Power capability",
+   "din_chapter": "6.7.3.4",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex IV P(4) (\"power fade\" definition); Annex IV Part A (4) (power fade in %) Annex IV Part B (4) → measurement at 80 % SoC required",
+   "access": "legitimate-interest",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 65,
+   "attribute": "Maximum permitted battery power",
+   "category": "Performance and durability",
+   "subcategory": "Power capability",
+   "din_chapter": "6.7.3.5",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1i) (power limits)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "W",
+   "data_format": "Integer"
+  },
+  {
+   "id": 66,
+   "attribute": "Ratio between nominal battery power and battery energy",
+   "category": "Performance and durability",
+   "subcategory": "Power capability",
+   "din_chapter": "6.7.3.6",
+   "applicability": {
+    "ev": "o",
+    "lmt": "o",
+    "industrial": "o",
+    "stationary": "o"
+   },
+   "regulation_reference": "Annex IV Part B (2)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "W/Wh",
+   "data_format": "Integer"
+  },
+  {
+   "id": 67,
+   "attribute": "Initial round trip energy efficiency",
+   "category": "Performance and durability",
+   "subcategory": "Round trip energy efficiency and self-discharge",
+   "din_chapter": "6.7.4.2",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1n); Art. 10: Annex IV (6) (definition); Annex IV Part A (4)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 68,
+   "attribute": "Round trip energy efficiency at 50% of cycle life",
+   "category": "Performance and durability",
+   "subcategory": "Round trip energy efficiency and self-discharge",
+   "din_chapter": "6.7.4.3",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII 1(n); Annex IV (6) (only definition)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 69,
+   "attribute": "Remaining round trip energy efficiency",
+   "category": "Performance and durability",
+   "subcategory": "Round trip energy efficiency and self-discharge",
+   "din_chapter": "6.7.4.4",
+   "applicability": {
+    "ev": "",
+    "lmt": "x",
+    "industrial": "",
+    "stationary": "x"
+   },
+   "regulation_reference": "Art. 10: Annex IV Part A (4) (only definition); Article 14: Annex VII Part A (3)",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 70,
+   "attribute": "Energy round trip efficiency fade",
+   "category": "Performance and durability",
+   "subcategory": "Round trip energy efficiency and self-discharge",
+   "din_chapter": "6.7.4.5",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex IV Part A (4)",
+   "access": "legitimate-interest",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 71,
+   "attribute": "Initial self-discharge rate",
+   "category": "Performance and durability",
+   "subcategory": "Round trip energy efficiency \nand self-discharge",
+   "din_chapter": "6.7.4.6",
+   "applicability": {
+    "ev": "",
+    "lmt": "o",
+    "industrial": "",
+    "stationary": "o"
+   },
+   "regulation_reference": "n.a.",
+   "access": "legitimate-interest",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%/month",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 72,
+   "attribute": "Current self-discharge rate",
+   "category": "Performance and durability",
+   "subcategory": "Round trip energy efficiency \nand self-discharge",
+   "din_chapter": "6.7.4.7",
+   "applicability": {
+    "ev": "",
+    "lmt": "o",
+    "industrial": "",
+    "stationary": "o"
+   },
+   "regulation_reference": "n.a.",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "%/month",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 73,
+   "attribute": "Evolution of self-discharge rates",
+   "category": "Performance and durability",
+   "subcategory": "Round trip energy efficiency \nand self-discharge",
+   "din_chapter": "6.7.4.8",
+   "applicability": {
+    "ev": "",
+    "lmt": "",
+    "industrial": "",
+    "stationary": "x"
+   },
+   "regulation_reference": "Art. 14: Annex VII Part A (4)",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 74,
+   "attribute": "Initial internal resistance of battery cell and pack (module recommended)",
+   "category": "Performance and durability",
+   "subcategory": "Internal resistance",
+   "din_chapter": "6.7.5.2",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1o); Art. 10: Annex IV Part A (3) (+definition of internal resistance)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "Ohm",
+   "data_format": "Integer"
+  },
+  {
+   "id": 75,
+   "attribute": "Internal resistance increase of pack (cell and module recommended)",
+   "category": "Performance and durability",
+   "subcategory": "Internal resistance",
+   "din_chapter": "6.7.5.3",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex IV, Part A(3)",
+   "access": "legitimate-interest",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 76,
+   "attribute": "Expected lifetime in calendar years",
+   "category": "Performance and durability",
+   "subcategory": "Battery lifetime",
+   "din_chapter": "6.7.6.2",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex IV, Part A(5); Annex XIII (1); Annex XIII (4a)",
+   "access": "legitimate-interest",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "years",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 77,
+   "attribute": "Expected lifetime: Number of charge-discharge cycles",
+   "category": "Performance and durability",
+   "subcategory": "Battery lifetime",
+   "din_chapter": "6.7.6.3",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Test methods and reference conditions are subject to the ongoing standardization process at CEN/CENELEC relating to standardization request M/579.",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "-",
+   "data_format": "Integer"
+  },
+  {
+   "id": 78,
+   "attribute": "Number of full charging and discharging cycles",
+   "category": "Performance and durability",
+   "subcategory": "Battery lifetime",
+   "din_chapter": "6.7.6.4",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (4d); Art. 14: Annex VII Part B (5)",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "-",
+   "data_format": "Integer"
+  },
+  {
+   "id": 79,
+   "attribute": "Cycle-life reference test",
+   "category": "Performance and durability",
+   "subcategory": "Battery lifetime",
+   "din_chapter": "6.7.6.5",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1j)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "n.a.",
+   "data_format": "String"
+  },
+  {
+   "id": 80,
+   "attribute": "C-rate of relevant cycle-life test",
+   "category": "Performance and durability",
+   "subcategory": "Battery lifetime",
+   "din_chapter": "6.7.6.6",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1p)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "A/Ah",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 81,
+   "attribute": "Energy throughput",
+   "category": "Performance and durability",
+   "subcategory": "Battery lifetime",
+   "din_chapter": "6.7.6.7",
+   "applicability": {
+    "ev": "",
+    "lmt": "x",
+    "industrial": "",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex VII Part B (2)",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "kWh",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 82,
+   "attribute": "Capacity throughput",
+   "category": "Performance and durability",
+   "subcategory": "Battery lifetime",
+   "din_chapter": "6.7.6.8",
+   "applicability": {
+    "ev": "",
+    "lmt": "x",
+    "industrial": "",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex VII Part B (3)",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "Ah",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 83,
+   "attribute": "Capacity threshold for exhaustion",
+   "category": "Performance and durability",
+   "subcategory": "Battery lifetime",
+   "din_chapter": "6.7.6.9",
+   "applicability": {
+    "ev": "x",
+    "lmt": "",
+    "industrial": "",
+    "stationary": ""
+   },
+   "regulation_reference": "Annex XIII (1k)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "%",
+   "data_format": "Decimal"
+  },
+  {
+   "id": 84,
+   "attribute": "Temperature information",
+   "category": "Performance and durability",
+   "subcategory": "Temperature conditions",
+   "din_chapter": "6.7.7.2",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (4d)",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "°C",
+   "data_format": "Integer"
+  },
+  {
+   "id": 85,
+   "attribute": "Temperature range idle state, lower boundary",
+   "category": "Performance and durability",
+   "subcategory": "Temperature conditions",
+   "din_chapter": "6.7.7.3",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1l)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "°C",
+   "data_format": "Integer"
+  },
+  {
+   "id": 86,
+   "attribute": "Temperature range idle state, upper boundary",
+   "category": "Performance and durability",
+   "subcategory": "Temperature conditions",
+   "din_chapter": "6.7.7.4",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (1l)",
+   "access": "public",
+   "dynamic": false,
+   "granularity": "Battery model",
+   "unit": "°C",
+   "data_format": "Integer"
+  },
+  {
+   "id": 87,
+   "attribute": "Time spent in extreme temperatures above boundary",
+   "category": "Performance and durability",
+   "subcategory": "Temperature conditions",
+   "din_chapter": "6.7.7.5",
+   "applicability": {
+    "ev": "",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex VII Part B (4)",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "Minutes",
+   "data_format": "Integer"
+  },
+  {
+   "id": 88,
+   "attribute": "Time spent in extreme temperatures below boundary",
+   "category": "Performance and durability",
+   "subcategory": "Temperature conditions",
+   "din_chapter": "6.7.7.6",
+   "applicability": {
+    "ev": "",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex VII Part B (4)",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "Minutes",
+   "data_format": "Integer"
+  },
+  {
+   "id": 89,
+   "attribute": "Time spent charging during extreme temperatures above boundary",
+   "category": "Performance and durability",
+   "subcategory": "Temperature conditions",
+   "din_chapter": "6.7.7.7",
+   "applicability": {
+    "ev": "",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex VII Part B (4)",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "Minutes",
+   "data_format": "Integer"
+  },
+  {
+   "id": 90,
+   "attribute": "Time spent charging during extreme temperatures below boundary",
+   "category": "Performance and durability",
+   "subcategory": "Temperature conditions",
+   "din_chapter": "6.7.7.8",
+   "applicability": {
+    "ev": "",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex VII Part B (4)",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "Minutes",
+   "data_format": "Integer"
+  },
+  {
+   "id": 91,
+   "attribute": "Number of deep discharge events",
+   "category": "Performance and durability",
+   "subcategory": "Negative events",
+   "din_chapter": "6.7.8.2",
+   "applicability": {
+    "ev": "o",
+    "lmt": "x",
+    "industrial": "o",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex VII Part B (4)",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "-",
+   "data_format": "Integer"
+  },
+  {
+   "id": 92,
+   "attribute": "Number of overcharge events",
+   "category": "Performance and durability",
+   "subcategory": "Negative events",
+   "din_chapter": "6.7.8.3",
+   "applicability": {
+    "ev": "o",
+    "lmt": "o",
+    "industrial": "o",
+    "stationary": "o"
+   },
+   "regulation_reference": "n.a.",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "-",
+   "data_format": "Integer"
+  },
+  {
+   "id": 93,
+   "attribute": "Information on accidents",
+   "category": "Performance and durability",
+   "subcategory": "Negative events",
+   "din_chapter": "6.7.8.4",
+   "applicability": {
+    "ev": "x",
+    "lmt": "x",
+    "industrial": "x",
+    "stationary": "x"
+   },
+   "regulation_reference": "Annex XIII (4d)",
+   "access": "legitimate-interest",
+   "dynamic": true,
+   "granularity": "Individual battery",
+   "unit": "-",
+   "data_format": "Representation to document"
+  }
+ ]
+}

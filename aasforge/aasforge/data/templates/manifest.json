@@ -1,0 +1,62 @@
+{
+ "dpp-metadata": {
+  "source": "Digital Product Passport/Digital Product Passport Part-1/1/0/2/IDTA 02099-1_Template Digital Product Passport - Part 1.json",
+  "repairs": [],
+  "idShort": "DppMetadata",
+  "semanticId": "https://admin-shell.io/idta/cds/dppMetadata/1",
+  "elements": 10
+ },
+ "dbp-nameplate": {
+  "source": "Digital Battery Passport/1_Digital Nameplate/1/1/IDTA 02035-1_DBP-Part-1_Digital Nameplate.json",
+  "repairs": [],
+  "idShort": "BatteryNameplate",
+  "semanticId": "https://admin-shell.io/idta/digitalbatterypassport/nameplate/1/0/Nameplate",
+  "elements": 22
+ },
+ "dbp-handover": {
+  "source": "Digital Battery Passport/2_Handover Documentation/1/1/IDTA 02035-2_DBP-Part-2_HandoverDocumentation.json",
+  "repairs": [],
+  "idShort": "HandoverDocumentation",
+  "semanticId": "0173-1#01-AHF578#003",
+  "elements": 22
+ },
+ "dbp-carbon-footprint": {
+  "source": "Digital Battery Passport/3_Product Carbon Footprint/1/1/IDTA 02035-3_DBP-Part-3_ProductCarbonFootprint.json",
+  "repairs": [],
+  "idShort": "CarbonFootprint",
+  "semanticId": "https://admin-shell.io/idta/CarbonFootprint/CarbonFootprint/1/0",
+  "elements": 12
+ },
+ "dbp-technical-data": {
+  "source": "Digital Battery Passport/4_Technical Data/1/0/2/IDTA 02035-4_DBP-Part-4_TechnicalData.json",
+  "repairs": [],
+  "idShort": "TechnicalData",
+  "semanticId": "https://admin-shell.io/idta/digitalbatterypassport/TechnicalData/1/0",
+  "elements": 46
+ },
+ "dbp-product-condition": {
+  "source": "Digital Battery Passport/5_Product Condition/1/0/2/IDTA 02035-5_DBP-Part-5_ProductCondition_V1.0.2.json",
+  "repairs": [],
+  "idShort": "ProductCondition",
+  "semanticId": "urn:samm:io.admin-shell.idta.batterypass.product_condition:1.0.2#ProductCondition",
+  "elements": 49
+ },
+ "dbp-material-composition": {
+  "source": "Digital Battery Passport/6_Material Composition/1/0/2/IDTA 02035-6_DBP-Part-6_MaterialComposition.aasx",
+  "repairs": [
+   "_rels/.rels: relationship to /aasx/aasx-origin declared TargetMode=\"External\" but points inside the package; treated as internal",
+   "aasx/_rels/aasx-origin.rels: relationship to /aasx/xml/content.xml declared TargetMode=\"External\" but points inside the package; treated as internal"
+  ],
+  "idShort": "MaterialComposition",
+  "semanticId": "urn:samm:io.admin-shell.idta.batterypass.material_composition:1.0.1#MaterialComposition",
+  "elements": 23
+ },
+ "dbp-circularity": {
+  "source": "Digital Battery Passport/7_Circularity/1/0/2/IDTA 02035-7_DBP-Part-7_Circularity.json",
+  "repairs": [],
+  "idShort": "Circularity",
+  "semanticId": "urn:samm:io.admin-shell.idta.batterypass.circularity:1.0.0#Circularity",
+  "elements": 37
+ },
+ "_license": "IDTA submodel templates, CC-BY-4.0 (admin-shell-io/submodel-templates)"
+}
