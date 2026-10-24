@@ -28,6 +28,10 @@ class PathError(KeyError):
     pass
 
 
+class ValueTypeError(ValueError):
+    """A ValueOnly value is not a valid lexical form of the element's ``valueType``."""
+
+
 def parse_path(path: str) -> list:
     """Split ``a.b[2].c`` (optionally URL-encoded) into ['a', 'b', 2, 'c']."""
     path = unquote(path)
@@ -246,12 +250,27 @@ def submodel_value_only(submodel: dict, extent='withoutBlobValue', level='deep')
 
 def _lexical(value, value_type):
     if isinstance(value, bool):
-        return 'true' if value else 'false'
-    if isinstance(value, int):
-        return str(value)
-    if isinstance(value, float):
-        return str(int(value)) if value.is_integer() and value_type in INTEGRAL else repr(value)
-    return value
+        text = 'true' if value else 'false'
+    elif isinstance(value, int):
+        text = str(value)
+    elif isinstance(value, float):
+        text = str(int(value)) if value.is_integer() and value_type in INTEGRAL else repr(value)
+    elif isinstance(value, str):
+        text = value
+    else:
+        raise ValueTypeError(f'{type(value).__name__} is not a ValueOnly value for {value_type}')
+    if value_type and not _consistent(text, value_type):
+        raise ValueTypeError(f'{text!r} is not a valid {value_type} value')
+    return text
+
+
+def _consistent(text: str, value_type: str) -> bool:
+    from aas_core3_1 import types, verification
+    try:
+        data_type = types.DataTypeDefXSD(value_type)
+    except ValueError:
+        return True          # unknown type: leave it to model verification
+    return verification.value_consistent_with_xsd_type(text, data_type)
 
 
 def patch_value(element: dict, value) -> None:
@@ -265,7 +284,9 @@ def patch_value(element: dict, value) -> None:
         element['value'] = [{'language': k, 'text': v} for item in value for k, v in item.items()]
     elif model_type == 'Range':
         for bound in ('min', 'max'):
-            if bound in value:
+            if bound in value and value[bound] is None:
+                element.pop(bound, None)
+            elif bound in value:
                 element[bound] = _lexical(value[bound], element.get('valueType'))
     elif model_type in ('File', 'Blob'):
         for key in ('contentType', 'value'):

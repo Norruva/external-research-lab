@@ -495,6 +495,8 @@ class Api:
             raise HttpError(404, str(error)) from error
         except FileExistsError as error:
             raise HttpError(409, f'element {error} already exists') from error
+        except elements.ValueTypeError as error:
+            raise HttpError(400, str(error)) from error
         except ValidationFailed as error:
             raise HttpError(400, str(error), details=error.errors) from error
         except NotFound as error:
