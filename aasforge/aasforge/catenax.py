@@ -33,7 +33,9 @@ from __future__ import annotations
 
 import copy
 import json
+import time
 import urllib.error
+import urllib.parse
 import urllib.request
 
 from . import canonical, security
@@ -168,32 +170,35 @@ class CatenaX:
 
 
 # -- EDC Management API v3 ----------------------------------------------------------------------------
-def bpn_policy(policy_id: str, bpns: list[str]) -> dict:
-    """Access/usage policy: the consumer's BPN must be one of ``bpns``."""
-    constraints = [{'@type': 'Constraint', 'leftOperand': f'{CX_POLICY}BusinessPartnerNumber', 'operator': 'eq',
-                    'rightOperand': bpn} for bpn in bpns]
-    constraint = constraints[0] if len(constraints) == 1 else {'@type': 'LogicalConstraint', 'or': constraints}
-    return _policy(policy_id, [{'action': 'use', 'constraint': constraint}])
+# Policy shapes follow the Tractus-X EDC management API walkthrough (DSP 2025-1, Catena-X 2025/9
+# policy context): an *access* policy decides who sees an offer in the catalog, a *usage*
+# (contract) policy is what the consumer agrees to.
+POLICY_CONTEXT = ['https://w3id.org/dspace/2025/1/odrl-profile.jsonld',
+                  'https://w3id.org/catenax/2025/9/policy/context.jsonld', {'@vocab': EDC_NS}]
+DSP_PROTOCOL = 'dataspace-protocol-http:2025-1'
 
 
-def membership_policy(policy_id: str, framework: str | None = None, purpose: str | None = None) -> dict:
-    """Catena-X membership, optionally a framework agreement and a usage purpose."""
-    constraints = [{'@type': 'Constraint', 'leftOperand': f'{CX_POLICY}Membership', 'operator': 'eq',
-                    'rightOperand': 'active'}]
+def bpn_policy(policy_id: str, bpns: list[str], action: str = 'access') -> dict:
+    """Only these Business Partner Numbers (checked against their BPN credential)."""
+    return _policy(policy_id, [{'action': action, 'constraint': {
+        'leftOperand': 'BusinessPartnerNumber', 'operator': 'isAnyOf', 'rightOperand': list(bpns)}}])
+
+
+def membership_policy(policy_id: str, framework: str | None = 'DataExchangeGovernance:1.0',
+                      purpose: str | None = None, action: str = 'use') -> dict:
+    """Active Catena-X membership, optionally a framework agreement and a usage purpose."""
+    constraints = [{'leftOperand': 'Membership', 'operator': 'eq', 'rightOperand': 'active'}]
     if framework:
-        constraints.append({'@type': 'Constraint', 'leftOperand': f'{CX_POLICY}FrameworkAgreement', 'operator': 'eq',
-                            'rightOperand': framework})
+        constraints.append({'leftOperand': 'FrameworkAgreement', 'operator': 'eq', 'rightOperand': framework})
     if purpose:
-        constraints.append({'@type': 'Constraint', 'leftOperand': f'{CX_POLICY}UsagePurpose', 'operator': 'eq',
-                            'rightOperand': purpose})
-    constraint = constraints[0] if len(constraints) == 1 else {'@type': 'LogicalConstraint', 'and': constraints}
-    return _policy(policy_id, [{'action': 'use', 'constraint': constraint}])
+        constraints.append({'leftOperand': 'UsagePurpose', 'operator': 'isAnyOf', 'rightOperand': [purpose]})
+    constraint = constraints[0] if len(constraints) == 1 else {'and': constraints}
+    return _policy(policy_id, [{'action': action, 'constraint': [constraint]}])
 
 
 def _policy(policy_id, permissions):
-    return {'@context': {'@vocab': EDC_NS, 'odrl': ODRL}, '@type': 'PolicyDefinition', '@id': policy_id,
-            'policy': {'@context': 'http://www.w3.org/ns/odrl.jsonld', '@type': 'Set', 'permission': permissions,
-                       'prohibition': [], 'obligation': []}}
+    return {'@context': POLICY_CONTEXT, '@type': 'PolicyDefinition', '@id': policy_id,
+            'policy': {'@type': 'Set', 'permission': permissions}}
 
 
 def submodel_asset(submodel: dict, public_url: str, api_key: str, asset_id: str | None = None) -> dict:
@@ -266,7 +271,7 @@ class EdcClient:
                   contract_policy: dict | None = None, submodel_ids=None, registry: bool = True) -> dict:
         """Register submodels (all, or ``submodel_ids``) and the registry as EDC assets with
         contracts. Idempotent: running it again updates what exists."""
-        contract_policy = contract_policy or access_policy
+        contract_policy = contract_policy or membership_policy(f'{access_policy["@id"]}-usage')
         report = {'policies': {}, 'assets': {}, 'contracts': {}}
         for policy in {access_policy['@id']: access_policy, contract_policy['@id']: contract_policy}.values():
             report['policies'][policy['@id']] = self.upsert('policydefinitions', policy)
@@ -283,3 +288,139 @@ class EdcClient:
                                              contract_policy['@id'])
             report['contracts'][definition['@id']] = self.upsert('contractdefinitions', definition)
         return report
+
+
+# -- consumer side: fetching partners' twins through EDC -------------------------------------------------
+def _as_list(value):
+    if value is None:
+        return []
+    return value if isinstance(value, list) else [value]
+
+
+def _term(obj: dict, name: str):
+    """A JSON-LD property whether compacted (``dct:type``, ``type``) or expanded (full IRI)."""
+    for key, value in obj.items():
+        if key == name or key.endswith((f':{name}', f'/{name}', f'#{name}')):
+            return value
+    return None
+
+
+class EdcConsumer:
+    """Consumer-side EDC Management API: catalog, EDR negotiation (``/v3/edrs``) and data access
+    through the EDR's ``endpoint`` and ``authorization`` (Tractus-X EDC management API walkthrough)."""
+
+    def __init__(self, client: EdcClient, poll_interval: float = 0.5, timeout: float = 60):
+        self.client, self.poll_interval, self.timeout = client, poll_interval, timeout
+
+    def catalog(self, dsp_url: str, counter_party_id: str, filters: list | None = None,
+                protocol: str = DSP_PROTOCOL) -> list[dict]:
+        body = {'@context': {'@vocab': EDC_NS}, '@type': 'CatalogRequest', 'counterPartyAddress': dsp_url,
+                'counterPartyId': counter_party_id, 'protocol': protocol,
+                'querySpec': {'@type': 'QuerySpec', 'offset': 0, 'limit': 100, 'filterExpression': filters or []}}
+        status, catalog = self.client.request('POST', '/v3/catalog/request', body)
+        if status != 200 or not isinstance(catalog, dict):
+            raise EdcError(f'catalog request to {dsp_url} failed: HTTP {status}')
+        return _as_list(_term(catalog, 'dataset'))
+
+    def find(self, datasets: list[dict], asset_id: str | None = None, dct_type: str | None = None) -> dict:
+        for dataset in datasets:
+            identifier = dataset.get('@id') or _term(dataset, 'id')
+            kind = _term(dataset, 'type')
+            kind = kind.get('@id') if isinstance(kind, dict) else kind
+            if asset_id and identifier == asset_id:
+                return dataset
+            if dct_type and kind and str(kind).endswith(dct_type.split(':')[-1].split('#')[-1]):
+                return dataset
+        raise EdcError(f'no offer for {asset_id or dct_type} in the partner catalog')
+
+    def negotiate(self, dsp_url: str, provider_id: str, dataset: dict, protocol: str = DSP_PROTOCOL) -> str:
+        """Start contract negotiation and EDR transfer for the dataset's first offer; returns its asset id."""
+        offer = copy.deepcopy(_as_list(_term(dataset, 'hasPolicy'))[0])
+        asset_id = dataset.get('@id') or _term(dataset, 'id')
+        offer.update({'@type': 'Offer', 'assigner': provider_id, 'target': asset_id})
+        for key in ('prohibition', 'obligation'):
+            offer.setdefault(key, [])
+        body = {'@context': POLICY_CONTEXT, '@type': 'ContractRequest', 'counterPartyAddress': dsp_url,
+                'protocol': protocol, 'policy': offer, 'callbackAddresses': []}
+        status, _ = self.client.request('POST', '/v3/edrs', body)
+        if status not in (200, 201):
+            raise EdcError(f'EDR negotiation for {asset_id} was refused: HTTP {status}')
+        return asset_id
+
+    def data_address(self, asset_id: str) -> dict:
+        """Wait for the EDR of an asset and return its data address (``endpoint``, ``authorization``)."""
+        query = {'@context': {'@vocab': EDC_NS}, '@type': 'QuerySpec',
+                 'filterExpression': [{'operandLeft': 'assetId', 'operator': '=', 'operandRight': asset_id}]}
+        deadline = time.monotonic() + self.timeout
+        while True:
+            status, entries = self.client.request('POST', '/v3/edrs/request', query)
+            if status == 200 and entries:
+                process = _term(entries[-1], 'transferProcessId')
+                status, address = self.client.request(
+                    'GET', f'/v3/edrs/{urllib.parse.quote(str(process), safe="")}/dataaddress?auto_refresh=true')
+                if status == 200 and isinstance(address, dict) and _term(address, 'endpoint'):
+                    return {'endpoint': _term(address, 'endpoint'), 'authorization': _term(address, 'authorization')}
+            if time.monotonic() > deadline:
+                raise EdcError(f'no EDR for {asset_id} within {self.timeout:g} s')
+            time.sleep(self.poll_interval)
+
+    def access(self, dsp_url: str, provider_id: str, asset_id: str | None = None, dct_type: str | None = None) -> dict:
+        dataset = self.find(self.catalog(dsp_url, provider_id), asset_id, dct_type)
+        return self.data_address(self.negotiate(dsp_url, provider_id, dataset))
+
+    @staticmethod
+    def call(address: dict, path: str = '', method: str = 'GET', body=None, timeout: float = 30):
+        """A request through the provider data plane with the EDR token."""
+        url = address['endpoint'].rstrip('/') + path
+        data = None if body is None else json.dumps(body).encode()
+        headers = {'Authorization': address['authorization'], 'Accept': 'application/json'}
+        if data is not None:
+            headers['Content-Type'] = 'application/json'
+        request = urllib.request.Request(url, data, headers, method=method)
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:   # noqa: S310 - EDR endpoint
+                payload = response.read()
+                return json.loads(payload) if payload else None
+        except urllib.error.HTTPError as error:
+            raise EdcError(f'data plane returned HTTP {error.code} for {path or "/"}') from error
+
+
+class PartnerTwins:
+    """A partner's Digital Twin Registry and submodels, reached through EDC.
+
+        twins = PartnerTwins(EdcConsumer(EdcClient(url, key)), dsp_url, partner_bpn)
+        ids = twins.lookup([{'name': 'manufacturerPartId', 'value': 'MPN-77'}])
+        descriptor = twins.shell(ids[0])
+        submodel = twins.submodel(descriptor, 'urn:samm:io.catenax.battery.battery_pass:6.1.0#BatteryPass')
+    """
+
+    def __init__(self, consumer: EdcConsumer, dsp_url: str, partner_bpn: str):
+        self.consumer, self.dsp_url, self.bpn = consumer, dsp_url, partner_bpn
+        self._registry = None
+
+    def registry(self) -> dict:
+        if self._registry is None:
+            self._registry = self.consumer.access(self.dsp_url, self.bpn, dct_type='DigitalTwinRegistry')
+        return self._registry
+
+    def lookup(self, asset_ids: list[dict]) -> list[str]:
+        result = EdcConsumer.call(self.registry(), '/lookup/shellsByAssetLink', 'POST', asset_ids)
+        return (result or {}).get('result', [])
+
+    def shell(self, aas_id: str) -> dict:
+        return EdcConsumer.call(self.registry(), f'/shell-descriptors/{canonical.b64url_encode(aas_id)}')
+
+    def submodel(self, shell_descriptor: dict, semantic_id: str, value_only: bool = False) -> dict:
+        """Negotiate and fetch the submodel of ``shell_descriptor`` with ``semantic_id`` (DSP endpoint)."""
+        for descriptor in shell_descriptor.get('submodelDescriptors') or []:
+            keys = (descriptor.get('semanticId') or {}).get('keys') or []
+            if not keys or keys[0].get('value') != semantic_id:
+                continue
+            for endpoint in descriptor.get('endpoints') or []:
+                info = endpoint.get('protocolInformation') or {}
+                if info.get('subprotocol') != 'DSP':
+                    continue
+                body = dict(part.split('=', 1) for part in (info.get('subprotocolBody') or '').split(';') if '=' in part)
+                address = self.consumer.access(body.get('dspEndpoint') or self.dsp_url, self.bpn, asset_id=body.get('id'))
+                return EdcConsumer.call(address, '/$value' if value_only else '')
+        raise EdcError(f'the partner twin has no DSP submodel endpoint for {semantic_id}')

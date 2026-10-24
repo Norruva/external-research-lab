@@ -148,6 +148,10 @@ class FakeEdc:
         self.url = f'http://127.0.0.1:{self.http.server_address[1]}/management'
 
 
+def contract_policy_of(edc, asset_id):
+    return edc.store[('/management/v3/contractdefinitions', f'{asset_id}#contract')]['contractPolicyId']
+
+
 class EdcProvisioning(unittest.TestCase):
     def test_provision_is_idempotent_and_well_formed(self):
         server = Server(catenax={'bpn': OWNER})
@@ -169,8 +173,13 @@ class EdcProvisioning(unittest.TestCase):
             self.assertEqual(registry['properties']['dct:type'], {'@id': 'cx-taxo:DigitalTwinRegistry'})
             self.assertEqual(registry['dataAddress']['proxyMethod'], 'true')
             stored_policy = edc.store[('/management/v3/policydefinitions', 'partners')]
-            constraint = stored_policy['policy']['permission'][0]['constraint']
-            self.assertEqual([c['rightOperand'] for c in constraint['or']], [BPN1, BPN2])
+            permission = stored_policy['policy']['permission'][0]
+            self.assertEqual(permission['action'], 'access')
+            self.assertEqual(permission['constraint'], {'leftOperand': 'BusinessPartnerNumber', 'operator': 'isAnyOf',
+                                                        'rightOperand': [BPN1, BPN2]})
+            usage = edc.store[('/management/v3/policydefinitions', 'partners-usage')]['policy']['permission'][0]
+            self.assertEqual(usage['action'], 'use')
+            self.assertEqual(contract_policy_of(edc, SM), 'partners-usage')
             contract = edc.store[('/management/v3/contractdefinitions', f'{SM}#contract')]
             self.assertEqual(contract['assetsSelector'][0]['operandRight'], SM)
             with self.assertRaises(catenax.EdcError):

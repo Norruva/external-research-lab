@@ -10,6 +10,7 @@
   dpp-create FILE   create a passport from a JSON spec (see examples/battery_passport.py)
   access-rules      print the generated IDTA-01004 tier rules for the current store
   catenax-provision register submodels and the registry as EDC assets with contracts (Catena-X)
+  catenax-fetch     fetch a partner's twin and submodel through EDC (optionally store it locally)
   import-samm TTL   SAMM aspect model -> submodel template + ConceptDescriptions (optionally an instance)
   import-dictionary ECLASS / IEC CDD property tables (CSV) -> ConceptDescriptions
 """
@@ -134,13 +135,33 @@ def cmd_catenax_provision(args):
     from . import catenax
     forge = _forge(args)
     client = catenax.EdcClient(args.edc, args.edc_key)
-    if args.bpn:
-        policy = catenax.bpn_policy(args.policy_id, args.bpn)
-    else:
-        policy = catenax.membership_policy(args.policy_id, args.framework, args.purpose)
+    access = (catenax.bpn_policy(args.policy_id, args.bpn) if args.bpn
+              else catenax.membership_policy(args.policy_id, framework=None, action='access'))
+    usage = catenax.membership_policy(f'{args.policy_id}-usage', args.framework or 'DataExchangeGovernance:1.0',
+                                      args.purpose)
     public_url = args.public_url or forge.config.base_url
-    report = client.provision(forge, forge.catenax, public_url, args.dataplane_key, policy)
+    report = client.provision(forge, forge.catenax, public_url, args.dataplane_key, access, usage)
     print(json.dumps(report, indent=1))
+    return 0
+
+
+def cmd_catenax_fetch(args):
+    from . import catenax
+    twins = catenax.PartnerTwins(catenax.EdcConsumer(catenax.EdcClient(args.edc, args.edc_key)), args.dsp, args.partner)
+    asset_ids = [dict(zip(('name', 'value'), item.split('=', 1))) for item in args.asset_id]
+    ids = twins.lookup(asset_ids)
+    if not ids:
+        print(json.dumps({'found': False}))
+        return 1
+    descriptor = twins.shell(ids[0])
+    result = {'found': True, 'aasId': ids[0], 'shellDescriptor': descriptor}
+    if args.semantic_id:
+        submodel = twins.submodel(descriptor, args.semantic_id)
+        result['submodel'] = submodel
+        if args.store:
+            forge = _forge(args)
+            forge.repository.save('submodel', submodel, actor=f'edc:{args.partner}')
+    print(json.dumps(result, indent=1, ensure_ascii=False))
     return 0
 
 
@@ -233,6 +254,15 @@ def main(argv=None):
     p.add_argument('--purpose', default=None, help='usage purpose, e.g. cx.core.industrycore:1')
     p.add_argument('--policy-id', default='aasforge-access')
     p.set_defaults(func=cmd_catenax_provision)
+    p = sub.add_parser('catenax-fetch')
+    p.add_argument('--edc', required=True, help='your EDC management API base URL')
+    p.add_argument('--edc-key', required=True)
+    p.add_argument('--dsp', required=True, help="the partner's DSP endpoint")
+    p.add_argument('--partner', required=True, help="the partner's BPN (or DID for DSP 2025-1)")
+    p.add_argument('--asset-id', action='append', required=True, help='specificAssetId name=value to look up')
+    p.add_argument('--semantic-id', default=None, help='also fetch the submodel with this semanticId')
+    p.add_argument('--store', action='store_true', help='store the fetched submodel in the local repository')
+    p.set_defaults(func=cmd_catenax_fetch)
     p = sub.add_parser('import-samm')
     p.add_argument('files', nargs='+', help='aspect model .ttl file(s)')
     p.add_argument('--models-root', default=None, help='folder laid out as <namespace>/<version>/*.ttl to resolve imports')
