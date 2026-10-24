@@ -1,0 +1,9 @@
+{
+  "complete": false,
+  "scope": "static_source_closure_only",
+  "cause": "Generic verifier rejected legitimate zero-byte installed reader files; actual reader manifest and bytes unchanged.",
+  "reader_imported_or_corpus_parsed": false,
+  "real_output_or_authorization_created": false,
+  "fix": "Allow zero-byte regular files with exact existing manifest SHA256/size; keep input-specific positive bounds.",
+  "role_or_guard_behavior_changed": false
+}

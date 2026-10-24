@@ -1,0 +1,8 @@
+{
+  "complete": true,
+  "exclusion_sha256": "28f756a4eaa30069befd7845077db411930421ac9567d623750a71ca03ee59fa",
+  "fixed_seed": 47311,
+  "generation_rejects_prior_projection_and_cross_role_overlap": true,
+  "prior_structure_exclusion_count": 48,
+  "selection_uses_model_or_quality": false
+}

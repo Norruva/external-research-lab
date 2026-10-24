@@ -1,0 +1,31 @@
+{
+  "calibration_fitted": false,
+  "check_count": 9,
+  "checks": [
+    "actual_frozen_contextual_artifact_loaded",
+    "three_review_only_typed_heads",
+    "actual_CLI_library_exact_parity",
+    "fresh_configuration_pins_frozen_registry",
+    "actual_loopback_service_health",
+    "signed_HTTP_three_head_parity_and_unsigned_refusal",
+    "actual_signature_replay_refused",
+    "authenticated_model_identity_pinned",
+    "unchanged_local_browser_assets_served"
+  ],
+  "complete": true,
+  "format": "eidos-contextual-frozen-serving-smoke-v1",
+  "model": {
+    "calibration_status": "unfitted",
+    "feature_version": "eidos-contextual-token-pointer-readout-memory-v3p1",
+    "id": "owned-contextual-memory-v3p1",
+    "sha256": "c7ccf74fefe48a1d8439dd7a44c64dea59eca5685e167c9a83255fcfdd7a2b51",
+    "version": "1"
+  },
+  "model_fit_or_gold_quality_scoring": false,
+  "model_promoted": false,
+  "new_original_unlabeled_mechanics_requests": 3,
+  "private_configuration_deleted": true,
+  "production_certified": false,
+  "registry_sha256": "7ac358b4de0ab56d4b0ccc461c72c1db75f8b693ab40104f34f9ce0b55515bcd",
+  "service_stopped": true
+}

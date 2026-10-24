@@ -1,0 +1,12 @@
+{
+  "config_sha256": "52185b40bbfa6bb446fb17888af40f69bb64906f1832467eb4c8f140d4c5d073",
+  "development_selects_model": false,
+  "files": {
+    "TRAINING-RECEIPT.json": "b9b79b662b790eaa5ba6823b89ff7d8ad75d217807545a0f0d01df5357a86737",
+    "model.json": "174bb6fcf4d302e90b2371217bccfbbee0ccb2c751e1a8bfa1735735e14d502c",
+    "registry.json": "80e517e20f18d4b9fc7908fe809067a525cc7a60cb6f1e1dca65e434da3eaca2",
+    "weights.f32": "23d9eb265675df3b78af796d0f34cb757e43636f1b5e644501f50f7cff5b7e84"
+  },
+  "fixed_before_development_prediction": true,
+  "training_result_sha256": "fa2290e49591c67b78faae173a37c04b09c3e886fd1ecc812efca910134e4f14"
+}

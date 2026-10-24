@@ -1,0 +1,8 @@
+{
+  "approved": true,
+  "approved_at_utc": "2026-10-23T10:21:38Z",
+  "plan_sha256": "880284f8fc3aaadd3b07933a724abaa86b3c71392c738202d447d7365548302c",
+  "prepared_manifest_sha256": "6405fa4f0e7ae7d43df931d079e8da365bbf54a6fddd7e0cf039d244a2a496e6",
+  "scope": "eidos-dbpedia-scaled-study-v1",
+  "user_instruction_sha256": "31fbef162594de01bab0cd525c51f74de7bcb15063029fa1a54b2cf5944c80d8"
+}

@@ -1,0 +1,17 @@
+{
+  "all_hashes_and_sizes_match": true,
+  "complete": true,
+  "coverage": {
+    "scope": "container-entries",
+    "status": "complete"
+  },
+  "evidence_id": "ev_10003a7edaa5eee2f8e1e0d29d2b530710b7d224cd2f1d859fd0039f6c2c5341",
+  "format": "eidos-original-question-decision-REA-integrity-v1",
+  "graph_nodes": 82,
+  "inspection_subset_not_full_application_security_rights_or_quality_certificate": true,
+  "integrity_contradictions": [],
+  "later_metadata_and_delivery_files_excluded": true,
+  "members": 81,
+  "stdout_sha256": "fb098823e215ebb537b433675496eda56c18e682f52d65110e5634c3d6ccfe3a",
+  "target_code_executed_or_imported": false
+}

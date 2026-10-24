@@ -1,0 +1,31 @@
+{
+  "calibration_fitted": false,
+  "check_count": 9,
+  "checks": [
+    "actual_frozen_routed_artifact_loaded",
+    "three_review_only_typed_heads",
+    "actual_CLI_library_exact_parity",
+    "fresh_configuration_pins_frozen_registry",
+    "actual_loopback_service_health",
+    "signed_HTTP_three_head_parity_and_unsigned_refusal",
+    "actual_signature_replay_refused",
+    "authenticated_model_identity_pinned",
+    "unchanged_local_browser_assets_served"
+  ],
+  "complete": true,
+  "format": "eidos-routed-frozen-serving-smoke-v1",
+  "model": {
+    "calibration_status": "unfitted",
+    "feature_version": "eidos-question-routed-subword-pointer-memory-v4",
+    "id": "owned-question-routed-v4",
+    "sha256": "16e122d03109e9a155f6bff7ca2911eaa64ebcc838881b977f90947909d7b608",
+    "version": "1"
+  },
+  "model_fit_or_gold_quality_scoring": false,
+  "model_promoted": false,
+  "new_original_unlabeled_mechanics_requests": 3,
+  "private_configuration_deleted": true,
+  "production_certified": false,
+  "registry_sha256": "e9ffcf05fde6d166154e08f4d55c3f68c9bc36c265698f25d56b413e28f39014",
+  "service_stopped": true
+}

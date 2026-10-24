@@ -1,0 +1,58 @@
+{
+  "authored_fixture_only": false,
+  "cohort_files": null,
+  "cohort_readiness_sha256": null,
+  "development_per_class": 100,
+  "development_policy": "diagnostic_only_no_selection_or_quality_based_stop",
+  "format": "eidos-dbpedia-scaled-study-config-v1",
+  "labels": [
+    "Album",
+    "Animal",
+    "Artist",
+    "Athlete",
+    "Building",
+    "Company",
+    "EducationalInstitution",
+    "Film",
+    "MeanOfTransportation",
+    "NaturalPlace",
+    "OfficeHolder",
+    "Plant",
+    "Village",
+    "WrittenWork"
+  ],
+  "max_total_windows": 2100,
+  "max_windows_per_case": 16,
+  "model_promoted_or_acceptance_enabled": false,
+  "n": 1400,
+  "paired_replicates": 2000,
+  "paired_seed": 113,
+  "prompt": "Classify this encyclopedia article into one of the offered categories.",
+  "recipe": {
+    "epochs": 3,
+    "seed": 113
+  },
+  "reference": {
+    "model_revision": "1c5edc17a7acd8701df6fc341c0d179f1c62c982",
+    "source_commit": "ca5045a3f1fac06fc6daa5cf3371110f322f5255",
+    "weight_sha256": "891102d372688fc2a094dac56a384bc537b87c63f21f9f3dac0be2b7cbc8d86c"
+  },
+  "reference_aliases": {
+    "Album": "album",
+    "Animal": "animal",
+    "Artist": "artist",
+    "Athlete": "athlete",
+    "Building": "building",
+    "Company": "company",
+    "EducationalInstitution": "educational_institution",
+    "Film": "film",
+    "MeanOfTransportation": "mean_of_transportation",
+    "NaturalPlace": "natural_place",
+    "OfficeHolder": "office_holder",
+    "Plant": "plant",
+    "Village": "village",
+    "WrittenWork": "written_work"
+  },
+  "test_per_class": 100,
+  "train_per_class": 1000
+}

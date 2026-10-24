@@ -4,6 +4,40 @@ EIDOS is an original, locally controlled classifier and decision research applic
 
 This source checkout runs without pip, npm, a hosted model, or a CDN. It requires Python 3.12 or later on POSIX, including the standard SQLite/OpenSSL modules. Browser use requires WebCrypto. No installation command or model download is needed for the authored demo below.
 
+## Current question-routed model (v4)
+
+The separate [original v4 model](docs/ROUTED-MODEL.md) adds question-conditioned key/value routing, learned read depth and spelling/subword features, plus an owned trainer and strict CLI/API artifact. **It FAILED the 95% gate in all four held-out slices**: fresh_world 16/32 (50.00%); novel_entities 9/32 (28.12%); new_composition 12/32 (37.50%); joint 10/32 (31.25%). Training 52/128; only two paired source groups per held-out slice. [Complete results and failures](docs/ROUTED-RESULT.md).
+
+223 authored unit methods, 12 actual fixture CLI/API checks and 9 frozen-artifact CLI/API checks passed. Pinned REA inspected74 prefit source/control/verification members. These scoped checks do not establish general semantic reliability. The new composition task uses known lexemes and differs from the old unknown-synonym task; no same-test gain or LAYA/JEV parity is measured. Standard-library inference/training uses no pretrained checkpoint or third-party ML runtime. Probabilities remain uncalibrated/review-only; no weights are in this checkout. Earlier outcomes below concern different artifacts.
+
+## Question-conditioned decision model
+
+The new [original decision-model path](docs/DECISION-MODEL.md) trains and runs a shared scorer over **context, the question and caller-defined option descriptions**, with CHOICE, BINARY and numeric SCORE outputs. It includes a separate local CLI, signed loopback API and browser. [Owned task format](docs/DECISION-DATA.md) · [Evidence, conformal sets and information value](docs/DECISION-EPISTEMIC.md). No pretrained checkpoint or third-party training/inference package is included.
+
+This compact from-scratch model passed 108 authored methods,12 CLI/API checks and13 real Chromium checks, but answered only 4/10 visible choice/binary smoke tasks. [Critical result and retained failures](docs/DECISION-BUILD-RESULT.md). It does not inherit the separate fixed-class DBpedia result below or establish LAYA/JEV parity. Research probabilities remain uncalibrated and every result requires review. The following older demo trains a fixed-taxonomy classifier; use the decision-model guide for new question/option semantics.
+
+The new [owned relational curriculum](docs/OWNED-CURRICULUM.md) adds six exact-label synthetic task families and grouped counterfactual worlds. Its 12 new checks bring the decision-path unit total to 120. The single frozen fit **failed**: 23/72 evaluation answers (31.94%) against uniform expected 33.33%, with zero top-answer changes in 160 changed-gold training pairs. [Complete negative result and representation limit](docs/OWNED-CURRICULUM-RESULT.md). This exposes a binding/learning gap; the model is not a useful LAYA/JEV replacement. All prior real comparison results concern different artifacts.
+
+To reproduce this bounded synthetic fitting recipe in new directories:
+
+```sh
+python3 -S -B -m eidos.decision_curriculum --output /tmp/eidos-relational-data
+python3 -S -B -m eidos.train_decision \
+  --input /tmp/eidos-relational-data/training.jsonl \
+  --provenance /tmp/eidos-relational-data/provenance.json \
+  --output /tmp/eidos-relational-model \
+  --model-id owned-relational-curriculum-v1 \
+  --epochs 6 --seed 113 --learning-rate 0.005
+```
+
+These commands reproduce a weak research model. Keep `ORACLE.json` and development/evaluation labels out of fitting and prediction; do not promote it or infer calibrated confidence from the generated data. Run from this `eidos` directory in an isolated development environment. Existing output paths are refused.
+
+## Contextual pointer-memory candidate
+
+The separately versioned [original contextual model](docs/CONTEXTUAL-MODEL.md) adds nonlinear token order, exact name-copy pointers, three memory reads, an owned trainer and explicit CLI/API loader. **It still fails the 95% target:** fresh-world20/36 (55.56%), novel-name24/36 (66.67%), new-wording12/36 (33.33%) and joint7/36 (19.44%). Training64/72; only four paired source groups per held-out slice. [Full result, failures and scope](docs/CONTEXTUAL-RESULT.md).
+
+169 authored unit methods, 12 actual CLI/API fixture checks and 9 checks using the actual fitted artifact passed. These mechanics do not establish semantic reliability. Pinned REA inspected the 58-member prefit source packet; no target code was executed by REA. This model uses standard-library Python, original parameters/data and no pretrained/third-party ML runtime. It is not a LAYA/JEV replacement; the separate older fixed-class result does not transfer. All outputs remain uncalibrated/review-only. Follow the contextual guide to create new private data/model paths; this checkout contains no trained weights.
+
 ## Train and query the demo
 
 From the repository root:
@@ -31,7 +65,7 @@ The command above trains the support-memory method. A new [standard-library line
 
 The linear trainer now also accepts `--optimizer adam`, with bias-corrected moments and a fixed 120-epoch default; ordinary gradient descent remains the default. Both methods use only standard-library Python and the caller's supports. See [optimizer settings and scope](docs/LINEAR-TRAINING.md#adam-training-option). Its optimizer checks establish mechanics; benchmark results depend on the exact trained artifact and evaluation.
 
-For larger datasets, the new [sparse SGD trainer](docs/SCALABLE-TRAINING.md) accepts up to 20,000 labeled rows across 2–64 uneven classes. It uses compact sparse vectors, deterministic shuffled optimization and the same self-contained inference format. Its distinct receipt records actual class counts; owned evaluation verifies that lineage. This new recipe has no LAYA or JEV score.
+For larger datasets, the new [sparse SGD trainer](docs/SCALABLE-TRAINING.md) accepts up to 20,000 labeled rows across 2–64 uneven classes. It uses compact sparse vectors, deterministic shuffled optimization and the same self-contained inference format. Its distinct receipt records actual class counts; owned evaluation verifies that lineage. The fixed three-epoch sparse artifact now passes both cohort-scoped gates against public zero-shot LAYA on 1,400 eligible DBpedia cases; see [the complete result](docs/DBPEDIA-SCALED-RESULT.md). This does not transfer to every new model. JEV remains unmeasured.
 
 ## Start the local application
 
@@ -90,6 +124,8 @@ The preceding cloud package also passed 18 API, 11 real Chromium and 9 backup/re
 ## Measured results and scope
 
 The newer 280-case, 14-class DBpedia comparison **tied accuracy at 86.79% (243/280 each)**. EIDOS macro-F1 was 86.66%, versus LAYA 84.22%, but both individual paired interval gates failed. This does **not** establish that EIDOS beats LAYA. It tested the actual stdlib Adam trainer at a fixed 12 epochs, selected only on separate development data, using 20 labeled supports/class versus zero-shot LAYA. Every article and all 14 choices fit without truncation. [Complete result and limitations](docs/DBPEDIA-RESULT.md) · [Aggregate evidence](evidence/dbpedia-study/score.json). The test cohort is now revealed and consumed; no new model was activated.
+
+The larger, separately approved comparison is complete: fixed sparse EIDOS scored **95.50% accuracy (1,337/1,400) / 95.50% macro-F1**, versus public zero-shot LAYA **82.21% (1,151/1,400) / 79.84%**. Both predefined individual paired interval gates passed. EIDOS used 1,000 labeled examples per class; selection was restricted to unique eligible articles from a previously used source. This is an adaptive exploratory cohort result, with no matched-adaptation, strongest-LAYA, JEV or production claim. [Full result and uncertainty](docs/DBPEDIA-SCALED-RESULT.md) · [Aggregate score](evidence/dbpedia-scaled-study/score.json). The model remains review-only; the single attempt and test cohort are consumed. The frozen [plan](research/dbpedia-scaled-study-v1/PLAN.md) and [preparation evidence](evidence/dbpedia-scaled-proposal/55-dbpedia-scaled-study-prepared.md) retain their historical pre-approval wording.
 
 The earlier SNIPS result below concerns a different frozen artifact and cohort:
 

@@ -1,0 +1,17 @@
+{
+  "all_hashes_and_sizes_match": true,
+  "complete": true,
+  "coverage": {
+    "scope": "container-entries",
+    "status": "complete"
+  },
+  "evidence_id": "ev_91bd464c68ee4572ee5307b1cc80c0d10020f12570240558da341ac3288bf17c",
+  "format": "eidos-dbpedia-scaled-REA-integrity-v1",
+  "graph_nodes": 62,
+  "integrity_contradictions": [],
+  "members": 61,
+  "quality_security_rights_or_independence_certificate": false,
+  "real_study_authorized_or_started": false,
+  "stdout_sha256": "4cd02ba0b7ac43420cd8cace603789f49d884fecdcb912a568922e05a41628d9",
+  "target_installed_imported_or_executed": false
+}

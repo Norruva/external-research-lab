@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EIDOS — Structured decision model</title><link rel="stylesheet" href="/style.css"></head>
+<body><main><header><span class="mark">E</span><div><h1>EIDOS</h1><p>Context · Question · Answer meaning</p></div></header>
+<p class="notice">Original compact decision model. Its probabilities are uncalibrated research diagnostics. Every result requires review.</p>
+<section><h2>Local operator session</h2><label>Key ID<input id="key-id" value="decision-operator" autocomplete="off" maxlength="80"></label>
+<label>Operator key<input id="operator-key" type="password" autocomplete="off" maxlength="64" spellcheck="false"></label>
+<p>The key is kept in this tab's memory. Disconnect or reload to forget it.</p>
+<button id="connect" type="button">Connect</button><button id="disconnect" type="button" class="secondary">Disconnect</button><p id="session-status" role="status">Disconnected</p></section>
+<section><h2>Structured question</h2><p>Edit the context, question and answer descriptions. The supplied IDs identify answers; their spelling is not model input.</p>
+<label>Request JSON<textarea id="request" rows="18" maxlength="1048576" spellcheck="false"></textarea></label>
+<button id="decide" type="button" disabled>Evaluate for review</button></section>
+<section><h2>Result</h2><pre id="result" aria-live="polite">Connect to load the local model identity.</pre></section>
+<footer>EIDOS · Local inference · No automatic action authority</footer></main><script type="module" src="/decision.js"></script></body></html>

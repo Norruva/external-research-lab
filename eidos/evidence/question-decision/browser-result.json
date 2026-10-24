@@ -1,0 +1,38 @@
+{
+  "authored_fixture_sha256": "536fea23ae412845eb4dee8a4ba8a044d376f7e405ac83f113a8e28f9659e29c",
+  "automatic_acceptance_or_action_authority": false,
+  "checks": [
+    "new_private_configuration_only_no_existing_keys",
+    "explicit_registry_signed_service_started_on_loopback_dynamic_port",
+    "real_browser_loaded_original_ui_and_WebCrypto",
+    "browser_WebCrypto_HMAC_authenticated_model_identity",
+    "operator_key_input_cleared_after_connect",
+    "real_UI_CHOICE_finite_normalized_typed_review_only",
+    "real_UI_BINARY_finite_normalized_typed_review_only",
+    "real_UI_SCORE_finite_normalized_typed_review_only",
+    "all255_options_scored_and_displayed_mechanics_only",
+    "raw_duplicate_JSON_reaches_server_and_is_redacted_refused",
+    "no_browser_localStorage_or_sessionStorage",
+    "disconnect_clears_session_input_and_disables_requests",
+    "page_reload_has_no_operator_session_or_persistent_browser_storage"
+  ],
+  "checks_passed": 13,
+  "cleanup": {
+    "browser_stopped": true,
+    "private_state_removed": true,
+    "service_stopped": true
+  },
+  "complete": true,
+  "elapsed_seconds": 3.251430413998605,
+  "existing_Chromium_path": "/usr/lib/chromium/chromium",
+  "failure_category": null,
+  "fit_installation_download_vendor_service_or_existing_credentials_accessed": false,
+  "format": "eidos-decision-real-browser-smoke-v1",
+  "new_private_operator_key_or_raw_request_or_CDP_payload_recorded": false,
+  "phase": "complete",
+  "real_Chromium_WebCrypto_signed_HTTP_exercised": true,
+  "registry_sha256": "4336ea9c095387ce058ae233a17eecf4aef41c8ab6877d227e4e509b762bed58",
+  "resource_note": "External per-process limits required; no aggregate cgroup or browser address-space guarantee.",
+  "semantic_correctness_or_independent_quality_asserted": false,
+  "source_sha256": "7e6ffed5b33dc4dcc300eed1a070768db158feb722f35e0fec50b6307b5f6b96"
+}

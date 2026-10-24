@@ -1,0 +1,23 @@
+{
+  "authored_offline_roles": 8,
+  "authored_tests": 39,
+  "complete": true,
+  "format": "eidos-dbpedia-scaled-source-review-v1",
+  "issues_resolved": [
+    "Align prior exposure kind identifiers with parser",
+    "Add fixed quotas object required by preparation",
+    "Accept exact public LAYA single-window False and multi-window integer-zero truncation forms; reject missing/true/positive/float values",
+    "Pin copied staged controls to approved source bytes",
+    "Bind primary artifact before diagnostic development and prohibit quality-dependent selection/continuation",
+    "Permit legitimate zero-byte pinned reader files in generic static validator while preserving exact SHA/size and positive case-input bounds"
+  ],
+  "native_reader_or_actual_LAYA_executed": false,
+  "open_limits": [
+    "adaptive exploratory same-source cohort",
+    "supervised1000/class versus zero-shot reference",
+    "unknown semantic/template/speaker/pretraining independence",
+    "per-process limits and reserves, not an aggregate cgroup guarantee",
+    "new real execution approval required"
+  ],
+  "scope": "static source/metadata review only; not security, rights, semantic-independence or quality certification"
+}

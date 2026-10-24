@@ -1,5 +1,11 @@
 # Recorded classifier comparisons
 
+## Larger DBpedia14 comparison
+
+The fixed sparse model scored **95.50% accuracy (1,337/1,400)** and **95.50% macro-F1**, against public zero-shot LAYA **82.21% (1,151/1,400)** and **79.84%**. Both predeclared individual paired interval gates passed: accuracy difference **+13.2857 points**, interval **[+10.9982, +15.3571]**; macro-F1 difference **+15.6560 points**, interval **[+13.7382, +17.4385]**.
+
+This approved single attempt used 14,000 labeled EIDOS training rows, a fixed three-epoch final checkpoint and diagnostic-only development. LAYA received all 14 choices through its documented default long-input path without truncation. It is adaptive exploratory research on a previously used source, with supervised-versus-zero-shot asymmetry and a population restricted to eligible unique articles. The intervals are approximate and individual, with no global or semantic-independence guarantee. No model was promoted. [Full result and limitations](DBPEDIA-SCALED-RESULT.md) · [Complete aggregate score](../evidence/dbpedia-scaled-study/score.json).
+
 ## Newer DBpedia14 comparison
 
 The separately approved 280-case comparison tied accuracy at **243/280 (86.79%)** for both EIDOS and public LAYA. EIDOS macro-F1 was **86.66%**, versus **84.22%**, but both predefined individual interval gates failed. This result does not meet the requirement to beat LAYA. The primary was the actual owned stdlib Adam trainer at fixed 12 epochs, selected only on development data, with 20 supports/class versus zero-shot LAYA. All 14 choices and full articles were preserved. No post-test candidate substitution or promotion.

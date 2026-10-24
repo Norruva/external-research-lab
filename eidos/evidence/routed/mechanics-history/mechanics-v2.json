@@ -1,0 +1,47 @@
+{
+  "JEV_LAYA_parity_established": false,
+  "authored_training_rows": 4,
+  "check_count": 12,
+  "checks": [
+    "actual_new_authored_training_CLI_one_epoch",
+    "checked_routed_registry_loaded",
+    "all_three_typed_heads_review_only",
+    "actual_CLI_library_parity",
+    "actual_option_order_independence",
+    "all_255_options_or_explicit_budget_refusal_no_truncation",
+    "fresh_configuration_pins_routed_registry",
+    "actual_loopback_service_health",
+    "signed_HTTP_parity_three_heads_and_unsigned_refusal",
+    "actual_HTTP_replay_refusal",
+    "authenticated_pinned_model_metadata",
+    "local_browser_assets_served"
+  ],
+  "complete": true,
+  "fixed_epochs": 1,
+  "format": "eidos-routed-adapter-smoke-v1",
+  "many_option_status": "explicit_model_budget_refusal",
+  "model": {
+    "calibration_status": "unfitted",
+    "feature_version": "eidos-question-routed-subword-pointer-memory-v4",
+    "id": "owned-routed-adapter-mechanics-v1",
+    "sha256": "be89f8cd05b8af4db0930797f83631f209f2bebeff8a0bffddfa5bf81b674856",
+    "version": "1"
+  },
+  "operational_acceptance_enabled": false,
+  "private_config_deleted": true,
+  "production_certified": false,
+  "real_benchmark_or_vendor_access": false,
+  "registry_sha256": "124116620f1b6c541c422e4cda66be0e788ef5ec5ee6d9c4714a73deea68922d",
+  "semantic_quality_scored": false,
+  "service_stopped": true,
+  "training_diagnostics": {
+    "elapsed_seconds": 0.10509342799991828,
+    "final_training_cross_entropy": 0.47785163069997666,
+    "initial_training_cross_entropy": 0.5052069508984218,
+    "optimizer_steps": 4,
+    "parameter_count": 1178,
+    "process_cpu_seconds": 0.09440791299999998,
+    "scope": "training_fit_diagnostic_not_quality_evaluation_or_calibration",
+    "vocabulary_size": 12
+  }
+}

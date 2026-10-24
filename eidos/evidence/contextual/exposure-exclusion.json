@@ -1,0 +1,9 @@
+{
+  "attempted_seed_count": 81,
+  "complete": true,
+  "exclusion_sha256": "e2ad3b8f11b2d5aab11d3025d49daef42d67ef3073bfad697eab782a0487ae83",
+  "relation_structural_hash_overlap": 0,
+  "selected_seed": 37279,
+  "selection_uses_model_or_quality": false,
+  "sequence_group_hash_overlap": 0
+}

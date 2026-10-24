@@ -1,0 +1,26 @@
+{
+  "REA_members": 58,
+  "all_four_heldout_slice_accuracy_target": 0.95,
+  "authored_mechanical_checks": 12,
+  "authored_unit_methods": 169,
+  "complete": true,
+  "criterion_pass": false,
+  "criterion_pass_by_role": {
+    "fresh_world": false,
+    "joint": false,
+    "new_wording": false,
+    "novel_entities": false
+  },
+  "expected_refused_probes": 8,
+  "format": "eidos-contextual-corrected-completion-review-v1",
+  "frozen_model_serving_checks": 9,
+  "mission_complete": false,
+  "model_promoted": false,
+  "offline_roles": 8,
+  "old_real_benchmark_or_vendor_used": false,
+  "prior_v3_attempt_remains_training_only": true,
+  "production_certified": false,
+  "single_corrected_fit_prediction_and_score": true,
+  "source_pins_match_all_staged_roles_and_checkout": true,
+  "unexpected_external_IP_connections": 0
+}

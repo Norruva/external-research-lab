@@ -1,0 +1,14 @@
+{
+  "aggregate_cgroup_guarantee": false,
+  "complete": true,
+  "cpu_seconds_limit": 600,
+  "elapsed_seconds": 74.40355233000002,
+  "exit_code": 0,
+  "expected_refused_preflights": 1,
+  "memory_mib": 2048,
+  "native_reference_mounted": false,
+  "stage": "corpus",
+  "unexpected_ip_connects": 0,
+  "unexpected_ip_socket_creations": 0,
+  "wall_seconds_limit": 900
+}

@@ -1,0 +1,21 @@
+{
+  "approved": true,
+  "approved_at_utc": "2026-10-23T10:21:38Z",
+  "format": "eidos-dbpedia-scaled-study-approval-provenance-v1",
+  "interpretation": "User replied Continue immediately after the exact fully prepared scoped execution permission question. This is approval of that single bounded plan, not another historical allowance.",
+  "native_threads": 1,
+  "new_installation_download_GPU_paid_compute": false,
+  "one_attempt": true,
+  "per_process_caps_not_aggregate_cgroup": true,
+  "plan_sha256": "880284f8fc3aaadd3b07933a724abaa86b3c71392c738202d447d7365548302c",
+  "planned_cpu_seconds": 7200,
+  "preceding_question_scope": "May I run the reviewed experiment: 14,000 training examples, 1,400 development diagnostics and 1,400 new eligible test cases against LAYA\u2014one attempt, two planned CPU hours, three elapsed hours, one thread, 4 GiB maximum, offline, with no installation or downloads? CPU controls apply per process, rather than through an aggregate cgroup.",
+  "prepared_manifest_sha256": "6405fa4f0e7ae7d43df931d079e8da365bbf54a6fddd7e0cf039d244a2a496e6",
+  "public_reviewed_plan": "https://github.com/Norruva/external-research-lab/blob/f9d4ab1ed3ef44a27950b5ecf8a4e90e45da494e/eidos/research/dbpedia-scaled-study-v1/PLAN.md",
+  "raw_user_reply": "Continue",
+  "raw_user_reply_sha256": "31fbef162594de01bab0cd525c51f74de7bcb15063029fa1a54b2cf5944c80d8",
+  "reference_memory_mib": 4096,
+  "retry_fallback_recovery_resume_partial_score_alternate_fit_or_old_budget_reuse": false,
+  "scope": "eidos-dbpedia-scaled-study-v1",
+  "whole_wall_seconds": 10800
+}

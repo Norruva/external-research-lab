@@ -1,0 +1,26 @@
+{
+  "context": "Item: lantern; color: red; owner: Mira; location: workshop; status: approved.\nItem: parcel; color: blue; owner: Noel; location: office; status: pending.",
+  "format": "eidos-decision-request-v2",
+  "kind": "SCORE",
+  "maximum": 2,
+  "minimum": 0,
+  "options": [
+    {
+      "description": "approved",
+      "id": "c665",
+      "value": 2
+    },
+    {
+      "description": "rejected",
+      "id": "c103",
+      "value": 0
+    },
+    {
+      "description": "pending",
+      "id": "c362",
+      "value": 1
+    }
+  ],
+  "prompt": "Rate the lantern readiness using its status: rejected means 0, pending means 1, and approved means 2.",
+  "request_id": "authored-train-01-6"
+}

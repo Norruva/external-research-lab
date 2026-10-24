@@ -1,0 +1,22 @@
+{
+  "complete": true,
+  "format": "eidos-decision-final-source-consistency-v1",
+  "new_endtoend_checks": 12,
+  "new_real_Chromium_checks": 13,
+  "new_unit_methods": 108,
+  "original_imported_files_unchanged": 84,
+  "prior_benchmark_reexecution": false,
+  "semantic_quality_independent_or_production_certified": false,
+  "tested_source_checks": {
+    "endtoend-v5": {
+      "current_source_matches_tested_copy": true,
+      "files": 47,
+      "mismatches": []
+    },
+    "units-v4": {
+      "current_source_matches_tested_copy": true,
+      "files": 43,
+      "mismatches": []
+    }
+  }
+}

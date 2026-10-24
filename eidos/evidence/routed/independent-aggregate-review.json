@@ -1,0 +1,203 @@
+{
+  "REA_metadata": {
+    "does_not_certify_semantic_quality": true,
+    "graph_nodes": 75,
+    "matching_receipt_hashes_and_no_contradictions": true,
+    "members": 74,
+    "prefit_source_only": true
+  },
+  "aggregate_role_checks": {
+    "fresh_world": {
+      "accuracy": 0.5,
+      "correct": 16,
+      "family_counts_sum_to_role": true,
+      "n": 32,
+      "source_groups": 2,
+      "weighted_probability_metrics_match": true
+    },
+    "joint": {
+      "accuracy": 0.3125,
+      "correct": 10,
+      "family_counts_sum_to_role": true,
+      "n": 32,
+      "source_groups": 2,
+      "weighted_probability_metrics_match": true
+    },
+    "new_composition": {
+      "accuracy": 0.375,
+      "correct": 12,
+      "family_counts_sum_to_role": true,
+      "n": 32,
+      "source_groups": 2,
+      "weighted_probability_metrics_match": true
+    },
+    "novel_entities": {
+      "accuracy": 0.28125,
+      "correct": 9,
+      "family_counts_sum_to_role": true,
+      "n": 32,
+      "source_groups": 2,
+      "weighted_probability_metrics_match": true
+    },
+    "training": {
+      "accuracy": 0.40625,
+      "correct": 52,
+      "family_counts_sum_to_role": true,
+      "n": 128,
+      "source_groups": 4,
+      "weighted_probability_metrics_match": true
+    }
+  },
+  "all_four_95_gate_false_verified": true,
+  "all_seven_question_sets_all_correct_zero_including_training": true,
+  "caveats": [
+    "Top-answer changes and any seven-question variation do not establish correct direction/depth reasoning.",
+    "Rerandomized counterfactual IDs/order can influence exact ties; both-correct and fixed-option contrasts are stronger.",
+    "Known-lexeme new composition differs from prior unknown-wording target, so no controlled v3 improvement claim.",
+    "Few paired groups and dependent rows; no real-domain95%, calibration or LAYA/JEV superiority established.",
+    "Scope flags and chronological receipts support one declared attempt, not proof that unrecorded executions cannot exist."
+  ],
+  "complete": true,
+  "core_source_files_checked": 47,
+  "counterfactual_pair_arithmetic": {
+    "fresh_world": {
+      "arithmetic_consistent": true,
+      "both_correct": 8,
+      "gold_changed_pairs": 16,
+      "neither_correct_derived_from_aggregates": 8,
+      "one_correct_derived_from_aggregates": 0,
+      "top_changed_pairs": 14
+    },
+    "joint": {
+      "arithmetic_consistent": true,
+      "both_correct": 2,
+      "gold_changed_pairs": 16,
+      "neither_correct_derived_from_aggregates": 8,
+      "one_correct_derived_from_aggregates": 6,
+      "top_changed_pairs": 2
+    },
+    "new_composition": {
+      "arithmetic_consistent": true,
+      "both_correct": 5,
+      "gold_changed_pairs": 16,
+      "neither_correct_derived_from_aggregates": 9,
+      "one_correct_derived_from_aggregates": 2,
+      "top_changed_pairs": 14
+    },
+    "novel_entities": {
+      "arithmetic_consistent": true,
+      "both_correct": 2,
+      "gold_changed_pairs": 16,
+      "neither_correct_derived_from_aggregates": 9,
+      "one_correct_derived_from_aggregates": 5,
+      "top_changed_pairs": 14
+    },
+    "training": {
+      "arithmetic_consistent": true,
+      "both_correct": 20,
+      "gold_changed_pairs": 64,
+      "neither_correct_derived_from_aggregates": 32,
+      "one_correct_derived_from_aggregates": 12,
+      "top_changed_pairs": 52
+    }
+  },
+  "family_counts_and_weighted_metrics_consistent": true,
+  "format": "eidos-routed-independent-aggregate-review-v1",
+  "heldout_totals_descriptive_only": {
+    "accuracy": 0.3671875,
+    "correct": 47,
+    "does_not_replace_each_slice_gate": true,
+    "n": 128
+  },
+  "inputs_sha256": {
+    "completion-review-v1.json": "5964805b673f27c7779e4188d44a07b0cb86c10ecba2c09de01964797625370f",
+    "predict-v1/execution-summary.json": "8b71cb8bb6d0766dc4ee74edad83fdfdc0e2cdf8f854158f27322783e56a8602",
+    "predict-v1/freeze.json": "2483f89f64f7658fc14301c06b7e0fe1f06f0d5ea5bccc96a2fcc21cdc1d3e03",
+    "preflight-v2/data/preflight-result.json": "f8bdc73cb7a3e0dd6c7fd4e5a5ec00184782c72c1a1b255ea52ca2080453b77f",
+    "preflight-v2/execution-summary.json": "559f931a4c5de20c2e144e51d8fa03a4372a51634a596bb12ebbdc94a8e8017e",
+    "preflight-v2/freeze.json": "fde098c865ec64182727875ac4dc4ec636da4aa9665df2cdae0007ce0b87a418",
+    "prepared-manifest-v3.json": "a94ced1972bbeaeba07696097f10c70017889f90d7965bf93efc0e47f1374867",
+    "rea-integrity-review-v3.json": "53a35c497e8cac2063156716ba3ea73960196cba72623dce584226e653517ebe",
+    "rea-static-v3/summary.json": "984bf5b8944fbb0a2a46336463c333a3f321fd51230760ccbdf67b4b3b5c615d",
+    "resourceprobe-v1/data/resourceprobe.json": "23600916ac237771863a10d6458a172218ca91c1fc8ce8991fd3b23a38fd65ea",
+    "resourceprobe-v2/data/resourceprobe.json": "f8ba1c4ac200950256be7d6dbd700dd56e9fdcfe401bd5b4328f7da83593d8f6",
+    "resourceprobe-v2/execution-summary.json": "22078a100e90c8461feebd05cc5ab498d85f42c99dbefb790026e072044b1548",
+    "resourceprobe-v2/freeze.json": "bb53a584f54b52efa92cb91bde3e7c2658f6d5572ee2b3bc1cbf0307cd4f41a2",
+    "score-v1/data/score.json": "9b3e9cf144b806a52e686422ad88ddc658e0e7ea50c4f62d3c693702d3062252",
+    "score-v1/execution-summary.json": "8124c86d67e75dda8de94def9799e6bee47f1b9edc1407fabda3bae3faddb235",
+    "score-v1/freeze.json": "2750fcafea6d9c6d2b4c8dfea5f170e5174149929b26cbf3afaa2c7a854f1a00",
+    "serving-v1/data/serving/result.json": "0cdab1a7ef4e8a8889017ad52fee48c43f89b47a811575063a8d521599c32a66",
+    "serving-v1/execution-summary.json": "83d60f3b5909ccf0eca465248a71ebfd552eea1114c53a1c9aeecdb2b122f324",
+    "serving-v1/freeze.json": "b46b44a6be9b2bd92e81fe2527346c403ac8b9b06831c65f304013b35732883f",
+    "train-v1/data/train-result.json": "aa9a1ddb077aaba0d310f77d7b763fda02329f322d67d6a7917707fc9ff62b0b",
+    "train-v1/execution-summary.json": "861fd9817d00594ed0e1329ae0f09b1aae7c1abc6623d143df99217e1e9a2fa5",
+    "train-v1/freeze.json": "47fcd57e02970bab7aa2ca00fba1bd258c19e8d5090ce22fffc7cd6f42e2d52a"
+  },
+  "mission_complete": false,
+  "model_useful_as_general_decision_model_established": false,
+  "production_certified": false,
+  "resource_selection": {
+    "final_manifest": "prepared-manifest-v3.json",
+    "final_probe": "resourceprobe-v2",
+    "final_probe_preserved": {
+      "gradient_CPU_seconds": 0.316783971,
+      "stage": "resourceprobe-v2",
+      "tape_nodes": 77038
+    },
+    "four_epoch_conservative_CPU_seconds": 324.442946425,
+    "four_epoch_conservative_elapsed_seconds": 333.01190377792955,
+    "largest_eligible_epoch_rule_verified": true,
+    "prior_probe_preserved": {
+      "gradient_CPU_seconds": 0.749974111,
+      "stage": "resourceprobe-v1",
+      "tape_nodes": 342982
+    },
+    "protocol": "research/70-routed-autodiff-implementation-revision.md",
+    "resource_heuristic_not_guarantee": true
+  },
+  "review_scope": "Existing aggregate score and source/resource/provenance metadata only; no per-case requests/gold/predictions or raw model artifact inspected. No model execution, refit, inference or rescoring.",
+  "seven_question_contrast_checks": {
+    "fresh_world": {
+      "all_correct": 0,
+      "contrast_sets": 4,
+      "top_answer_varies_when_gold_varies": 4
+    },
+    "joint": {
+      "all_correct": 0,
+      "contrast_sets": 4,
+      "top_answer_varies_when_gold_varies": 4
+    },
+    "new_composition": {
+      "all_correct": 0,
+      "contrast_sets": 4,
+      "top_answer_varies_when_gold_varies": 4
+    },
+    "novel_entities": {
+      "all_correct": 0,
+      "contrast_sets": 4,
+      "top_answer_varies_when_gold_varies": 3
+    },
+    "training": {
+      "all_correct": 0,
+      "contrast_sets": 16,
+      "top_answer_varies_when_gold_varies": 16
+    }
+  },
+  "source_pins_match_current_runtime_and_final_stages": true,
+  "training_recipe": {
+    "CPU_limit_seconds_per_process": 600,
+    "elapsed_seconds": 112.27238802800002,
+    "epochs": 4,
+    "learning_rate": 0.005,
+    "optimizer_steps": 512,
+    "parameter_count": 1434,
+    "process_cpu_seconds": 112.031496662,
+    "seed": 113,
+    "source_groups": 4,
+    "training_rows": 128,
+    "vocabulary_size": 44,
+    "wall_limit_seconds_per_process": 900,
+    "work_units_estimate": 2481401856,
+    "work_units_limit": 12000000000
+  }
+}

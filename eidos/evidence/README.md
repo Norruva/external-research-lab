@@ -1,3 +1,11 @@
+## Question-routed model result (v4)
+
+[Complete report](../docs/ROUTED-RESULT.md) and [aggregate evidence](routed/README.md): the original fixed experiment **FAILED the 95% gate in all four held-out slices** (fresh_world 16/32 (50.00%); novel_entities 9/32 (28.12%); new_composition 12/32 (37.50%); joint 10/32 (31.25%)). 223 units,12fixture/9artifact CLI/API checks and74-member passive REA inspection establish scoped verification, not natural-domain or LAYA/JEV superiority. New known-lexeme composition is a changed cohort/task. All preceding outcomes remain preserved below.
+
+## Contextual model result (v3.1)
+
+[New full result](../docs/CONTEXTUAL-RESULT.md) and [aggregate evidence](contextual/README.md): the original contextual model's fixed synthetic experiment FAILED the95% milestone in all four held-out slices (20/36,24/36,12/36,7/36). The 169-unit/12-fixture/9-frozen-service checks and58-member passive REA inspection establish scoped verification, not general or LAYA/JEV quality. Prior outcomes below are preserved and belong to different artifacts.
+
 # Evidence index
 
 These are completed cloud-run receipts and aggregate results, imported by hash. They contain no raw benchmark cases, gold rows, per-case predictions, model weights, existing credentials or application state. The authored synthetic demo lives separately in `../examples`.
@@ -48,4 +56,22 @@ Sixteen authored tests and eight separately isolated fixture roles passed before
 
 The new [sparse training receipts](sparse-training/) record 95 authored unit methods, 16 actual CLI/signed-service checks, a 20,000-row / 14-class generated capacity check and four separately isolated train/prepare/predict/score CLI roles. The complete source tree during these checks is pinned in `tested-source-tree.json`; its map hash is `0ec3e6b72d97e0b62939e40bf488895b4cead701fa78b8ae065643dc96c0ec70`. Later documentation/evidence/provenance additions are not part of that historical tested tree. All original 84 imported files remain unchanged.
 
-These are original authored functional and capacity fixtures, not a newly measured corpus result. No real dataset, historical model, native reference, existing credential/configuration, installation or model promotion was used. Only a fresh local-service configuration generated inside the isolated smoke namespace was read. The sparse recipe has no LAYA or JEV score; the latest real DBpedia accuracy tie and failed superiority gates remain unchanged. [Method and limits](../docs/SCALABLE-TRAINING.md).
+These are original authored functional and capacity fixtures, not a newly measured corpus result. No real dataset, historical model, native reference, existing credential/configuration, installation or model promotion was used. Only a fresh local-service configuration generated inside the isolated smoke namespace was read. These receipts predate the separately approved [larger real comparison](dbpedia-scaled-study/score.json). Its fixed sparse artifact now passes both cohort-scoped gates against public zero-shot LAYA; JEV remains unmeasured. The earlier 280-case tie and failed gates remain unchanged. [Method and limits](../docs/SCALABLE-TRAINING.md).
+
+## Prepared larger comparison
+
+[Proposal evidence](dbpedia-scaled-proposal/) records 39 authored tests, eight isolated fixture roles, static checks and passive REA identity inspection of 61 members. Corpus preparation and reference inference use explicit authored substitutes in these fixtures. No new real corpus processing, fit, native reader/reference execution, old-result rescore or approval occurred. [Plan and exact scope](../research/dbpedia-scaled-study-v1/PLAN.md) propose 14,000 training / 1,400 development / 1,400 test rows with preselection uniqueness/exposure exclusions. At that preparation checkpoint the real output slot and authorization were absent. The later single scoped approval and completed result are recorded separately below; historical preparation bytes are preserved.
+
+## Completed larger DBpedia14 comparison
+
+[Authoritative score](dbpedia-scaled-study/score.json), [independent completion audit](dbpedia-scaled-study/completion-review.json) and [seven-stage execution receipt](dbpedia-scaled-study/execution-summary.json) record the approved 14,000-training / 1,400-diagnostic / 1,400-test attempt. EIDOS scored 95.50% accuracy / 95.50% macro-F1, versus public zero-shot LAYA 82.21% / 79.84%; both predefined individual paired interval gates passed. [Full scope and limitations](../docs/DBPEDIA-SCALED-RESULT.md).
+
+The folder contains aggregate history/cohort/training/prediction receipts, approval pins, authored review/packaging controls, and opaque private-model-package hashes only. Corpus rows, selected IDs/group mappings, gold, per-case predictions, vocabulary/weights/native dependencies, credentials and state are excluded. No development quality selected or changed the model. The primary was frozen first; complete streams were scored once. Every stage had one refused route probe and zero unexpected IP socket creations/connections. The review performed no refit, inference, metric recalculation or bootstrap. All 27 package files and 84 original imported members remain unchanged. No model/policy/serving activation occurred. The one attempt and test cohort are consumed.
+
+## Original question-conditioned model
+
+[New source/integration evidence](question-decision/README.md) records108 authored unit checks,12 actual CLI/API checks and13 real Chromium checks. The new compact model scored only 4/10 on visible choice/binary mechanics tasks; do not transfer the separate DBpedia win to it. [Full critical result](../docs/DECISION-BUILD-RESULT.md). Seven original modules, a separate trainer/artifact/CLI/API/browser path and finite evidence/conformal/VOI primitives were added. Prior benchmark bytes and all84 imported members remain unchanged. No new public-code license, vendor implementation/weights, deployment or general-quality certification accompanies this extension.
+
+## Original relational curriculum
+
+[New aggregate evidence](owned-curriculum/README.md) records 120 decision-path unit methods including 12 new generator/oracle checks, plus five separated offline roles for the single synthetic fit. It failed: evaluation 23/72 against uniform expected 33.33%, and no changed-gold pair changed the model's top answer even in training. [Full negative result and representation limit](../docs/OWNED-CURRICULUM-RESULT.md). There was no quality-selected refit or reuse of real benchmarks/reference services. All 34 previous core-package files and 84 imported source members remain unchanged; one original generator module was added. Pinned REA inspected the final 20-member source/aggregate subset; later metadata are outside that inspection.

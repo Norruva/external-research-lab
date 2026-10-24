@@ -1,0 +1,19 @@
+{
+  "bytes": 590833,
+  "complete": true,
+  "file": "/workspace/eidos/eidos-dbpedia-scaled-owned-model-v1.tar.gz",
+  "files_verified": 7,
+  "fit_prediction_scoring_installation_activation_or_network_performed": false,
+  "format": "eidos-dbpedia-scaled-owned-model-packaging-v1",
+  "model_promoted": false,
+  "owned_model": {
+    "calibration_status": "unfitted",
+    "feature_version": "unicode-word-bigram-char345-tfidf-v2",
+    "id": "dbpedia_scaled_sparse",
+    "sha256": "174bb6fcf4d302e90b2371217bccfbbee0ccb2c751e1a8bfa1735735e14d502c",
+    "version": "1"
+  },
+  "private_distribution_rights_unresolved": true,
+  "raw_corpus_gold_percase_predictions_native_or_keys_included": false,
+  "sha256": "7d4450b440685d8e4288f48e6de40052da61c2c36946afdfdae908ca0c101666"
+}

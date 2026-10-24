@@ -1,0 +1,11 @@
+{
+  "bytes": 1156888,
+  "complete": true,
+  "file": "eidos-dbpedia-scaled-review-v1.tar.gz",
+  "files_verified": 61,
+  "format": "eidos-dbpedia-scaled-inspection-receipt-v1",
+  "manifest_sha256": "ed6506bd984d6c400cf8203a99df26d0067ab11c6386f3a44634b7c27caf3711",
+  "real_study_authorized_or_started": false,
+  "scope": "inspection_subset_not_complete_application",
+  "sha256": "1367b77f72346c2c1a1931f4571d4d57681306ae7d134454b77aa667e2a5c5d0"
+}

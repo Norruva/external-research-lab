@@ -1,0 +1,13 @@
+{
+  "complete": true,
+  "model": {
+    "calibration_status": "unfitted",
+    "feature_version": "eidos-question-conditioned-attention-mlp-v2",
+    "id": "owned-relational-curriculum-v1",
+    "sha256": "5b6a734366fb8172481192d9e51bd571f652ed3b3a3509ec362ef5283cde50d1",
+    "version": "1"
+  },
+  "no_gold_or_world_ledger_available": true,
+  "requests": 504,
+  "review_only": true
+}

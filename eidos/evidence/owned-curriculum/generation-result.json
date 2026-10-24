@@ -1,0 +1,24 @@
+{
+  "complete": true,
+  "generator_receipt": {
+    "complete": true,
+    "file_count": 7,
+    "format": "eidos-original-decision-curriculum-v1",
+    "independently_sealed_real_world_or_LAYA_JEV_benchmark": false,
+    "manifest_sha256": "96e68c12148a2116ae1d5e2319b01577dfa3d0ea76bb2c53455df6e36754e9f5",
+    "role_groups": {
+      "development": 3,
+      "evaluation": 3,
+      "training": 15
+    },
+    "role_rows": {
+      "development": 72,
+      "evaluation": 72,
+      "training": 360
+    },
+    "training_inference_or_model_scoring_performed": false
+  },
+  "no_fit_or_model_predictions": true,
+  "synthetic_only": true,
+  "total_tasks": 504
+}

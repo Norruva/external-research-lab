@@ -1,0 +1,12 @@
+{
+  "bytes": 190087,
+  "complete": true,
+  "file": "/workspace/eidos/eidos-routed-candidate-source-v3.tar.gz",
+  "files_verified": 74,
+  "format": "eidos-routed-candidate-source-export-v3",
+  "manifest_sha256": "316aed19cbcd5cf8e799a2da8e2df8023700a277fd2240f6ab49d47527eeb130",
+  "quality_fit_or_scoring_performed": false,
+  "raw_generated_rows_gold_predictions_or_weights_included": false,
+  "sha256": "e8284c5f1895afb2bc45f60d6c0f2c606885b989800eab51e2c1c17fbe072b3a",
+  "source_inspection_subset_not_runnable_application": true
+}

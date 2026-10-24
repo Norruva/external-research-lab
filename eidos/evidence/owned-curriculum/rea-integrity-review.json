@@ -1,0 +1,17 @@
+{
+  "all_hashes_and_sizes_match": true,
+  "complete": true,
+  "coverage": {
+    "scope": "container-entries",
+    "status": "complete"
+  },
+  "evidence_id": "ev_8e1e30c5bad2c78ce9cbfc8bf1955c679686610c1c3dc1c3177f7ad51bdca83b",
+  "format": "eidos-owned-curriculum-REA-integrity-v1",
+  "graph_nodes": 21,
+  "inspection_subset_not_security_rights_semantic_quality_or_production_certificate": true,
+  "integrity_contradictions": [],
+  "later_metadata_and_delivery_files_excluded": true,
+  "members": 20,
+  "stdout_sha256": "c18df6e8f6e407f692391cb79edd2dd26fdf4f2aa8dbb4da3dde186eae5955b8",
+  "target_code_installed_imported_or_executed": false
+}

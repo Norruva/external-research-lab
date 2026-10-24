@@ -1,0 +1,16 @@
+{
+  "complete": true,
+  "epoch_selection": "largest_of_predeclared_6_4_2_within_unchanged_resource_bound_only",
+  "epochs": 6,
+  "heldout_or_gold_available": false,
+  "inference_training_or_quality_scoring_performed": false,
+  "parameter_count": 5060,
+  "training_rows": 360,
+  "work_units_estimate": 944853504,
+  "work_units_estimates": {
+    "2": 399562752,
+    "4": 672208128,
+    "6": 944853504
+  },
+  "work_units_limit": 1000000000
+}

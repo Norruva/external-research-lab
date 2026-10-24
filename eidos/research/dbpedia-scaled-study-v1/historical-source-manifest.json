@@ -1,0 +1,249 @@
+{
+  "files": {
+    "history-000.dat": {
+      "bytes": 1878045,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/research/slurp-development/dataset/train.jsonl",
+      "sha256": "e8718aba9ab8e9b4b52c8499814c6970e1343ebe3fc46bc087d19365b7c37c9d"
+    },
+    "history-001.dat": {
+      "bytes": 75264,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/research/slurp-development/dataset/dev-tune.jsonl",
+      "sha256": "b78aa7f4e6648e31585628bd3b77921c48d22f1ca9251dbe8f69060b65f7f69b"
+    },
+    "history-002.dat": {
+      "bytes": 86538,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/research/slurp-development/dataset/dev-calibration.jsonl",
+      "sha256": "08e85b50c552f79ad1c69142ad9321796c84efdeb5aa9d83aacb8ce8e5eb1001"
+    },
+    "history-003.dat": {
+      "bytes": 86086,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/research/slurp-development/dataset/dev-gates.jsonl",
+      "sha256": "e7b5eeaa0919b0cca6319dc667da637501dd015f76c2a5513e57e07f82b9d255"
+    },
+    "history-004.dat": {
+      "bytes": 83366,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/research/slurp-development/dataset/dev-audit.jsonl",
+      "sha256": "3a5580c02016dc3211731c601fed46dbc8b1d169fb7e5a3d4899964522a54857"
+    },
+    "history-005.dat": {
+      "bytes": 483913,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/research/slurp-development/dataset/official-test-quarantined.jsonl",
+      "sha256": "d889ca1a6a57a3e40608b672dceeae4fd901b439f69986ee6afda9d9147f5341"
+    },
+    "history-006.dat": {
+      "bytes": 924974,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/banking77/prepare-v2/data/dataset/train.jsonl",
+      "sha256": "07961a47400e64279f497d98d305eb6f71462e231daa74f2eeedbef6ae328a3f"
+    },
+    "history-007.dat": {
+      "bytes": 135524,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/banking77/prepare-v2/data/dataset/dev-tune.jsonl",
+      "sha256": "746ca3975bb57eda4438d3c7ae4573f1051f7128984a920ddd715f28e04f8f6b"
+    },
+    "history-008.dat": {
+      "bytes": 131637,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/banking77/prepare-v2/data/dataset/dev-calibration.jsonl",
+      "sha256": "0bc46b3a073d84d215982bd0062c3284b855040e4bae3614fef6bee515602134"
+    },
+    "history-009.dat": {
+      "bytes": 133573,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/banking77/prepare-v2/data/dataset/dev-gates.jsonl",
+      "sha256": "b3533376ac2d046b367f3038381131315c7f4369190c0835253b7f80f972691d"
+    },
+    "history-010.dat": {
+      "bytes": 2254753,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/banking77/prepare-v2/data/sealed-test/inputs.jsonl",
+      "sha256": "eb954e4928ccce4940d6d88dfdad7a00af8dc6c0c132d36e01f0199c6fde117a"
+    },
+    "history-011.dat": {
+      "bytes": 2739820,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/train.jsonl",
+      "sha256": "3fe714b3d6bbb032f5d6e8c690ae5cc6aa2b1e678cd1e6da57bf192dcd7590f1"
+    },
+    "history-012.dat": {
+      "bytes": 181537,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/tune.jsonl",
+      "sha256": "7f6ea35b8eea6cf1d1274ff7b1ad2d055c9062991e88c3cd16c28d965c33d336"
+    },
+    "history-013.dat": {
+      "bytes": 181926,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/calibration.jsonl",
+      "sha256": "edaab4a4421d29e61e012616d3ebd5b74dbcd2e42a932124e1400e6f178b09c8"
+    },
+    "history-014.dat": {
+      "bytes": 177908,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/gate.jsonl",
+      "sha256": "6d6cc0822e467cf1c68af5e54471d9fafd00bfd8cd5fe7a0c0e616aa635275ff"
+    },
+    "history-015.dat": {
+      "bytes": 712437,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/test-inputs.jsonl",
+      "sha256": "b676d985b8081857dd7901ed9b365c09a208726c33ea89c06e93df5eae8eaf5e"
+    },
+    "history-016.dat": {
+      "bytes": 17567,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/oos-train.jsonl",
+      "sha256": "bb0203596cdc66a533479ab38caac5c7e076ea7b68463388f463c1fd0bfd913d"
+    },
+    "history-017.dat": {
+      "bytes": 5373,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/oos-tune.jsonl",
+      "sha256": "834b272cc2f091120e6493e416145b4a622f77533616b065b4887734ca7fdc34"
+    },
+    "history-018.dat": {
+      "bytes": 6552,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/oos-calibration.jsonl",
+      "sha256": "7931c1ab935f5c4667a9e89232c62e1a56c661379afa746479fd8ddd9d2800e5"
+    },
+    "history-019.dat": {
+      "bytes": 5292,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/oos-gate.jsonl",
+      "sha256": "2e3c85d9a51721d18d90eb796c98060d469d7ae67a01d22dc6f234e478a38ce7"
+    },
+    "history-020.dat": {
+      "bytes": 167082,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/clinc150-preparation-v1/v1/dataset/oos-test-inputs.jsonl",
+      "sha256": "1c2fa0245cac19d43098e09969b1c5b833f7c8351247673910edd45afedb87c0"
+    },
+    "history-021.dat": {
+      "bytes": 958167,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/primary-massive-prepare/v1/prepare/data/dataset/train.jsonl",
+      "sha256": "6eba00efc0b0f3ecf3d46514b1423d49738a8c5d876334026618f5ea91b11d5e"
+    },
+    "history-022.dat": {
+      "bytes": 53815,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/primary-massive-prepare/v1/prepare/data/dataset/dev-tune.jsonl",
+      "sha256": "2a4ccc318ccc1d34944d77eaaca4ec4990f92c02c101cf48326f0fa6daabbad3"
+    },
+    "history-023.dat": {
+      "bytes": 56611,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/primary-massive-prepare/v1/prepare/data/dataset/dev-calibration.jsonl",
+      "sha256": "f086b4d97928101ada20747d0f0332d625ef1218b35b91cf9a70750405f84555"
+    },
+    "history-024.dat": {
+      "bytes": 58144,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/primary-massive-prepare/v1/prepare/data/dataset/dev-gates.jsonl",
+      "sha256": "c6ba1a4a601ac6d25f2a937a03268e80f99479e085bde13dfd468f54b49933de"
+    },
+    "history-025.dat": {
+      "bytes": 246432,
+      "kind": "jsonl",
+      "path": "/workspace/eidos/evaluation/production/primary-massive-prepare/v1/prepare/data/dataset/test.jsonl",
+      "sha256": "63d5dc2449b9de8f01f36eb0b34bb65e63803867d31643f4118f15f60679a048"
+    },
+    "history-026.dat": {
+      "bytes": 44160,
+      "kind": "snips",
+      "path": "/workspace/eidos/research/snips-source-review-v1/corpus-opaque/validate_AddToPlaylist.json",
+      "sha256": "14cc9ee49ae477b1452632a6e835498cf4c32da397b16967c82abb3e50403e83"
+    },
+    "history-027.dat": {
+      "bytes": 49353,
+      "kind": "snips",
+      "path": "/workspace/eidos/research/snips-source-review-v1/corpus-opaque/validate_BookRestaurant.json",
+      "sha256": "4f7258ccc768b777b2eb8916532db9aa50dbd058ddf1ffb0dc59218963e7442a"
+    },
+    "history-028.dat": {
+      "bytes": 39612,
+      "kind": "snips",
+      "path": "/workspace/eidos/research/snips-source-review-v1/corpus-opaque/validate_GetWeather.json",
+      "sha256": "60c095e193655d6ca92be220fed3926ca25e18cd70c85664145efe25d80993af"
+    },
+    "history-029.dat": {
+      "bytes": 33122,
+      "kind": "snips",
+      "path": "/workspace/eidos/research/snips-source-review-v1/corpus-opaque/validate_PlayMusic.json",
+      "sha256": "922212775e26259d5bffeaf79b6048d070ca017d229df00b2cc9800f71c75d20"
+    },
+    "history-030.dat": {
+      "bytes": 52854,
+      "kind": "snips",
+      "path": "/workspace/eidos/research/snips-source-review-v1/corpus-opaque/validate_RateBook.json",
+      "sha256": "c1f8b4114da0bb5e8afd78a8062766e18b2eabb0e717539598db01b09d04619b"
+    },
+    "history-031.dat": {
+      "bytes": 31404,
+      "kind": "snips",
+      "path": "/workspace/eidos/research/snips-source-review-v1/corpus-opaque/validate_SearchCreativeWork.json",
+      "sha256": "8a5e830eddb185d3e4a9d27ded140a145d04766bdce0e58834676ede32d13e77"
+    },
+    "history-032.dat": {
+      "bytes": 35716,
+      "kind": "snips",
+      "path": "/workspace/eidos/research/snips-source-review-v1/corpus-opaque/validate_SearchScreeningEvent.json",
+      "sha256": "81e1445713e03c7c3e615353c5f3fee05f369fe9834100b9b9735900a96b9498"
+    },
+    "history-033.dat": {
+      "bytes": 833810,
+      "kind": "snips",
+      "path": "/workspace/eidos/research/snips-support-source-v1/corpus-opaque/train_AddToPlaylist_full.json",
+      "sha256": "fee1b4645352e70ed8a40f1f87c3b53fc3bf75f8ebc82252a22b82c107e75b01"
+    },
+    "history-034.dat": {
+      "bytes": 980018,
+      "kind": "snips",
+      "path": "/workspace/eidos/research/snips-support-source-v1/corpus-opaque/train_BookRestaurant_full.json",
+      "sha256": "7677e82cd6e9a8191f0a4502568c786278c984900b4796d3628e46f1abf73ef4"
+    },
+    "history-035.dat": {
+      "bytes": 743646,
+      "kind": "snips",
+      "path": "/workspace/eidos/research/snips-support-source-v1/corpus-opaque/train_GetWeather_full.json",
+      "sha256": "86f414b2ad8a993134d85d16e25e5d337beae47cef993c0af2a5f440405c60f6"
+    },
+    "history-036.dat": {
+      "bytes": 675343,
+      "kind": "snips",
+      "path": "/workspace/eidos/research/snips-support-source-v1/corpus-opaque/train_PlayMusic_full.json",
+      "sha256": "901ddbe9781d1fdb8196e789c543f80df3d29ca6e237da64947905adcc0312e4"
+    },
+    "history-037.dat": {
+      "bytes": 506364,
+      "kind": "snips",
+      "path": "/workspace/eidos/research/snips-support-source-v1/corpus-opaque/train_RateBook_full.json",
+      "sha256": "bb43e4b74134300d5766f6b420d0357a63402987a225f6dc92c806c9c040ce04"
+    },
+    "history-038.dat": {
+      "bytes": 292392,
+      "kind": "snips",
+      "path": "/workspace/eidos/research/snips-support-source-v1/corpus-opaque/train_SearchCreativeWork_full.json",
+      "sha256": "87b3432de48c71c205aa5238b41d9e3f2d70bdfcd0bea2427544fb9e4bd5e5bb"
+    },
+    "history-039.dat": {
+      "bytes": 364989,
+      "kind": "snips",
+      "path": "/workspace/eidos/research/snips-support-source-v1/corpus-opaque/train_SearchScreeningEvent_full.json",
+      "sha256": "5447e9440c02e2fb08c3ae16b9f58a4d1332b4bc77fd34691402b02aa4399765"
+    }
+  },
+  "format": "eidos-dbpedia-history-source-v1",
+  "scope": "Exact-text fingerprints of enumerated processed SLURP, BANKING77, CLINC150, rejected MASSIVE and public raw SNIPS source rows only; not exhaustive historical/semantic/pretraining independence. Text only; no answer-key/prediction/metric artifacts.",
+  "source_bytes": 16525119,
+  "source_file_count": 40,
+  "source_text_parsed_during_manifest_preparation": false
+}
