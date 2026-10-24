@@ -19,7 +19,9 @@ the open-source AAS tools, with Digital Product Passports (DPP) built in.
     and rule `FILTER`s prune individual elements from responses.
   - Formulas are also compiled to SQL prefilters, which makes queries 21–42× faster on 5,000
     submodels with identical results ([benchmark](docs/BENCHMARK.md)).
-- **Storage: SQLite or PostgreSQL.** The whole test suite runs on both.
+- **Storage: SQLite or PostgreSQL, one process or many.** The whole test suite runs on both.
+  `serve --workers N` pre-forks N processes on one socket. They share the database, and each follows
+  the others' changes (event streams, bridges, rule caches).
 - **Operations that run.** `invoke`, `invoke-async` and `$value` variants work. An operation is
   backed by a registered Python function, or forwarded to an allow-listed URL with an
   `invocationDelegation` qualifier.
@@ -93,7 +95,7 @@ To add PostgreSQL, OPC UA and MQTT:
 
 | Command | What it does |
 |---|---|
-| `serve [--opcua ENDPOINT] [--opcua-writable] [--mqtt URL]` | HTTP server: AAS API, `/dpp`, `/01` resolver, `/mcp`, `/ui`; optionally OPC UA and MQTT |
+| `serve [--workers N] [--opcua ENDPOINT] [--opcua-writable] [--mqtt URL]` | HTTP server: AAS API, `/dpp`, `/01` resolver, `/mcp`, `/ui`; optionally several worker processes, OPC UA and MQTT |
 | `import FILE...` | Import AASX, JSON or XML (3.0, 3.1 or 3.2) and print the loss report; exits 2 if anything was lost |
 | `export --format json\|xml\|aasx\|nodeset --version 3.0\|3.1\|3.2` | Write the environment (`nodeset`: OPC UA NodeSet2 on I4AAS) |
 | `verify FILE` | Repairs, detected version and constraint findings (released aas-core 3.1 verifier) |
@@ -139,7 +141,7 @@ cd aasforge/tests && ../../.venv/bin/python -m unittest discover -s .
 AASFORGE_TEST_DATABASE=postgresql://user:pass@localhost/db ../../.venv/bin/python -m unittest discover -s .
 ```
 
-There are 137 tests:
+There are 140 tests:
 
 - **Versioning and AASX:** version detection, the 3.2 sidecar, repairs, lossless import of real IDTA
   and Catena-X packages, and deterministic writing.
@@ -158,6 +160,8 @@ There are 137 tests:
 - **Importers:** SAMM templates against the ESMF generator's output, payload round trips, ECLASS and
   CDD tables.
 - **Web editor:** a browser test with Playwright and Chromium.
+- **Workers:** three processes on SQLite and PostgreSQL. Concurrent writes give gap-free
+  revisions, and an event stream on one worker sees every worker's changes.
 
 Tests needing optional parts (asyncua, paho-mqtt with mosquitto, rdflib, Node Playwright) are
 skipped when those parts are missing. `tools/api_coverage.py` regenerates the coverage report from
@@ -194,5 +198,5 @@ tools/               build_dpp_data.py, build_samm_units.py, api_coverage.py, be
 ## Status
 
 This is a research implementation. It has been security-reviewed twice, and every finding is
-covered by a test, but it has had no third-party audit or production hardening. It runs as one
-process on one database connection; the [roadmap](ARCHITECTURE.md#roadmap) lists what remains.
+covered by a test, but it has had no third-party audit or production hardening. The
+[roadmap](ARCHITECTURE.md#roadmap) lists what remains.

@@ -218,7 +218,8 @@ class App:
         return response
 
 
-def serve(app: App, host: str = '127.0.0.1', port: int = 8081, max_body: int = MAX_BODY):
+def serve(app: App, host: str = '127.0.0.1', port: int = 8081, max_body: int = MAX_BODY, sock=None):
+    """Serve in a background thread; ``sock`` is an already listening socket (pre-forked workers)."""
     class Handler(BaseHTTPRequestHandler):
         protocol_version = 'HTTP/1.1'
         server_version = 'aasforge'
@@ -282,7 +283,12 @@ def serve(app: App, host: str = '127.0.0.1', port: int = 8081, max_body: int = M
         def log_message(self, fmt, *args):
             pass
 
-    server = ThreadingHTTPServer((host, port), Handler)
+    if sock is None:
+        server = ThreadingHTTPServer((host, port), Handler)
+    else:
+        server = ThreadingHTTPServer(sock.getsockname()[:2], Handler, bind_and_activate=False)
+        server.socket.close()
+        server.socket = sock
     server.daemon_threads = True
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()

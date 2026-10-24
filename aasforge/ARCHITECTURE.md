@@ -191,8 +191,16 @@ passport needs: resolver, credential and registry.
   API could move onto ASGI without changing the handlers.
 - **One database adapter.** The store writes portable SQL (upserts, `RETURNING`), and `db.py`
   translates it per dialect. Text columns use the "C" collation on PostgreSQL, so ordering and
-  comparisons match SQLite and the Python evaluator. One connection serves all threads; every
-  statement fetches its rows under the lock.
+  comparisons match SQLite and the Python evaluator.
+  - SQLite uses one locked connection.
+  - PostgreSQL uses a connection pool. A transaction keeps its connection, and per-object advisory
+    locks serialise concurrent writers, so revision numbers have no gaps across threads and
+    processes.
+  - Events are dispatched after commit, so subscribers never read uncommitted state.
+- **Scale-out by processes.** `serve --workers N` pre-forks workers on one socket.
+  - Each worker runs a watcher that delivers the other workers' events to its local subscribers:
+    SSE streams, the tier-rule cache, and the MQTT and OPC UA bridges, which run in worker 0.
+  - Sequence numbers may commit out of order, so the watcher re-reads a window of recent ones.
 - **Exact semantics in Python, speed from SQL.** SQL prefilters may return extra candidates but
   never miss one. A property test with 600 generated queries over the corpus checks this, and a
   planted off-by-one in the compiler makes it fail.
@@ -201,8 +209,8 @@ passport needs: resolver, credential and registry.
 
 ## Roadmap
 
-- **Scale-out.** A connection pool and multiple worker processes. Events across processes would
-  come from PostgreSQL `LISTEN/NOTIFY` instead of in-process subscribers.
+- **Lower-latency cross-process events.** Use PostgreSQL `LISTEN/NOTIFY` instead of polling
+  (0.5 s today).
 - **DTR "granular" access rules** alongside the classic `externalSubjectId` model.
 - **Checking EDC agreements.** Verify `Edc-Contract-Agreement-Id` against the provider EDC, and
   refresh EDR tokens on the consumer side.

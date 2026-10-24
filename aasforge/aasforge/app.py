@@ -126,8 +126,11 @@ class Forge:
             self.dpp = service.DppService(self)
             self.dpp.register(self.api.router)
 
-    def serve(self):
-        server = http.serve(self.app, self.config.host, self.config.port, self.config.max_body)
+    def serve(self, sock=None, integrations: bool = True):
+        """Start the HTTP server (on ``sock`` when given) and, if ``integrations``, OPC UA and MQTT."""
+        server = http.serve(self.app, self.config.host, self.config.port, self.config.max_body, sock)
+        if not integrations:
+            return server
         if self.config.opcua_endpoint:
             from . import opcua
             cert_dir = None if self.config.database == ':memory:' else str(Path(self.config.data_dir) / 'keys' / 'opcua')

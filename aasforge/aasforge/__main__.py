@@ -34,9 +34,12 @@ def _forge(args, **overrides):
 
 
 def cmd_serve(args):
-    forge = _forge(args, host=args.host, port=args.port, public_url=args.public_url, access_rules=args.access_rules,
-                   hs256_secret=args.secret, opcua_endpoint=args.opcua, opcua_writable=args.opcua_writable or None,
-                   mqtt_url=args.mqtt)
+    overrides = dict(host=args.host, port=args.port, public_url=args.public_url, access_rules=args.access_rules,
+                     hs256_secret=args.secret, opcua_endpoint=args.opcua, opcua_writable=args.opcua_writable or None,
+                     mqtt_url=args.mqtt)
+    if args.workers > 1:
+        return _serve_workers(args, overrides)
+    forge = _forge(args, **overrides)
     server = forge.serve()
     print(f'aasforge listening on http://{forge.config.host}:{forge.config.port} '
           f'(API /api/v3.1, passports /dpp, resolver /01, MCP /mcp)'
@@ -47,6 +50,51 @@ def cmd_serve(args):
             time.sleep(3600)
     except KeyboardInterrupt:
         server.shutdown()
+
+
+def _serve_workers(args, overrides):
+    """Pre-forked workers sharing one listening socket and one database (PostgreSQL or a SQLite
+    file). Worker 0 also runs OPC UA and MQTT; every worker follows the others' changes."""
+    import os
+    import signal
+    import socket
+    config = Config.from_env(**{k: v for k, v in {'data_dir': args.data_dir, 'database': args.database,
+                                                  **overrides}.items() if v is not None})
+    if (config.database or '') == ':memory:':
+        raise SystemExit('--workers needs a shared database (a SQLite file or postgresql://)')
+    if config.signing:
+        signing.Signer.load_or_create(Path(config.data_dir) / 'keys')      # once, before forking
+    listener = socket.create_server((config.host, config.port), backlog=512, reuse_port=False)
+    children = []
+    for index in range(args.workers):
+        pid = os.fork()
+        if pid == 0:
+            signal.signal(signal.SIGTERM, lambda *_: os._exit(0))
+            forge = Forge(config)
+            forge.store.watch()
+            forge.serve(listener, integrations=index == 0)
+            while True:
+                time.sleep(3600)
+        children.append(pid)
+    print(f'aasforge: {args.workers} workers on http://{config.host}:{config.port} (pids {children})', flush=True)
+
+    def stop(*_):
+        for pid in children:
+            try:
+                os.kill(pid, signal.SIGTERM)
+            except ProcessLookupError:
+                pass
+        raise SystemExit(0)
+    signal.signal(signal.SIGTERM, stop)
+    signal.signal(signal.SIGINT, stop)
+    while True:
+        try:
+            pid, _ = os.wait()
+        except ChildProcessError:
+            return 0
+        children = [c for c in children if c != pid]
+        if not children:
+            return 1
 
 
 def cmd_import(args):
@@ -210,6 +258,7 @@ def main(argv=None):
     p.add_argument('--opcua', default=None, metavar='ENDPOINT', help='also serve OPC UA, e.g. opc.tcp://0.0.0.0:4840/aasforge/')
     p.add_argument('--opcua-writable', action='store_true', help='let authorised OPC UA clients write values')
     p.add_argument('--mqtt', default=None, metavar='URL', help='publish change events, e.g. mqtt://broker:1883')
+    p.add_argument('--workers', type=int, default=1, help='worker processes sharing one socket and database')
     p.set_defaults(func=cmd_serve)
     p = sub.add_parser('import')
     p.add_argument('files', nargs='+')

@@ -19,6 +19,7 @@ from __future__ import annotations
 import json
 import math
 import re
+import threading
 import uuid
 from datetime import datetime, timezone
 
@@ -118,6 +119,7 @@ class Store:
         self._db = Database(path)
         self._db.script(SCHEMA)
         self._listeners: list = []
+        self._own_events: set = set()
         if not self._db.execute('SELECT 1 FROM element_index LIMIT 1').fetchone():
             self.reindex()
 
@@ -131,6 +133,9 @@ class Store:
     def reindex(self):
         """Rebuild the index tables from the stored objects (after upgrading an older store)."""
         with self.transaction():
+            self._db.lock_key('reindex')         # workers starting together rebuild once
+            if self._db.execute('SELECT 1 FROM element_index LIMIT 1').fetchone():
+                return
             for table in ('element_index', 'shell_submodels', 'shell_asset_ids'):
                 self._db.execute(f'DELETE FROM {table}')
             for kind in ('shell', 'submodel'):
@@ -161,35 +166,8 @@ class Store:
 
     # -- transactions and events -------------------------------------------------------------
     def transaction(self):
-        store = self
-
-        class _Tx:
-            """Re-entrant: only the outermost block begins and commits (or rolls back)."""
-
-            def __enter__(self):
-                db = store._db
-                db.lock.acquire()
-                db.depth += 1
-                if db.depth == 1:
-                    try:
-                        db.begin()
-                    except BaseException:
-                        db.depth -= 1
-                        db.lock.release()
-                        raise
-                return store
-
-            def __exit__(self, exc_type, *_):
-                db = store._db
-                try:
-                    if db.depth == 1:
-                        db.rollback() if exc_type else db.commit()
-                finally:
-                    db.depth -= 1
-                    db.lock.release()
-                return False
-
-        return _Tx()
+        """Re-entrant transaction (see ``Database.transaction``); events are delivered after commit."""
+        return self._db.transaction()
 
     def subscribe(self, callback):
         self._listeners.append(callback)
@@ -206,12 +184,48 @@ class Store:
                                'RETURNING seq', (ts, kind, identifier, op, path, revision, actor)).fetchone()['seq']
         event = {'seq': seq, 'ts': ts, 'kind': kind, 'id': identifier, 'op': op, 'path': path,
                  'revision': revision}
+        self._own_events.add(seq)
+        self._db.after_commit(lambda: self._dispatch(event))
+        return event
+
+    def _dispatch(self, event):
         for listener in list(self._listeners):
             try:
                 listener(event)
             except Exception:  # noqa: BLE001 - a broken subscriber must not break writes
                 pass
-        return event
+
+    # -- events from other processes ------------------------------------------------------------
+    def watch(self, interval: float = 0.5):
+        """Deliver events written by other processes (sharing this database) to the local
+        subscribers, so caches, SSE streams and bridges stay current in every worker. Sequence
+        numbers can commit out of order, so a window of recent numbers is re-read each time."""
+        if getattr(self, '_watcher', None):
+            return
+        start = self._db.execute('SELECT MAX(seq) AS seq FROM events').fetchone()['seq'] or 0
+        self._watch_stop = threading.Event()
+
+        def loop():
+            last, seen = start, set()
+            while not self._watch_stop.wait(interval):
+                try:
+                    rows = self._db.execute('SELECT * FROM events WHERE seq > ? ORDER BY seq LIMIT 1000',
+                                            (max(0, last - 256),)).fetchall()
+                except Exception:  # noqa: BLE001 - keep watching through transient errors
+                    continue
+                for row in rows:
+                    seq = row['seq']
+                    if seq in seen or seq <= start:
+                        continue
+                    seen.add(seq)
+                    last = max(last, seq)
+                    if seq in self._own_events:
+                        continue
+                    self._dispatch({k: row[k] for k in ('seq', 'ts', 'kind', 'id', 'op', 'path', 'revision')})
+                seen = {s for s in seen if s > last - 256}
+                self._own_events = {s for s in self._own_events if s > last - 4096}
+        self._watcher = threading.Thread(target=loop, name='aasforge-event-watch', daemon=True)
+        self._watcher.start()
 
     def events_since(self, seq: int = 0, limit: int = 500):
         rows = self._db.execute('SELECT * FROM events WHERE seq > ? ORDER BY seq LIMIT ?', (seq, limit)).fetchall()
@@ -231,6 +245,7 @@ class Store:
         if not isinstance(identifier, str) or not identifier:
             raise ValueError('identifiable has no id')
         with self.transaction():
+            self._db.lock_key('identifiable', kind, identifier)
             row = self._db.execute('SELECT revision, created_at, digest, sidecar FROM identifiables WHERE kind=? AND id=?',
                                    (kind, identifier)).fetchone()
             if must_exist is True and row is None:
@@ -288,6 +303,7 @@ class Store:
 
     def delete(self, kind: str, identifier: str, actor: str | None = None) -> None:
         with self.transaction():
+            self._db.lock_key('identifiable', kind, identifier)
             row = self._db.execute('SELECT revision FROM identifiables WHERE kind=? AND id=?', (kind, identifier)).fetchone()
             if row is None:
                 raise NotFound(identifier)
