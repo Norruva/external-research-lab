@@ -1,0 +1,18 @@
+{
+  "aggregate_cgroup_guarantee": false,
+  "complete": true,
+  "cpu_seconds_per_process": 120,
+  "elapsed_seconds": 0.23907755800019004,
+  "exit_code": 0,
+  "expected_refused_probes": 1,
+  "format": "eidos-contextual-candidate-role-execution-v1",
+  "loopback_connections": 0,
+  "memory_mib_per_process": 768,
+  "peak_waited_child_RSS_kib": 12000,
+  "prior_benchmark_reference_or_vendor_used": false,
+  "stage": "score",
+  "staged_sources_unchanged": true,
+  "unexpected_external_IP_connections": 0,
+  "waited_child_CPU_seconds_not_all_descendants": 0.059361000000000004,
+  "wall_seconds": 180
+}

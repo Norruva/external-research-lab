@@ -1,0 +1,28 @@
+{
+  "complete": true,
+  "generator_receipt": {
+    "complete": true,
+    "file_count": 9,
+    "format": "eidos-original-routed-curriculum-v1",
+    "manifest_sha256": "45a491ef61b601d6c6c8612340871e93e6bc821b9648a701f8a6b64ac02a7f88",
+    "model_fit_inference_scoring_or_activation_performed": false,
+    "pristine_real_world_or_LAYA_JEV_benchmark": false,
+    "role_groups": {
+      "fresh_world": 2,
+      "joint": 2,
+      "new_composition": 2,
+      "novel_entities": 2,
+      "training": 4
+    },
+    "role_rows": {
+      "fresh_world": 32,
+      "joint": 32,
+      "new_composition": 32,
+      "novel_entities": 32,
+      "training": 128
+    }
+  },
+  "no_fit_or_model_predictions": true,
+  "synthetic_only": true,
+  "total_tasks": 256
+}

@@ -1,0 +1,121 @@
+{
+  "actual_frozen_artifact_CLI_API_checks": 9,
+  "all_retained_python_executions": [
+    {
+      "complete": true,
+      "exit_code": 0,
+      "stage_directory": "generate-v1"
+    },
+    {
+      "complete": true,
+      "exit_code": 0,
+      "stage_directory": "mechanics-v1"
+    },
+    {
+      "complete": true,
+      "exit_code": 0,
+      "stage_directory": "mechanics-v2"
+    },
+    {
+      "complete": true,
+      "exit_code": 0,
+      "stage_directory": "mechanics-v3"
+    },
+    {
+      "complete": true,
+      "exit_code": 0,
+      "stage_directory": "predict-v1"
+    },
+    {
+      "complete": false,
+      "exit_code": 1,
+      "stage_directory": "preflight-v1"
+    },
+    {
+      "complete": true,
+      "exit_code": 0,
+      "stage_directory": "preflight-v2"
+    },
+    {
+      "complete": true,
+      "exit_code": 0,
+      "stage_directory": "resourceprobe-v1"
+    },
+    {
+      "complete": true,
+      "exit_code": 0,
+      "stage_directory": "resourceprobe-v2"
+    },
+    {
+      "complete": true,
+      "exit_code": 0,
+      "stage_directory": "score-v1"
+    },
+    {
+      "complete": true,
+      "exit_code": 0,
+      "stage_directory": "serving-v1"
+    },
+    {
+      "complete": true,
+      "exit_code": 0,
+      "stage_directory": "train-v1"
+    },
+    {
+      "complete": false,
+      "exit_code": 1,
+      "stage_directory": "units-v1"
+    },
+    {
+      "complete": true,
+      "exit_code": 0,
+      "stage_directory": "units-v2"
+    },
+    {
+      "complete": true,
+      "exit_code": 0,
+      "stage_directory": "units-v3"
+    },
+    {
+      "complete": true,
+      "exit_code": 0,
+      "stage_directory": "units-v4"
+    }
+  ],
+  "authored_unit_methods": 223,
+  "complete": true,
+  "criterion": {
+    "all_passed": false,
+    "heldout_minimum_accuracy": 0.95,
+    "pass_by_role": {
+      "fresh_world": false,
+      "joint": false,
+      "new_composition": false,
+      "novel_entities": false
+    }
+  },
+  "expected_refused_probes": 16,
+  "final_source_stages": [
+    "units-v4",
+    "mechanics-v3",
+    "resourceprobe-v2",
+    "preflight-v2",
+    "train-v1",
+    "predict-v1",
+    "score-v1",
+    "serving-v1"
+  ],
+  "final_sources_and_all_staged_final_roles_match": true,
+  "fixture_CLI_API_checks": 12,
+  "format": "eidos-routed-completion-review-v1",
+  "generated_data_reused_unchanged_generator": true,
+  "mission_complete": false,
+  "model_promoted": false,
+  "production_certified": false,
+  "retained_initial_hand_oracle_roundoff_failure": true,
+  "retained_initial_preflight_refusal_before_fit": true,
+  "scientific_comparison_against_LAYA_JEV": false,
+  "single_scientific_fit_prediction_and_score": true,
+  "source_inspection_prefit_REA_members": 74,
+  "unexpected_external_IP_connections": 0
+}

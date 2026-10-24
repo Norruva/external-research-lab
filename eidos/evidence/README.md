@@ -1,3 +1,7 @@
+## Question-routed model result (v4)
+
+[Complete report](../docs/ROUTED-RESULT.md) and [aggregate evidence](routed/README.md): the original fixed experiment **FAILED the 95% gate in all four held-out slices** (fresh_world 16/32 (50.00%); novel_entities 9/32 (28.12%); new_composition 12/32 (37.50%); joint 10/32 (31.25%)). 223 units,12fixture/9artifact CLI/API checks and74-member passive REA inspection establish scoped verification, not natural-domain or LAYA/JEV superiority. New known-lexeme composition is a changed cohort/task. All preceding outcomes remain preserved below.
+
 ## Contextual model result (v3.1)
 
 [New full result](../docs/CONTEXTUAL-RESULT.md) and [aggregate evidence](contextual/README.md): the original contextual model's fixed synthetic experiment FAILED the95% milestone in all four held-out slices (20/36,24/36,12/36,7/36). The 169-unit/12-fixture/9-frozen-service checks and58-member passive REA inspection establish scoped verification, not general or LAYA/JEV quality. Prior outcomes below are preserved and belong to different artifacts.

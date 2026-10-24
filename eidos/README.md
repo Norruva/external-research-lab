@@ -4,6 +4,12 @@ EIDOS is an original, locally controlled classifier and decision research applic
 
 This source checkout runs without pip, npm, a hosted model, or a CDN. It requires Python 3.12 or later on POSIX, including the standard SQLite/OpenSSL modules. Browser use requires WebCrypto. No installation command or model download is needed for the authored demo below.
 
+## Current question-routed model (v4)
+
+The separate [original v4 model](docs/ROUTED-MODEL.md) adds question-conditioned key/value routing, learned read depth and spelling/subword features, plus an owned trainer and strict CLI/API artifact. **It FAILED the 95% gate in all four held-out slices**: fresh_world 16/32 (50.00%); novel_entities 9/32 (28.12%); new_composition 12/32 (37.50%); joint 10/32 (31.25%). Training 52/128; only two paired source groups per held-out slice. [Complete results and failures](docs/ROUTED-RESULT.md).
+
+223 authored unit methods, 12 actual fixture CLI/API checks and 9 frozen-artifact CLI/API checks passed. Pinned REA inspected74 prefit source/control/verification members. These scoped checks do not establish general semantic reliability. The new composition task uses known lexemes and differs from the old unknown-synonym task; no same-test gain or LAYA/JEV parity is measured. Standard-library inference/training uses no pretrained checkpoint or third-party ML runtime. Probabilities remain uncalibrated/review-only; no weights are in this checkout. Earlier outcomes below concern different artifacts.
+
 ## Question-conditioned decision model
 
 The new [original decision-model path](docs/DECISION-MODEL.md) trains and runs a shared scorer over **context, the question and caller-defined option descriptions**, with CHOICE, BINARY and numeric SCORE outputs. It includes a separate local CLI, signed loopback API and browser. [Owned task format](docs/DECISION-DATA.md) · [Evidence, conformal sets and information value](docs/DECISION-EPISTEMIC.md). No pretrained checkpoint or third-party training/inference package is included.

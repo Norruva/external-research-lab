@@ -1,0 +1,3 @@
+# REA inspection scope
+
+Final prepared-manifest-v3 and the source-packet MANIFEST/receipt identify the74 members passively inspected before fitting. Final runtime/test/tool/guide bytes are frozen by that packet; later aggregate scores, reports, parent provenance and delivery metadata were outside it. Earlier69/71-member packets and source-only prefit revisions remain retained. No target code was installed, imported or executed by REA. Matching hashes and complete container-entry coverage do not certify semantics, security, rights, ownership or production readiness. Not every existing repository file was reinspected.

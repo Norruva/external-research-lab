@@ -1,0 +1,20 @@
+{
+  "arbitrary_target_index": 0,
+  "complete": true,
+  "gradient_CPU_seconds": 0.316783971,
+  "gradient_elapsed_seconds": 0.32515156599993134,
+  "gradient_finite": true,
+  "highest_estimated_work_training_request": true,
+  "model_fit_or_heldout_or_quality_selection": false,
+  "optimizer_steps": 0,
+  "parameter_count": 1434,
+  "peak_RSS_kib": 64812,
+  "quality_accuracy_loss_probabilities_or_gradients_reported": false,
+  "request_work_limit": 5000000,
+  "setup_CPU_seconds": 0.05616012099999998,
+  "setup_elapsed_seconds": 0.05670019399985904,
+  "tape_node_limit": 500000,
+  "tape_nodes": 77038,
+  "training_only": true,
+  "work_units_estimate": 4036976
+}

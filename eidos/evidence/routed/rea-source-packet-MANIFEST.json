@@ -1,0 +1,299 @@
+{
+  "files": {
+    "controls/PROTOCOL.md": {
+      "bytes": 2988,
+      "sha256": "d59c83a0db4e9798d0fcab67c31cbf4a53ef7620bba66b63b39cdee6a4ccebad"
+    },
+    "controls/exposure-hashes-v1.json": {
+      "bytes": 3905,
+      "sha256": "28f756a4eaa30069befd7845077db411930421ac9567d623750a71ca03ee59fa"
+    },
+    "controls/initial-PROTOCOL.md": {
+      "bytes": 7192,
+      "sha256": "7a83874012fe204b4e3694d444bfb75f741ae3a45683c757dfe251cee2862120"
+    },
+    "controls/prepared-manifest-v3.json": {
+      "bytes": 6810,
+      "sha256": "a94ced1972bbeaeba07696097f10c70017889f90d7965bf93efc0e47f1374867"
+    },
+    "controls/resource-PROTOCOL.md": {
+      "bytes": 3623,
+      "sha256": "b2f09b5402752766feaf22cdbbe3ec3e8ad008574f6bccb19e19e330640bd9fe"
+    },
+    "controls/routed_candidate_control_v3.py": {
+      "bytes": 14298,
+      "sha256": "509cae4a0b70055b307012e07d4a5e4ba8b857ce86ca1224db888326c2653ff1"
+    },
+    "controls/run_routed_candidate_v3.py": {
+      "bytes": 9228,
+      "sha256": "f092da3dab57be29561e16000852576f7a811f03dc2b0d29b8d59fc31c16ffe8"
+    },
+    "docs/ROUTED-MODEL.md": {
+      "bytes": 6769,
+      "sha256": "3b0fc77e4512ec97cc779db4152ab286c259a5c4d995285c19365aa7ef1a4104"
+    },
+    "eidos/__init__.py": {
+      "bytes": 108,
+      "sha256": "4e00aefcd7cb23d8fec1b81aa73b49c2b3b00c418f20f650b5d355af6cf116db"
+    },
+    "eidos/__main__.py": {
+      "bytes": 1183,
+      "sha256": "7744fbc6393723eccc32b39d479ec3cc55c3751eec10e9ecf8111bb75058722a"
+    },
+    "eidos/compare_owned.py": {
+      "bytes": 12465,
+      "sha256": "90f4c2fad97d9d002422478bdeaa0af49c68548854dae36308f404fd85097402"
+    },
+    "eidos/contextual.py": {
+      "bytes": 1604,
+      "sha256": "69e11fd774c94b7f66e523b6ce6bf2c8aab37330160d6878fd39956d899265be"
+    },
+    "eidos/contextual_artifact.py": {
+      "bytes": 15538,
+      "sha256": "8f4c4e41b0c14cd0f0ac6d3b9441fa60a46b11fd68c1acba481ebcbb4e980a9d"
+    },
+    "eidos/contextual_challenge.py": {
+      "bytes": 21624,
+      "sha256": "37938b8c28f3de4e74b3685eb04a49bcf6ea3247da571f4e38de317716e2444b"
+    },
+    "eidos/contextual_service.py": {
+      "bytes": 4035,
+      "sha256": "4e2a1a98db7af086941f06abab833af49325a40214a79509f13eeecd2ff76b3b"
+    },
+    "eidos/contracts.py": {
+      "bytes": 6833,
+      "sha256": "ec4a99021325b7921d3952203c22c338abf1c015c8ecdcb9d1194cc4f9eed539"
+    },
+    "eidos/data.py": {
+      "bytes": 7496,
+      "sha256": "7fe126c528ec00a56acc6401773801f0a626fe42d424b4ac86a4f4c67c078cb2"
+    },
+    "eidos/decision-api.schema.json": {
+      "bytes": 8115,
+      "sha256": "d253be5c4628c8248f5cfc954849bb315491a970820f2de8598dcdd6d01e23bd"
+    },
+    "eidos/decision.py": {
+      "bytes": 4850,
+      "sha256": "c25121b64c3b2e2a69f3e898698bfdd0f2a05dbcc7592c1c760ff40bc775d4e0"
+    },
+    "eidos/decision_artifact.py": {
+      "bytes": 11953,
+      "sha256": "cd9dfeb899ff959031502111b5e453c9daa4d14095ee7563edd429f18eee1ef1"
+    },
+    "eidos/decision_contextual.py": {
+      "bytes": 23735,
+      "sha256": "090f34934ba7c6eea4d6e5951ce0db3004a93ae82fd00358ee8174d4d33997a2"
+    },
+    "eidos/decision_contract.py": {
+      "bytes": 9599,
+      "sha256": "ca50112ff0e9b9f80833db48f9902a7f3d2b781268ef6d8ceecd2ccdb3b5d622"
+    },
+    "eidos/decision_curriculum.py": {
+      "bytes": 22724,
+      "sha256": "1d5a12f8c1ecf237a664393fe68c99780c7c439e72f984bada66b34addf9052a"
+    },
+    "eidos/decision_epistemic.py": {
+      "bytes": 17076,
+      "sha256": "25f73acf52f9e34e7fa0c4d0205205fe5c1ff8901b13944d530b93638554d396"
+    },
+    "eidos/decision_neural.py": {
+      "bytes": 25031,
+      "sha256": "878cb6c0b840d1c29d03d89cd368fb87a460cfc6e32395bdf9d519962a8e8b01"
+    },
+    "eidos/decision_routed.py": {
+      "bytes": 31420,
+      "sha256": "9bf369309a0b48b6b5eeee7d6a58394cf653bcbe600269aefb7e249760ce48e2"
+    },
+    "eidos/decision_service.py": {
+      "bytes": 14273,
+      "sha256": "d7dcb660cf4645bb524def8184348ca32f076d48af27f0856661e614f343133c"
+    },
+    "eidos/engine.py": {
+      "bytes": 10139,
+      "sha256": "01587abc8b652db8f9c1666f30ed089086dc6b0f34efb63b3ab4b1286fb8dde4"
+    },
+    "eidos/evaluate.py": {
+      "bytes": 9930,
+      "sha256": "d5b75cd9f62cf52b8006b155cd05af4a26a84e982b42a751bc4282663a41b1d4"
+    },
+    "eidos/evaluate_owned.py": {
+      "bytes": 32955,
+      "sha256": "13483fef034545eeb75f00c91770dba343d7814c6f29e64a65a2f462545d4878"
+    },
+    "eidos/explain_support.py": {
+      "bytes": 1759,
+      "sha256": "0b460cff4ff6a33d6fe80b42a25505a82aada2058018dcfde104189cb069705e"
+    },
+    "eidos/general_linear.py": {
+      "bytes": 8084,
+      "sha256": "67079f8402e6f72c8b6949c4b0abd758342869245668fcf7479b67aae4843326"
+    },
+    "eidos/linear.py": {
+      "bytes": 7911,
+      "sha256": "81c65cf5105cf8b986de39a6eb59f4147e1acb62c0ec6918ce924b854aef7e36"
+    },
+    "eidos/manage.py": {
+      "bytes": 6090,
+      "sha256": "8fc245f60aa0d6906089e5f2d6d784c7df159d5b5a2c1d2b70d791e8fb4337d1"
+    },
+    "eidos/metrics.py": {
+      "bytes": 3658,
+      "sha256": "d4c7d1fa64a5ad4dd0af02614a895a4eb30ea695d31bbae67ce3e5191ca36b1b"
+    },
+    "eidos/model.py": {
+      "bytes": 10118,
+      "sha256": "96e2b3b61511864296a2869e2d93b0e5d45c9579ac971d8146e2dccc915e1a17"
+    },
+    "eidos/owned_metrics.py": {
+      "bytes": 3099,
+      "sha256": "20598bb08fad67be4bc2d3ad85f9dd1e3c525141f9070d5e902875c06f92a93f"
+    },
+    "eidos/paired_metrics.py": {
+      "bytes": 4201,
+      "sha256": "743af2e466b9c11f87ac60cbb782f5841be5cc1f0a0f5bc7995e583c652f9e7d"
+    },
+    "eidos/pool.py": {
+      "bytes": 9276,
+      "sha256": "67fc0a8eb50fba85702af7145f23d1b89457547e581a7bbe3274951c7346a277"
+    },
+    "eidos/recovery.py": {
+      "bytes": 13107,
+      "sha256": "bf600c2b6c56ea4fa22e6d2c56493667d00a8047e33ce534b24eea031bcea238"
+    },
+    "eidos/routed.py": {
+      "bytes": 1585,
+      "sha256": "049b931f4a389255860cfb01dc5eb294e1ef8c9bed42503d97cac670d7551a0c"
+    },
+    "eidos/routed_artifact.py": {
+      "bytes": 15615,
+      "sha256": "f5890ebe6495e33a370f9724e3a4441458842bd97368bb262b437871a7ca2103"
+    },
+    "eidos/routed_curriculum.py": {
+      "bytes": 21193,
+      "sha256": "f33d76d2e0e6bd97d92817b1529b8fd562be943bd932ec8ea7ca39122d35722f"
+    },
+    "eidos/routed_service.py": {
+      "bytes": 3980,
+      "sha256": "cdf5023b6d55a29896981a426d1a3ec571534a7a383b40a6ec6ee8f76310e149"
+    },
+    "eidos/service.py": {
+      "bytes": 17439,
+      "sha256": "45db64fb962277606e242ecdbbe820412fd06c4216558a15013bdf97a5882472"
+    },
+    "eidos/store.py": {
+      "bytes": 9317,
+      "sha256": "028130d870cd35c1965175e272365121dfe4e666854b91269df1edc069bb062a"
+    },
+    "eidos/support_memory.py": {
+      "bytes": 10855,
+      "sha256": "d3cf23d624f89c39c286c207123061b51296dfaa81bea4e17a84a90ad0a016c2"
+    },
+    "eidos/train.py": {
+      "bytes": 4545,
+      "sha256": "80e52d9c6eae930e1897c96e255dc56a0b7688996ea839d6f08793973c97aec2"
+    },
+    "eidos/train_contextual.py": {
+      "bytes": 10746,
+      "sha256": "c8b9876ba21b4082bdbfee4e6ffa50e267d3dbc5648ed047b66b377664221e58"
+    },
+    "eidos/train_decision.py": {
+      "bytes": 12714,
+      "sha256": "e4f5a45884a0a8def81c122d3db11f3a31a0ebfa41b2dedb904b9feb5e61a5ab"
+    },
+    "eidos/train_linear_support.py": {
+      "bytes": 13563,
+      "sha256": "a6363df14b085d0172210ebad8345a79b6ada36c0088d23a8d1585930e806e5f"
+    },
+    "eidos/train_routed.py": {
+      "bytes": 10668,
+      "sha256": "7fb912c23f0383d2893b781b3e291f29ba932363475f9498776754d93580ba28"
+    },
+    "eidos/train_sparse.py": {
+      "bytes": 19217,
+      "sha256": "de6446d3d1ef1190aabc4e0532a4944a80c715b4c01154002bb1a299c25d7ac8"
+    },
+    "eidos/train_support.py": {
+      "bytes": 8848,
+      "sha256": "487f2d507a48e13f0d2747113c07011cb78c083b7f1adba7f8022f8761e73800"
+    },
+    "eidos/worker.py": {
+      "bytes": 1841,
+      "sha256": "33a221b2108c7711c5be38cb0af9297724d3bd6c7ca027cc9ef8a5c739309b27"
+    },
+    "reviews/64-routing-math-review.md": {
+      "bytes": 5994,
+      "sha256": "c5fe559f2668a8348033e9f00253ae80363609a5dc2c8f4627101b6199b80616"
+    },
+    "reviews/65-routing-training-controls.md": {
+      "bytes": 9918,
+      "sha256": "9af5a48a7d52c1550f7e289208ceca782df7823db9b96965f27463fe549b838d"
+    },
+    "reviews/66-routing-independent-verification.md": {
+      "bytes": 11825,
+      "sha256": "a6b9b43afca8ea1d8b144e360d1179e5fae81ee264d4b6f1eedbedf65bf10d84"
+    },
+    "reviews/69-routed-controls-audit.md": {
+      "bytes": 9501,
+      "sha256": "0798bbf38f960b1d8d6430858c034742f18154a0c8adbdd722b2f2e7ed0ace07"
+    },
+    "tests/test_decision_routed.py": {
+      "bytes": 33399,
+      "sha256": "5850d7f139a5337cb20378893e6c25bd0200ec767f083705f9f526b42c8a5d63"
+    },
+    "tests/test_routed_curriculum.py": {
+      "bytes": 13986,
+      "sha256": "4f0bd79598caf7c500daea8e6fb51675272ef217a72527ea8e7bc7964ac0a8f0"
+    },
+    "tests/test_routed_service.py": {
+      "bytes": 6122,
+      "sha256": "ed3b74080d7a7f618a2fb8fbd196b8f840226f20738c4609907c2da5753e0902"
+    },
+    "tests/test_routed_training.py": {
+      "bytes": 9891,
+      "sha256": "c9385849017030c99e7e19083e623fc534f9943dc28b9626fdca2be6f4a47be1"
+    },
+    "tools/routed_serving_smoke.py": {
+      "bytes": 5654,
+      "sha256": "fdde86314236d574720eb0e4bcb0d064f5559be4ccbe2c5ece686e63b5589bf6"
+    },
+    "tools/routed_smoke.py": {
+      "bytes": 10140,
+      "sha256": "c9a0c81d8268462703a34af73e7bb8e6e8b471ef03b5f47b80060b6e5ad5a169"
+    },
+    "verification/initial-preflight-refusal.json": {
+      "bytes": 587,
+      "sha256": "d9c7dbbc30c652aa1c8105b5def0f951506963ae738344099430cfa605179414"
+    },
+    "verification/initial-unit-result.json": {
+      "bytes": 168,
+      "sha256": "e6957fa1b46aef3f90a3a1f23a2e083c371ae44358a3142aab15abeaa0ebead5"
+    },
+    "verification/mechanics-execution.json": {
+      "bytes": 596,
+      "sha256": "108f1c509a0d42eee996d013f4b2e505b88786dbd4748a76627eee0e947403f2"
+    },
+    "verification/mechanics.json": {
+      "bytes": 1761,
+      "sha256": "bdc36a7246c669b3cff87fb09393efd40471bd88cfd572128f88c9f538786754"
+    },
+    "verification/previous-REA-review.json": {
+      "bytes": 680,
+      "sha256": "0cd9172028c4047dda35a7a03faabf4709923e550808d2856430c9f8c4ab4217"
+    },
+    "verification/previous-resourceprobe.json": {
+      "bytes": 659,
+      "sha256": "23600916ac237771863a10d6458a172218ca91c1fc8ce8991fd3b23a38fd65ea"
+    },
+    "verification/unit-execution.json": {
+      "bytes": 593,
+      "sha256": "9bade1165808b2aae2482e35ffb7f05a821699eb5ad1ecae88638fd5205721bc"
+    },
+    "verification/unit-result.json": {
+      "bytes": 167,
+      "sha256": "ff1691a15e94dd372d2a0a249f33163194be69daef507a8e2881f303b804587f"
+    }
+  },
+  "format": "eidos-routed-source-packet-v3",
+  "no_quality_fit_prediction_or_scoring_yet": true,
+  "not_runnable_subset": true
+}

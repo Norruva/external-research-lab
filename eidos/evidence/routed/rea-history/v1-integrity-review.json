@@ -1,0 +1,18 @@
+{
+  "all_hashes_and_sizes_match": true,
+  "complete": true,
+  "coverage": {
+    "scope": "container-entries",
+    "status": "complete"
+  },
+  "evidence_id": "ev_2fae9c81082b36d2409f4f857d4d08c034691768f38f11d14e10d7312a39fdcf",
+  "format": "eidos-routed-REA-source-integrity-v1",
+  "graph_nodes": 70,
+  "integrity_contradictions": [],
+  "later_result_and_delivery_files_not_members": true,
+  "members": 69,
+  "performed_before_new_quality_fit_or_prediction": true,
+  "semantic_security_rights_or_production_certificate": false,
+  "stdout_sha256": "d17ccf43882cd55f214f294bfa1c146cd5386b858e9c131b61b1e39cd1726a34",
+  "target_installed_imported_or_executed": false
+}
