@@ -33,6 +33,8 @@ class Config:
     operation_delegation: list = field(default_factory=list)   # URL prefixes invocationDelegation may target
     max_body: int = 64 * 1024 * 1024                           # request body limit in bytes
     max_package: int = 512 * 1024 * 1024                       # total uncompressed AASX size limit
+    opcua_endpoint: str | None = None          # e.g. opc.tcp://0.0.0.0:4840/aasforge/ to serve OPC UA (I4AAS)
+    opcua_writable: bool = False               # allow authorised OPC UA clients to write values back
 
     @classmethod
     def from_env(cls, **overrides):
@@ -49,6 +51,10 @@ class Config:
             config.api_keys = json.loads(os.environ['AASFORGE_API_KEYS'])
         if os.environ.get('AASFORGE_OPERATION_DELEGATION'):
             config.operation_delegation = os.environ['AASFORGE_OPERATION_DELEGATION'].split(',')
+        if os.environ.get('AASFORGE_OPCUA_ENDPOINT'):
+            config.opcua_endpoint = os.environ['AASFORGE_OPCUA_ENDPOINT']
+        if os.environ.get('AASFORGE_OPCUA_WRITABLE'):
+            config.opcua_writable = os.environ['AASFORGE_OPCUA_WRITABLE'].lower() in ('1', 'true', 'yes')
         for env, attribute in (('AASFORGE_MAX_BODY', 'max_body'), ('AASFORGE_MAX_PACKAGE', 'max_package')):
             if os.environ.get(env):
                 setattr(config, attribute, int(os.environ[env]))
@@ -86,6 +92,8 @@ class Forge:
         self.api = api.Api(self.repository, self.authenticator, self.rules, self.signer,
                            self.config.trusted_certificates)
         self.api.delegation_prefixes = list(self.config.operation_delegation)
+        self.api.forge = self
+        self.opcua = None
         self.repository.max_package = self.config.max_package
         self.app = http.App(self.api.router, cors_origins=self.config.cors_origins)
         self.app.before.append(self.api.authenticate)
@@ -96,4 +104,8 @@ class Forge:
             self.dpp.register(self.api.router)
 
     def serve(self):
-        return http.serve(self.app, self.config.host, self.config.port, self.config.max_body)
+        server = http.serve(self.app, self.config.host, self.config.port, self.config.max_body)
+        if self.config.opcua_endpoint:
+            from . import opcua
+            self.opcua = opcua.OpcUaServer(self, self.config.opcua_endpoint, self.config.opcua_writable).start()
+        return server

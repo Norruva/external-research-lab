@@ -116,6 +116,7 @@ class Api:
         self.delegation_prefixes: list[str] = []
         # callables (request, submodel) -> submodel | None applied after access rules on every read
         self.submodel_guards: list = []
+        self.forge = None         # set by app.Forge; needed by exports that rebuild the environment
         self.router = Router()
         self._register()
 
@@ -313,6 +314,7 @@ class Api:
         # Events and signatures
         r('GET', '/events', self.events)
         r('POST', '/signatures/verify', self.verify_signature)
+        r('GET', '/opcua/nodeset', self.opcua_nodeset)
         r('GET', '/signatures/certificate', self.certificate)
 
     # -- description ------------------------------------------------------------------------------
@@ -936,6 +938,18 @@ class Api:
                 result['matchesCurrent'] = canonical.digest(current) == result['payload_digest']
         result.pop('payload')
         return Response.json(result)
+
+    def opcua_nodeset(self, request):
+        """OPC UA NodeSet2 (I4AAS) of what the caller may read; load it after Opc.Ua.I4AAS.NodeSet2.xml."""
+        self.allow(request, 'READ')
+        from . import opcua
+        if self.forge is None:
+            raise HttpError(501, 'OPC UA export is not available')
+        try:
+            data = opcua.export_nodeset(self.forge, None if request.subject.anonymous else request.subject.claims)
+        except RuntimeError as error:
+            raise HttpError(501, str(error)) from error
+        return Response(200, data, 'application/xml', {'Content-Disposition': content_disposition('aasforge.NodeSet2.xml')})
 
     def certificate(self, request):
         if not self.signer:

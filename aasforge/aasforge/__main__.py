@@ -2,7 +2,7 @@
 
   serve             run the HTTP server (AAS API under /api/v3.1, DPP under /dpp, resolver under /01)
   import FILE...    import AASX/JSON/XML (3.0, 3.1 or 3.2) into the store; prints the loss report
-  export            write the environment as json|xml|aasx (--version 3.0|3.1|3.2)
+  export            write the environment as json|xml|aasx (--version 3.0|3.1|3.2) or an OPC UA nodeset
   verify FILE       structural and constraint verification with the released aas-core3.1
   token             issue a development HS256 token (needs --secret)
   sign FILE         sign an AAS JSON object as JWS (IDTA-01002 3.2 signatures)
@@ -31,10 +31,11 @@ def _forge(args, **overrides):
 
 def cmd_serve(args):
     forge = _forge(args, host=args.host, port=args.port, public_url=args.public_url, access_rules=args.access_rules,
-                   hs256_secret=args.secret)
+                   hs256_secret=args.secret, opcua_endpoint=args.opcua, opcua_writable=args.opcua_writable or None)
     server = forge.serve()
     print(f'aasforge listening on http://{forge.config.host}:{forge.config.port} '
-          f'(API /api/v3.1, passports /dpp, resolver /01, MCP /mcp)', flush=True)
+          f'(API /api/v3.1, passports /dpp, resolver /01, MCP /mcp)'
+          + (f'; OPC UA {forge.config.opcua_endpoint}' if forge.config.opcua_endpoint else ''), flush=True)
     try:
         while True:
             time.sleep(3600)
@@ -55,7 +56,10 @@ def cmd_import(args):
 def cmd_export(args):
     forge = _forge(args)
     aas_ids = args.aas or None
-    if args.format == 'aasx':
+    if args.format == 'nodeset':
+        from . import opcua
+        data = opcua.export_nodeset(forge, {'sub': 'cli', 'dpp_tier': 'economic-operator'} if args.all else None)
+    elif args.format == 'aasx':
         data = forge.repository.package(aas_ids, version=args.version)
     else:
         env = forge.repository.environment(aas_ids, version=args.version)
@@ -133,13 +137,17 @@ def main(argv=None):
     p.add_argument('--access-rules', default=None, help="IDTA-01004 rule file or 'dpp'")
     p.add_argument('--secret', default=None, help='HS256 secret for bearer tokens')
     p.add_argument('--verification', choices=['reject', 'warn', 'off'], default=None)
+    p.add_argument('--opcua', default=None, metavar='ENDPOINT', help='also serve OPC UA, e.g. opc.tcp://0.0.0.0:4840/aasforge/')
+    p.add_argument('--opcua-writable', action='store_true', help='let authorised OPC UA clients write values')
     p.set_defaults(func=cmd_serve)
     p = sub.add_parser('import')
     p.add_argument('files', nargs='+')
     p.add_argument('--verification', choices=['reject', 'warn', 'off'], default=None)
     p.set_defaults(func=cmd_import)
     p = sub.add_parser('export')
-    p.add_argument('--format', choices=['json', 'xml', 'aasx'], default='json')
+    p.add_argument('--format', choices=['json', 'xml', 'aasx', 'nodeset'], default='json')
+    p.add_argument('--all', action='store_true', help='nodeset: export as an economic operator (everything), '
+                                                       'not as an anonymous reader')
     p.add_argument('--version', choices=['3.0', '3.1', '3.2'], default='3.1')
     p.add_argument('--aas', action='append', help='limit to these shell ids')
     p.add_argument('-o', '--output')
