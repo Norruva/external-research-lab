@@ -210,6 +210,16 @@ class AccessRules:
                 return True, path or None
         return False, None
 
+    def candidate_formulas(self, subject: Subject, right: str):
+        """FORMULAs of the rules that could allow ``right`` to ``subject`` (OBJECTS not considered),
+        with the claims to evaluate them under; ``None`` when access control is off. Used to build
+        SQL prefilters: an object is allowed only if one of these formulas holds for it."""
+        if not self.enabled:
+            return None
+        claims = {**subject.claims, 'anonymous': subject.anonymous}
+        return [r['formula'] for r in self.rules if r['access'] == 'ALLOW' and right in r['rights']
+                and self._attributes_ok(r['attributes'], subject)], claims
+
     def decide(self, subject: Subject, right: str, target: Target, now: datetime | None = None) -> Decision:
         if not self.enabled:
             return Decision(True)

@@ -5,12 +5,11 @@ import json
 import zipfile
 import unittest
 
-from helpers import FIXTURES, PROBES
+from helpers import FIXTURES, PROBES, store
 
 from aasforge import aasx, elements, smt, versioning
 from aasforge.dpp import catalog
 from aasforge.repository import Repository
-from aasforge.store import Store
 
 
 def probe(name):
@@ -31,7 +30,7 @@ class VersioningTests(unittest.TestCase):
             self.assertEqual(len(normalised.environment['submodels']), 1)
 
     def test_32_fields_round_trip_through_sidecar(self):
-        repo = Repository(Store())
+        repo = Repository(store())
         repo.import_bytes(probe('p32_admin_created_at.json'), 'a.json')
         repo.import_bytes(probe('p32_assetkind_batch.json').replace(b'probe', b'probe-batch'), 'b.json')
         env31 = repo.environment()
@@ -72,7 +71,7 @@ class AasxTests(unittest.TestCase):
         self.assertTrue(any('title-page.png' in r and 'missing' in r for r in package.repairs))
 
     def test_reads_stray_text_and_30_packages_losslessly(self):
-        repo = Repository(Store())
+        repo = Repository(store())
         for name in ('idta-02023-carbon-footprint-v31.aasx', 'catenax-batterypass-6.0.0.aasx',
                      'idta-02035-6-material-composition.aasx'):
             report = repo.import_bytes((FIXTURES / name).read_bytes(), name)

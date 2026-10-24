@@ -2,7 +2,7 @@
 import json
 import unittest
 
-from helpers import Server
+from helpers import Server, database
 
 import battery_passport
 from aasforge import canonical, formula, security
@@ -167,7 +167,7 @@ class BatchPassportTests(unittest.TestCase):
     def test_batch_granularity_exports_as_32_batch(self):
         from aasforge.app import Config, Forge
         from aasforge.dpp import passport
-        forge = Forge(Config(database=':memory:'))
+        forge = Forge(Config(database=database()))
         spec = battery_passport.spec()
         spec.pop('serial', None)
         spec.update(batch='LOT-2026-17', granularity='Batch')

@@ -1,20 +1,29 @@
-"""SQLite persistence: versioned identifiables, history, change events, attachments, registry,
-discovery links, AASX packages and async operation handles.
+"""Persistence on SQLite or PostgreSQL (see ``db.py``): versioned identifiables, history, change
+events, attachments, registry, discovery links, AASX packages and async operation handles.
 
 Every write of a Shell, Submodel or ConceptDescription creates a new revision. Revisions are kept
 append-only in ``history`` with validity intervals, which backs the API 3.2 ``$history`` (state at
 a point in time) and ``$recent-changes`` operations and gives passports an audit trail. The
 server-maintained ``created_at``/``updated_at`` are what 3.2 ``createdAt``/``updatedAt`` export from.
+
+Three index tables are maintained in the same transaction as each write. They let
+``sqlfilter`` turn Query Language and Access Rule formulas into SQL prefilters:
+
+* ``element_index``: one row per submodel element value (path, ``[]`` pattern, idShort,
+  semanticId, valueType, text and numeric value);
+* ``shell_submodels``: the submodel references of each shell;
+* ``shell_asset_ids``: the specific asset IDs of each shell.
 """
 from __future__ import annotations
 
 import json
-import sqlite3
-import threading
+import math
+import re
 import uuid
 from datetime import datetime, timezone
 
-from . import canonical
+from . import canonical, elements
+from .db import Database
 
 KINDS = ('shell', 'submodel', 'concept-description')
 SCHEMA = '''
@@ -41,7 +50,22 @@ CREATE TABLE IF NOT EXISTS packages (
   package_id TEXT PRIMARY KEY, filename TEXT, aas_ids TEXT NOT NULL, data BLOB NOT NULL, created_at TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS operations (
   handle_id TEXT PRIMARY KEY, kind TEXT NOT NULL, status TEXT NOT NULL, result TEXT, created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS element_index (
+  owner_id TEXT NOT NULL, path TEXT NOT NULL, pattern TEXT NOT NULL, id_short TEXT, semantic_id TEXT,
+  value_type TEXT, model_type TEXT, value_text TEXT, value_num REAL);
+CREATE INDEX IF NOT EXISTS element_index_owner ON element_index(owner_id);
+CREATE INDEX IF NOT EXISTS element_index_pattern ON element_index(pattern);
+CREATE INDEX IF NOT EXISTS element_index_semantic ON element_index(semantic_id);
+CREATE INDEX IF NOT EXISTS element_index_num ON element_index(pattern, value_num);
+CREATE TABLE IF NOT EXISTS shell_submodels (
+  aas_id TEXT NOT NULL, sm_id TEXT NOT NULL, PRIMARY KEY (aas_id, sm_id));
+CREATE INDEX IF NOT EXISTS shell_submodels_sm ON shell_submodels(sm_id);
+CREATE TABLE IF NOT EXISTS shell_asset_ids (
+  aas_id TEXT NOT NULL, name TEXT, value TEXT);
+CREATE INDEX IF NOT EXISTS shell_asset_ids_owner ON shell_asset_ids(aas_id);
+CREATE INDEX IF NOT EXISTS shell_asset_ids_value ON shell_asset_ids(name, value);
 '''
+INDEX_PATTERN = re.compile(r'\[\d+\]')
 
 
 class NotFound(KeyError):
@@ -61,15 +85,73 @@ def _semantic_id(body: dict):
     return keys[0].get('value') if keys else None
 
 
+def _index_rows(submodel: dict):
+    """element_index rows; values are typed exactly as the formula evaluator coerces them."""
+    from . import formula   # formula imports elements only; deferred to keep import order simple
+    for path, element in elements.walk_elements(submodel):
+        values = [v.value for v in formula._sme_attribute(element, 'value', ())] or [None]
+        base = (submodel['id'], path, INDEX_PATTERN.sub('[]', path), element.get('idShort'), _semantic_id(element),
+                element.get('valueType'), element.get('modelType'))
+        for value in values:
+            text = num = None
+            if value is not None:
+                text = formula._coerce(formula.Value(value), 'str')
+                try:
+                    num = formula._coerce(formula.Value(value), 'num')
+                except (ValueError, TypeError):
+                    num = None
+                if num is not None and math.isnan(num):
+                    num = None      # NaN compares false with everything, as an absent value does
+            yield base + (text, num)
+
+
 class Store:
     def __init__(self, path: str = ':memory:'):
-        self._db = sqlite3.connect(path, check_same_thread=False, isolation_level=None)
-        self._db.row_factory = sqlite3.Row
-        self._db.execute('PRAGMA journal_mode=WAL' if path != ':memory:' else 'PRAGMA journal_mode=MEMORY')
-        self._db.execute('PRAGMA foreign_keys=ON')
-        self._db.executescript(SCHEMA)
-        self._lock = threading.RLock()
+        """``path``: a SQLite file, ``:memory:``, or a ``postgresql://`` DSN."""
+        self._db = Database(path)
+        self._db.script(SCHEMA)
         self._listeners: list = []
+        if not self._db.execute('SELECT 1 FROM element_index LIMIT 1').fetchone():
+            self.reindex()
+
+    @property
+    def db(self) -> Database:
+        return self._db
+
+    def close(self):
+        self._db.close()
+
+    def reindex(self):
+        """Rebuild the index tables from the stored objects (after upgrading an older store)."""
+        with self.transaction():
+            for table in ('element_index', 'shell_submodels', 'shell_asset_ids'):
+                self._db.execute(f'DELETE FROM {table}')
+            for kind in ('shell', 'submodel'):
+                for body in self.iter_all(kind):
+                    self._index(kind, body)
+
+    def _index(self, kind: str, body: dict):
+        identifier = body['id']
+        if kind == 'submodel':
+            self._db.execute('DELETE FROM element_index WHERE owner_id=?', (identifier,))
+            for row in _index_rows(body):
+                self._db.execute('INSERT INTO element_index VALUES (?,?,?,?,?,?,?,?,?)', row)
+        elif kind == 'shell':
+            self._db.execute('DELETE FROM shell_submodels WHERE aas_id=?', (identifier,))
+            self._db.execute('DELETE FROM shell_asset_ids WHERE aas_id=?', (identifier,))
+            refs = {(r.get('keys') or [{}])[-1].get('value') for r in body.get('submodels') or []}
+            for sm_id in sorted(r for r in refs if r):
+                self._db.execute('INSERT INTO shell_submodels VALUES (?,?)', (identifier, sm_id))
+            for asset_id in (body.get('assetInformation') or {}).get('specificAssetIds') or []:
+                self._db.execute('INSERT INTO shell_asset_ids VALUES (?,?,?)',
+                                 (identifier, asset_id.get('name'), asset_id.get('value')))
+
+    def _unindex(self, kind: str, identifier: str):
+        if kind == 'submodel':
+            self._db.execute('DELETE FROM element_index WHERE owner_id=?', (identifier,))
+        elif kind == 'shell':
+            self._db.execute('DELETE FROM shell_submodels WHERE aas_id=?', (identifier,))
+            self._db.execute('DELETE FROM shell_asset_ids WHERE aas_id=?', (identifier,))
 
     # -- transactions and events -------------------------------------------------------------
     def transaction(self):
@@ -79,19 +161,26 @@ class Store:
             """Re-entrant: only the outermost block begins and commits (or rolls back)."""
 
             def __enter__(self):
-                store._lock.acquire()
-                store._depth = getattr(store, '_depth', 0) + 1
-                if store._depth == 1:
-                    store._db.execute('BEGIN IMMEDIATE')
+                db = store._db
+                db.lock.acquire()
+                db.depth += 1
+                if db.depth == 1:
+                    try:
+                        db.begin()
+                    except BaseException:
+                        db.depth -= 1
+                        db.lock.release()
+                        raise
                 return store
 
             def __exit__(self, exc_type, *_):
+                db = store._db
                 try:
-                    if store._depth == 1:
-                        store._db.execute('ROLLBACK' if exc_type else 'COMMIT')
+                    if db.depth == 1:
+                        db.rollback() if exc_type else db.commit()
                 finally:
-                    store._depth -= 1
-                    store._lock.release()
+                    db.depth -= 1
+                    db.lock.release()
                 return False
 
         return _Tx()
@@ -101,9 +190,9 @@ class Store:
 
     def _event(self, kind, identifier, op, revision=None, path=None, actor=None):
         ts = now()
-        cursor = self._db.execute('INSERT INTO events (ts, kind, id, op, path, revision, actor) VALUES (?,?,?,?,?,?,?)',
-                                  (ts, kind, identifier, op, path, revision, actor))
-        event = {'seq': cursor.lastrowid, 'ts': ts, 'kind': kind, 'id': identifier, 'op': op, 'path': path,
+        seq = self._db.execute('INSERT INTO events (ts, kind, id, op, path, revision, actor) VALUES (?,?,?,?,?,?,?) '
+                               'RETURNING seq', (ts, kind, identifier, op, path, revision, actor)).fetchone()['seq']
+        event = {'seq': seq, 'ts': ts, 'kind': kind, 'id': identifier, 'op': op, 'path': path,
                  'revision': revision}
         for listener in list(self._listeners):
             try:
@@ -146,8 +235,11 @@ class Store:
             created_at = row['created_at'] if row else ts
             text = json.dumps(body, ensure_ascii=False)
             self._db.execute(
-                'INSERT OR REPLACE INTO identifiables (kind, id, id_short, semantic_id, global_asset_id, body, sidecar, '
-                'created_at, updated_at, revision, digest) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
+                'INSERT INTO identifiables (kind, id, id_short, semantic_id, global_asset_id, body, sidecar, '
+                'created_at, updated_at, revision, digest) VALUES (?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT (kind, id) DO '
+                'UPDATE SET id_short=excluded.id_short, semantic_id=excluded.semantic_id, '
+                'global_asset_id=excluded.global_asset_id, body=excluded.body, sidecar=excluded.sidecar, '
+                'updated_at=excluded.updated_at, revision=excluded.revision, digest=excluded.digest',
                 (kind, identifier, body.get('idShort'), _semantic_id(body),
                  (body.get('assetInformation') or {}).get('globalAssetId'), text, json.dumps(sidecar),
                  created_at, ts, revision, digest))
@@ -155,6 +247,7 @@ class Store:
                              (ts, kind, identifier))
             self._db.execute('INSERT INTO history (kind, id, revision, valid_from, body, actor, digest) VALUES (?,?,?,?,?,?,?)',
                              (kind, identifier, revision, ts, text, actor, digest))
+            self._index(kind, body)
             self._event(kind, identifier, 'created' if row is None else 'updated', revision, path, actor)
             return row is None, self.meta(kind, identifier)
 
@@ -192,11 +285,16 @@ class Store:
             self._db.execute('INSERT INTO history (kind, id, revision, valid_from, valid_to, body, deleted, actor) '
                              'VALUES (?,?,?,?,?,NULL,1,?)', (kind, identifier, row['revision'] + 1, ts, ts, actor))
             self._db.execute('DELETE FROM attachments WHERE owner_kind=? AND owner_id=?', (kind, identifier))
+            self._unindex(kind, identifier)
             self._event(kind, identifier, 'deleted', row['revision'] + 1, None, actor)
 
     def list(self, kind: str, *, id_short=None, semantic_id=None, ids=None, limit=None, cursor=None,
-             created_from=None, updated_from=None, order='id'):
+             created_from=None, updated_from=None, order='id', where=None):
+        """``where``: an extra ``(sql, params)`` condition on ``identifiables`` (see ``sqlfilter``)."""
         clauses, params = ['kind=?'], [kind]
+        if where:
+            clauses.append(f'({where[0]})')
+            params += list(where[1])
         if id_short:
             clauses.append('id_short=?')
             params.append(id_short)
@@ -204,7 +302,7 @@ class Store:
             clauses.append('semantic_id=?')
             params.append(semantic_id)
         if ids is not None:
-            clauses.append(f'id IN ({",".join("?" * len(ids))})' if ids else '0')
+            clauses.append(f'id IN ({",".join("?" * len(ids))})' if ids else '1=0')
             params += list(ids)
         if created_from:
             clauses.append('created_at>=?')
@@ -231,8 +329,13 @@ class Store:
                                                   else last['id'])
         return [json.loads(r['body']) for r in rows], next_cursor
 
-    def iter_all(self, kind: str):
-        for row in self._db.execute('SELECT body FROM identifiables WHERE kind=? ORDER BY id', (kind,)):
+    def iter_all(self, kind: str, where=None):
+        sql, params = 'SELECT body FROM identifiables WHERE kind=?', [kind]
+        if where:
+            sql += f' AND ({where[0]})'
+            params += list(where[1])
+        rows = self._db.execute(sql + ' ORDER BY id', params).fetchall()
+        for row in rows:
             yield json.loads(row['body'])
 
     def history(self, kind: str, identifier: str):
@@ -241,13 +344,14 @@ class Store:
         return [dict(r) for r in rows]
 
     def counts(self) -> dict:
-        return {k: self._db.execute('SELECT COUNT(*) FROM identifiables WHERE kind=?', (k,)).fetchone()[0] for k in KINDS}
+        return {k: self._db.execute('SELECT COUNT(*) AS n FROM identifiables WHERE kind=?', (k,)).fetchone()['n'] for k in KINDS}
 
     # -- attachments -------------------------------------------------------------------------
     def put_attachment(self, owner_kind, owner_id, path, data: bytes, content_type=None, filename=None):
         with self.transaction():
-            self._db.execute('INSERT OR REPLACE INTO attachments VALUES (?,?,?,?,?,?)',
-                             (owner_kind, owner_id, path, content_type, filename, data))
+            self._db.execute('INSERT INTO attachments VALUES (?,?,?,?,?,?) ON CONFLICT (owner_kind, owner_id, path) '
+                             'DO UPDATE SET content_type=excluded.content_type, filename=excluded.filename, '
+                             'data=excluded.data', (owner_kind, owner_id, path, content_type, filename, data))
 
     def get_attachment(self, owner_kind, owner_id, path):
         row = self._db.execute('SELECT content_type, filename, data FROM attachments WHERE owner_kind=? AND owner_id=? '
@@ -278,7 +382,8 @@ class Store:
                 raise NotFound(identifier)
             if must_exist is False and exists:
                 raise Conflict(f'descriptor {identifier!r} already exists')
-            self._db.execute('INSERT OR REPLACE INTO descriptors VALUES (?,?,?,?)',
+            self._db.execute('INSERT INTO descriptors VALUES (?,?,?,?) ON CONFLICT (kind, id) DO UPDATE SET '
+                             'body=excluded.body, updated_at=excluded.updated_at',
                              (kind, identifier, json.dumps(body, ensure_ascii=False), now()))
             self._event(f'{kind}-descriptor', identifier, 'updated' if exists else 'created')
             return not exists
@@ -311,7 +416,8 @@ class Store:
 
     def set_asset_links(self, aas_id, links):
         with self.transaction():
-            self._db.execute('INSERT OR REPLACE INTO asset_links VALUES (?,?)', (aas_id, json.dumps(links)))
+            self._db.execute('INSERT INTO asset_links VALUES (?,?) ON CONFLICT (aas_id) DO UPDATE SET '
+                             'links=excluded.links', (aas_id, json.dumps(links)))
 
     def get_asset_links(self, aas_id):
         row = self._db.execute('SELECT links FROM asset_links WHERE aas_id=?', (aas_id,)).fetchone()
@@ -325,11 +431,12 @@ class Store:
                 raise NotFound(aas_id)
 
     def all_asset_links(self):
-        return {r['aas_id']: json.loads(r['links']) for r in self._db.execute('SELECT * FROM asset_links')}
+        return {r['aas_id']: json.loads(r['links']) for r in self._db.execute('SELECT * FROM asset_links').fetchall()}
 
     def put_package(self, package_id, filename, aas_ids, data):
         with self.transaction():
-            self._db.execute('INSERT OR REPLACE INTO packages VALUES (?,?,?,?,?)',
+            self._db.execute('INSERT INTO packages VALUES (?,?,?,?,?) ON CONFLICT (package_id) DO UPDATE SET '
+                             'filename=excluded.filename, aas_ids=excluded.aas_ids, data=excluded.data',
                              (package_id, filename, json.dumps(aas_ids), data, now()))
 
     def get_package(self, package_id):

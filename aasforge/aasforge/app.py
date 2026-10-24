@@ -8,13 +8,14 @@ from pathlib import Path
 
 from . import api, http, security, signing
 from .repository import Repository
+from .db import is_postgres
 from .store import Store
 
 
 @dataclass
 class Config:
     data_dir: str = 'var'
-    database: str | None = None              # default: <data_dir>/aasforge.sqlite3; ':memory:' for tests
+    database: str | None = None              # SQLite path (default <data_dir>/aasforge.sqlite3), ':memory:' or postgresql:// DSN
     host: str = '127.0.0.1'
     port: int = 8081
     public_url: str | None = None            # external base URL used in descriptors and passport links
@@ -60,7 +61,7 @@ class Forge:
     def __init__(self, config: Config | None = None):
         self.config = config or Config()
         database = self.config.database or str(Path(self.config.data_dir) / 'aasforge.sqlite3')
-        if database != ':memory:':
+        if database != ':memory:' and not is_postgres(database):
             Path(database).parent.mkdir(parents=True, exist_ok=True)
         self.store = Store(database)
         self.repository = Repository(self.store, self.config.verification, self.config.base_url + '/api/v3.1')

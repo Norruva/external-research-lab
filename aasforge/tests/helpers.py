@@ -1,7 +1,9 @@
 """Shared test helpers: an in-memory server on a free port and a small JSON client."""
 import json
+import os
 import socket
 import sys
+import uuid
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -14,6 +16,20 @@ PROBES = REPO / 'dpp-rea' / 'aas-compat' / 'probes'
 FIXTURES = Path(__file__).resolve().parent / 'fixtures'
 
 from aasforge.app import Config, Forge  # noqa: E402
+
+
+def database() -> str:
+    """A fresh database for one test: ``:memory:`` SQLite, or a new schema in the PostgreSQL
+    database named by ``AASFORGE_TEST_DATABASE`` (e.g. postgresql://forge:forge@127.0.0.1/aasforge)."""
+    dsn = os.environ.get('AASFORGE_TEST_DATABASE')
+    if not dsn:
+        return ':memory:'
+    return f'{dsn}{"&" if "?" in dsn else "?"}aasforge_schema=t_{uuid.uuid4().hex[:12]}'
+
+
+def store():
+    from aasforge.store import Store
+    return Store(database())
 
 
 def free_port():
@@ -30,7 +46,7 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 class Server:
     def __init__(self, **config):
         port = free_port()
-        config.setdefault('database', ':memory:')
+        config.setdefault('database', database())
         self.forge = Forge(Config(host='127.0.0.1', port=port, **config))
         self.http = self.forge.serve()
         self.base = f'http://127.0.0.1:{port}'
@@ -39,6 +55,7 @@ class Server:
     def close(self):
         self.http.shutdown()
         self.http.server_close()
+        self.forge.store.db.drop_schema()
 
     def request(self, method, path, body=None, headers=None, raw=False):
         if body is None or isinstance(body, bytes):

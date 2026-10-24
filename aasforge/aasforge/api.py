@@ -11,7 +11,7 @@ import urllib.request
 import uuid
 from datetime import datetime, timezone
 
-from . import canonical, elements, formula, security, signing, versioning
+from . import canonical, elements, formula, security, signing, sqlfilter, versioning
 from .http import HttpError, Request, Response, Router
 from .repository import Repository, ValidationFailed
 from .store import Conflict, NotFound
@@ -97,6 +97,14 @@ class Api:
         if not decision.allowed:
             raise PermissionError(f'{request.subject.name} may not {right} {request.path}')
         return decision
+
+    def read_condition(self, request: Request, kind: str):
+        """SQL prefilter for objects this subject may read (``None``: no constraint)."""
+        candidates = self.rules.candidate_formulas(request.subject, 'READ')
+        if candidates is None:
+            return None
+        formulas, claims = candidates
+        return sqlfilter.any_of(sqlfilter.compile_condition(f, kind, self.store.db, claims) for f in formulas)
 
     def visible(self, request: Request, kind: str, obj: dict) -> bool:
         return self.rules.decide(request.subject, 'READ', security.Target(request.path, kind, obj)).allowed
@@ -282,7 +290,8 @@ class Api:
         wanted = self._asset_ids_arg(request)
         items, nxt = [], cursor
         while len(items) < limit:
-            batch, nxt = self.store.list('shell', id_short=request.arg('idShort'), limit=limit, cursor=nxt)
+            batch, nxt = self.store.list('shell', id_short=request.arg('idShort'), limit=limit, cursor=nxt,
+                                         where=self.read_condition(request, 'shell'))
             items += [s for s in batch if self.visible(request, 'shell', s)
                       and (not wanted or self._matches_asset_ids(s, wanted))]
             if not nxt:
@@ -455,7 +464,7 @@ class Api:
         items, nxt = [], cursor
         while len(items) < limit:
             batch, nxt = self.store.list('submodel', id_short=request.arg('idShort'), semantic_id=semantic,
-                                         limit=limit, cursor=nxt)
+                                         limit=limit, cursor=nxt, where=self.read_condition(request, 'submodel'))
             for submodel in batch:
                 if self.visible(request, 'submodel', submodel):
                     items.append(self._render_submodel(request, self.readable_submodel(request, submodel), modifier))
@@ -730,7 +739,8 @@ class Api:
     # -- concept descriptions --------------------------------------------------------------------
     def get_cds(self, request):
         limit, cursor = _paging(request)
-        items, nxt = self.store.list('concept-description', id_short=request.arg('idShort'), limit=limit, cursor=cursor)
+        items, nxt = self.store.list('concept-description', id_short=request.arg('idShort'), limit=limit, cursor=cursor,
+                                     where=self.read_condition(request, 'concept-description'))
         case_of = request.arg('isCaseOf')
         if case_of:
             target = _id(case_of)
@@ -855,7 +865,10 @@ class Api:
         if kind in ('aas-descriptor', 'sm-descriptor'):
             candidates = self.store.list_descriptors('aas' if kind == 'aas-descriptor' else 'sm')[0]
         else:
-            candidates = [o for o in self.store.iter_all(kind) if self.visible(request, kind, o)]
+            condition = query.get('$condition') if isinstance(query, dict) else None
+            where = sqlfilter.combine(self.read_condition(request, kind), sqlfilter.compile_condition(
+                condition, kind, self.store.db, request.subject.claims) if isinstance(condition, dict) else None)
+            candidates = [o for o in self.store.iter_all(kind, where) if self.visible(request, kind, o)]
             if kind == 'submodel':
                 candidates = [self.readable_submodel(request, s) for s in candidates]
         try:
