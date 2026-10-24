@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AAS Forge Editor</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <h1>AAS Forge</h1>
+  <nav id="tabs" aria-label="Sections">
+    <button data-view="shells" class="active">Shells</button>
+    <button data-view="submodels">Submodels</button>
+    <button data-view="templates">Templates</button>
+    <button data-view="query">Query</button>
+    <button data-view="events">Events</button>
+  </nav>
+  <form id="login" class="login" autocomplete="off">
+    <label for="credential" class="sr">API key or bearer token</label>
+    <input id="credential" type="password" placeholder="API key or token">
+    <button type="submit">Sign in</button>
+    <button type="button" id="logout" hidden>Sign out</button>
+    <span id="who" class="who">anonymous</span>
+  </form>
+</header>
+<main>
+  <section id="list" class="pane list" aria-label="List"></section>
+  <section id="detail" class="pane detail" aria-label="Details"><p class="muted">Select an item.</p></section>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

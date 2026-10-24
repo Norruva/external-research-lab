@@ -132,7 +132,7 @@ def access_rules(submodels=()) -> dict:
                 'FILTER': {'FRAGMENT': '$sme', 'CONDITION': condition}}
 
     public_objects = [{'ROUTE': r} for r in ('/shells', '/submodels', '/concept-descriptions', '/lookup', '/shell-descriptors',
-                                             '/submodel-descriptors', '/description', '/dpp', '/01', '/id', '/query', '/mcp', '/opcua',
+                                             '/submodel-descriptors', '/description', '/dpp', '/01', '/id', '/query', '/mcp', '/opcua', '/ui', '/templates',
                                              '/.well-known')]
     claim = [{'CLAIM': ROLE_CLAIM}]
     rules = [

@@ -328,6 +328,13 @@ class Api:
         r('GET', '/events', self.events)
         r('POST', '/signatures/verify', self.verify_signature)
         r('GET', '/opcua/nodeset', self.opcua_nodeset)
+        # Submodel templates (bundled IDTA templates and stored Template submodels) and the web editor
+        r('GET', '/templates', self.list_templates)
+        r('POST', '/templates/instantiate', self.instantiate_template)
+        r('POST', '/templates/check', self.check_template)
+        r('GET', '/ui', lambda q: Response(308, b'', '', {'Location': '/ui/'}))
+        r('GET', '/ui/', lambda q: self.ui_file(q, 'index.html'))
+        r('GET', '/ui/{file}', lambda q: self.ui_file(q, q.params['file']))
         r('GET', '/signatures/certificate', self.certificate)
 
     # -- description ------------------------------------------------------------------------------
@@ -963,6 +970,95 @@ class Api:
         except RuntimeError as error:
             raise HttpError(501, str(error)) from error
         return Response(200, data, 'application/xml', {'Content-Disposition': content_disposition('aasforge.NodeSet2.xml')})
+
+    # -- templates ------------------------------------------------------------------------------------
+    def _template(self, request, reference):
+        """A template by reference: ``idta:<key>`` (bundled) or the id of a stored Template submodel."""
+        if isinstance(reference, dict):
+            return reference
+        if not isinstance(reference, str):
+            raise HttpError(400, 'template must be "idta:<key>", a stored template id or a submodel object')
+        if reference.startswith('idta:'):
+            from .dpp import catalog
+            key = reference[5:]
+            if key not in catalog.TEMPLATE_KEYS:
+                raise HttpError(404, f'unknown bundled template {key!r}')
+            return catalog.template(key)
+        try:
+            template = self.store.get('submodel', reference)
+        except NotFound as error:
+            raise HttpError(404, f'template {reference!r} not found') from error
+        self.allow(request, 'READ', 'submodel', template)
+        if template.get('kind') != 'Template':
+            raise HttpError(400, f'submodel {reference!r} is not a Template')
+        return template
+
+    def list_templates(self, request):
+        self.allow(request, 'READ')
+        from .dpp import catalog
+        result = [{'ref': f'idta:{key}', 'idShort': meta['idShort'], 'semanticId': meta['semanticId'],
+                   'source': 'bundled IDTA template'} for key, meta in catalog.manifest().items() if key in catalog.TEMPLATE_KEYS]
+        for submodel in self.store.iter_all('submodel'):
+            if submodel.get('kind') == 'Template' and self.visible(request, 'submodel', submodel):
+                result.append({'ref': submodel['id'], 'idShort': submodel.get('idShort'),
+                               'semanticId': ((submodel.get('semanticId') or {}).get('keys') or [{}])[0].get('value'),
+                               'source': 'stored template'})
+        return Response.json({'result': result})
+
+    def instantiate_template(self, request):
+        """Body: {template, id, idShort?, values: {idShortPath: ValueOnly}, keepExamples?, store?}."""
+        self.allow(request, 'READ')
+        from . import smt
+        body = request.json()
+        template = self._template(request, body.get('template'))
+        if not body.get('id'):
+            raise HttpError(400, 'id is required')
+        try:
+            instance = smt.instantiate(template, body['id'], body.get('values') or {},
+                                       keep_examples=bool(body.get('keepExamples')), id_short=body.get('idShort'))
+        except (elements.PathError, elements.ValueTypeError, ValueError) as error:
+            raise HttpError(400, f'cannot instantiate: {error}') from error
+        findings = smt.check(instance, template)
+        if body.get('store'):
+            self.allow(request, 'CREATE', 'submodel', instance)
+            try:
+                self.repo.save('submodel', instance, actor=self.actor(request), must_exist=False)
+            except Conflict as error:
+                raise HttpError(409, str(error)) from error
+            except ValidationFailed as error:
+                raise HttpError(400, str(error), details=error.errors) from error
+        return Response.json({'submodel': instance, 'findings': findings}, 201 if body.get('store') else 200)
+
+    def check_template(self, request):
+        """Body: {template, submodel: <id or object>} -> template findings for the submodel."""
+        self.allow(request, 'READ')
+        from . import smt
+        body = request.json()
+        template = self._template(request, body.get('template'))
+        submodel = body.get('submodel')
+        if isinstance(submodel, str):
+            try:
+                submodel = self.readable_submodel(request, self.store.get('submodel', submodel))
+            except NotFound as error:
+                raise HttpError(404, 'submodel not found') from error
+        if not isinstance(submodel, dict):
+            raise HttpError(400, 'submodel must be an id or a submodel object')
+        return Response.json({'findings': smt.check(submodel, template)})
+
+    # -- web editor ------------------------------------------------------------------------------
+    UI_FILES = {'index.html': 'text/html; charset=utf-8', 'app.js': 'text/javascript; charset=utf-8',
+                'style.css': 'text/css; charset=utf-8'}
+    UI_CSP = ("default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; "
+              "base-uri 'none'; form-action 'none'; frame-ancestors 'none'")
+
+    def ui_file(self, request, name):
+        if name not in self.UI_FILES:
+            raise HttpError(404, 'no such file')
+        from importlib import resources
+        data = resources.files('aasforge').joinpath('ui', name).read_bytes()
+        return Response(200, data, self.UI_FILES[name], {'Content-Security-Policy': self.UI_CSP,
+                                                         'X-Frame-Options': 'DENY', 'Referrer-Policy': 'no-referrer',
+                                                         'Cache-Control': 'no-cache'})
 
     def certificate(self, request):
         if not self.signer:
