@@ -5,5 +5,11 @@ cryptography>=42          # RS256 JWS signing and verification, X.509 certificat
 jsonschema>=4.20          # Query Language / Access Rule JSON schema (IDTA-01002, IDTA-01004)
 regex>=2024.4             # $regex with per-search timeouts (ReDoS protection)
 
+# Optional integrations (install what you use)
+psycopg[binary]>=3.1      # PostgreSQL storage (postgresql:// database URL)
+asyncua>=1.1              # OPC UA server and NodeSet2 export (I4AAS)
+paho-mqtt>=2.0            # MQTT event bridge and telemetry ingest
+rdflib>=7.0               # SAMM aspect model import
+
 # Development only
 pyyaml>=6                 # tools/api_coverage.py reads the OpenAPI collection

@@ -11,3 +11,9 @@ Unmodified copies of published packages used as regression inputs, with the defe
 
 All are licensed CC-BY-4.0 by their publishers (IDTA; Catena-X Automotive Network e.V. / Eclipse Tractus-X contributors).
 The version-boundary probes are read from `dpp-rea/aas-compat/probes`.
+
+`samm/` holds SAMM aspect models from
+[eclipse-tractusx/sldt-semantic-models](https://github.com/eclipse-tractusx/sldt-semantic-models)
+(CC-BY-4.0, see `samm/LICENSE`): BatteryPass 6.1.0 and PCF 10.0.0 with the models they import,
+the example payloads (`gen/*.json`) and the AAS output of the ESMF generator (`gen/*-aas.xml.gz`,
+gzipped, used as the reference for the SAMM to AAS mapping).

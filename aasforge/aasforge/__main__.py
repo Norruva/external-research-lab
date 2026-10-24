@@ -10,6 +10,8 @@
   dpp-create FILE   create a passport from a JSON spec (see examples/battery_passport.py)
   access-rules      print the generated IDTA-01004 tier rules for the current store
   catenax-provision register submodels and the registry as EDC assets with contracts (Catena-X)
+  import-samm TTL   SAMM aspect model -> submodel template + ConceptDescriptions (optionally an instance)
+  import-dictionary ECLASS / IEC CDD property tables (CSV) -> ConceptDescriptions
 """
 from __future__ import annotations
 
@@ -142,6 +144,36 @@ def cmd_catenax_provision(args):
     return 0
 
 
+def cmd_import_samm(args):
+    from . import samm
+    forge = _forge(args)
+    model = samm.AspectModel(args.files, models_root=args.models_root)
+    template, cds = model.template(args.aspect)
+    report = {'template': template['id'], 'conceptDescriptions': len(cds)}
+    if not args.no_template:
+        forge.repository.save('submodel', template, actor='cli')
+    for cd in cds:
+        forge.repository.save('concept-description', cd, actor='cli')
+    if args.payload:
+        instance = samm.instance(template, json.loads(Path(args.payload).read_text()),
+                                 args.id or f'{template["id"].rsplit("/", 1)[0]}/instance')
+        forge.repository.save('submodel', instance, actor='cli')
+        report['instance'] = instance['id']
+    print(json.dumps(report, indent=1))
+    return 0
+
+
+def cmd_import_dictionary(args):
+    from . import dictionary
+    forge = _forge(args)
+    units = dictionary.read_units(*args.units) if args.units else {}
+    cds = dictionary.concept_descriptions(*args.files, units=units, language=args.language)
+    for cd in cds:
+        forge.repository.save('concept-description', cd, actor='cli')
+    print(json.dumps({'conceptDescriptions': len(cds)}))
+    return 0
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(prog='aasforge', description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--data-dir', default=None, help='data directory (default: var)')
@@ -201,6 +233,19 @@ def main(argv=None):
     p.add_argument('--purpose', default=None, help='usage purpose, e.g. cx.core.industrycore:1')
     p.add_argument('--policy-id', default='aasforge-access')
     p.set_defaults(func=cmd_catenax_provision)
+    p = sub.add_parser('import-samm')
+    p.add_argument('files', nargs='+', help='aspect model .ttl file(s)')
+    p.add_argument('--models-root', default=None, help='folder laid out as <namespace>/<version>/*.ttl to resolve imports')
+    p.add_argument('--aspect', default=None, help='aspect URN when the files define several')
+    p.add_argument('--payload', default=None, help='SAMM JSON payload to store as a submodel instance')
+    p.add_argument('--id', default=None, help='id of the instance')
+    p.add_argument('--no-template', action='store_true', help='store only the ConceptDescriptions (and instance)')
+    p.set_defaults(func=cmd_import_samm)
+    p = sub.add_parser('import-dictionary')
+    p.add_argument('files', nargs='+', help='ECLASS *_PR_<lang>.csv or IEC CDD property tables')
+    p.add_argument('--units', action='append', help='unit table(s), e.g. ECLASS *_UN_<lang>.csv')
+    p.add_argument('--language', default='en', help='language of files without a language column or suffix')
+    p.set_defaults(func=cmd_import_dictionary)
     args = parser.parse_args(argv)
     if args.data_dir is None:
         args.data_dir = 'var'
