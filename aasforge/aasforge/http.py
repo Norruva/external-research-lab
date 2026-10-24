@@ -159,6 +159,10 @@ class App:
         except PermissionError as error:
             status = 401 if 'token' in str(error) or 'API key' in str(error) else 403
             response = Response.json(result_messages(status, str(error) or 'forbidden'), status)
+        except Exception as error:  # noqa: BLE001 - never drop the connection; report a Result instead
+            import traceback
+            traceback.print_exc()
+            response = Response.json(result_messages(500, f'internal error: {type(error).__name__}: {error}'), 500)
         origin = request.headers.get('Origin') or request.headers.get('origin')
         if origin and origin in self.cors_origins:
             response.headers.setdefault('Access-Control-Allow-Origin', origin)

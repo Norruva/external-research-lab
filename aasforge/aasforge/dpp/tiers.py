@@ -96,23 +96,27 @@ def access_rules(submodels=()) -> dict:
         if tier in hidden_submodels:
             hidden_submodels[tier].append(submodel['id'])
 
+    def combine(operator, items):
+        """The schema requires at least two operands for $and/$or."""
+        if not items:
+            return {'$boolean': operator == '$and'}
+        return items[0] if len(items) == 1 else {operator: items}
+
     def not_in(semantics):
-        if not semantics:
-            return {'$boolean': True}
-        return {'$and': [{'$ne': [{'$field': '$sme#semanticId'}, {'$strVal': s}]} for s in sorted(semantics)]}
+        return combine('$and', [{'$ne': [{'$field': '$sme#semanticId'}, {'$strVal': s}]} for s in sorted(semantics)])
 
     def tier_is(*tiers):
-        return {'$or': [{'$eq': [{'$attribute': {'CLAIM': ROLE_CLAIM}}, {'$strVal': t}]} for t in tiers]}
+        return combine('$or', [{'$eq': [{'$attribute': {'CLAIM': ROLE_CLAIM}}, {'$strVal': t}]} for t in tiers])
 
     def not_submodels(ids):
         return [{'$ne': [{'$field': '$sm#id'}, {'$strVal': i}]} for i in sorted(ids)]
 
     def formula(base, ids):
-        extra = not_submodels(ids)
-        return {'$and': [base] + extra} if extra else base
+        return combine('$and', [base] + not_submodels(ids))
 
     public_objects = [{'ROUTE': r} for r in ('/shells', '/submodels', '/concept-descriptions', '/lookup', '/shell-descriptors',
-                                             '/submodel-descriptors', '/description', '/dpp', '/01', '/id', '/query')]
+                                             '/submodel-descriptors', '/description', '/dpp', '/01', '/id', '/query', '/mcp',
+                                             '/.well-known')]
     rules = [
         {'ACL': {'ATTRIBUTES': [{'CLAIM': ROLE_CLAIM}], 'RIGHTS': ['ALL'], 'ACCESS': 'ALLOW'},
          'OBJECTS': [{'ROUTE': '*'}], 'FORMULA': tier_is('economic-operator')},

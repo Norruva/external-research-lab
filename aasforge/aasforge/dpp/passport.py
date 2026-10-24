@@ -242,9 +242,8 @@ def _label(element):
 
 
 def _fields(submodel, index):
-    fields = []
-
     def walk(container, prefix, owner):
+        fields = []
         for position, element in enumerate(container):
             path = f'{prefix}[{position}]' if owner == 'SubmodelElementList' else (
                 f'{prefix}.{element.get("idShort")}' if prefix else element.get('idShort'))

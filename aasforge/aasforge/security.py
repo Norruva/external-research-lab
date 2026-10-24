@@ -141,7 +141,10 @@ class AccessRules:
     def __init__(self, document: dict | None):
         self.enabled = document is not None
         document = document or {}
-        errors = formula.validate(document, 'AllAccessPermissionRules') if document else []
+        inner = document.get('AllAccessPermissionRules') if isinstance(document, dict) else None
+        if document and inner is None:
+            raise ValueError('access rules must be an object with an "AllAccessPermissionRules" member')
+        errors = formula.validate(inner, 'AllAccessPermissionRules') if document else []
         if errors:
             raise ValueError('invalid access rules: ' + '; '.join(errors[:5]))
         body = document.get('AllAccessPermissionRules', {})
